@@ -1,0 +1,9 @@
+{
+ int x; char y;
+  {
+    bool x; int w;
+     {
+       int z;
+     }
+  }
+}

@@ -1,0 +1,133 @@
+package olc2_Tarea1;
+import java_cup.runtime.*;
+import olc2_tarea1.nodo;
+parser code
+{:
+    public static nodo raiz = new nodo();
+    int countNodo =0;
+
+    /**Metodo al que se llama automáticamente ante algún error sintactico.*/
+    public void syntax_error(Symbol s){
+        System.out.println("Error sintactico en la Línea " + (s.right+1) +" Columna "+s.left+ ". Identificador "
+        +s.value + " no reconocido." );
+    }
+         /**Metodo al que se llama en el momento en que ya no es posible una recuperación de
+    errores.*/
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{
+        System.out.println("Error sintactico en la Línea " + (s.right+1)+ " Columna "+s.left+". Identificador " +
+        s.value + " no reconocido.");   
+	}
+:}
+
+
+
+terminal   tInt,tBool,tChar,tLlvOpn,tLlvCls,tId,tPComa;
+non terminal   S,B,L,INS,T;
+
+/* ******************************************* Gramatica*********************** */
+start with S;
+
+S::=    B:nB1
+        {:
+            nodo tmp = new nodo(); 
+            tmp.etiqueta = "S";
+            nodo tmp2 = (nodo)nB1;
+            tmp.addHijo(tmp2);
+            tmp.idNodo = countNodo;
+            countNodo++;
+            raiz = tmp;
+        :}
+        ;
+
+B::=    tLlvOpn L:nL tLlvCls
+        {:
+            nodo tmp = new nodo();
+            tmp.etiqueta = "B";
+            nodo tmp2 = (nodo)nL;
+            tmp.addHijo(tmp2);
+            tmp.idNodo = countNodo;
+            countNodo++;
+            RESULT = tmp;
+        :}
+        ;
+
+L::=    L:nL INS:nIns
+        {:
+            nodo tmp = (nodo)nL;
+            nodo tmp2 = (nodo)nIns;
+            tmp.addHijo(tmp2);
+            tmp.idNodo = countNodo;
+            countNodo++;
+            RESULT = tmp;
+        :}
+        |INS:nIns
+        {:
+            nodo tmp = new nodo();
+            tmp.etiqueta = "L";
+            nodo tmp2 = (nodo)nIns;
+            tmp.addHijo(tmp2);
+            tmp.idNodo = countNodo;
+            countNodo++;
+            RESULT = tmp;
+        :}
+        ;
+
+INS::=  T:nT tId:nId tPComa
+            {:
+                nodo ins = new nodo();
+                ins.etiqueta = "INS";
+
+                nodo id = new nodo();
+                id.etiqueta = "ID";
+                id.valor = (String)nId;
+                id.idNodo = countNodo;
+                countNodo++;
+
+                nodo tmpNT = (nodo)nT;
+                ins.addHijo(tmpNT);
+                ins.addHijo(id);
+
+                ins.idNodo = countNodo;
+                countNodo++;
+                RESULT = ins;
+            :}
+        |B:nB
+            {:
+                nodo ins = new nodo();
+                ins.etiqueta = "INS";
+                nodo tmp = (nodo)nB;
+                ins.addHijo(tmp);
+                ins.idNodo = countNodo;
+                countNodo++;
+                RESULT = ins;
+            :}
+        ;
+
+T::=    tInt 
+            {:
+                nodo tmp = new nodo();
+                tmp.etiqueta = "T";
+                tmp.valor = "int";
+                tmp.idNodo = countNodo;
+                countNodo++;
+                RESULT = tmp;
+            :}
+        |tBool
+            {:
+                nodo tmp = new nodo();
+                tmp.etiqueta = "T";
+                tmp.valor = "bool";
+                tmp.idNodo = countNodo;
+                countNodo++;
+                RESULT = tmp;
+            :}
+        |tChar
+            {:
+                nodo tmp = new nodo();
+                tmp.etiqueta = "T";
+                tmp.valor = "char";
+                tmp.idNodo = countNodo;
+                countNodo++;
+                RESULT = tmp;
+            :}
+        ;
