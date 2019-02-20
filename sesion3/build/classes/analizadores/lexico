@@ -1,0 +1,46 @@
+/* descargar la ultima version como main.java -> https://www.cs.princeton.edu/~appel/modern/java/JLex/ */
+/*------------------- 1era Area: Codigo de usuario ------------------------*/
+package analizadores;
+import java_cup.runtime.Symbol;
+/*----------------- 2da Area: Opciones y declaraciones --------------------*/
+%%
+%{
+//-------------------------------> Codigo de usuario en sintaxis java    
+%}
+%class lexico      
+%public             
+%cup               
+%char               
+%full
+%ignorecase         
+%line               
+%unicode            
+
+%init{
+    yyline = 1;     
+    yychar = 1;     
+%init}
+num = [0-9]+
+id = [A-Za-z]+["_"0-9A-Za-z]*
+ignora = [ \t\r\f\n]+
+%%
+"int"           { return new Symbol(sym.tInt,yyline,yychar, yytext());} 
+"String"        { return new Symbol(sym.tString,yyline,yychar, yytext());} 
+"boolean"       { return new Symbol(sym.tBoolean,yyline,yychar, yytext());} 
+"imprimir"      { return new Symbol(sym.tImprimir,yyline,yychar, yytext());}
+"true"			{ return new Symbol(sym.tTrue,yyline,yychar, yytext());}
+"false"			{ return new Symbol(sym.tFalse,yyline,yychar, yytext());}
+";" 			{ return new Symbol(sym.tPtoComa,yyline,yychar, yytext());}
+"+"             { return new Symbol(sym.tMas,yyline,yychar, yytext());}
+"*"             { return new Symbol(sym.tPor,yyline,yychar, yytext());}
+"="             { return new Symbol(sym.tIgual,yyline,yychar, yytext());} 
+"("             { return new Symbol(sym.tParOpen,yyline,yychar, yytext());} 
+")"             { return new Symbol(sym.tParClose,yyline,yychar, yytext());} 
+{num}           { return new Symbol(sym.tNum,yyline,yychar, yytext());}
+{id}           { return new Symbol(sym.tId,yyline,yychar, yytext());}
+\n              {yychar=1;}
+{ignora}		{} 
+.	{
+            System.out.println("Error lexico en : "+yytext()+
+                                ", en la linea: "+yyline+", en la columna: "+yychar);
+	}
