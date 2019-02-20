@@ -1,3 +1,4 @@
-int a = 10;
-a = 20;
-imprimir(a);
+int x = 4+2*3;
+double y = x/2*3;
+imprimir(y);
+imprimir(x*y/4);

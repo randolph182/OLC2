@@ -36,6 +36,7 @@ public class Operacion {
         SUMA,
         MULTIPLICACION,
         BOOLEANO,
+        DIVISION,
         NUMERO,
         IDENTIFICADOR,
         CADENA

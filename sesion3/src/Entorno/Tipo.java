@@ -25,6 +25,8 @@ public class Tipo {
                 return "STRING";
             case BOOLEAN:
                 return "BOOLEAN";
+            case DOUBLE:
+                return "DOUBLE";
             default:
                 break;
         }
@@ -37,6 +39,7 @@ public class Tipo {
     public enum TipoPrimitivo{
         INT,
         BOOLEAN,
-        STRING
+        STRING,
+        DOUBLE
     }
 }

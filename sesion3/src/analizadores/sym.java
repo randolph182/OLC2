@@ -8,28 +8,32 @@ package analizadores;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int tParClose = 7;
-  public static final int tParOpen = 6;
-  public static final int tFalse = 15;
-  public static final int tNum = 4;
-  public static final int tInt = 8;
-  public static final int tIgual = 11;
-  public static final int tId = 5;
-  public static final int EOF = 0;
-  public static final int tBoolean = 10;
-  public static final int tImprimir = 12;
-  public static final int tPor = 2;
-  public static final int tTrue = 14;
-  public static final int error = 1;
-  public static final int tString = 9;
+  public static final int tIgual = 12;
+  public static final int tDiv = 18;
+  public static final int tDec = 5;
+  public static final int tParOpen = 7;
+  public static final int tPtoComa = 14;
   public static final int tMas = 3;
-  public static final int tPtoComa = 13;
+  public static final int tString = 10;
+  public static final int tImprimir = 13;
+  public static final int EOF = 0;
+  public static final int tInt = 9;
+  public static final int tFalse = 16;
+  public static final int error = 1;
+  public static final int tTrue = 15;
+  public static final int tParClose = 8;
+  public static final int tPor = 2;
+  public static final int tId = 6;
+  public static final int tDouble = 17;
+  public static final int tBoolean = 11;
+  public static final int tNum = 4;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "tPor",
   "tMas",
   "tNum",
+  "tDec",
   "tId",
   "tParOpen",
   "tParClose",
@@ -40,7 +44,9 @@ public class sym {
   "tImprimir",
   "tPtoComa",
   "tTrue",
-  "tFalse"
+  "tFalse",
+  "tDouble",
+  "tDiv"
   };
 }
 

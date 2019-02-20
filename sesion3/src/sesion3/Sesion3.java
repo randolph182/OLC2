@@ -32,19 +32,6 @@ public class Sesion3 {
             System.out.println("Error Fatal al tratar de analizar el archivo");
             System.out.println("Causa" + e.getCause());
         }
-//        ejecutar(ast);
     }
 
-//    public static void ejecutar(LinkedList<Instruccion> raiz) {
-//        if (raiz != null) {
-//            entorno tabla = new entorno(null);
-//            for (Instruccion ins : raiz) {
-//                if (ins != null) {
-//                    ins.ejecutar(tabla);
-//                }
-//            }
-//        } else {
-//            System.out.println("No es posible realizar la operaicon porque hubo problemas en el arbol");
-//        }
-//    }
 }

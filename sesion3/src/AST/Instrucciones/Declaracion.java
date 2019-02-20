@@ -55,9 +55,19 @@ public class Declaracion implements Instruccion{
                     nSimbolo.setValor(val);
                     ent.put(identificador, nSimbolo);
                 } else {
-                    System.out.println("> Error no se pude asignar otro que no asea booleano");
+                    System.out.println("> Error no se pude asignar otro que no sea booleano");
                 }
-                
+            } else if(tipo.getTipoPrimitivo() == Tipo.TipoPrimitivo.DOUBLE){
+                if(tipoVal.getTipoString() == "DOUBLE"){
+                    nSimbolo.setValor(val);
+                    ent.put(identificador, nSimbolo);
+                } else if(tipoVal.getTipoString() == "INT"){ 
+                    Double tmp = new Double((int)val);
+                    nSimbolo.setValor(tmp);
+                    ent.put(identificador, nSimbolo);
+                } else {
+                    System.out.println("> Error no se pude asignar otro que no sea double");
+                }
             }
         }
         return null;

@@ -21,22 +21,26 @@ import java_cup.runtime.Symbol;
     yychar = 1;     
 %init}
 num = [0-9]+
+dec = [0-9]+"."[0-9]+
 id = [A-Za-z]+["_"0-9A-Za-z]*
 ignora = [ \t\r\f\n]+
 %%
 "int"           { return new Symbol(sym.tInt,yyline,yychar, yytext());} 
 "String"        { return new Symbol(sym.tString,yyline,yychar, yytext());} 
 "boolean"       { return new Symbol(sym.tBoolean,yyline,yychar, yytext());} 
+"double"       { return new Symbol(sym.tDouble,yyline,yychar, yytext());} 
 "imprimir"      { return new Symbol(sym.tImprimir,yyline,yychar, yytext());}
 "true"			{ return new Symbol(sym.tTrue,yyline,yychar, yytext());}
 "false"			{ return new Symbol(sym.tFalse,yyline,yychar, yytext());}
 ";" 			{ return new Symbol(sym.tPtoComa,yyline,yychar, yytext());}
 "+"             { return new Symbol(sym.tMas,yyline,yychar, yytext());}
+"/"             { return new Symbol(sym.tDiv,yyline,yychar, yytext());}
 "*"             { return new Symbol(sym.tPor,yyline,yychar, yytext());}
 "="             { return new Symbol(sym.tIgual,yyline,yychar, yytext());} 
 "("             { return new Symbol(sym.tParOpen,yyline,yychar, yytext());} 
 ")"             { return new Symbol(sym.tParClose,yyline,yychar, yytext());} 
 {num}           { return new Symbol(sym.tNum,yyline,yychar, yytext());}
+{dec}           { return new Symbol(sym.tDec,yyline,yychar, yytext());}
 {id}           { return new Symbol(sym.tId,yyline,yychar, yytext());}
 \n              {yychar=1;}
 {ignora}		{} 

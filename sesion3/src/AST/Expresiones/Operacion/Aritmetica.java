@@ -27,27 +27,70 @@ public class Aritmetica extends Operacion implements Expresion {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         
         Object a = (exp1 == null)? null:exp1.getValor(ent);
+        Tipo tipoA = exp1.getTipo(ent);
         Object b = (exp2 == null)? null:exp2.getValor(ent);
+        Tipo tipoB = exp2.getTipo(ent);
         
         if(tipoOperador == Operador.SUMA){
-            if(a instanceof Integer && b instanceof Integer){
+            
+            if(tipoA.getTipoString() == "INT" && tipoB.getTipoString() == "INT")
+            {
                 tipoResult = new Tipo(Tipo.TipoPrimitivo.INT);
                 return (int)a + (int)b;
-            }
-            else if(a instanceof String && b instanceof String){
-                tipoResult = new Tipo(Tipo.TipoPrimitivo.STRING);
-                return (String)a + (String)b;
-            }
-            else{
-                System.out.println("Error en la suma de tipos ");
+            } else if(tipoA.getTipoString() == "DOUBLE" && tipoB.getTipoString() == "DOUBLE"){
+                tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
+                return (Double)a + (Double)b;
+            } else if(tipoA.getTipoString() == "INT" || tipoA.getTipoString() == "DOUBLE"){
+                if(tipoB.getTipoString() == "INT" || tipoB.getTipoString() == "DOUBLE"){
+                    tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
+                    return (Double)a + (Double)b;
+                } else{
+                    System.out.println("Error en la suma de tipos");
+                    return null;
+                }
+            } else{
+                System.out.println("Error en la suma de tipos");
                 return null;
             }
         } else if(tipoOperador == Operador.MULTIPLICACION){
-            if(a instanceof Integer && b instanceof Integer){
+            if(tipoA.getTipoString() == "INT" && tipoB.getTipoString() == "INT")
+            {
                 tipoResult = new Tipo(Tipo.TipoPrimitivo.INT);
                 return (int)a * (int)b;
-            } else {
-                System.out.println("Error ne la multiplicacion de tipos");
+            } else if(tipoA.getTipoString() == "DOUBLE" && tipoB.getTipoString() == "DOUBLE"){
+                tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
+                return (Double)a * (Double)b;
+            } else if(tipoA.getTipoString() == "INT" || tipoA.getTipoString() == "DOUBLE"){
+                if(tipoB.getTipoString() == "INT" || tipoB.getTipoString() == "DOUBLE"){
+                    tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
+                    return (Double)a * (Double)b;
+                } else{
+                    System.out.println("Error en la multiplicacion de tipos");
+                    return null;
+                }
+            } else{
+                System.out.println("Error en la multiplicacion de tipos");
+                return null;
+            }
+        } else if(tipoOperador == Operador.DIVISION){
+            if(tipoA.getTipoString() == "INT" && tipoB.getTipoString() == "INT")
+            {
+                tipoResult = new Tipo(Tipo.TipoPrimitivo.INT);
+                return (int)a / (int)b;
+            } else if(tipoA.getTipoString() == "DOUBLE" && tipoB.getTipoString() == "DOUBLE"){
+                tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
+                return (Double)a / (Double)b;
+            } else if(tipoA.getTipoString() == "INT" || tipoA.getTipoString() == "DOUBLE"){
+                if(tipoB.getTipoString() == "INT" || tipoB.getTipoString() == "DOUBLE"){
+                    tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
+                    return (Double)a / (Double)b;
+                } else{
+                    System.out.println("Error en la division de tipos");
+                    return null;
+                }
+            } else{
+                System.out.println("Error en la division de tipos");
+                return null;
             }
         } else if( a instanceof Integer){
             System.out.println("hola mundo");

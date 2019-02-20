@@ -30,16 +30,18 @@ public class Identificador implements Expresion{
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         if(ent.get(identificador) != null){
             Simbolo s = ent.get(identificador);
+            this.tipo = s.getTipo();
             return s.getValor();
         }else{
-            System.out.println("> Error el identificador no existe!!");
+            System.out.println("> Error el identificador  "+ identificador +"  no existe!!");
         }
         return null;
     }
 
     @Override
     public Tipo getTipo(Entorno ent) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return tipo;
     }
 
     @Override
