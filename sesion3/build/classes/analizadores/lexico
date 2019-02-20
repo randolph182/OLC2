@@ -34,6 +34,7 @@ ignora = [ \t\r\f\n]+
 "false"			{ return new Symbol(sym.tFalse,yyline,yychar, yytext());}
 ";" 			{ return new Symbol(sym.tPtoComa,yyline,yychar, yytext());}
 "+"             { return new Symbol(sym.tMas,yyline,yychar, yytext());}
+"-"             { return new Symbol(sym.tMenos,yyline,yychar, yytext());}
 "/"             { return new Symbol(sym.tDiv,yyline,yychar, yytext());}
 "*"             { return new Symbol(sym.tPor,yyline,yychar, yytext());}
 "="             { return new Symbol(sym.tIgual,yyline,yychar, yytext());} 

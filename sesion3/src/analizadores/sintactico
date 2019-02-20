@@ -45,6 +45,7 @@ terminal    String tTrue;
 terminal    String tFalse;
 terminal    String tDouble;
 terminal    String tDiv;
+terminal    String tMenos;
 
 non terminal   S;
 non terminal   LinkedList<nodoAST> INSTRUCCIONES;
@@ -56,7 +57,7 @@ non terminal   Asignacion ASIGNACION;
 non terminal   Imprimir IMPRIMIR;
 
 
-precedence left  tMas;
+precedence left  tMas,tMenos;
 precedence left  tPor,tDiv;
 
 /* ******************************************* Gramatica*********************** */
@@ -95,6 +96,7 @@ IMPRIMIR::=         tImprimir tParOpen EXPRESION:a tParClose {: RESULT = new Imp
                     ;
 
 EXPRESION::=        EXPRESION:a tMas EXPRESION:b    {: RESULT = new Aritmetica(a,b,Operacion.Operador.SUMA);:}
+                    |EXPRESION:a tMenos EXPRESION:b {: RESULT = new Aritmetica(a,b,Operacion.Operador.RESTA);:}
                     |EXPRESION:a tPor EXPRESION:b   {: RESULT = new Aritmetica(a,b,Operacion.Operador.MULTIPLICACION);:}
                     |EXPRESION:a tDiv EXPRESION:b   {: RESULT = new Aritmetica(a,b,Operacion.Operador.DIVISION);:}
                     |tParOpen EXPRESION:a tParClose  {:RESULT = a; :}

@@ -27,6 +27,7 @@ public class sym {
   public static final int tDouble = 17;
   public static final int tBoolean = 11;
   public static final int tNum = 4;
+  public static final int tMenos = 19;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -46,7 +47,8 @@ public class sym {
   "tTrue",
   "tFalse",
   "tDouble",
-  "tDiv"
+  "tDiv",
+  "tMenos"
   };
 }
 

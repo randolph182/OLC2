@@ -34,6 +34,7 @@ public class Operacion {
    
     public enum Operador{
         SUMA,
+        RESTA,
         MULTIPLICACION,
         BOOLEANO,
         DIVISION,
