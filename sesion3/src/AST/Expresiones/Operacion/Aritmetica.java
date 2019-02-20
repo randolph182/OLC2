@@ -31,9 +31,11 @@ public class Aritmetica extends Operacion implements Expresion {
         
         if(tipoOperador == Operador.SUMA){
             if(a instanceof Integer && b instanceof Integer){
+                tipoResult = new Tipo(Tipo.TipoPrimitivo.INT);
                 return (int)a + (int)b;
             }
             else if(a instanceof String && b instanceof String){
+                tipoResult = new Tipo(Tipo.TipoPrimitivo.STRING);
                 return (String)a + (String)b;
             }
             else{
@@ -42,6 +44,7 @@ public class Aritmetica extends Operacion implements Expresion {
             }
         } else if(tipoOperador == Operador.MULTIPLICACION){
             if(a instanceof Integer && b instanceof Integer){
+                tipoResult = new Tipo(Tipo.TipoPrimitivo.INT);
                 return (int)a * (int)b;
             } else {
                 System.out.println("Error ne la multiplicacion de tipos");
@@ -56,7 +59,8 @@ public class Aritmetica extends Operacion implements Expresion {
 
     @Override
     public Tipo getTipo(Entorno ent) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return tipoResult;
     }
 
     @Override

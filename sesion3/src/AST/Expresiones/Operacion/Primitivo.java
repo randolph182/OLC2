@@ -28,7 +28,7 @@ public class Primitivo implements Expresion{
 
     @Override
     public Tipo getTipo(Entorno ent) {
-        return null;
+        return tipo;
     }
 
     @Override

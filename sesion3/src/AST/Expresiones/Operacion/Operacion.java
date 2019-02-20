@@ -16,6 +16,7 @@ public class Operacion {
     Expresion exp1;
     Expresion exp2;
     Operador tipoOperador;
+    Tipo tipoResult;
     boolean unario;
     
     public Operacion(Expresion exp1,Expresion exp2,Operador tipoOperador){

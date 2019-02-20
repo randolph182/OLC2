@@ -28,8 +28,31 @@ public class Simbolo {
         return valor;
     }
     
+    
+    
     public void setValor(Object valor){
         this.valor = valor;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 }
 

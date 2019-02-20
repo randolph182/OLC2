@@ -31,13 +31,33 @@ public class Declaracion implements Instruccion{
         } else {
             Simbolo nSimbolo = new Simbolo(identificador, tipo);
             Object val = initValue.getValor(ent);
+            Tipo tipoVal = initValue.getTipo(ent);
+            
             if(tipo.getTipoPrimitivo() == Tipo.TipoPrimitivo.STRING){
-                nSimbolo.setValor(val);
-                ent.put(identificador, nSimbolo);
+                if(tipoVal.getTipoString() == "STRING"){
+                    nSimbolo.setValor(val);
+                    ent.put(identificador, nSimbolo);
+                } else { 
+                    System.out.println("> Error no se puede asignar otro valor que no sea string");
+                }
             }
             else if(tipo.getTipoPrimitivo() == Tipo.TipoPrimitivo.INT){
-                nSimbolo.setValor(val);
-                ent.put(identificador, nSimbolo);
+                if(tipoVal.getTipoString() == "INT"){
+                    nSimbolo.setValor(val);
+                    ent.put(identificador, nSimbolo);
+                } else {
+                    System.out.println("> Error no se puede asignar otro valor que no sea entero");
+                }
+                
+            }
+            else if(tipo.getTipoPrimitivo() == Tipo.TipoPrimitivo.BOOLEAN){
+                if(tipoVal.getTipoString() == "BOOLEAN"){
+                    nSimbolo.setValor(val);
+                    ent.put(identificador, nSimbolo);
+                } else {
+                    System.out.println("> Error no se pude asignar otro que no asea booleano");
+                }
+                
             }
         }
         return null;

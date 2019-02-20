@@ -26,7 +26,7 @@ public class Entorno {
     
     public Simbolo get(String llv){
         for(Entorno e = this; e!=null; e = e.anterior){
-            Simbolo encontrado = (Simbolo)(e.tabla.get(e));
+            Simbolo encontrado = (Simbolo)(e.tabla.get(llv));
             if(encontrado != null)
                 return encontrado;
         }

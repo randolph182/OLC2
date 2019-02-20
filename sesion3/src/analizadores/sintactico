@@ -77,39 +77,27 @@ INSTRUCCIONES::=    INSTRUCCIONES:lstInst INSTRUCCION:inst
                         :}
                     ;
 
-INSTRUCCION::=      DECLARACION:dec tPtoComa
-                        {:
-                            RESULT = dec;
-                        :}
-                    | ASIGNACION:asig tPtoComa
-                        {:
-                            RESULT = asig;
-                        :}
-                    | IMPRIMIR:imp tPtoComa
-                        {:
-                            RESULT = imp;
-                        :}
+INSTRUCCION::=      DECLARACION:dec tPtoComa {: RESULT = dec;:}
+                    | ASIGNACION:asig tPtoComa {: RESULT = asig; :}
+                    | IMPRIMIR:imp tPtoComa {: RESULT = imp; :}
                     ;
 
-DECLARACION::=      TIPO:t tId:id tIgual EXPRESION:exp
-                        {:
-                            RESULT = new Declaracion(t,id,exp,idleft);
-                        :}
+DECLARACION::=      TIPO:t tId:id tIgual EXPRESION:exp {: RESULT = new Declaracion(t,id,exp,idleft); :}
                     ;
 
-ASIGNACION::=       tId:id tIgual EXPRESION:exp
-                        {:
-                            RESULT  = new Asignacion(id,exp,idleft);
-                        :}
+ASIGNACION::=       tId:id tIgual EXPRESION:exp {: RESULT  = new Asignacion(id,exp,idleft); :}
                     ;
 
-IMPRIMIR::=         tImprimir tParOpen EXPRESION:a tParClose {: RESULT = new Imprimir(a,aleft);:};
+IMPRIMIR::=         tImprimir tParOpen EXPRESION:a tParClose {: RESULT = new Imprimir(a,aleft);:}
+                    ;
 
 EXPRESION::=        EXPRESION:a tMas EXPRESION:b {: RESULT = new Aritmetica(a,b,Operacion.Operador.SUMA);:}
                     |EXPRESION:a tPor EXPRESION:b {: RESULT = new Aritmetica(a,b,Operacion.Operador.MULTIPLICACION);:}
+                    |tId:a {:RESULT = new Identificador(a,aleft);:}
                     |tTrue:a {:RESULT = new Primitivo(a, new Tipo(Tipo.TipoPrimitivo.BOOLEAN)); :}
                     |tFalse:a {:RESULT = new Primitivo(a, new Tipo(Tipo.TipoPrimitivo.BOOLEAN)); :}
-                    |tNum:a {:RESULT = new Primitivo(Integer.valueOf(a), new Tipo(Tipo.TipoPrimitivo.INT)); :};
+                    |tNum:a {:RESULT = new Primitivo(Integer.valueOf(a), new Tipo(Tipo.TipoPrimitivo.INT)); :}
+                    ;
 
 TIPO::=             tInt        {:  RESULT = new Tipo(Tipo.TipoPrimitivo.INT);:}
                     |tString    {:  RESULT = new Tipo(Tipo.TipoPrimitivo.STRING);:}
