@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AST.Expresiones;
 
 import Entorno.Entorno;
@@ -27,7 +22,6 @@ public class Identificador implements Expresion{
     
     @Override
     public Object getValor(Entorno ent) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         if(ent.get(identificador) != null){
             Simbolo s = ent.get(identificador);
             this.tipo = s.getTipo();
@@ -40,7 +34,6 @@ public class Identificador implements Expresion{
 
     @Override
     public Tipo getTipo(Entorno ent) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return tipo;
     }
 
