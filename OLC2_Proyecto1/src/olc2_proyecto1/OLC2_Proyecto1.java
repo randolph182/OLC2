@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package olc2_proyecto1;
 
+package olc2_proyecto1;
+import java.io.FileInputStream;
 /**
  *
  * @author rm
@@ -15,7 +11,18 @@ public class OLC2_Proyecto1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        analizar("entrada.txt");
+    }
+    
+    public static void analizar(String path){
+        analizadores.FS.sintacticoFS parserFS;
+        try {
+            parserFS = new analizadores.FS.sintacticoFS(new analizadores.FS.lexicoFS(new FileInputStream(path)));
+            parserFS.parse();
+        } catch (Exception e) {
+            System.out.println("Error Fatal al trata de analizar el archivo");
+            System.out.println("Causa " + e.getCause());
+        }
     }
     
 }

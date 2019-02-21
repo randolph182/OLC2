@@ -41,5 +41,4 @@ public class Identificador implements Expresion{
     public int getLine() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

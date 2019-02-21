@@ -36,10 +36,43 @@ public class Tipo {
     public TipoPrimitivo getTipoPrimitivo(){
         return tipoPrimitivo;
     }
+    
+    
     public enum TipoPrimitivo{
         INT,
         BOOLEAN,
         STRING,
-        DOUBLE
+        DOUBLE,
+        NULL
+    }
+    
+    public boolean isBool(){
+        if(tipoPrimitivo == tipoPrimitivo.BOOLEAN)
+            return true;
+        return false;
+    }
+    
+    public boolean isString(){
+        if(tipoPrimitivo == tipoPrimitivo.STRING)
+            return true;
+        return false;
+    }
+    
+    public boolean isNumeric(){
+        if(tipoPrimitivo == tipoPrimitivo.INT || tipoPrimitivo == tipoPrimitivo.DOUBLE)
+            return true;
+        return false;
+    }
+    
+    public boolean isDouble(){
+        if(tipoPrimitivo == tipoPrimitivo.DOUBLE)
+            return true;
+        return false;
+    }
+    
+    public boolean isInt(){
+        if(tipoPrimitivo == tipoPrimitivo.INT)
+            return true;
+        return false;
     }
 }

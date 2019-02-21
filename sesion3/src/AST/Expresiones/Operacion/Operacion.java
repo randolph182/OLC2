@@ -6,7 +6,7 @@ import Entorno.Tipo;
  *
  * @author rm
  */
-public class Operacion {
+public abstract class Operacion {
 
     Expresion exp1;
     Expresion exp2;
@@ -27,6 +27,8 @@ public class Operacion {
         this.unario = true;
     }
    
+   
+    
     public enum Operador{
         SUMA,
         RESTA,
@@ -37,5 +39,6 @@ public class Operacion {
         IDENTIFICADOR,
         CADENA
     }
-    
+   
+    public abstract Tipo tipoResultado(Tipo t1,Tipo t2);
 }
