@@ -9,15 +9,19 @@ package analizadores.FS;
 public class sym {
   /* terminals */
   public static final int tIgual = 11;
+  public static final int tAumen = 18;
   public static final int tDiv = 8;
   public static final int tDec = 16;
   public static final int tParOpen = 12;
   public static final int tCad = 15;
+  public static final int tVar = 21;
   public static final int tPtoComa = 5;
   public static final int tMas = 6;
   public static final int tElev = 10;
   public static final int tImprimir = 2;
+  public static final int tDecremen = 19;
   public static final int EOF = 0;
+  public static final int unarioNeg = 20;
   public static final int tFalse = 4;
   public static final int error = 1;
   public static final int tEntero = 14;
@@ -25,6 +29,7 @@ public class sym {
   public static final int tParClose = 13;
   public static final int tId = 17;
   public static final int tPor = 9;
+  public static final int tComa = 22;
   public static final int tMenos = 7;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -44,7 +49,12 @@ public class sym {
   "tEntero",
   "tCad",
   "tDec",
-  "tId"
+  "tId",
+  "tAumen",
+  "tDecremen",
+  "unarioNeg",
+  "tVar",
+  "tComa"
   };
 }
 

@@ -37,11 +37,59 @@ terminal String tEntero;
 terminal String tCad;
 terminal String tDec;
 terminal String tId;
+terminal String tAumen;
+terminal String tDecremen;
+terminal String unarioNeg;
+terminal String tVar;
+terminal String tComa;
 
 non terminal S;
+non terminal DECLARACION;
+non terminal LST_ID;
+non terminal EXPRESION;
+non terminal INSTRUCCION;
+non terminal INSTRUCCIONES;
+non terminal ASIG_VAL;
 
+precedence left  tMas,tMenos;
+precedence left  tPor,tDiv;
+precedence left  tElev;
+precedence left  tAumen,tDecremen;
+precedence right  unarioNeg;
 
 /* ******************************************* GRAMATICA **************************************** */
 start with S;
 
-S::=	tCad;
+S::=	INSTRUCCIONES;
+
+INSTRUCCIONES::= INSTRUCCIONES INSTRUCCION
+                |INSTRUCCION
+                ;
+
+INSTRUCCION::=   DECLARACION
+                ;
+
+DECLARACION::=   tVar LST_ID ASIG_VAL tPtoComa
+                ;
+ASIG_VAL::=     
+                | tIgual EXPRESION
+                ;
+
+LST_ID::=       LST_ID tComa tId
+                |tId
+                ;
+
+EXPRESION::=     tMenos EXPRESION %prec unarioNeg
+                |EXPRESION tMas EXPRESION
+                |EXPRESION tMenos EXPRESION
+                |EXPRESION tPor EXPRESION
+                |EXPRESION tDiv EXPRESION
+                |EXPRESION tElev EXPRESION
+                |EXPRESION tAumen
+                |EXPRESION tDecremen
+                |tParOpen EXPRESION tParClose
+                |tEntero
+                |tDec
+                |tCad
+                |tId
+                ;

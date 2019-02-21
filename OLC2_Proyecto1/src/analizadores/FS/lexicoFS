@@ -26,27 +26,33 @@ decimal = [0-9]+"."[0-9]+
 id = [A-Za-z]+["_"0-9A-Za-z]*
 cadena = [\"\'][^\"\'\n]+[\"\']
 ignora = [ \t\r\f\n]+
+COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 
 %%
 <YYINITIAL> "imprimir"      { return new Symbol(sym.tImprimir,yyline,yychar, yytext());}
+<YYINITIAL> "var"           { return new Symbol(sym.tVar,yyline,yychar, yytext());}
+<YYINITIAL> "="             { return new Symbol(sym.tIgual,yyline,yychar, yytext());}
 <YYINITIAL> "true"			{ return new Symbol(sym.tTrue,yyline,yychar, yytext());}
 <YYINITIAL> "false"			{ return new Symbol(sym.tFalse,yyline,yychar, yytext());}
 <YYINITIAL> ";" 			{ return new Symbol(sym.tPtoComa,yyline,yychar, yytext());}
+<YYINITIAL> "," 			{ return new Symbol(sym.tComa,yyline,yychar, yytext());}
 <YYINITIAL> "+"             { return new Symbol(sym.tMas,yyline,yychar, yytext());}
 <YYINITIAL> "-"             { return new Symbol(sym.tMenos,yyline,yychar, yytext());}
 <YYINITIAL> "/"             { return new Symbol(sym.tDiv,yyline,yychar, yytext());}
 <YYINITIAL> "*"             { return new Symbol(sym.tPor,yyline,yychar, yytext());}
 <YYINITIAL> "^"             { return new Symbol(sym.tElev,yyline,yychar, yytext());}
-<YYINITIAL> "="             { return new Symbol(sym.tIgual,yyline,yychar, yytext());} 
 <YYINITIAL> "("             { return new Symbol(sym.tParOpen,yyline,yychar, yytext());} 
 <YYINITIAL> ")"             { return new Symbol(sym.tParClose,yyline,yychar, yytext());} 
-<YYINITIAL> {entero}           { return new Symbol(sym.tEntero,yyline,yychar, yytext());}
+<YYINITIAL> "++"      		{ return new Symbol(sym.tAumen,yyline,yychar, yytext());}
+<YYINITIAL> "--"      		{ return new Symbol(sym.tDecremen,yyline,yychar, yytext());}
+<YYINITIAL> {entero}        { return new Symbol(sym.tEntero,yyline,yychar, yytext());}
 <YYINITIAL> {cadena}		{ return new Symbol(sym.tCad,yyline,yychar, yytext());}
-<YYINITIAL> {decimal}           { return new Symbol(sym.tDec,yyline,yychar, yytext());}
-<YYINITIAL> {id}           { return new Symbol(sym.tId,yyline,yychar, yytext());}
+<YYINITIAL> {decimal}       { return new Symbol(sym.tDec,yyline,yychar, yytext());}
+<YYINITIAL> {id}            { return new Symbol(sym.tId,yyline,yychar, yytext());}
 <YYINITIAL> \n              {yychar=1;}
 <YYINITIAL> {ignora}		{} 
 <YYINITIAL> "/*"			{yybegin(COMENT_MULTI_LINE);}
+<YYINITIAL> {COMENT_LINE}	{}
 <COMENT_MULTI_LINE> "*"		{}
 <COMENT_MULTI_LINE> [^"*/"]		{}
 <COMENT_MULTI_LINE> "*/"	{yybegin(YYINITIAL);}						
