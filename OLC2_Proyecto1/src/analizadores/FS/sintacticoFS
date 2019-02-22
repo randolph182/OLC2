@@ -55,7 +55,7 @@ precedence left  tMas,tMenos;
 precedence left  tPor,tDiv;
 precedence left  tElev;
 precedence left  tAumen,tDecremen;
-precedence right  unarioNeg;
+precedence right  umenos;
 
 /* ******************************************* GRAMATICA **************************************** */
 start with S;
@@ -79,7 +79,7 @@ LST_ID::=       LST_ID tComa tId
                 |tId
                 ;
 
-EXPRESION::=     tMenos EXPRESION %prec unarioNeg
+EXPRESION::=     tMenos EXPRESION %prec umenos
                 |EXPRESION tMas EXPRESION
                 |EXPRESION tMenos EXPRESION
                 |EXPRESION tPor EXPRESION

@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FuncionScript.AST;
+package FuncionScript.AST.Instrucciones;
+
+import FuncionScript.AST.nodoAST;
+import FuncionScript.Entorno.Entorno;
 
 /**
  *
  * @author rm
  */
-public interface nodoAST {
-    int getLine();
+public interface Instruccion  extends nodoAST{
+    Object ejecutar(Entorno ent);
 }

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FuncionScript.AST;
+package FuncionScript.AST.Instrucciones;
 
 /**
  *
  * @author rm
  */
-public interface nodoAST {
-    int getLine();
+public class Imprimir {
+    
 }
