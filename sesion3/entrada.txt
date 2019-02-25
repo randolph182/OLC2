@@ -1,3 +1,3 @@
-int x = 4+2*3;
-double y = x/2*3;
-imprimir(x*y/4);
+int a = 10;
+double c = 50.35;
+imprimir(a * c);

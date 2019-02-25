@@ -24,107 +24,53 @@ public class Aritmetica extends Operacion implements Expresion {
         Object b = (exp2 == null)? null:exp2.getValor(ent);
         Tipo tipoB = exp2.getTipo(ent);
         
-        if(tipoOperador == Operador.SUMA){
-            if(tipoA.getTipoString() == "INT" && tipoB.getTipoString() == "INT")
-            {
-                tipoResult = new Tipo(Tipo.TipoPrimitivo.INT);
-                return (int)a + (int)b;
-            } else if(tipoA.getTipoString() == "DOUBLE" && tipoB.getTipoString() == "DOUBLE"){
-                tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                return (Double)a + (Double)b;
-            } else if(tipoA.getTipoString() == "INT" && tipoB.getTipoString() == "DOUBLE"){
-                 tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                double result = new Double((int)a) + (Double)b;
-                return result;
-            } else if(tipoA.getTipoString() == "DOUBLE" && tipoB.getTipoString() == "INT"){
-                tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                double result =  (Double)a + new Double((int)b)  ;
-                return result;
-            } else{
-                System.out.println("Error en la suma de tipos");
-                return null;
-            }
-        } else if(tipoOperador == Operador.RESTA){
+        tipoResult = tipoResultado(tipoA, tipoB);
+        
+        switch(tipoResult.getTipoPrimitivo()){
+            case INT:
+                if(tipoOperador == Operador.SUMA)
+                    return new Integer(a.toString()) + new Integer( b.toString());
+                else if(tipoOperador == Operador.RESTA)
+                    return new Integer(a.toString()) - new Integer( b.toString());
+                else if(tipoOperador == Operador.MULTIPLICACION)
+                    return new Integer(a.toString()) * new Integer( b.toString());
+                else if(tipoOperador == Operador.DIVISION){
+                    if(new Integer( b.toString()) != 0)
+                        return new Integer(a.toString())/ new Integer( b.toString());
+                    else
+                        System.out.println(">Error el operador 2 no puede dividir debido a que es 0");
+                }
+                else
+                    System.out.println(">El tipo de operacion no esta especificada en el switch de INT");
+               break;
             
-            if(tipoA.getTipoString() == "INT" && tipoB.getTipoString() == "INT")
-            {
-                tipoResult = new Tipo(Tipo.TipoPrimitivo.INT);
-                return (int)a - (int)b;
-            } else if(tipoA.getTipoString() == "DOUBLE" && tipoB.getTipoString() == "DOUBLE"){
-                tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                return (Double)a - (Double)b;
-            } else if(tipoA.getTipoString() == "INT" && tipoB.getTipoString() == "DOUBLE"){
-                 tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                double result = new Double((int)a) - (Double)b;
-                return result;
-            } else if(tipoA.getTipoString() == "DOUBLE" && tipoB.getTipoString() == "INT"){
-                tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                double result =  (Double)a - new Double((int)b)  ;
-                return result;
-            } else{
-                System.out.println("Error en la resta de tipos");
-                return null;
-            }
-        } else if(tipoOperador == Operador.MULTIPLICACION){
-            if(tipoA.getTipoString() == "INT" && tipoB.getTipoString() == "INT")
-            {
-                tipoResult = new Tipo(Tipo.TipoPrimitivo.INT);
-                return (int)a * (int)b;
-            } else if(tipoA.getTipoString() == "DOUBLE" && tipoB.getTipoString() == "DOUBLE"){
-                tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                return (Double)a * (Double)b;
-            } else if(tipoA.getTipoString() == "INT" && tipoB.getTipoString() == "DOUBLE"){
-                 tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                double result = new Double((int)a) * (Double)b;
-                return result;
-            } else if(tipoA.getTipoString() == "DOUBLE" && tipoB.getTipoString() == "INT"){
-                tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                double result =  (Double)a * new Double((int)b)  ;
-                return result;
-            } else{
-                System.out.println("Error en la multiplicacion de tipos");
-                return null;
-            }
-        } else if(tipoOperador == Operador.DIVISION){
-            if(tipoA.getTipoString() == "INT" && tipoB.getTipoString() == "INT") {
-                if((int)b != 0){
-                    tipoResult = new Tipo(Tipo.TipoPrimitivo.INT);
-                    return (int)a / (int)b;
-                }else
-                    System.out.println("> Error no se puede hacer la division por 0");
-            } else if(tipoA.getTipoString() == "DOUBLE" && tipoB.getTipoString() == "DOUBLE"){
-                
-                if((Double)b != 0){
-                    tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                    return (Double)a / (Double)b;
-                }else
-                    System.out.println("> Error no se puede hacer la division por 0");
-                
-            } else if(tipoA.getTipoString() == "INT" && tipoB.getTipoString() == "DOUBLE"){
-                if((Double)b != 0){
-                    tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                    double result = new Double((int)a) / (Double)b;
-                    return result;  
-                }else
-                    System.out.println("> Error no se puede hacer la division por 0");
-                 
-            } else if(tipoA.getTipoString() == "DOUBLE" && tipoB.getTipoString() == "INT"){
-
-                if((int) b != 0){
-                    tipoResult = new Tipo(Tipo.TipoPrimitivo.DOUBLE);
-                    double result =  (Double)a / new Double((int)b)  ;
-                    return result;
-                }else
-                    System.out.println("> Error no se puede hacer la division por 0");
-                
-            } else{
-                System.out.println("Error en la division de tipos");
-                return null;
-            }
-        } else if( a instanceof Integer){
-            System.out.println("hola mundo");
-        } else {
-            return null;
+            case DOUBLE:
+                if(tipoOperador == Operador.SUMA)
+                     return new Double(a.toString()) + new Double( b.toString());
+                else if(tipoOperador == Operador.RESTA)
+                    return new Double(a.toString()) - new Double( b.toString());
+                else if(tipoOperador == Operador.MULTIPLICACION)
+                    return new Double(a.toString()) * new Double( b.toString());
+                else if(tipoOperador == Operador.DIVISION){
+                    if(new Double( b.toString()) != 0)
+                        return new Double(a.toString()) / new Double( b.toString());
+                    else
+                        System.out.println(">Error el operador 2 no puede dividir debido a que es 0");
+                }
+                else
+                    System.out.println(">El tipo de operacion no esta especificada en el switch de Double");
+               break;
+            
+            case STRING:
+                if(tipoOperador == Operador.SUMA)
+                     return a.toString() +  b.toString();
+                else
+                    System.out.println(">Error soloo se permiten sumas de Cadenas de caracteres");
+               break;
+           
+            case NULL:
+                System.out.println(">Algo salio mal porque vino un NULL en aritmetica");
+               break;
         }
         return null;
     }

@@ -27,6 +27,8 @@ public class Tipo {
                 return "BOOLEAN";
             case DOUBLE:
                 return "DOUBLE";
+            case NULL:
+                return "NULL";
             default:
                 break;
         }
