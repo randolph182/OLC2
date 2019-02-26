@@ -3,6 +3,10 @@ package analizadores.FS;
 import java_cup.runtime.*;
 import java.util.LinkedList;
 
+// ************** importaciones de las clases que se utilizaran en el analisis *********
+import FuncionScript.AST.Expresiones.*;
+import FuncionScript.AST.Expresiones.Operacion.*;
+import FuncionScript.Entorno.*;
 //acciones que se programan en el parser
 parser code
 {:
@@ -42,18 +46,19 @@ terminal String tDecremen;
 terminal String unarioNeg;
 terminal String tVar;
 terminal String tComa;
+terminal String umenos;
 
 non terminal S;
 non terminal DECLARACION;
 non terminal LST_ID;
-non terminal EXPRESION;
+non terminal Expresion EXPRESION;
 non terminal INSTRUCCION;
 non terminal INSTRUCCIONES;
 non terminal ASIG_VAL;
 
 precedence left  tMas,tMenos;
 precedence left  tPor,tDiv;
-precedence left  tElev;
+precedence right  tElev;
 precedence left  tAumen,tDecremen;
 precedence right  umenos;
 
@@ -79,17 +84,16 @@ LST_ID::=       LST_ID tComa tId
                 |tId
                 ;
 
-EXPRESION::=     tMenos EXPRESION %prec umenos
-                |EXPRESION tMas EXPRESION
-                |EXPRESION tMenos EXPRESION
-                |EXPRESION tPor EXPRESION
-                |EXPRESION tDiv EXPRESION
-                |EXPRESION tElev EXPRESION
-                |EXPRESION tAumen
-                |EXPRESION tDecremen
-                |tParOpen EXPRESION tParClose
-                |tEntero
-                |tDec
-                |tCad
-                |tId
+EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,new Tipo(Tipo.TipoFS.NEGATIVO),aleft);:} %prec umenos
+                |EXPRESION:a tMas EXPRESION:b       {:RESULT = new Aritmetica(a,b,new Tipo(Tipo.TipoFS.SUMA),aleft);:}
+                |EXPRESION:a tMenos EXPRESION:b     {:RESULT = new Aritmetica(a,b,new Tipo(Tipo.TipoFS.RESTA),aleft);:}
+                |EXPRESION:a tPor EXPRESION:b       {:RESULT = new Aritmetica(a,b,new Tipo(Tipo.TipoFS.MULTIPLICACION),aleft);:}
+                |EXPRESION:a tDiv EXPRESION:b       {:RESULT = new Aritmetica(a,b,new Tipo(Tipo.TipoFS.DIVISION),aleft);:}
+                |EXPRESION:a tElev EXPRESION:b      {:RESULT = new Aritmetica(a,b,new Tipo(Tipo.TipoFS.ELEVACION),aleft);:}
+                |EXPRESION:a tAumen                   {:RESULT = new Aritmetica(a,new Tipo(Tipo.TipoFS.AUMENTO),aleft);:}
+                |EXPRESION:a tDecremen                {:RESULT = new Aritmetica(a,new Tipo(Tipo.TipoFS.DECREMENTO),aleft);:}
+                |tParOpen EXPRESION:a tParClose     {:RESULT = a;:}
+                |tEntero:a                          {:RESULT = new Unario(a,new Tipo(Tipo.TipoFS.INT),aleft);:}
+                |tDec:a                             {:RESULT = new Unario(a,new Tipo(Tipo.TipoFS.DOUBLE),aleft);:}
+                |tCad:a                             {:RESULT = new Unario(a,new Tipo(Tipo.TipoFS.STRING),aleft);:}
                 ;

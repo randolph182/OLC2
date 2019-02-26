@@ -22,7 +22,6 @@ public class Asignacion implements Instruccion{
     }
     @Override
     public Object ejecutar(Entorno ent) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         Object valExp = expresion.getValor(ent);
         Tipo tipoVal = expresion.getTipo(ent);
         
@@ -30,14 +29,20 @@ public class Asignacion implements Instruccion{
             if(ent.get(identificador) != null){
                 Simbolo s = ent.get(identificador);
                 Tipo tipo = s.getTipo();
+
                 if( tipo.getTipoPrimitivo() == Tipo.TipoPrimitivo.INT){
-                    if(tipoVal.getTipoString() == "INT"){
-                        s.setValor(valExp);
+                    if(tipoVal.getTipoString() == "INT" || tipoVal.getTipoString() == "DOUBLE"){
+                        s.setValor(new Integer((String)valExp));
                     } else{
                         System.out.println("> Error No se pude asignar otro valor que no sea entero");
                     }
-                }
-                else if( tipo.getTipoPrimitivo() == Tipo.TipoPrimitivo.STRING){
+                } else if( tipo.getTipoPrimitivo() == Tipo.TipoPrimitivo.DOUBLE){
+                    if(tipoVal.getTipoString() == "INT" || tipoVal.getTipoString() == "DOUBLE"){
+                        s.setValor(new Double((String)valExp));
+                    } else{
+                        System.out.println("> Error No se pude asignar otro valor que no sea Decimal");
+                    }
+                } else if( tipo.getTipoPrimitivo() == Tipo.TipoPrimitivo.STRING){
                     if(tipoVal.getTipoString() == "STRING"){
                         s.setValor(valExp);
                     } else{
@@ -51,7 +56,6 @@ public class Asignacion implements Instruccion{
                         System.out.println("> Error no se puede asignar otro valor que no sea tipo booleano");
                     }
                 }
-                
             }else{
                 System.out.println("> Error el identificador al que desea asignar valor no existe!!");
             }
@@ -61,7 +65,7 @@ public class Asignacion implements Instruccion{
 
     @Override
     public int getLine() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return linea;
     }
     
 }

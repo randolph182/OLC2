@@ -3,24 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FuncionScript.AST.Expresiones.Operacion;
+package AST.Expresiones.Operacion;
 
-import FuncionScript.AST.Expresiones.Expresion;
-import FuncionScript.Entorno.Entorno;
-import FuncionScript.Entorno.Tipo;
+import AST.Expresiones.Expresion;
+import Entorno.Entorno;
+import Entorno.Tipo;
 
 /**
  *
  * @author rm
  */
-public class Aritmetica extends Operacion implements Expresion{
+public class Logica extends Operacion implements Expresion{
 
-    public Aritmetica(Expresion exp1, Expresion exp2, Operador tipoOperador,int linea) {
-        super(exp1, exp2, tipoOperador,linea);
-    }
-    
-    public Aritmetica(Expresion exp1,Operador tipoOperador,int linea) {
-        super(exp1, tipoOperador,linea);
+    public Logica(Expresion exp1, Expresion exp2, Operador tipoOperador) {
+        super(exp1, exp2, tipoOperador);
     }
 
     @Override
@@ -35,7 +31,7 @@ public class Aritmetica extends Operacion implements Expresion{
 
     @Override
     public Tipo getTipo(Entorno ent) {
-       return tipoResult;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

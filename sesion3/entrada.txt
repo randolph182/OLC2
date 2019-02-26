@@ -1,3 +1,4 @@
-int a = 10;
+int a = 10 ;
 double c = 50.35;
-imprimir(a * c);
+double b = a * c;
+imprimir(b);

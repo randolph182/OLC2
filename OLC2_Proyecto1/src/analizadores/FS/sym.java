@@ -27,6 +27,7 @@ public class sym {
   public static final int tEntero = 14;
   public static final int tTrue = 3;
   public static final int tParClose = 13;
+  public static final int umenos = 23;
   public static final int tId = 17;
   public static final int tPor = 9;
   public static final int tComa = 22;
@@ -54,7 +55,8 @@ public class sym {
   "tDecremen",
   "unarioNeg",
   "tVar",
-  "tComa"
+  "tComa",
+  "umenos"
   };
 }
 

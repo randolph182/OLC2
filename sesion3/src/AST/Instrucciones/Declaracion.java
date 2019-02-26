@@ -39,7 +39,7 @@ public class Declaracion implements Instruccion{
             }
             else if(tipo.getTipoPrimitivo() == Tipo.TipoPrimitivo.INT){
                 if(tipoVal.getTipoString() == "INT"){
-                    nSimbolo.setValor(val);
+                    nSimbolo.setValor((int)val);
                     ent.put(identificador, nSimbolo);
                 } else {
                     System.out.println("> Error no se puede asignar otro valor que no sea entero");
@@ -54,14 +54,10 @@ public class Declaracion implements Instruccion{
                     System.out.println("> Error no se pude asignar otro que no sea booleano");
                 }
             } else if(tipo.getTipoPrimitivo() == Tipo.TipoPrimitivo.DOUBLE){
-                if(tipoVal.getTipoString() == "DOUBLE"){
-                    nSimbolo.setValor(val);
+                if(tipoVal.getTipoString() == "DOUBLE" ){
+                    nSimbolo.setValor((Double)val);
                     ent.put(identificador, nSimbolo);
-                } else if(tipoVal.getTipoString() == "INT"){ 
-                    Double tmp = new Double((int)val);
-                    nSimbolo.setValor(tmp);
-                    ent.put(identificador, nSimbolo);
-                } else {
+                }  else {
                     System.out.println("> Error no se pude asignar otro que no sea double");
                 }
             }

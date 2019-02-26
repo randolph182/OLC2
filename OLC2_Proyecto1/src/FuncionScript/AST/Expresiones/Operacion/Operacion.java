@@ -19,7 +19,9 @@ public abstract class Operacion {
         MULTIPLICACION,
         DIVISION,
         ELEVACION,
-        NEGACION
+        NEGACION,
+        AUMENTO,
+        DECREMENTO
     }
     
     Expresion exp1;
@@ -27,18 +29,21 @@ public abstract class Operacion {
     Operador tipoOperador;
     Tipo tipoResult;
     boolean esUnario;
+    int linea;
     
-    public Operacion(Expresion exp1,Expresion exp2,Operador tipoOperador){
+    public Operacion(Expresion exp1,Expresion exp2,Operador tipoOperador,int linea){
         this.exp1 = exp1;
         this.exp2 = exp2;
         this.tipoOperador = tipoOperador;
         this.esUnario = false;
+        this.linea = linea;
     }
     
-    public Operacion(Expresion exp1,Operador tipoOperador){
+    public Operacion(Expresion exp1,Operador tipoOperador, int linea){
         this.exp1 = exp1;
         this.tipoOperador = tipoOperador;
         this.esUnario = true;
+        this.linea = linea;
     }
     
     public abstract Tipo tipoResultado(Tipo t1, Tipo t2);
