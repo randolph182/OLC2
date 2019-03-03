@@ -19,6 +19,7 @@ public class OLC2_Proyecto1 {
         try {
             parserFS = new analizadores.FS.sintacticoFS(new analizadores.FS.lexicoFS(new FileInputStream(path)));
             parserFS.parse();
+            parserFS.ast.ejecutar();
         } catch (Exception e) {
             System.out.println("Error Fatal al trata de analizar el archivo");
             System.out.println("Causa " + e.getCause());

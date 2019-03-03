@@ -14,10 +14,10 @@ import FuncionScript.Entorno.Tipo;
  * @author rm
  */
 public class Identificador implements Expresion{
-    String identificador;
+    private String identificador;
+    private Object valor;
     int linea;
     Tipo tipo;
-    Object valor;
     
     public Identificador(String id,int linea){
         this.identificador = id;
@@ -25,12 +25,12 @@ public class Identificador implements Expresion{
     }
     @Override
     public Object getValor(Entorno ent) {
-       if(ent.get(identificador) != null){
-           Simbolo s = ent.get(identificador);
+       if(ent.get(getIdentificador()) != null){
+           Simbolo s = ent.get(getIdentificador());
            this.tipo = s.getTipo();
            return s.getValor();
        } else {
-           System.out.println("> Erro el identificador " + identificador + "no existe.");
+           System.out.println("> Erro el identificador " + getIdentificador() + "no existe.");
        }
        return null;
     }
@@ -43,6 +43,34 @@ public class Identificador implements Expresion{
     @Override
     public int getLine() {
         return linea;
+    }
+
+    /**
+     * @return the identificador
+     */
+    public String getIdentificador() {
+        return identificador;
+    }
+
+    /**
+     * @param identificador the identificador to set
+     */
+    public void setIdentificador(String identificador) {
+        this.identificador = identificador;
+    }
+
+    /**
+     * @return the valor
+     */
+    public Object getValor() {
+        return valor;
+    }
+
+    /**
+     * @param valor the valor to set
+     */
+    public void setValor(Object valor) {
+        this.valor = valor;
     }
     
 }

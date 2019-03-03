@@ -1,5 +1,7 @@
 package FuncionScript.AST;
 
+import FuncionScript.AST.Instrucciones.Instruccion;
+import FuncionScript.Entorno.Entorno;
 import java.util.LinkedList;
 
 /**
@@ -13,6 +15,12 @@ public class AST {
     }
     
     public void ejecutar(){
-        
+        Entorno global = new Entorno(null);
+        for(nodoAST nodo: nodos){
+            if(nodo instanceof Instruccion){
+                Instruccion instruccion = (Instruccion)nodo;
+                instruccion.ejecutar(global);
+            }
+        }
     }
 }

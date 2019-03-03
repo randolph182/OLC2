@@ -14,6 +14,7 @@ import FuncionScript.Entorno.Entorno;
 public class Asignacion implements Instruccion{
 
     
+    
     @Override
     public Object ejecutar(Entorno ent) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -16,7 +16,8 @@ public class Tipo {
         DOUBLE,
         OBJECT,
         NUMBER,
-        NULL,
+        BOOLEAN,
+        NULL
     }
     
     private TipoFS tipo;
@@ -27,5 +28,35 @@ public class Tipo {
     
     public TipoFS getTipo(){
         return tipo;
+    }
+    
+    public boolean isInt(){
+        if(tipo == TipoFS.INT)
+            return true;
+        return false;
+    }
+    
+    public boolean isDouble(){
+        if(tipo == TipoFS.DOUBLE)
+            return true;
+        return false;
+    }
+    
+    public boolean isString(){
+        if(tipo == TipoFS.STRING)
+            return true;
+        return false;
+    }
+    
+    public boolean isObject(){
+        return false;
+    }
+    
+    public boolean isNull(){
+        return false;
+    }
+    
+    public boolean isBoolean(){
+        return false;
     }
 }

@@ -7,9 +7,12 @@ import java.util.LinkedList;
 import FuncionScript.AST.Expresiones.*;
 import FuncionScript.AST.Expresiones.Operacion.*;
 import FuncionScript.Entorno.*;
+import FuncionScript.AST.Instrucciones.*;
+import FuncionScript.AST.*;
 //acciones que se programan en el parser
 parser code
 {:
+    public AST ast;
     /**Metodo al que se llama automáticamente ante algún error sintactico.*/
     public void syntax_error(Symbol s){
         System.out.println("Error sintactico en la Línea " + (s.right+1) +" Columna "+s.left+ ". Identificador "
@@ -49,12 +52,12 @@ terminal String tComa;
 terminal String umenos;
 
 non terminal S;
-non terminal DECLARACION;
-non terminal LST_ID;
+non terminal Declaracion DECLARACION;
+non terminal LinkedList<Identificador> LST_ID;
 non terminal Expresion EXPRESION;
-non terminal INSTRUCCION;
-non terminal INSTRUCCIONES;
-non terminal ASIG_VAL;
+non terminal nodoAST INSTRUCCION;
+non terminal LinkedList<nodoAST> INSTRUCCIONES;
+non terminal Declaracion ASIG_VAL;
 
 precedence left  tMas,tMenos;
 precedence left  tPor,tDiv;
@@ -65,35 +68,40 @@ precedence right  umenos;
 /* ******************************************* GRAMATICA **************************************** */
 start with S;
 
-S::=	INSTRUCCIONES;
+S::=	INSTRUCCIONES:a  {: parser.ast = new AST(a);:};
 
-INSTRUCCIONES::= INSTRUCCIONES INSTRUCCION
-                |INSTRUCCION
+INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {:RESULT = a; RESULT.add(b);:}
+                |INSTRUCCION:a         {:RESULT = new LinkedList<>(); RESULT.add(a);:}
                 ;
 
-INSTRUCCION::=   DECLARACION
+INSTRUCCION::=   DECLARACION:a                      {:RESULT = a;:}
                 ;
 
-DECLARACION::=   tVar LST_ID ASIG_VAL tPtoComa
-                ;
-ASIG_VAL::=     
-                | tIgual EXPRESION
+DECLARACION::=   tVar  ASIG_VAL:a tPtoComa          {:RESULT = a;:}
                 ;
 
-LST_ID::=       LST_ID tComa tId
-                |tId
+ASIG_VAL::=     | tId:a                             {:RESULT = new Declaracion(a,aleft);:}
+                | LST_ID:a tIgual EXPRESION:b       {:RESULT = new Declaracion(a,b,bleft);:}
                 ;
 
-EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,new Tipo(Tipo.TipoFS.NEGATIVO),aleft);:} %prec umenos
-                |EXPRESION:a tMas EXPRESION:b       {:RESULT = new Aritmetica(a,b,new Tipo(Tipo.TipoFS.SUMA),aleft);:}
-                |EXPRESION:a tMenos EXPRESION:b     {:RESULT = new Aritmetica(a,b,new Tipo(Tipo.TipoFS.RESTA),aleft);:}
-                |EXPRESION:a tPor EXPRESION:b       {:RESULT = new Aritmetica(a,b,new Tipo(Tipo.TipoFS.MULTIPLICACION),aleft);:}
-                |EXPRESION:a tDiv EXPRESION:b       {:RESULT = new Aritmetica(a,b,new Tipo(Tipo.TipoFS.DIVISION),aleft);:}
-                |EXPRESION:a tElev EXPRESION:b      {:RESULT = new Aritmetica(a,b,new Tipo(Tipo.TipoFS.ELEVACION),aleft);:}
-                |EXPRESION:a tAumen                   {:RESULT = new Aritmetica(a,new Tipo(Tipo.TipoFS.AUMENTO),aleft);:}
-                |EXPRESION:a tDecremen                {:RESULT = new Aritmetica(a,new Tipo(Tipo.TipoFS.DECREMENTO),aleft);:}
+LST_ID::=       LST_ID:a tComa tId:b                {:RESULT = a; Identificador id = new Identificador(b,bleft); RESULT.add(id);:}
+                |tId:a                              {:  RESULT = new LinkedList<>();
+                                                        Identificador id = new Identificador(a,aleft);
+                                                        RESULT.add(id);
+                                                    :}
+                ;
+
+EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,Operacion.Operador.NEGACION,aleft);:} %prec umenos
+                |EXPRESION:a tMas EXPRESION:b       {:RESULT = new Aritmetica(a,b,Operacion.Operador.SUMA,aleft);:}
+                |EXPRESION:a tMenos EXPRESION:b     {:RESULT = new Aritmetica(a,b,Operacion.Operador.RESTA,aleft);:}
+                |EXPRESION:a tPor EXPRESION:b       {:RESULT = new Aritmetica(a,b,Operacion.Operador.MULTIPLICACION,aleft);:}
+                |EXPRESION:a tDiv EXPRESION:b       {:RESULT = new Aritmetica(a,b,Operacion.Operador.DIVISION,aleft);:}
+                |EXPRESION:a tElev EXPRESION:b      {:RESULT = new Aritmetica(a,b,Operacion.Operador.ELEVACION,aleft);:}
+                |EXPRESION:a tAumen                 {:RESULT = new Aritmetica(a,Operacion.Operador.AUMENTO,aleft);:}
+                |EXPRESION:a tDecremen              {:RESULT = new Aritmetica(a,Operacion.Operador.DECREMENTO,aleft);:}
                 |tParOpen EXPRESION:a tParClose     {:RESULT = a;:}
                 |tEntero:a                          {:RESULT = new Unario(a,new Tipo(Tipo.TipoFS.INT),aleft);:}
                 |tDec:a                             {:RESULT = new Unario(a,new Tipo(Tipo.TipoFS.DOUBLE),aleft);:}
                 |tCad:a                             {:RESULT = new Unario(a,new Tipo(Tipo.TipoFS.STRING),aleft);:}
+                |tId:a                              {:RESULT = new Identificador(a,aleft);:}
                 ;
