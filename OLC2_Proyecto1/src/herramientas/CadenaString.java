@@ -29,4 +29,16 @@ public class CadenaString {
         char c = cadena.charAt(0);
         return (int)c;
     }
+    
+    public Object aumentarCharacter(String cadena){
+         char c = cadena.charAt(0);
+         c++;
+         return c;
+    }
+    
+    public Object decrementarCharacter(String cadena){
+         char c = cadena.charAt(0);
+         c--;
+         return c;
+    }
 }

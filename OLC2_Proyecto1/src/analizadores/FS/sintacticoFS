@@ -59,8 +59,8 @@ non terminal nodoAST INSTRUCCION;
 non terminal LinkedList<nodoAST> INSTRUCCIONES;
 non terminal Declaracion ASIG_VAL;
 non terminal Imprimir IMPRIMIR;
-non terminal Expresion AUMENTO;
-non terminal Expresion DECREMENTO;
+non terminal Aumento AUMENTO;
+non terminal Decremento DECREMENTO;
 
 precedence left  tMas,tMenos;
 precedence left  tPor,tDiv;
@@ -78,9 +78,15 @@ INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {:RESULT = a; RESULT.add(b);:}
                 ;
 
 INSTRUCCION::=   DECLARACION:a                      {:RESULT = a;:}
-                | AUMENTO:a                         {::}
-                | DECREMENTO:a                      {::}
+                | AUMENTO:a                         {:RESULT = a;:}
+                | DECREMENTO:a                      {:RESULT = a;:}
                 | IMPRIMIR:a                        {: RESULT = a;:}
+                ;
+
+AUMENTO::=      tId:a tAumen tPtoComa              {: RESULT = new Aumento(a,aleft);:}
+                ;
+
+DECREMENTO::=   tId:a tDecremen tPtoComa           {: RESULT = new Decremento(a,aleft);:}
                 ;
 
 IMPRIMIR::=     tImprimir tParOpen EXPRESION:a tParClose tPtoComa {:RESULT = new Imprimir(a,aleft);:}
