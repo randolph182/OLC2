@@ -1,3 +1,3 @@
-var id1 = 25;
-id1--;
-imprimir(id1);
+var id1 = 5+ 5;
+var id2 = id1 * 20 ;
+imprimir(id2);
