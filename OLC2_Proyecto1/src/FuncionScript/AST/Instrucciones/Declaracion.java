@@ -16,61 +16,65 @@ import java.util.LinkedList;
  *
  * @author rm
  */
-public class Declaracion implements Instruccion{
-    String id;
+public class Declaracion implements Instruccion {
+
     LinkedList<Identificador> lstId;
     Tipo tipo;
     Expresion exp;
     boolean vinoExp;
     int linea;
-    
-    public Declaracion(LinkedList<Identificador> lstId,Expresion exp,int linea){
+
+    public Declaracion(LinkedList<Identificador> lstId, Expresion exp, int linea) {
         this.lstId = lstId;
-        this.tipo = new Tipo(Tipo.TipoFS.NULL);
+        this.tipo = new Tipo(Tipo.Primitivo.NULL);
         this.exp = exp;
         this.linea = linea;
         this.vinoExp = true;
     }
-    
-    public Declaracion(String id,int linea){
-        this.id = id;
+
+    public Declaracion(LinkedList<Identificador> lstId, int linea) {
+        this.lstId = lstId;
         this.linea = linea;
         this.vinoExp = false;
-        this.tipo = new Tipo(Tipo.TipoFS.NULL);
+        this.tipo = new Tipo(Tipo.Primitivo.NULL);
     }
-    
-    
+
     @Override
     public Object ejecutar(Entorno ent) {
-        for(int i =0; i < lstId.size(); i++){
-            if(ent.get(lstId.get(i).getIdentificador()) != null){
-                System.out.println("Error el identificador ya existe"); //ERROR
-                break;
-            } else{
-                //DEBO PREGUNTAR SI ES EL ULTIMO
-                if(i == lstId.size()-1){
-                    if(vinoExp){ //ASIGNAMOS EL VALOR
-                        Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(),tipo); //aca tipo ya es null
-                        ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
-                        if(exp.getValor(ent) != null){
-                            nuevoSimbolo.setValor(exp.getValor(ent));
-                            tipo = exp.getTipo(ent);
-                        } else
-                            System.out.println("Error obteniendo el valor de expresion en clase Declaracion");
-                        break;
+        if (lstId != null) {
+            for (int i = 0; i < lstId.size(); i++) {
+                if (ent.get(lstId.get(i).getIdentificador()) != null) {
+                    System.out.println("Error el identificador "+lstId.get(i).getIdentificador()+" ya existe"); //ERROR
+                    System.out.println("linea: " + linea);
+                    break;
+                } else {
+                    //DEBO PREGUNTAR SI ES EL ULTIMO
+                    if (i == lstId.size() - 1) {
+                        if (vinoExp) { //ASIGNAMOS EL VALOR
+                            Object resultado = exp.getValor(ent);
+                            if ( resultado!= null) {
+                                tipo = exp.getTipo(ent);
+                                Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), tipo); //aca tipo ya es null
+                                ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
+                                nuevoSimbolo.setValor(resultado);
+                            } else {
+                                System.out.println("Error obteniendo el valor de expresion en clase Declaracion");
+                            }
+                            break;
+                        }
                     }
-                } 
-                Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(),tipo); //aca tipo ya es null
-                ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
-                nuevoSimbolo.setValor(null);
+                    Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), tipo); //aca tipo ya es null
+                    ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
+                    nuevoSimbolo.setValor(null);
+                }
             }
         }
-       return null;
+        return null;
     }
 
     @Override
     public int getLine() {
-       return linea;
+        return linea;
     }
-    
+
 }

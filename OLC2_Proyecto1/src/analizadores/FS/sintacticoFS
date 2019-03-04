@@ -58,6 +58,9 @@ non terminal Expresion EXPRESION;
 non terminal nodoAST INSTRUCCION;
 non terminal LinkedList<nodoAST> INSTRUCCIONES;
 non terminal Declaracion ASIG_VAL;
+non terminal Imprimir IMPRIMIR;
+non terminal Expresion AUMENTO;
+non terminal Expresion DECREMENTO;
 
 precedence left  tMas,tMenos;
 precedence left  tPor,tDiv;
@@ -75,12 +78,24 @@ INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {:RESULT = a; RESULT.add(b);:}
                 ;
 
 INSTRUCCION::=   DECLARACION:a                      {:RESULT = a;:}
+                | AUMENTO:a                         {::}
+                | DECREMENTO:a                      {::}
+                | IMPRIMIR:a                        {: RESULT = a;:}
                 ;
+
+IMPRIMIR::=     tImprimir tParOpen EXPRESION:a tParClose tPtoComa {:RESULT = new Imprimir(a,aleft);:}
+                ;                
 
 DECLARACION::=   tVar  ASIG_VAL:a tPtoComa          {:RESULT = a;:}
                 ;
 
-ASIG_VAL::=     | tId:a                             {:RESULT = new Declaracion(a,aleft);:}
+ASIG_VAL::=     | tId:a                             {: Identificador id = new Identificador(a,aleft);
+                                                        LinkedList<Identificador> lId = new LinkedList<>();
+                                                        lId.add(id);
+                                                        RESULT = new Declaracion(lId,aleft);
+                                                        
+                                                    :}
+
                 | LST_ID:a tIgual EXPRESION:b       {:RESULT = new Declaracion(a,b,bleft);:}
                 ;
 
@@ -100,8 +115,10 @@ EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,
                 |EXPRESION:a tAumen                 {:RESULT = new Aritmetica(a,Operacion.Operador.AUMENTO,aleft);:}
                 |EXPRESION:a tDecremen              {:RESULT = new Aritmetica(a,Operacion.Operador.DECREMENTO,aleft);:}
                 |tParOpen EXPRESION:a tParClose     {:RESULT = a;:}
-                |tEntero:a                          {:RESULT = new Unario(a,new Tipo(Tipo.TipoFS.INT),aleft);:}
-                |tDec:a                             {:RESULT = new Unario(a,new Tipo(Tipo.TipoFS.DOUBLE),aleft);:}
-                |tCad:a                             {:RESULT = new Unario(a,new Tipo(Tipo.TipoFS.STRING),aleft);:}
+                |tEntero:a                          {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.NUMBER),aleft);:}
+                |tDec:a                             {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.NUMBER),aleft);:}
+                |tCad:a                             {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.STRING),aleft);:}
                 |tId:a                              {:RESULT = new Identificador(a,aleft);:}
+                |tTrue:a                            {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.BOOLEAN),aleft);:}
+                |tFalse:a                           {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.BOOLEAN),aleft);:}
                 ;

@@ -8,7 +8,8 @@ package FuncionScript.AST.Expresiones.Operacion;
 import FuncionScript.AST.Expresiones.Expresion;
 import FuncionScript.Entorno.Entorno;
 import FuncionScript.Entorno.Tipo;
-
+//herramientas multiusos
+import herramientas.CadenaString;
 /**
  *
  * @author rm
@@ -25,22 +26,20 @@ public class Aritmetica extends Operacion implements Expresion{
 
     @Override
     public Tipo tipoResultado(Tipo t1, Tipo t2) {
-       if(t1.isDouble() && t2.isDouble()){              //DOUBLE VS DOUBLE
-           return new Tipo(Tipo.TipoFS.DOUBLE);
-       } else if(t1.isString() || t2.isString()){       //STRING VS STRING
+       if(t1.isNumeric() && t2.isNumeric()){            //NUMBER && NUMBER
+           return new Tipo(Tipo.Primitivo.NUMBER);
+       } else if(t1.isString() && t2.isString()){       //STRING && STRING
            if(tipoOperador == Operador.SUMA)            
-               return new Tipo(Tipo.TipoFS.STRING);
+               return new Tipo(Tipo.Primitivo.STRING);
            else 
-               return new Tipo(Tipo.TipoFS.NULL);
-       } else if(t1.isInt() && t2.isInt()){             //INT VS INT
-           return new Tipo(Tipo.TipoFS.INT);
-       } else if(t1.isDouble() || t2.isDouble()){       //DOUBLE OR DOUBLE
-           if(t1.isInt() || t2.isInt()){                //INT OR INT
-               return new Tipo(Tipo.TipoFS.DOUBLE);
-           } else
-               return new Tipo(Tipo.TipoFS.NULL);
+               return new Tipo(Tipo.Primitivo.NULL);
+       } else if(t1.isString() || t2.isString()){       //STRING || STRING
+           if(t1.isNumeric() || t2.isNumeric()){        //NUMBER || NUMBER
+               return new Tipo(Tipo.Primitivo.STRING);
+           } else //CUALQUIER OTRA COMBINACION ES ERRONEA
+               return new Tipo(Tipo.Primitivo.NULL);
        }
-       return new Tipo(Tipo.TipoFS.NULL);               //NULL
+       return new Tipo(Tipo.Primitivo.NULL);               //NULL
     }
 
     @Override
@@ -50,40 +49,45 @@ public class Aritmetica extends Operacion implements Expresion{
         Object b = (exp2 == null)? null:exp2.getValor(ent);
         Tipo tipoB = exp2.getTipo(ent);
         
+        if(tipoA.getTipoPrimitivo() == Tipo.Primitivo.STRING){
+            CadenaString cs = new CadenaString();
+            if(cs.isCharacter((String)a)){ //COMPROVAMOS SI LA CADENA CONTIENE UN SOLO CARACTER
+                if(cs.characterIsLetter((String)a)){ //VERIFICO SI EL CARACTER ES LETRA
+                    a = cs.getAsciiCharacter((String)a);
+                    tipoA.setTipoPrimitivo(Tipo.Primitivo.NUMBER); 
+                }
+                    
+            }
+        }
+        if(tipoB.getTipoPrimitivo() == Tipo.Primitivo.STRING){
+            CadenaString cs = new CadenaString();
+            if(cs.isCharacter((String)b)){ //COMPROVAMOS SI LA CADENA CONTIENE UN SOLO CARACTER
+                if(cs.characterIsLetter((String)b)){ //VERIFICO SI EL CARACTER ES LETRA
+                    b = cs.getAsciiCharacter((String)b);
+                    tipoB.setTipoPrimitivo(Tipo.Primitivo.NUMBER); 
+                }
+                    
+            }
+        }
+        
         tipoResult = tipoResultado(tipoA, tipoB);
         
-        // por el momeno solo suma resta multiplicacion y division mas adelate se debe agregar lo demas
-        switch(tipoResult.getTipo()){ //si se crea uno nuevo se debe modificar el Tipo tambien
-            //::::::::::::::::::::::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;:::::::::::::::::::::::::::::
-            case INT:
-                if(tipoOperador == Operador.SUMA)
-                    return new Integer(a.toString()) + new Integer( b.toString());
-                else if(tipoOperador == Operador.RESTA)
-                    return new Integer(a.toString()) - new Integer( b.toString());
-                else if(tipoOperador == Operador.MULTIPLICACION)
-                    return new Integer(a.toString()) * new Integer( b.toString());
-                else if(tipoOperador == Operador.DIVISION){
-                    if(new Integer( b.toString()) != 0)
-                        return new Integer(a.toString())/ new Integer( b.toString());
-                    else
-                        System.out.println(">Error el operador 2 no puede dividir debido a que es 0");
-                }
-                else
-                    System.out.println(">El tipo de operacion no esta especificada en el switch de INT");
-            break;
+        switch(tipoResult.getTipoPrimitivo()){ //si se crea uno nuevo se debe modificar el Tipo tambien
             //::::::::::::::::::::::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;:::::::::::::::::::::::::::::   
-            case DOUBLE:
-                if(tipoOperador == Operador.SUMA)
+            case NUMBER:
+                if(tipoOperador == Operador.SUMA){
                      return new Double(a.toString()) + new Double( b.toString());
-                else if(tipoOperador == Operador.RESTA)
+                } else if(tipoOperador == Operador.RESTA){
                     return new Double(a.toString()) - new Double( b.toString());
-                else if(tipoOperador == Operador.MULTIPLICACION)
+                } else if(tipoOperador == Operador.MULTIPLICACION){
                     return new Double(a.toString()) * new Double( b.toString());
-                else if(tipoOperador == Operador.DIVISION){
+                } else if(tipoOperador == Operador.DIVISION){
                     if(new Double( b.toString()) != 0)
                         return new Double(a.toString()) / new Double( b.toString());
                     else
                         System.out.println(">Error el operador 2 no puede dividir debido a que es 0");
+                } else if(tipoOperador == Operador.ELEVACION){
+                    return Math.pow(new Double(a.toString()), new Double(b.toString()));
                 }
                 else
                     System.out.println(">El tipo de operacion no esta especificada en el switch de Double");

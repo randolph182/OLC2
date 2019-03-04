@@ -32,8 +32,8 @@ COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 <YYINITIAL> "imprimir"      { return new Symbol(sym.tImprimir,yyline,yychar, yytext());}
 <YYINITIAL> "var"           { return new Symbol(sym.tVar,yyline,yychar, yytext());}
 <YYINITIAL> "="             { return new Symbol(sym.tIgual,yyline,yychar, yytext());}
-<YYINITIAL> "true"			{ return new Symbol(sym.tTrue,yyline,yychar, yytext());}
-<YYINITIAL> "false"			{ return new Symbol(sym.tFalse,yyline,yychar, yytext());}
+<YYINITIAL> "verdadero"		{ return new Symbol(sym.tTrue,yyline,yychar, yytext());}
+<YYINITIAL> "falso"			{ return new Symbol(sym.tFalse,yyline,yychar, yytext());}
 <YYINITIAL> ";" 			{ return new Symbol(sym.tPtoComa,yyline,yychar, yytext());}
 <YYINITIAL> "," 			{ return new Symbol(sym.tComa,yyline,yychar, yytext());}
 <YYINITIAL> "+"             { return new Symbol(sym.tMas,yyline,yychar, yytext());}
@@ -46,7 +46,7 @@ COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 <YYINITIAL> "++"      		{ return new Symbol(sym.tAumen,yyline,yychar, yytext());}
 <YYINITIAL> "--"      		{ return new Symbol(sym.tDecremen,yyline,yychar, yytext());}
 <YYINITIAL> {entero}        { return new Symbol(sym.tEntero,yyline,yychar, yytext());}
-<YYINITIAL> {cadena}		{ return new Symbol(sym.tCad,yyline,yychar, yytext());}
+<YYINITIAL> {cadena}		{ return new Symbol(sym.tCad,yyline,yychar, (yytext()).substring(1,yytext().length()-1));}
 <YYINITIAL> {decimal}       { return new Symbol(sym.tDec,yyline,yychar, yytext());}
 <YYINITIAL> {id}            { return new Symbol(sym.tId,yyline,yychar, yytext());}
 <YYINITIAL> \n              {yychar=1;}

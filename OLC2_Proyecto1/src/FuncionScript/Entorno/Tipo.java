@@ -10,40 +10,30 @@ package FuncionScript.Entorno;
  * @author rm
  */
 public class Tipo {
-    public enum TipoFS{
-        INT,
+    public enum Primitivo{
         STRING,
-        DOUBLE,
         OBJECT,
         NUMBER,
         BOOLEAN,
         NULL
     }
     
-    private TipoFS tipo;
+    private Primitivo tipo;
     
-    public Tipo(TipoFS tp){
+    public Tipo(Primitivo tp){
         this.tipo = tp;
     }
     
-    public TipoFS getTipo(){
+    public Primitivo getTipoPrimitivo(){
         return tipo;
     }
     
-    public boolean isInt(){
-        if(tipo == TipoFS.INT)
-            return true;
-        return false;
-    }
-    
-    public boolean isDouble(){
-        if(tipo == TipoFS.DOUBLE)
-            return true;
-        return false;
+    public void setTipoPrimitivo(Primitivo tipo){
+        this.tipo = tipo;
     }
     
     public boolean isString(){
-        if(tipo == TipoFS.STRING)
+        if(tipo == Primitivo.STRING)
             return true;
         return false;
     }
@@ -57,6 +47,13 @@ public class Tipo {
     }
     
     public boolean isBoolean(){
+        return false;
+    }
+    
+    public boolean isNumeric(){
+        if(tipo == Primitivo.NUMBER){
+            return true;
+        }
         return false;
     }
 }

@@ -433,7 +433,7 @@ public class lexicoFS       implements java_cup.runtime.Scanner {
 					case -23:
 						break;
 					case 23:
-						{ return new Symbol(sym.tCad,yyline,yychar, yytext());}
+						{ return new Symbol(sym.tCad,yyline,yychar, (yytext()).substring(1,yytext().length()-1));}
 					case -24:
 						break;
 					case 24:

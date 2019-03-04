@@ -1,4 +1,9 @@
-var id1,id2,id3 = 5+5/6;
-/* en est deberia de dar error porque id2 ya esta declarado*/
-var id2 = 10;
-var id3;
+var id1 = 5 ^ 4.5;
+var id2 = 'b' ^ 2.7;
+var id3 = 'C' ^ 7;
+var id4 = 4 ^ 5;
+
+imprimir(id1);
+imprimir(id2);
+imprimir(id3);
+imprimir(id4);
