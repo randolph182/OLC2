@@ -37,17 +37,17 @@ public class sintacticoFS extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\040\000\002\002\004\000\002\002\003\000\002\007" +
+    "\000\042\000\002\002\004\000\002\002\003\000\002\007" +
     "\004\000\002\007\003\000\002\006\003\000\002\006\003" +
-    "\000\002\006\003\000\002\006\003\000\002\012\005\000" +
-    "\002\013\005\000\002\011\007\000\002\003\005\000\002" +
-    "\010\002\000\002\010\003\000\002\010\005\000\002\004" +
-    "\005\000\002\004\003\000\002\005\004\000\002\005\005" +
-    "\000\002\005\005\000\002\005\005\000\002\005\005\000" +
-    "\002\005\005\000\002\005\004\000\002\005\004\000\002" +
-    "\005\005\000\002\005\003\000\002\005\003\000\002\005" +
+    "\000\002\006\003\000\002\006\003\000\002\006\003\000" +
+    "\002\014\006\000\002\012\005\000\002\013\005\000\002" +
+    "\011\007\000\002\003\005\000\002\010\002\000\002\010" +
+    "\003\000\002\010\005\000\002\004\005\000\002\004\003" +
+    "\000\002\005\004\000\002\005\005\000\002\005\005\000" +
+    "\002\005\005\000\002\005\005\000\002\005\005\000\002" +
+    "\005\004\000\002\005\004\000\002\005\005\000\002\005" +
     "\003\000\002\005\003\000\002\005\003\000\002\005\003" +
-    "" });
+    "\000\002\005\003\000\002\005\003" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -55,68 +55,73 @@ public class sintacticoFS extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\064\000\010\004\011\023\010\027\013\001\002\000" +
+    "\000\070\000\010\004\011\023\010\027\014\001\002\000" +
     "\012\002\ufffc\004\ufffc\023\ufffc\027\ufffc\001\002\000\012" +
     "\002\ufffe\004\ufffe\023\ufffe\027\ufffe\001\002\000\012\002" +
-    "\ufffd\004\ufffd\023\ufffd\027\ufffd\001\002\000\004\002\066" +
-    "\001\002\000\006\024\062\025\063\001\002\000\004\016" +
-    "\056\001\002\000\012\002\000\004\011\023\010\027\013" +
-    "\001\002\000\006\007\ufff5\023\020\001\002\000\012\002" +
-    "\ufffa\004\ufffa\023\ufffa\027\ufffa\001\002\000\012\002\ufffb" +
-    "\004\ufffb\023\ufffb\027\ufffb\001\002\000\004\007\054\001" +
-    "\002\000\006\015\021\030\022\001\002\000\010\007\ufff4" +
-    "\015\ufff1\030\ufff1\001\002\000\022\005\032\006\027\011" +
-    "\033\016\026\020\031\021\025\022\024\023\030\001\002" +
-    "\000\004\023\023\001\002\000\006\015\ufff2\030\ufff2\001" +
-    "\002\000\024\007\uffe6\010\uffe6\011\uffe6\012\uffe6\013\uffe6" +
-    "\014\uffe6\017\uffe6\024\uffe6\025\uffe6\001\002\000\024\007" +
-    "\uffe5\010\uffe5\011\uffe5\012\uffe5\013\uffe5\014\uffe5\017\uffe5" +
-    "\024\uffe5\025\uffe5\001\002\000\022\005\032\006\027\011" +
-    "\033\016\026\020\031\021\025\022\024\023\030\001\002" +
-    "\000\024\007\uffe2\010\uffe2\011\uffe2\012\uffe2\013\uffe2\014" +
-    "\uffe2\017\uffe2\024\uffe2\025\uffe2\001\002\000\024\007\uffe4" +
-    "\010\uffe4\011\uffe4\012\uffe4\013\uffe4\014\uffe4\017\uffe4\024" +
-    "\uffe4\025\uffe4\001\002\000\024\007\uffe7\010\uffe7\011\uffe7" +
-    "\012\uffe7\013\uffe7\014\uffe7\017\uffe7\024\uffe7\025\uffe7\001" +
-    "\002\000\024\007\uffe3\010\uffe3\011\uffe3\012\uffe3\013\uffe3" +
-    "\014\uffe3\017\uffe3\024\uffe3\025\uffe3\001\002\000\022\005" +
-    "\032\006\027\011\033\016\026\020\031\021\025\022\024" +
-    "\023\030\001\002\000\022\007\ufff3\010\036\011\037\012" +
-    "\043\013\035\014\040\024\041\025\042\001\002\000\022" +
+    "\ufffd\004\ufffd\023\ufffd\027\ufffd\001\002\000\004\002\072" +
+    "\001\002\000\010\015\063\024\065\025\064\001\002\000" +
+    "\004\016\057\001\002\000\012\002\000\004\011\023\010" +
+    "\027\014\001\002\000\012\002\ufff9\004\ufff9\023\ufff9\027" +
+    "\ufff9\001\002\000\006\007\ufff3\023\021\001\002\000\012" +
+    "\002\ufffb\004\ufffb\023\ufffb\027\ufffb\001\002\000\012\002" +
+    "\ufffa\004\ufffa\023\ufffa\027\ufffa\001\002\000\004\007\055" +
+    "\001\002\000\006\015\023\030\022\001\002\000\010\007" +
+    "\ufff2\015\uffef\030\uffef\001\002\000\004\023\054\001\002" +
+    "\000\022\005\032\006\027\011\033\016\026\020\031\021" +
+    "\025\022\024\023\030\001\002\000\024\007\uffe4\010\uffe4" +
+    "\011\uffe4\012\uffe4\013\uffe4\014\uffe4\017\uffe4\024\uffe4\025" +
+    "\uffe4\001\002\000\024\007\uffe3\010\uffe3\011\uffe3\012\uffe3" +
+    "\013\uffe3\014\uffe3\017\uffe3\024\uffe3\025\uffe3\001\002\000" +
+    "\022\005\032\006\027\011\033\016\026\020\031\021\025" +
+    "\022\024\023\030\001\002\000\024\007\uffe0\010\uffe0\011" +
+    "\uffe0\012\uffe0\013\uffe0\014\uffe0\017\uffe0\024\uffe0\025\uffe0" +
+    "\001\002\000\024\007\uffe2\010\uffe2\011\uffe2\012\uffe2\013" +
+    "\uffe2\014\uffe2\017\uffe2\024\uffe2\025\uffe2\001\002\000\024" +
+    "\007\uffe5\010\uffe5\011\uffe5\012\uffe5\013\uffe5\014\uffe5\017" +
+    "\uffe5\024\uffe5\025\uffe5\001\002\000\024\007\uffe1\010\uffe1" +
+    "\011\uffe1\012\uffe1\013\uffe1\014\uffe1\017\uffe1\024\uffe1\025" +
+    "\uffe1\001\002\000\022\005\032\006\027\011\033\016\026" +
+    "\020\031\021\025\022\024\023\030\001\002\000\022\007" +
+    "\ufff1\010\036\011\037\012\043\013\035\014\040\024\041" +
+    "\025\042\001\002\000\022\005\032\006\027\011\033\016" +
+    "\026\020\031\021\025\022\024\023\030\001\002\000\022" +
     "\005\032\006\027\011\033\016\026\020\031\021\025\022" +
     "\024\023\030\001\002\000\022\005\032\006\027\011\033" +
     "\016\026\020\031\021\025\022\024\023\030\001\002\000" +
     "\022\005\032\006\027\011\033\016\026\020\031\021\025" +
-    "\022\024\023\030\001\002\000\022\005\032\006\027\011" +
-    "\033\016\026\020\031\021\025\022\024\023\030\001\002" +
-    "\000\024\007\uffea\010\uffea\011\uffea\012\uffea\013\uffea\014" +
-    "\uffea\017\uffea\024\uffea\025\uffea\001\002\000\024\007\uffe9" +
-    "\010\uffe9\011\uffe9\012\uffe9\013\uffe9\014\uffe9\017\uffe9\024" +
-    "\uffe9\025\uffe9\001\002\000\022\005\032\006\027\011\033" +
-    "\016\026\020\031\021\025\022\024\023\030\001\002\000" +
-    "\024\007\uffec\010\uffec\011\uffec\012\uffec\013\uffec\014\040" +
-    "\017\uffec\024\041\025\042\001\002\000\024\007\uffeb\010" +
-    "\uffeb\011\uffeb\012\uffeb\013\uffeb\014\040\017\uffeb\024\041" +
-    "\025\042\001\002\000\024\007\uffee\010\uffee\011\uffee\012" +
-    "\043\013\035\014\040\017\uffee\024\041\025\042\001\002" +
-    "\000\024\007\uffef\010\uffef\011\uffef\012\043\013\035\014" +
-    "\040\017\uffef\024\041\025\042\001\002\000\024\007\uffed" +
-    "\010\uffed\011\uffed\012\uffed\013\uffed\014\040\017\uffed\024" +
-    "\041\025\042\001\002\000\024\007\ufff0\010\ufff0\011\ufff0" +
-    "\012\ufff0\013\ufff0\014\ufff0\017\ufff0\024\ufff0\025\ufff0\001" +
-    "\002\000\022\010\036\011\037\012\043\013\035\014\040" +
-    "\017\053\024\041\025\042\001\002\000\024\007\uffe8\010" +
-    "\uffe8\011\uffe8\012\uffe8\013\uffe8\014\uffe8\017\uffe8\024\uffe8" +
-    "\025\uffe8\001\002\000\012\002\ufff6\004\ufff6\023\ufff6\027" +
-    "\ufff6\001\002\000\012\002\uffff\004\uffff\023\uffff\027\uffff" +
-    "\001\002\000\022\005\032\006\027\011\033\016\026\020" +
-    "\031\021\025\022\024\023\030\001\002\000\022\010\036" +
-    "\011\037\012\043\013\035\014\040\017\060\024\041\025" +
-    "\042\001\002\000\004\007\061\001\002\000\012\002\ufff7" +
-    "\004\ufff7\023\ufff7\027\ufff7\001\002\000\004\007\065\001" +
-    "\002\000\004\007\064\001\002\000\012\002\ufff8\004\ufff8" +
-    "\023\ufff8\027\ufff8\001\002\000\012\002\ufff9\004\ufff9\023" +
-    "\ufff9\027\ufff9\001\002\000\004\002\001\001\002" });
+    "\022\024\023\030\001\002\000\024\007\uffe8\010\uffe8\011" +
+    "\uffe8\012\uffe8\013\uffe8\014\uffe8\017\uffe8\024\uffe8\025\uffe8" +
+    "\001\002\000\024\007\uffe7\010\uffe7\011\uffe7\012\uffe7\013" +
+    "\uffe7\014\uffe7\017\uffe7\024\uffe7\025\uffe7\001\002\000\022" +
+    "\005\032\006\027\011\033\016\026\020\031\021\025\022" +
+    "\024\023\030\001\002\000\024\007\uffea\010\uffea\011\uffea" +
+    "\012\uffea\013\uffea\014\040\017\uffea\024\041\025\042\001" +
+    "\002\000\024\007\uffe9\010\uffe9\011\uffe9\012\uffe9\013\uffe9" +
+    "\014\040\017\uffe9\024\041\025\042\001\002\000\024\007" +
+    "\uffec\010\uffec\011\uffec\012\043\013\035\014\040\017\uffec" +
+    "\024\041\025\042\001\002\000\024\007\uffed\010\uffed\011" +
+    "\uffed\012\043\013\035\014\040\017\uffed\024\041\025\042" +
+    "\001\002\000\024\007\uffeb\010\uffeb\011\uffeb\012\uffeb\013" +
+    "\uffeb\014\040\017\uffeb\024\041\025\042\001\002\000\024" +
+    "\007\uffee\010\uffee\011\uffee\012\uffee\013\uffee\014\uffee\017" +
+    "\uffee\024\uffee\025\uffee\001\002\000\022\010\036\011\037" +
+    "\012\043\013\035\014\040\017\053\024\041\025\042\001" +
+    "\002\000\024\007\uffe6\010\uffe6\011\uffe6\012\uffe6\013\uffe6" +
+    "\014\uffe6\017\uffe6\024\uffe6\025\uffe6\001\002\000\006\015" +
+    "\ufff0\030\ufff0\001\002\000\012\002\ufff4\004\ufff4\023\ufff4" +
+    "\027\ufff4\001\002\000\012\002\uffff\004\uffff\023\uffff\027" +
+    "\uffff\001\002\000\022\005\032\006\027\011\033\016\026" +
+    "\020\031\021\025\022\024\023\030\001\002\000\022\010" +
+    "\036\011\037\012\043\013\035\014\040\017\061\024\041" +
+    "\025\042\001\002\000\004\007\062\001\002\000\012\002" +
+    "\ufff5\004\ufff5\023\ufff5\027\ufff5\001\002\000\022\005\032" +
+    "\006\027\011\033\016\026\020\031\021\025\022\024\023" +
+    "\030\001\002\000\004\007\067\001\002\000\004\007\066" +
+    "\001\002\000\012\002\ufff7\004\ufff7\023\ufff7\027\ufff7\001" +
+    "\002\000\012\002\ufff6\004\ufff6\023\ufff6\027\ufff6\001\002" +
+    "\000\022\007\071\010\036\011\037\012\043\013\035\014" +
+    "\040\024\041\025\042\001\002\000\012\002\ufff8\004\ufff8" +
+    "\023\ufff8\027\ufff8\001\002\000\004\002\001\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -124,26 +129,28 @@ public class sintacticoFS extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\064\000\020\002\006\003\005\006\004\007\011\011" +
-    "\013\012\003\013\014\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\014\003\005\006\054\011\013" +
-    "\012\003\013\014\001\001\000\006\004\016\010\015\001" +
+    "\000\070\000\022\002\006\003\005\006\004\007\011\011" +
+    "\015\012\003\013\014\014\012\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\016\003\005\006\055" +
+    "\011\015\012\003\013\014\014\012\001\001\000\002\001" +
+    "\001\000\006\004\017\010\016\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\004\005\033\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\005\051\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\004\005\033\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\004\005\051\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\004\005\050\001\001\000\002\001\001\000\004\005" +
-    "\047\001\001\000\004\005\046\001\001\000\004\005\045" +
-    "\001\001\000\004\005\044\001\001\000\002\001\001\000" +
-    "\002\001\001\000\004\005\043\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\005\050\001\001\000\002\001" +
+    "\001\000\004\005\047\001\001\000\004\005\046\001\001" +
+    "\000\004\005\045\001\001\000\004\005\044\001\001\000" +
+    "\002\001\001\000\002\001\001\000\004\005\043\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\005" +
-    "\056\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001" });
+    "\001\000\002\001\001\000\004\005\057\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\004\005" +
+    "\067\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -324,7 +331,34 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // AUMENTO ::= tId tAumen tPtoComa 
+          case 8: // INSTRUCCION ::= ASIGNACION 
+            {
+              nodoAST RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).right;
+		Asignacion a = (Asignacion)((java_cup.runtime.Symbol) CUP$sintacticoFS$stack.peek()).value;
+		 RESULT = a;
+              CUP$sintacticoFS$result = parser.getSymbolFactory().newSymbol("INSTRUCCION",4, ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoFS$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 9: // ASIGNACION ::= tId tIgual EXPRESION tPtoComa 
+            {
+              Asignacion RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-3)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-3)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-3)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-1)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-1)).right;
+		Expresion b = (Expresion)((java_cup.runtime.Symbol) CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-1)).value;
+		RESULT = new Asignacion(a,b,aleft);
+              CUP$sintacticoFS$result = parser.getSymbolFactory().newSymbol("ASIGNACION",10, ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-3)), ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoFS$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 10: // AUMENTO ::= tId tAumen tPtoComa 
             {
               Aumento RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-2)).left;
@@ -336,7 +370,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 9: // DECREMENTO ::= tId tDecremen tPtoComa 
+          case 11: // DECREMENTO ::= tId tDecremen tPtoComa 
             {
               Decremento RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-2)).left;
@@ -348,7 +382,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 10: // IMPRIMIR ::= tImprimir tParOpen EXPRESION tParClose tPtoComa 
+          case 12: // IMPRIMIR ::= tImprimir tParOpen EXPRESION tParClose tPtoComa 
             {
               Imprimir RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-2)).left;
@@ -360,7 +394,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // DECLARACION ::= tVar ASIG_VAL tPtoComa 
+          case 13: // DECLARACION ::= tVar ASIG_VAL tPtoComa 
             {
               Declaracion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-1)).left;
@@ -372,7 +406,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // ASIG_VAL ::= 
+          case 14: // ASIG_VAL ::= 
             {
               Declaracion RESULT =null;
 
@@ -381,7 +415,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 13: // ASIG_VAL ::= tId 
+          case 15: // ASIG_VAL ::= tId 
             {
               Declaracion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;
@@ -398,7 +432,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 14: // ASIG_VAL ::= LST_ID tIgual EXPRESION 
+          case 16: // ASIG_VAL ::= LST_ID tIgual EXPRESION 
             {
               Declaracion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-2)).left;
@@ -413,7 +447,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 15: // LST_ID ::= LST_ID tComa tId 
+          case 17: // LST_ID ::= LST_ID tComa tId 
             {
               LinkedList<Identificador> RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-2)).left;
@@ -428,7 +462,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // LST_ID ::= tId 
+          case 18: // LST_ID ::= tId 
             {
               LinkedList<Identificador> RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;
@@ -443,7 +477,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // EXPRESION ::= tMenos EXPRESION 
+          case 19: // EXPRESION ::= tMenos EXPRESION 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;
@@ -455,7 +489,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 18: // EXPRESION ::= EXPRESION tMas EXPRESION 
+          case 20: // EXPRESION ::= EXPRESION tMas EXPRESION 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-2)).left;
@@ -470,7 +504,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 19: // EXPRESION ::= EXPRESION tMenos EXPRESION 
+          case 21: // EXPRESION ::= EXPRESION tMenos EXPRESION 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-2)).left;
@@ -485,7 +519,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 20: // EXPRESION ::= EXPRESION tPor EXPRESION 
+          case 22: // EXPRESION ::= EXPRESION tPor EXPRESION 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-2)).left;
@@ -500,7 +534,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 21: // EXPRESION ::= EXPRESION tDiv EXPRESION 
+          case 23: // EXPRESION ::= EXPRESION tDiv EXPRESION 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-2)).left;
@@ -515,7 +549,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 22: // EXPRESION ::= EXPRESION tElev EXPRESION 
+          case 24: // EXPRESION ::= EXPRESION tElev EXPRESION 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-2)).left;
@@ -530,7 +564,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 23: // EXPRESION ::= EXPRESION tAumen 
+          case 25: // EXPRESION ::= EXPRESION tAumen 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-1)).left;
@@ -542,7 +576,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 24: // EXPRESION ::= EXPRESION tDecremen 
+          case 26: // EXPRESION ::= EXPRESION tDecremen 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-1)).left;
@@ -554,7 +588,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 25: // EXPRESION ::= tParOpen EXPRESION tParClose 
+          case 27: // EXPRESION ::= tParOpen EXPRESION tParClose 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.elementAt(CUP$sintacticoFS$top-1)).left;
@@ -566,7 +600,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 26: // EXPRESION ::= tEntero 
+          case 28: // EXPRESION ::= tEntero 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;
@@ -578,7 +612,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 27: // EXPRESION ::= tDec 
+          case 29: // EXPRESION ::= tDec 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;
@@ -590,7 +624,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 28: // EXPRESION ::= tCad 
+          case 30: // EXPRESION ::= tCad 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;
@@ -602,7 +636,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 29: // EXPRESION ::= tId 
+          case 31: // EXPRESION ::= tId 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;
@@ -614,7 +648,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 30: // EXPRESION ::= tTrue 
+          case 32: // EXPRESION ::= tTrue 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;
@@ -626,7 +660,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 31: // EXPRESION ::= tFalse 
+          case 33: // EXPRESION ::= tFalse 
             {
               Expresion RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;

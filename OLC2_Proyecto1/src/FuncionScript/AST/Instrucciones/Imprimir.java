@@ -27,6 +27,7 @@ public class Imprimir implements Instruccion{
         Object valor = contenido.getValor(ent);
         if(valor != null){
             System.out.println("> "+ valor.toString());
+            olc2_proyecto1.Editor.Editor.insertarTextoConsola(valor.toString());
         } else {
             System.out.println("Hubo error en imprimir");
         }

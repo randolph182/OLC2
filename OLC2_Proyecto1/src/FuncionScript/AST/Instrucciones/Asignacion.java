@@ -5,24 +5,48 @@
  */
 package FuncionScript.AST.Instrucciones;
 
+import FuncionScript.AST.Expresiones.Expresion;
 import FuncionScript.Entorno.Entorno;
+import FuncionScript.Entorno.Simbolo;
+import FuncionScript.Entorno.Tipo;
 
 /**
  *
  * @author rm
  */
 public class Asignacion implements Instruccion{
-
+    String id;
+    Expresion expresion;
+    int linea;
     
+    public Asignacion(String id, Expresion valor, int linea) {
+        this.id = id;
+        this.expresion = valor;
+        this.linea = linea;
+    }
     
     @Override
     public Object ejecutar(Entorno ent) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Object valExp = expresion.getValor(ent);
+        Tipo tipo = expresion.getTipo(ent);
+        
+        if(valExp != null){
+            if(ent.get(id) != null){
+                Simbolo s = ent.get(id);
+                s.setValor(valExp);
+                s.setTipo(tipo);
+            } else{
+                System.out.println("El identificador no existe");
+            }
+        } else {
+            System.out.println("hay error en la obtencion del valor de la expresion ya que vin null");
+        }
+        return null;
     }
 
     @Override
     public int getLine() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return linea;
     }
     
 }

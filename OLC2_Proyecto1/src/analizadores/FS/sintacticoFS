@@ -50,6 +50,8 @@ terminal String unarioNeg;
 terminal String tVar;
 terminal String tComa;
 terminal String umenos;
+terminal Strng tMayorQue,tMenorQue,tMayorIgual,tMenorIgual,tIgualDoble,tDistinto;
+terminal String tNulo;
 
 non terminal S;
 non terminal Declaracion DECLARACION;
@@ -61,7 +63,16 @@ non terminal Declaracion ASIG_VAL;
 non terminal Imprimir IMPRIMIR;
 non terminal Aumento AUMENTO;
 non terminal Decremento DECREMENTO;
+non terminal Asignacion ASIGNACION;
 
+
+precedence right tIgual;
+//Operaciones relacionales
+precedence left  tIgualDoble,tDistinto;
+precedence left  tMenorQue,tMenorIgual,tMayorQue,tMayorIgual;
+precedence left  tMas,tMenos;
+
+//Operaciones Artimeticas
 precedence left  tMas,tMenos;
 precedence left  tPor,tDiv;
 precedence right  tElev;
@@ -81,6 +92,10 @@ INSTRUCCION::=   DECLARACION:a                      {:RESULT = a;:}
                 | AUMENTO:a                         {:RESULT = a;:}
                 | DECREMENTO:a                      {:RESULT = a;:}
                 | IMPRIMIR:a                        {: RESULT = a;:}
+                | ASIGNACION:a                      {: RESULT = a;:}
+                ;
+
+ASIGNACION::=  tId:a tIgual EXPRESION:b tPtoComa    {:RESULT = new Asignacion(a,b,aleft);:}
                 ;
 
 AUMENTO::=      tId:a tAumen tPtoComa              {: RESULT = new Aumento(a,aleft);:}

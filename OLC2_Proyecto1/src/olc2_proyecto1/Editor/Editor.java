@@ -9,6 +9,7 @@ import com.sun.xml.internal.txw2.TXW;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -19,8 +20,11 @@ public class Editor extends javax.swing.JFrame {
     /**
      * Creates new form Editor
      */
+    
+    public static JTextArea consola;
     public Editor() {
         initComponents();
+        consola = jtxtConsola;
     }
     
     /**
@@ -165,5 +169,22 @@ public class Editor extends javax.swing.JFrame {
             System.out.println("Error Fatal al trata de analizar el archivo");
             System.out.println("Causa " + e.getCause());
         }
+    }
+    
+    
+    public static void insertarTextoConsola(String informacion){
+       
+       if(consola.getText().equals("")){
+           consola.append("> "+informacion);
+       } else{
+           String texto =  consola.getText();
+           consola.setText(""); //limpiamos
+           texto += "\n";
+           texto += "> " + informacion;
+           consola.append(texto);
+       }
+       
+       
+       
     }
 }
