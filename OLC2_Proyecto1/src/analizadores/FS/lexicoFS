@@ -51,6 +51,10 @@ COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 <YYINITIAL> "<="      	{ return new Symbol(sym.tMenorIgual,yyline,yychar, yytext());}
 <YYINITIAL> "=="      	{ return new Symbol(sym.tIgualDoble,yyline,yychar, yytext());}
 <YYINITIAL> "!="      	{ return new Symbol(sym.tDistinto,yyline,yychar, yytext());}
+<YYINITIAL> "+="      	{ return new Symbol(sym.tSumaAsig,yyline,yychar, yytext());}
+<YYINITIAL> "-="      	{ return new Symbol(sym.tRestaAsig,yyline,yychar, yytext());}
+<YYINITIAL> "*="      	{ return new Symbol(sym.tMultipliAsig,yyline,yychar, yytext());}
+<YYINITIAL> "/="      	{ return new Symbol(sym.tDiviAsig,yyline,yychar, yytext());}
 <YYINITIAL> {entero}        { return new Symbol(sym.tEntero,yyline,yychar, yytext());}
 <YYINITIAL> {cadena}		{ return new Symbol(sym.tCad,yyline,yychar, (yytext()).substring(1,yytext().length()-1));}
 <YYINITIAL> {decimal}       { return new Symbol(sym.tDec,yyline,yychar, yytext());}

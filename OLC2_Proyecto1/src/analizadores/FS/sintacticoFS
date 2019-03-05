@@ -52,6 +52,8 @@ terminal String tComa;
 terminal String umenos;
 terminal Strng tMayorQue,tMenorQue,tMayorIgual,tMenorIgual,tIgualDoble,tDistinto;
 terminal String tNulo;
+terminal String tSumaAsig,tRestaAsig,tMultipliAsig,tDiviAsig;
+
 
 non terminal S;
 non terminal Declaracion DECLARACION;
@@ -64,6 +66,8 @@ non terminal Imprimir IMPRIMIR;
 non terminal Aumento AUMENTO;
 non terminal Decremento DECREMENTO;
 non terminal Asignacion ASIGNACION;
+non terminal Asignacion_Operacion ASIG_OP;
+non terminal Asignacion_Operacion.TipoAO TIPO_AO;
 
 
 precedence right tIgual;
@@ -93,7 +97,17 @@ INSTRUCCION::=   DECLARACION:a                      {:RESULT = a;:}
                 | DECREMENTO:a                      {:RESULT = a;:}
                 | IMPRIMIR:a                        {: RESULT = a;:}
                 | ASIGNACION:a                      {: RESULT = a;:}
+                | ASIG_OP:a                         {: RESULT = a;:}    
                 ;
+
+ASIG_OP::=      tId:a TIPO_AO:b EXPRESION:c tPtoComa {: RESULT = new Asignacion_Operacion(a,b,c,aleft);:}
+                ;
+
+TIPO_AO::=      tSumaAsig               {:RESULT = Asignacion_Operacion.TipoAO.SUMA;:}
+                |tRestaAsig             {:RESULT = Asignacion_Operacion.TipoAO.RESTA;:}
+                |tMultipliAsig          {:RESULT = Asignacion_Operacion.TipoAO.MULTIPLICACION;:}
+                |tDiviAsig              {:RESULT = Asignacion_Operacion.TipoAO.DIVISION;:}
+                ;               
 
 ASIGNACION::=  tId:a tIgual EXPRESION:b tPtoComa    {:RESULT = new Asignacion(a,b,aleft);:}
                 ;

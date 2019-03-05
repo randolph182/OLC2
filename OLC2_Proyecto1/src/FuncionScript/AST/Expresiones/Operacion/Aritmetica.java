@@ -63,9 +63,9 @@ public class Aritmetica extends Operacion implements Expresion {
             if(tipoOperador == Operador.AUMENTO){
                 if(ent.get((String)a) != null){
                     Simbolo s = ent.get((String)a);
-                    Tipo tipoAumen = s.getTipo();
-
-                    switch(tipoAumen.getTipoPrimitivo()){
+                    tipoResult = s.getTipo();
+                   
+                    switch(tipoResult.getTipoPrimitivo()){
                         case NUMBER:
                             Double valorAumen = new Double(s.getValor().toString());
                             double retorno = valorAumen;
@@ -92,9 +92,9 @@ public class Aritmetica extends Operacion implements Expresion {
             } else if(tipoOperador == Operador.DECREMENTO){
                 if(ent.get((String)a) != null){
                     Simbolo s = ent.get((String)a);
-                    Tipo tipoAumen = s.getTipo();
+                    tipoResult = s.getTipo();
 
-                    switch(tipoAumen.getTipoPrimitivo()){
+                    switch(tipoResult.getTipoPrimitivo()){
                         case NUMBER:
                             Double valorAumen = new Double(s.getValor().toString());
                             double retorno = valorAumen;

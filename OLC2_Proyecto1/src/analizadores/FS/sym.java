@@ -15,7 +15,10 @@ public class sym {
   public static final int tDec = 16;
   public static final int tParOpen = 12;
   public static final int tCad = 15;
+  public static final int tSumaAsig = 31;
   public static final int tNulo = 30;
+  public static final int tRestaAsig = 32;
+  public static final int tMultipliAsig = 33;
   public static final int tMenorIgual = 27;
   public static final int tVar = 21;
   public static final int tPtoComa = 5;
@@ -26,6 +29,7 @@ public class sym {
   public static final int tDecremen = 19;
   public static final int EOF = 0;
   public static final int unarioNeg = 20;
+  public static final int tDiviAsig = 34;
   public static final int tFalse = 4;
   public static final int error = 1;
   public static final int tDistinto = 29;
@@ -70,7 +74,11 @@ public class sym {
   "tMenorIgual",
   "tIgualDoble",
   "tDistinto",
-  "tNulo"
+  "tNulo",
+  "tSumaAsig",
+  "tRestaAsig",
+  "tMultipliAsig",
+  "tDiviAsig"
   };
 }
 
