@@ -1,3 +1,2 @@
-var id1 = 19;
-id1 = "hola" ;
-imprimir(id1);
+var id1 = -1;
+imprimir("Hola mundo mucha que deawevo esta honda :)");

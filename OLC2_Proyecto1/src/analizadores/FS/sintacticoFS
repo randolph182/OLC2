@@ -133,13 +133,17 @@ EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,
                 |EXPRESION:a tPor EXPRESION:b       {:RESULT = new Aritmetica(a,b,Operacion.Operador.MULTIPLICACION,aleft);:}
                 |EXPRESION:a tDiv EXPRESION:b       {:RESULT = new Aritmetica(a,b,Operacion.Operador.DIVISION,aleft);:}
                 |EXPRESION:a tElev EXPRESION:b      {:RESULT = new Aritmetica(a,b,Operacion.Operador.ELEVACION,aleft);:}
-                |EXPRESION:a tAumen                 {:RESULT = new Aritmetica(a,Operacion.Operador.AUMENTO,aleft);:}
-                |EXPRESION:a tDecremen              {:RESULT = new Aritmetica(a,Operacion.Operador.DECREMENTO,aleft);:}
                 |tParOpen EXPRESION:a tParClose     {:RESULT = a;:}
                 |tEntero:a                          {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.NUMBER),aleft);:}
                 |tDec:a                             {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.NUMBER),aleft);:}
                 |tCad:a                             {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.STRING),aleft);:}
                 |tId:a                              {:RESULT = new Identificador(a,aleft);:}
+                |tId:a tAumen                       {:  Identificador id = new Identificador(a,aleft);
+                                                        RESULT = new Aritmetica(id,Operacion.Operador.AUMENTO,aleft);
+                                                    :}
+                |tId:a tDecremen                    {:  Identificador id = new Identificador(a,aleft);
+                                                        RESULT = new Aritmetica(id,Operacion.Operador.DECREMENTO,aleft); 
+                                                    :}
                 |tTrue:a                            {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.BOOLEAN),aleft);:}
                 |tFalse:a                           {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.BOOLEAN),aleft);:}
                 ;
