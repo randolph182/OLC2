@@ -2,6 +2,7 @@
 /*------------------- 1era Area: Codigo de usuario ------------------------*/
 package analizadores.FS;
 import java_cup.runtime.Symbol;
+import FuncionScript.ErroresFS.ManejadorErroresFS;
 /*----------------- 2da Area: Opciones y declaraciones --------------------*/
 %%
 %{
@@ -67,8 +68,8 @@ COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 <COMENT_MULTI_LINE> [^"*/"]		{}
 <COMENT_MULTI_LINE> "*/"	{yybegin(YYINITIAL);}						
 <YYINITIAL> .	{
-            System.out.println("Error lexico en : "+yytext()+
-                                ", en la linea: "+yyline+", en la columna: "+yychar);
-			}
+           			//System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter " + yytext());
+				}
 			
 

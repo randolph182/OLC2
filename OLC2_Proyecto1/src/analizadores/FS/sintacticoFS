@@ -9,14 +9,17 @@ import FuncionScript.AST.Expresiones.Operacion.*;
 import FuncionScript.Entorno.*;
 import FuncionScript.AST.Instrucciones.*;
 import FuncionScript.AST.*;
+import FuncionScript.ErroresFS.ManejadorErroresFS;
 //acciones que se programan en el parser
+
 parser code
 {:
     public AST ast;
     /**Metodo al que se llama automáticamente ante algún error sintactico.*/
     public void syntax_error(Symbol s){
-        System.out.println("Error sintactico en la Línea " + (s.right+1) +" Columna "+s.left+ ". Identificador "
+        System.out.println("Error sintactico en la Línea " + s.left +" Columna "+(s.right+1)+ ". Identificador "
         +s.value + " no reconocido." );
+         ManejadorErroresFS.getInstance().setErrorSintactico(s.left,s.right+1, "problemas con el caracter " + s.value);
     }
          /**Metodo al que se llama en el momento en que ya no es posible una recuperación de
     errores.*/
@@ -97,7 +100,8 @@ INSTRUCCION::=   DECLARACION:a                      {:RESULT = a;:}
                 | DECREMENTO:a                      {:RESULT = a;:}
                 | IMPRIMIR:a                        {: RESULT = a;:}
                 | ASIGNACION:a                      {: RESULT = a;:}
-                | ASIG_OP:a                         {: RESULT = a;:}    
+                | ASIG_OP:a                         {: RESULT = a;:}
+                | error tPtoComa
                 ;
 
 ASIG_OP::=      tId:a TIPO_AO:b EXPRESION:c tPtoComa {: RESULT = new Asignacion_Operacion(a,b,c,aleft);:}

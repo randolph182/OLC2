@@ -1,5 +1,6 @@
 
 package olc2_proyecto1;
+import FuncionScript.ErroresFS.ManejadorErroresFS;
 import java.io.FileInputStream;
 import olc2_proyecto1.Editor.Editor;
 /**
@@ -8,13 +9,13 @@ import olc2_proyecto1.Editor.Editor;
  */
 public class OLC2_Proyecto1 {
 
+    public static ManejadorErroresFS tablaErrores;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Editor e = new Editor();
         e.setVisible(true);
-      //  analizar("entrada.txt");
     }
     
     public static void analizar(String path){

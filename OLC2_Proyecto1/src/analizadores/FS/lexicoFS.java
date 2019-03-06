@@ -2,6 +2,7 @@
 /*------------------- 1era Area: Codigo de usuario ------------------------*/
 package analizadores.FS;
 import java_cup.runtime.Symbol;
+import FuncionScript.ErroresFS.ManejadorErroresFS;
 /*----------------- 2da Area: Opciones y declaraciones --------------------*/
 
 
@@ -417,9 +418,9 @@ public class lexicoFS       implements java_cup.runtime.Scanner {
 						break;
 					case 15:
 						{
-            System.out.println("Error lexico en : "+yytext()+
-                                ", en la linea: "+yyline+", en la columna: "+yychar);
-			}
+           			//System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter " + yytext());
+				}
 					case -16:
 						break;
 					case 16:
@@ -524,9 +525,9 @@ public class lexicoFS       implements java_cup.runtime.Scanner {
 						break;
 					case 42:
 						{
-            System.out.println("Error lexico en : "+yytext()+
-                                ", en la linea: "+yyline+", en la columna: "+yychar);
-			}
+           			//System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter " + yytext());
+				}
 					case -42:
 						break;
 					case 43:
@@ -539,9 +540,9 @@ public class lexicoFS       implements java_cup.runtime.Scanner {
 						break;
 					case 46:
 						{
-            System.out.println("Error lexico en : "+yytext()+
-                                ", en la linea: "+yyline+", en la columna: "+yychar);
-			}
+           			//System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter " + yytext());
+				}
 					case -45:
 						break;
 					case 48:
