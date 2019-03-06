@@ -30,6 +30,10 @@ ignora = [ \t\r\f\n]+
 COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 
 %%
+<YYINITIAL> "si"      		{ return new Symbol(sym.tSi,yyline,yychar, yytext());}
+<YYINITIAL> "selecciona"    { return new Symbol(sym.tSelecciona,yyline,yychar, yytext());}
+<YYINITIAL> "?"      		{ return new Symbol(sym.tInterrogacion,yyline,yychar, yytext());}
+<YYINITIAL> ":"      		{ return new Symbol(sym.tDosPuntos,yyline,yychar, yytext());}
 <YYINITIAL> "imprimir"      { return new Symbol(sym.tImprimir,yyline,yychar, yytext());}
 <YYINITIAL> "var"           { return new Symbol(sym.tVar,yyline,yychar, yytext());}
 <YYINITIAL> "="             { return new Symbol(sym.tIgual,yyline,yychar, yytext());}

@@ -21,7 +21,13 @@ public abstract class Operacion {
         ELEVACION,
         NEGACION,
         AUMENTO,
-        DECREMENTO
+        DECREMENTO,
+        IGUAL_QUE,
+        DIFERENTE_QUE,
+        MAYOR_QUE,
+        MAYOR_IGUAL_QUE,
+        MENOR_QUE,
+        MENOR_IGUAL_QUE
     }
     
     Expresion exp1;

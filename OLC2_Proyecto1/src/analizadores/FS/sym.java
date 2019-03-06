@@ -8,41 +8,45 @@ package analizadores.FS;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int tIgual = 11;
-  public static final int tAumen = 18;
-  public static final int tDiv = 8;
-  public static final int tMenorQue = 25;
-  public static final int tDec = 16;
-  public static final int tParOpen = 12;
+  public static final int tImprimir = 2;
+  public static final int tMenos = 7;
+  public static final int tInterrogacion = 37;
+  public static final int tIgualDoble = 28;
   public static final int tCad = 15;
-  public static final int tSumaAsig = 31;
-  public static final int tNulo = 30;
-  public static final int tRestaAsig = 32;
+  public static final int tDiviAsig = 34;
+  public static final int tDiv = 8;
   public static final int tMultipliAsig = 33;
+  public static final int tMenorQue = 25;
+  public static final int tTrue = 3;
+  public static final int unarioNeg = 20;
+  public static final int tParClose = 13;
+  public static final int tComa = 22;
+  public static final int tNulo = 30;
+  public static final int tEntero = 14;
   public static final int tMenorIgual = 27;
+  public static final int tAumen = 18;
+  public static final int tSi = 35;
+  public static final int tFalse = 4;
+  public static final int tParOpen = 12;
+  public static final int EOF = 0;
+  public static final int tMayorIgual = 26;
+  public static final int error = 1;
+  public static final int tRestaAsig = 32;
+  public static final int tDosPuntos = 38;
+  public static final int tDecremen = 19;
+  public static final int tId = 17;
+  public static final int tDec = 16;
   public static final int tVar = 21;
   public static final int tPtoComa = 5;
-  public static final int tMas = 6;
-  public static final int tMayorIgual = 26;
-  public static final int tElev = 10;
-  public static final int tImprimir = 2;
-  public static final int tDecremen = 19;
-  public static final int EOF = 0;
-  public static final int unarioNeg = 20;
-  public static final int tDiviAsig = 34;
-  public static final int tFalse = 4;
-  public static final int error = 1;
-  public static final int tDistinto = 29;
-  public static final int tEntero = 14;
-  public static final int tIgualDoble = 28;
-  public static final int tMayorQue = 24;
-  public static final int tTrue = 3;
-  public static final int tParClose = 13;
+  public static final int tIgual = 11;
   public static final int umenos = 23;
-  public static final int tId = 17;
+  public static final int tMas = 6;
+  public static final int tElev = 10;
   public static final int tPor = 9;
-  public static final int tComa = 22;
-  public static final int tMenos = 7;
+  public static final int tMayorQue = 24;
+  public static final int tSumaAsig = 31;
+  public static final int tDistinto = 29;
+  public static final int tSelecciona = 36;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -78,7 +82,11 @@ public class sym {
   "tSumaAsig",
   "tRestaAsig",
   "tMultipliAsig",
-  "tDiviAsig"
+  "tDiviAsig",
+  "tSi",
+  "tSelecciona",
+  "tInterrogacion",
+  "tDosPuntos"
   };
 }
 

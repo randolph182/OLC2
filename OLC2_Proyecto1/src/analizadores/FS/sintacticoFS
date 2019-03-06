@@ -10,6 +10,7 @@ import FuncionScript.Entorno.*;
 import FuncionScript.AST.Instrucciones.*;
 import FuncionScript.AST.*;
 import FuncionScript.ErroresFS.ManejadorErroresFS;
+import FuncionScript.AST.Instrucciones.Condicionales.*;
 //acciones que se programan en el parser
 
 parser code
@@ -56,6 +57,7 @@ terminal String umenos;
 terminal Strng tMayorQue,tMenorQue,tMayorIgual,tMenorIgual,tIgualDoble,tDistinto;
 terminal String tNulo;
 terminal String tSumaAsig,tRestaAsig,tMultipliAsig,tDiviAsig;
+terminal String tSi,tSelecciona,tInterrogacion,tDosPuntos;
 
 
 non terminal S;
@@ -74,11 +76,13 @@ non terminal Asignacion_Operacion.TipoAO TIPO_AO;
 
 
 precedence right tIgual;
+
+//ternario
+precedence left  tInterrogacion,tDosPuntos;
 //Operaciones relacionales
 precedence left  tIgualDoble,tDistinto;
+//Operaciones relacionales
 precedence left  tMenorQue,tMenorIgual,tMayorQue,tMayorIgual;
-precedence left  tMas,tMenos;
-
 //Operaciones Artimeticas
 precedence left  tMas,tMenos;
 precedence left  tPor,tDiv;
@@ -151,6 +155,15 @@ EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,
                 |EXPRESION:a tPor EXPRESION:b       {:RESULT = new Aritmetica(a,b,Operacion.Operador.MULTIPLICACION,aleft);:}
                 |EXPRESION:a tDiv EXPRESION:b       {:RESULT = new Aritmetica(a,b,Operacion.Operador.DIVISION,aleft);:}
                 |EXPRESION:a tElev EXPRESION:b      {:RESULT = new Aritmetica(a,b,Operacion.Operador.ELEVACION,aleft);:}
+
+                |EXPRESION:a tIgualDoble EXPRESION:b      {:RESULT = new Relacional(a,b,Operacion.Operador.IGUAL_QUE,aleft);:}
+                |EXPRESION:a tDistinto EXPRESION:b      {:RESULT = new Relacional(a,b,Operacion.Operador.DIFERENTE_QUE,aleft);:}
+                |EXPRESION:a tMenorQue EXPRESION:b      {:RESULT = new Relacional(a,b,Operacion.Operador.MENOR_QUE,aleft);:}
+                |EXPRESION:a tMenorIgual EXPRESION:b      {:RESULT = new Relacional(a,b,Operacion.Operador.MENOR_IGUAL_QUE,aleft);:}
+                |EXPRESION:a tMayorQue EXPRESION:b      {:RESULT = new Relacional(a,b,Operacion.Operador.MAYOR_QUE,aleft);:}
+                |EXPRESION:a tMayorIgual EXPRESION:b      {:RESULT = new Relacional(a,b,Operacion.Operador.MAYOR_IGUAL_QUE,aleft);:}
+
+                |EXPRESION:cond tInterrogacion EXPRESION:t tDosPuntos EXPRESION:f {: RESULT = new Ternario(cond,t,f,condleft);:}
                 |tParOpen EXPRESION:a tParClose     {:RESULT = a;:}
                 |tEntero:a                          {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.NUMBER),aleft);:}
                 |tDec:a                             {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.NUMBER),aleft);:}

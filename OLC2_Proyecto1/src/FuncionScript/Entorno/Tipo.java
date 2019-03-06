@@ -43,10 +43,16 @@ public class Tipo {
     }
     
     public boolean isNull(){
+        if(tipo == Primitivo.NULL){
+            return true;
+        }
         return false;
     }
     
     public boolean isBoolean(){
+        if(tipo == Primitivo.BOOLEAN){
+            return true;
+        }
         return false;
     }
     

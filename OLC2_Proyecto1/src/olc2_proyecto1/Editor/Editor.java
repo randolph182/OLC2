@@ -164,14 +164,14 @@ public class Editor extends javax.swing.JFrame {
     public static void analizar(String path){
         analizadores.FS.sintacticoFS parserFS;
         try {
-            
+        
             parserFS = new analizadores.FS.sintacticoFS(new analizadores.FS.lexicoFS(new FileInputStream(path)));
             parserFS.parse();
             parserFS.ast.ejecutar();
-            ManejadorErroresFS e = ManejadorErroresFS.getInstance();
-            for(ErrorFS fs:e.getTablaErrores()){   
-                System.out.println("tipo: " +fs.getTipo()+ " descripcion "+ fs.getDescripcion());
-            }
+//            ManejadorErroresFS e = ManejadorErroresFS.getInstance();
+//            for(ErrorFS fs:e.getTablaErrores()){   
+//                System.out.println("tipo: " +fs.getTipo()+ " descripcion "+ fs.getDescripcion());
+//            }
         } catch (Exception e) {
             ManejadorErroresFS.getInstance();
             System.out.println("Error Fatal al trata de analizar el archivo");
