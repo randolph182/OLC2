@@ -27,7 +27,10 @@ public abstract class Operacion {
         MAYOR_QUE,
         MAYOR_IGUAL_QUE,
         MENOR_QUE,
-        MENOR_IGUAL_QUE
+        MENOR_IGUAL_QUE,
+        AND,
+        OR,
+        NOT
     }
     
     Expresion exp1;

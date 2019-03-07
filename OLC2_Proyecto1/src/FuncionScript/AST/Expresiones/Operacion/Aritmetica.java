@@ -31,17 +31,29 @@ public class Aritmetica extends Operacion implements Expresion {
     public Tipo tipoResultado(Tipo t1, Tipo t2) {
         if (t1.isNumeric() && t2.isNumeric()) {            //NUMBER && NUMBER
             return new Tipo(Tipo.Primitivo.NUMBER);
-        } else if (t1.isString() && t2.isString()) {       //STRING && STRING
-            if (tipoOperador == Operador.SUMA) {
-                return new Tipo(Tipo.Primitivo.STRING);
+        } else if(t1.isBoolean() && t2.isBoolean()){      //booleano && booleano
+            return new Tipo(Tipo.Primitivo.NUMBER);
+        }else if(t1.isNumeric() || t2.isNumeric()){        //number || number
+            if(t1.isBoolean() || t2.isBoolean()){
+                return new Tipo(Tipo.Primitivo.NUMBER);
             } else {
+                System.out.println("> Error no se puede hacer otra combinacion con numeric que no sea booleano");
                 return new Tipo(Tipo.Primitivo.NULL);
             }
-        } else if (t1.isString() || t2.isString()) {       //STRING || STRING
-            if (t1.isNumeric() || t2.isNumeric()) {        //NUMBER || NUMBER
+        } else if (t1.isString() && t2.isString()) {       //STRING && STRING
+            //solo si es suma
+            if (tipoOperador == Operador.SUMA) { 
+                return new Tipo(Tipo.Primitivo.STRING);
+            } else {
+                System.out.println("> Error aritmetica en strings,suma");
+                return new Tipo(Tipo.Primitivo.NULL);
+            }
+        } else if (t1.isString() || t2.isString()) {       //STRING || STRING (PREDOMINANTE)
+            if (t1.isNumeric() || t2.isNumeric() || t1.isBoolean() || t2.isBoolean()) { //NUMBER || BOOLEANO
                 return new Tipo(Tipo.Primitivo.STRING);
             } else //CUALQUIER OTRA COMBINACION ES ERRONEA
             {
+                System.out.println("> Error aritmemetica en strings,numeric,booleano");
                 return new Tipo(Tipo.Primitivo.NULL);
             }
         }
@@ -50,9 +62,11 @@ public class Aritmetica extends Operacion implements Expresion {
 
     @Override
     public Object getValor(Entorno ent) {
-        if (esUnario) { //si viene solo un operando
+        //SI ES DE SOLO UN OPERANDO
+        if (esUnario) {
             Object a = null;
             Tipo tipoA = null;
+            //SI ES  DE TIPO IDENTIFICADOR
             if(exp1 instanceof Identificador){
                a = ((Identificador)exp1).getIdentificador();
             } else{
@@ -83,10 +97,14 @@ public class Aritmetica extends Operacion implements Expresion {
                                 }
                             }
                         break;
+                            
+                        default:
+                            System.out.println(">Error con el tipo de resultdo en Operacones aritmeticas");
+                            return null;
                     }
-                    return a;
                 } else {
                     System.out.println("> Erro el identificador " + (String)a + "no fue declarado");
+                    return null;
                 }
             //:::::::::::::::::::::::::::::::::::::::DECREMENTO::::::::::::::::::
             } else if(tipoOperador == Operador.DECREMENTO){
@@ -112,8 +130,11 @@ public class Aritmetica extends Operacion implements Expresion {
                                 }
                             }
                         break;
+                            
+                        default:
+                            System.out.println(">Error con el tipo de resultdo en Operacones aritmeticas");
+                            return null;
                     }
-                    return a;
                 } else {
                     System.out.println("> Erro el identificador " + (String)a + "no fue declarado");
                 }
@@ -122,29 +143,33 @@ public class Aritmetica extends Operacion implements Expresion {
                 
                 if(tipoA.isNumeric()){
                     return new Double((String)a) * -1;
+                } else {
+                    System.out.println(">Error solo se puede negar operadores de tipo Numerico");
                 }
             }
+        // SI NO ES UNARIO
         } else {
             Object a = (exp1 == null) ? null : exp1.getValor(ent);
             Tipo tipoA = exp1.getTipo(ent);
             Object b = (exp2 == null) ? null : exp2.getValor(ent);
             Tipo tipoB = exp2.getTipo(ent);
-
-            if (tipoA.getTipoPrimitivo() == Tipo.Primitivo.STRING) {
+            //CUANDO OPERAMOS CON CARACTERES
+            if (tipoA.isString()) { 
                 CadenaString cs = new CadenaString();
                 if (cs.isCharacter((String) a)) { //COMPROVAMOS SI LA CADENA CONTIENE UN SOLO CARACTER
                     if (cs.characterIsLetter((String) a)) { //VERIFICO SI EL CARACTER ES LETRA
                         a = cs.getAsciiCharacter((String) a);
-                        tipoA.setTipoPrimitivo(Tipo.Primitivo.NUMBER);
+                        tipoA = new  Tipo(Tipo.Primitivo.NUMBER);
                     }
                 }
             }
-            if (tipoB.getTipoPrimitivo() == Tipo.Primitivo.STRING) {
+            //CUANDO OPERAMOS CON CARACTERES
+            if (tipoB.isString()) {
                 CadenaString cs = new CadenaString();
                 if (cs.isCharacter((String) b)) { //COMPROVAMOS SI LA CADENA CONTIENE UN SOLO CARACTER
                     if (cs.characterIsLetter((String) b)) { //VERIFICO SI EL CARACTER ES LETRA
                         b = cs.getAsciiCharacter((String) b);
-                        tipoB.setTipoPrimitivo(Tipo.Primitivo.NUMBER);
+                        tipoB = new Tipo(Tipo.Primitivo.NUMBER);
                     }
                 }
             }
@@ -167,7 +192,36 @@ public class Aritmetica extends Operacion implements Expresion {
                             System.out.println(">Error el operador 2 no puede dividir debido a que es 0");
                         }
                     } else if (tipoOperador == Operador.ELEVACION) {
-                        return Math.pow(new Double(a.toString()), new Double(b.toString()));
+                        double op1 = 0;
+                        double op2  = 0;
+                        //CONSIDERANDO LA OPERACION DE ELEVACION ENTRE NUMERICOS Y BOOLEANOS
+                     
+                        if(tipoA.isBoolean() && tipoB.isBoolean()){
+                            if(a.toString().equals("verdadero"))
+                                op1 = 1;
+                            else 
+                                op1 = 0;
+                            if(b.toString().equals("verdadero"))
+                                op2 = 1;
+                            else 
+                                op2 = 0;
+                        }else if(tipoA.isBoolean()){
+                            if(a.toString().equals("verdadero"))
+                                op1 = 1;
+                            else 
+                                op1 = 0;
+                            op2 = new Double(b.toString());
+                        } else if(tipoB.isBoolean()){
+                            if(b.toString().equals("verdadero"))
+                                op2 = 1;
+                            else 
+                                op2 = 0;
+                            op1 = new Double(a.toString());
+                        } else {
+                            op1 = new Double(a.toString());
+                            op2 = new Double(b.toString());
+                        }
+                        return Math.pow(op1, op2);
                     } else {
                         System.out.println(">El tipo de operacion no esta especificada en el switch de Double");
                     }

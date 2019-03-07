@@ -9,7 +9,11 @@ package analizadores.FS;
 public class sym {
   /* terminals */
   public static final int tImprimir = 2;
+  public static final int tLlvOpen = 39;
   public static final int tMenos = 7;
+  public static final int tLlvClose = 40;
+  public static final int tNot = 44;
+  public static final int tAnd = 42;
   public static final int tInterrogacion = 37;
   public static final int tIgualDoble = 28;
   public static final int tCad = 15;
@@ -33,11 +37,13 @@ public class sym {
   public static final int error = 1;
   public static final int tRestaAsig = 32;
   public static final int tDosPuntos = 38;
+  public static final int tOr = 43;
   public static final int tDecremen = 19;
   public static final int tId = 17;
   public static final int tDec = 16;
   public static final int tVar = 21;
   public static final int tPtoComa = 5;
+  public static final int tCaso = 41;
   public static final int tIgual = 11;
   public static final int umenos = 23;
   public static final int tMas = 6;
@@ -86,7 +92,13 @@ public class sym {
   "tSi",
   "tSelecciona",
   "tInterrogacion",
-  "tDosPuntos"
+  "tDosPuntos",
+  "tLlvOpen",
+  "tLlvClose",
+  "tCaso",
+  "tAnd",
+  "tOr",
+  "tNot"
   };
 }
 

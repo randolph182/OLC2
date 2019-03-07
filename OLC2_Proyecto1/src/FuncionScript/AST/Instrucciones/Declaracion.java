@@ -42,8 +42,9 @@ public class Declaracion implements Instruccion {
     @Override
     public Object ejecutar(Entorno ent) {
         if (lstId != null) {
-            for (int i = 0; i < lstId.size(); i++) {
-                if (ent.get(lstId.get(i).getIdentificador()) != null) {
+            for (int i = 0; i < lstId.size(); i++) { //recorro la lista de ID's que se ingresaron en la declaracion
+                //SI EL IDENTIFICADOR NO EXISTE
+                if (ent.get(lstId.get(i).getIdentificador()) != null) { 
                     System.out.println("Error el identificador "+lstId.get(i).getIdentificador()+" ya existe"); //ERROR
                     System.out.println("linea: " + linea);
                     break;
@@ -63,6 +64,7 @@ public class Declaracion implements Instruccion {
                             break;
                         }
                     }
+                    //VARIABLES QUE FUERON DECLARADAS PERO SIN NINGUNA ASIGNACION EN SU VALOR
                     Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), tipo); //aca tipo ya es null
                     ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
                     nuevoSimbolo.setValor(null);

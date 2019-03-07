@@ -7,32 +7,19 @@ package FuncionScript.AST.Instrucciones.Condicionales;
 
 import FuncionScript.AST.Expresiones.Expresion;
 import FuncionScript.AST.Instrucciones.Instruccion;
-import FuncionScript.AST.nodoAST;
 import FuncionScript.Entorno.Entorno;
-import java.util.LinkedList;
 
 /**
  *
  * @author rm
  */
-public class If  implements Instruccion{
+public class Switch implements Instruccion{
 
-
-    Expresion condicion;
-    LinkedList<nodoAST> sentencias;
-    int linea;
-    
-    public If(Expresion condicion, LinkedList<nodoAST> sentencias, int linea) {
-        this.condicion = condicion;
-        this.sentencias = sentencias;
-        this.linea = linea;
-    }
+    Expresion expresion;
     
     @Override
     public Object ejecutar(Entorno ent) {
-        Entorno nuevoEnt = new Entorno(ent); //apuntamos al anterior
-        
-        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

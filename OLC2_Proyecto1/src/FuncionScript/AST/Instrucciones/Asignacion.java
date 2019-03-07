@@ -31,7 +31,8 @@ public class Asignacion implements Instruccion{
         Tipo tipo = expresion.getTipo(ent);
         
         if(valExp != null){
-            if(ent.get(id) != null){
+            //BUSCAMOS QUE SI EXISTA EL IDENTIFICADOR
+            if(ent.get(id) != null){ 
                 Simbolo s = ent.get(id);
                 s.setValor(valExp);
                 s.setTipo(tipo);

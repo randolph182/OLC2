@@ -6,16 +6,25 @@
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/Entorno/Tipo.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Operacion/Operacion.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Declaracion.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Operacion/Logica.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Expresion.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/FS/sintacticoFS</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/ErroresFS/ManejadorErroresFS.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/FS/lexicoFS</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Imprimir.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Operacion/Aritmetica.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Condicionales/Ternario.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Ternario.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Condicionales/Switch.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/nodoAST.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Casos.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/ErroresFS/ErrorFS.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Operacion/Relacional.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/olc2_proyecto1/Editor/Editor.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Condicionales/If.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/olc2_proyecto1/OLC2_Proyecto1.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/AST.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Instruccion.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Break.java</file>
         </group>
     </open-files>
 </project-private>

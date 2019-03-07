@@ -58,7 +58,8 @@ terminal Strng tMayorQue,tMenorQue,tMayorIgual,tMenorIgual,tIgualDoble,tDistinto
 terminal String tNulo;
 terminal String tSumaAsig,tRestaAsig,tMultipliAsig,tDiviAsig;
 terminal String tSi,tSelecciona,tInterrogacion,tDosPuntos;
-
+terminal String tLlvOpen,tLlvClose,tCaso;
+terminal String tAnd,tOr,tNot;
 
 non terminal S;
 non terminal Declaracion DECLARACION;
@@ -75,10 +76,16 @@ non terminal Asignacion_Operacion ASIG_OP;
 non terminal Asignacion_Operacion.TipoAO TIPO_AO;
 
 
+
+
 precedence right tIgual;
 
 //ternario
 precedence left  tInterrogacion,tDosPuntos;
+
+//operadores logico
+precedence left tOr;
+precedence left tAnd;
 //Operaciones relacionales
 precedence left  tIgualDoble,tDistinto;
 //Operaciones relacionales
@@ -88,6 +95,8 @@ precedence left  tMas,tMenos;
 precedence left  tPor,tDiv;
 precedence right  tElev;
 precedence left  tAumen,tDecremen;
+//op logico
+precedence right tNot;
 precedence right  umenos;
 
 /* ******************************************* GRAMATICA **************************************** */
@@ -107,6 +116,7 @@ INSTRUCCION::=   DECLARACION:a                      {:RESULT = a;:}
                 | ASIG_OP:a                         {: RESULT = a;:}
                 | error tPtoComa
                 ;
+
 
 ASIG_OP::=      tId:a TIPO_AO:b EXPRESION:c tPtoComa {: RESULT = new Asignacion_Operacion(a,b,c,aleft);:}
                 ;
@@ -162,6 +172,10 @@ EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,
                 |EXPRESION:a tMenorIgual EXPRESION:b      {:RESULT = new Relacional(a,b,Operacion.Operador.MENOR_IGUAL_QUE,aleft);:}
                 |EXPRESION:a tMayorQue EXPRESION:b      {:RESULT = new Relacional(a,b,Operacion.Operador.MAYOR_QUE,aleft);:}
                 |EXPRESION:a tMayorIgual EXPRESION:b      {:RESULT = new Relacional(a,b,Operacion.Operador.MAYOR_IGUAL_QUE,aleft);:}
+
+                |EXPRESION:a tAnd EXPRESION:b             {:RESULT = new Logica(a,b,Operacion.Operador.AND,aleft);:}
+                |EXPRESION:a tOr EXPRESION:b             {:RESULT = new Logica(a,b,Operacion.Operador.OR,aleft);:}
+                |tNot EXPRESION:a                        {:RESULT = new Logica(a,Operacion.Operador.NOT,aleft);:}
 
                 |EXPRESION:cond tInterrogacion EXPRESION:t tDosPuntos EXPRESION:f {: RESULT = new Ternario(cond,t,f,condleft);:}
                 |tParOpen EXPRESION:a tParClose     {:RESULT = a;:}

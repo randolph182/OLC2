@@ -41,4 +41,15 @@ public class CadenaString {
          c--;
          return c;
     }
+
+    /* Metodo que retorna un double producto de la sumatoria de cada ASCII que forma una cadena 
+        funciona para Strings y caracter
+    */
+    public double getAsciiFromString(String cadena){ 
+        int contador = 0;
+        for (int i = 0; i < cadena.length() ; i++ ) {
+            contador += (int)cadena.charAt(i);
+        }
+        return new Double(contador);
+    }
 }
