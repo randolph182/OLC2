@@ -14,6 +14,7 @@ import FuncionScript.Entorno.Tipo;
  * @author rm
  */
 public class Logica extends Operacion implements Expresion{
+    
 
     public Logica(Expresion exp1, Expresion exp2, Operador tipoOperador, int linea) {
         super(exp1, exp2, tipoOperador, linea);

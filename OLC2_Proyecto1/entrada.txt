@@ -1,2 +1,5 @@
-var a = !(falso) ?"randolph":"estuardo";
-imprimir(a);
+si(falso){
+imprimir("hola");
+} sino {
+imprimir("mundo");
+}

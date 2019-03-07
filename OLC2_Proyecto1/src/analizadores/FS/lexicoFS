@@ -31,6 +31,7 @@ COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 
 %%
 <YYINITIAL> "si"      		{ return new Symbol(sym.tSi,yyline,yychar, yytext());}
+<YYINITIAL> "sino"      	{ return new Symbol(sym.tSino,yyline,yychar, yytext());}
 <YYINITIAL> "selecciona"    { return new Symbol(sym.tSelecciona,yyline,yychar, yytext());}
 <YYINITIAL> "caso"    		{ return new Symbol(sym.tCaso,yyline,yychar, yytext());}
 <YYINITIAL> "?"      		{ return new Symbol(sym.tInterrogacion,yyline,yychar, yytext());}
