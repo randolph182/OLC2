@@ -83,7 +83,7 @@ public class sintacticoFS extends java_cup.runtime.lr_parser {
     "\004\ufffc\023\ufffc\027\ufffc\045\ufffc\052\ufffc\055\ufffc\056" +
     "\ufffc\001\002\000\004\016\125\001\002\000\024\002\ufff9" +
     "\003\ufff9\004\ufff9\023\ufff9\027\ufff9\045\ufff9\052\ufff9\055" +
-    "\ufff9\056\ufff9\001\002\000\004\050\124\001\002\000\024" +
+    "\ufff9\056\ufff9\001\002\000\004\007\124\001\002\000\024" +
     "\002\ufff5\003\ufff5\004\ufff5\023\ufff5\027\ufff5\045\ufff5\052" +
     "\ufff5\055\ufff5\056\ufff5\001\002\000\024\002\ufff8\003\ufff8" +
     "\004\ufff8\023\ufff8\027\ufff8\045\ufff8\052\ufff8\055\ufff8\056" +
@@ -612,7 +612,7 @@ class CUP$sintacticoFS$actions {
           return CUP$sintacticoFS$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 15: // BREAK ::= tBreak tDosPuntos 
+          case 15: // BREAK ::= tBreak tPtoComa 
             {
               Break RESULT =null;
 		 RESULT =  new Break(); 
@@ -1184,7 +1184,7 @@ class CUP$sintacticoFS$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoFS$stack.peek()).value;
-		RESULT = new Unario(a,new Tipo(Tipo.Primitivo.NUMBER),aleft);
+		RESULT = new Unario(new Double(a),new Tipo(Tipo.Primitivo.NUMBER),aleft);
               CUP$sintacticoFS$result = parser.getSymbolFactory().newSymbol("EXPRESION",3, ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()), RESULT);
             }
           return CUP$sintacticoFS$result;
@@ -1196,7 +1196,7 @@ class CUP$sintacticoFS$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoFS$stack.peek()).value;
-		RESULT = new Unario(a,new Tipo(Tipo.Primitivo.NUMBER),aleft);
+		RESULT = new Unario(new Double(a),new Tipo(Tipo.Primitivo.NUMBER),aleft);
               CUP$sintacticoFS$result = parser.getSymbolFactory().newSymbol("EXPRESION",3, ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoFS$stack.peek()), RESULT);
             }
           return CUP$sintacticoFS$result;

@@ -2,11 +2,9 @@ var y = 50;
 selecciona (y /50) { 
 caso 1: { 
 imprimir("caso1");
-} caso 2: { 
+} caso 'a': { 
 imprimir("caso2");
-break;
 } defecto: { 
-// sentencias que se ejecutarán si y/50 no coincide ningún caso. 
-var i =0;
+imprimir("default");
 } 
 }

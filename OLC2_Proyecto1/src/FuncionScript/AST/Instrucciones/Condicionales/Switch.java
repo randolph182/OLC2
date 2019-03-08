@@ -40,14 +40,15 @@ public class Switch implements Instruccion{
             }
         }
         
-        boolean vino_brake = false;
+        boolean flag = false;
         //despues de obtener el valor necesito ir comparando para ver en que caso concuerda
         //debo tomar en cuenta que si no viene un brake sigo ejecutando todos los cases
         int i =0;
         for (i =0; i < casos.size() - 1; i++) {
             //De la lista de casos si alguno concuerda con el control del switch
-            if(casos.get(i).expresion.getValor(ent).equals(control)){
-                //ejecuto su instrucciones
+            if(casos.get(i).expresion.getValor(ent).equals(control)  || flag){
+                //ejecuto su instrucciones  y todas las demas sino se encuentra detener
+                flag = true;
                 for(nodoAST nodo: casos.get(i).instrucciones){
                     if(nodo instanceof Instruccion){ //debo ejecutar esa instruccion
                         Instruccion ins = (Instruccion)nodo;
