@@ -83,7 +83,7 @@ public class If  implements Instruccion{
                                flag = false;
                        }
                 } else{
-                    System.out.println("Error no se encontro identificador en UF");
+                    System.out.println("Error no se encontro identificador en IF");
                     flag = false;
                 }       
         } else{

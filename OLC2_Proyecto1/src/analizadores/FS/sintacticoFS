@@ -57,8 +57,8 @@ terminal String umenos;
 terminal Strng tMayorQue,tMenorQue,tMayorIgual,tMenorIgual,tIgualDoble,tDistinto;
 terminal String tNulo;
 terminal String tSumaAsig,tRestaAsig,tMultipliAsig,tDiviAsig;
-terminal String tSi,tSino,tSelecciona,tInterrogacion,tDosPuntos;
-terminal String tLlvOpen,tLlvClose,tCaso;
+terminal String tSi,tSino,tInterrogacion,tDosPuntos;
+terminal String tLlvOpen,tLlvClose,tCaso,tDefecto,tSelecciona,tBreak;
 terminal String tAnd,tOr,tNot;
 
 non terminal S;
@@ -77,10 +77,11 @@ non terminal Asignacion_Operacion.TipoAO TIPO_AO;
 
 non terminal  If IF;
 
-// non terminal If IF;
-// non terminal LinkedList<IF> LST_ELSE_IF;
-// non terminal If ELSE_IF;
+non terminal Switch SWITCH;
+non terminal LinkedList<Caso> LST_CASOS;
+non terminal Caso CASO;
 
+non terminal Break BREAK;
 
 precedence right tIgual;
 
@@ -112,15 +113,34 @@ INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {:RESULT = a; RESULT.add(b);:}
                 |INSTRUCCION:a         {:RESULT = new LinkedList<>(); RESULT.add(a);:}
                 ;
 
-INSTRUCCION::=   DECLARACION:a                      {:RESULT = a;:}
+INSTRUCCION::=  DECLARACION:a                      {:RESULT = a;:}
                 | AUMENTO:a                         {:RESULT = a;:}
                 | DECREMENTO:a                      {:RESULT = a;:}
                 | IMPRIMIR:a                        {: RESULT = a;:}
                 | ASIGNACION:a                      {: RESULT = a;:}
                 | ASIG_OP:a                         {: RESULT = a;:}
                 | IF:a                              {: RESULT = a;:}
+                |SWITCH:a                           {: RESULT = a;:}
+                |BREAK:a                            {: RESULT = a;:}
                 | error tPtoComa
+                |error tLlvClose
                 ;
+
+BREAK::=        tBreak tDosPuntos      {: RESULT =  new Break(); :}
+                ;
+
+SWITCH::=       tSelecciona tParOpen EXPRESION:control tParClose tLlvOpen LST_CASOS:casos tLlvClose 
+                    {: RESULT = new Switch(control,casos,controlleft);:}
+                ;
+
+LST_CASOS::=    LST_CASOS:lc CASO:c     {:RESULT = lc; RESULT.add(c);:}
+                |CASO:c                 {:RESULT = new LinkedList<>(); RESULT.add(c);:}
+                ;
+
+CASO::=         tCaso EXPRESION:exp tDosPuntos tLlvOpen INSTRUCCIONES:ins tLlvClose {: RESULT = new Caso(exp,ins,expleft);:}
+                |tDefecto tDosPuntos tLlvOpen INSTRUCCIONES:ins tLlvClose       {: RESULT = new Caso(ins,insleft);:}
+                ;
+
 
 
 IF::=           tSi tParOpen EXPRESION:cond tParClose tLlvOpen INSTRUCCIONES:ins tLlvClose

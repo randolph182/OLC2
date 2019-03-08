@@ -9,13 +9,14 @@ package analizadores.FS;
 public class sym {
   /* terminals */
   public static final int tImprimir = 2;
-  public static final int tLlvOpen = 40;
+  public static final int tLlvOpen = 39;
   public static final int tMenos = 7;
-  public static final int tLlvClose = 41;
+  public static final int tLlvClose = 40;
   public static final int tSino = 36;
-  public static final int tNot = 45;
-  public static final int tAnd = 43;
-  public static final int tInterrogacion = 38;
+  public static final int tBreak = 44;
+  public static final int tNot = 47;
+  public static final int tAnd = 45;
+  public static final int tInterrogacion = 37;
   public static final int tIgualDoble = 28;
   public static final int tCad = 15;
   public static final int tDiviAsig = 34;
@@ -31,20 +32,21 @@ public class sym {
   public static final int tMenorIgual = 27;
   public static final int tAumen = 18;
   public static final int tSi = 35;
+  public static final int tDefecto = 42;
   public static final int tFalse = 4;
   public static final int tParOpen = 12;
   public static final int EOF = 0;
   public static final int tMayorIgual = 26;
   public static final int error = 1;
   public static final int tRestaAsig = 32;
-  public static final int tDosPuntos = 39;
-  public static final int tOr = 44;
+  public static final int tDosPuntos = 38;
+  public static final int tOr = 46;
   public static final int tDecremen = 19;
   public static final int tId = 17;
   public static final int tDec = 16;
   public static final int tVar = 21;
   public static final int tPtoComa = 5;
-  public static final int tCaso = 42;
+  public static final int tCaso = 41;
   public static final int tIgual = 11;
   public static final int umenos = 23;
   public static final int tMas = 6;
@@ -53,7 +55,7 @@ public class sym {
   public static final int tMayorQue = 24;
   public static final int tSumaAsig = 31;
   public static final int tDistinto = 29;
-  public static final int tSelecciona = 37;
+  public static final int tSelecciona = 43;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -92,12 +94,14 @@ public class sym {
   "tDiviAsig",
   "tSi",
   "tSino",
-  "tSelecciona",
   "tInterrogacion",
   "tDosPuntos",
   "tLlvOpen",
   "tLlvClose",
   "tCaso",
+  "tDefecto",
+  "tSelecciona",
+  "tBreak",
   "tAnd",
   "tOr",
   "tNot"

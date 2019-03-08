@@ -32,8 +32,10 @@ COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 %%
 <YYINITIAL> "si"      		{ return new Symbol(sym.tSi,yyline,yychar, yytext());}
 <YYINITIAL> "sino"      	{ return new Symbol(sym.tSino,yyline,yychar, yytext());}
+<YYINITIAL> "break"      	{ return new Symbol(sym.tBreak,yyline,yychar, yytext());}
 <YYINITIAL> "selecciona"    { return new Symbol(sym.tSelecciona,yyline,yychar, yytext());}
 <YYINITIAL> "caso"    		{ return new Symbol(sym.tCaso,yyline,yychar, yytext());}
+<YYINITIAL> "defecto"    	{ return new Symbol(sym.tDefecto,yyline,yychar, yytext());}
 <YYINITIAL> "?"      		{ return new Symbol(sym.tInterrogacion,yyline,yychar, yytext());}
 <YYINITIAL> ":"      		{ return new Symbol(sym.tDosPuntos,yyline,yychar, yytext());}
 <YYINITIAL> "imprimir"      { return new Symbol(sym.tImprimir,yyline,yychar, yytext());}
@@ -77,8 +79,8 @@ COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 <YYINITIAL> {id}            { return new Symbol(sym.tId,yyline,yychar, yytext());}
 <YYINITIAL> \n              {yychar=1;}
 <YYINITIAL> {ignora}		{} 
+<YYINITIAL> {COMENT_LINE}	{yychar=1;}
 <YYINITIAL> "/*"			{yybegin(COMENT_MULTI_LINE);}
-<YYINITIAL> {COMENT_LINE}	{}
 <COMENT_MULTI_LINE> "*"		{}
 <COMENT_MULTI_LINE> [^"*/"]		{}
 <COMENT_MULTI_LINE> "*/"	{yybegin(YYINITIAL);}						
