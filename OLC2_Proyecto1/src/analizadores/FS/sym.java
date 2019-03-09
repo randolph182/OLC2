@@ -42,6 +42,8 @@ public class sym {
   public static final int tDosPuntos = 38;
   public static final int tOr = 46;
   public static final int tDecremen = 19;
+  public static final int tFuncion = 49;
+  public static final int tReturn = 48;
   public static final int tId = 17;
   public static final int tDec = 16;
   public static final int tVar = 21;
@@ -104,7 +106,9 @@ public class sym {
   "tBreak",
   "tAnd",
   "tOr",
-  "tNot"
+  "tNot",
+  "tReturn",
+  "tFuncion"
   };
 }
 

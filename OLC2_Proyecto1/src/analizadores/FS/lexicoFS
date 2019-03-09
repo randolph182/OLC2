@@ -30,6 +30,8 @@ ignora = [ \t\r\f\n]+
 COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 
 %%
+<YYINITIAL> "funcion"      		{ return new Symbol(sym.tFuncion,yyline,yychar, yytext());}
+<YYINITIAL> "retornar"      		{ return new Symbol(sym.tReturn,yyline,yychar, yytext());}
 <YYINITIAL> "si"      		{ return new Symbol(sym.tSi,yyline,yychar, yytext());}
 <YYINITIAL> "sino"      	{ return new Symbol(sym.tSino,yyline,yychar, yytext());}
 <YYINITIAL> "detener"      	{ return new Symbol(sym.tBreak,yyline,yychar, yytext());}

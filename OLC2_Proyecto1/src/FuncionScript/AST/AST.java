@@ -1,5 +1,6 @@
 package FuncionScript.AST;
 
+import FuncionScript.AST.Instrucciones.Funcion;
 import FuncionScript.AST.Instrucciones.Instruccion;
 import FuncionScript.Entorno.Entorno;
 import java.util.LinkedList;
@@ -19,6 +20,10 @@ public class AST {
         for(nodoAST nodo: nodos){
             if(nodo instanceof Instruccion){
                 Instruccion instruccion = (Instruccion)nodo;
+                
+                if(instruccion instanceof Funcion){
+                      
+                }
                 instruccion.ejecutar(global);
             }
         }

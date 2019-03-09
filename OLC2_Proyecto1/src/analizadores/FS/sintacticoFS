@@ -60,6 +60,7 @@ terminal String tSumaAsig,tRestaAsig,tMultipliAsig,tDiviAsig;
 terminal String tSi,tSino,tInterrogacion,tDosPuntos;
 terminal String tLlvOpen,tLlvClose,tCaso,tDefecto,tSelecciona,tBreak;
 terminal String tAnd,tOr,tNot;
+terminal String tReturn,tFuncion;
 
 non terminal S;
 non terminal Declaracion DECLARACION;
@@ -82,6 +83,15 @@ non terminal LinkedList<Caso> LST_CASOS;
 non terminal Caso CASO;
 
 non terminal Break BREAK;
+
+non terminal Return RETURN;
+non terminal Funcion FUNCION;
+non terminal LinkedList<Simbolo> PARAMETROS;
+non terminal Simbolo PARAMETRO;
+
+non terminal FuncionLLamada FUNCION_LLAMADA;
+non terminal LinkedList<Expresion> PARAMETROS_CALL;
+non terminal Expresion PAR_EXP;
 
 precedence right tIgual;
 
@@ -122,8 +132,34 @@ INSTRUCCION::=  DECLARACION:a                      {:RESULT = a;:}
                 | IF:a                              {: RESULT = a;:}
                 |SWITCH:a                           {: RESULT = a;:}
                 |BREAK:a                            {: RESULT = a;:}
+                |RETURN:a                           {: RESULT = a;:}
+                |FUNCION:a                          {: RESULT = a;:}
+                |FUNCION_LLAMADA:a tPtoComa         {: RESULT = a;:}
                 | error tPtoComa
                 |error tLlvClose
+                ;
+
+
+FUNCION_LLAMADA::=  tId:id tParOpen PARAMETROS_CALL tParClose;
+
+PARAMETROS_CALL::=  PARAMETROS_CALL tComa EXPRESION
+                    | EXPRESION
+                    ;
+
+
+RETURN::=       tReturn     {:RESULT = new Return();:};
+
+
+FUNCION::=      tFuncion tId:id tParOpen PARAMETROS:par tParClose tLlvOpen INSTRUCCIONES:ins tLlvClose
+                {:RESULT = new Funcion(id,par,ins,idleft);:}
+                ;
+
+PARAMETROS::=   PARAMETROS:pars tComa PARAMETRO:par {: RESULT = pars; RESULT.add(par);:}
+                |PARAMETRO:par                 {:RESULT = new LinkedList<>(); RESULT.add(par);:}
+                ;
+
+
+PARAMETRO::=    tVar tId:id {: RESULT = new Simbolo(id,new Tipo(Tipo.Primitivo.NULL));:}
                 ;
 
 BREAK::=        tBreak tPtoComa      {: RESULT =  new Break(); :}
@@ -161,6 +197,7 @@ TIPO_AO::=      tSumaAsig               {:RESULT = Asignacion_Operacion.TipoAO.S
                 ;               
 
 ASIGNACION::=  tId:a tIgual EXPRESION:b tPtoComa    {:RESULT = new Asignacion(a,b,aleft);:}
+                | tId:a tIgual FUNCION_LLAMADA:b tPtoComa {:RESULT = new Asignacion(a,b,aleft);:}
                 ;
 
 AUMENTO::=      tId:a tAumen tPtoComa              {: RESULT = new Aumento(a,aleft);:}
@@ -183,6 +220,7 @@ ASIG_VAL::=     | tId:a                             {: Identificador id = new Id
                                                     :}
 
                 | LST_ID:a tIgual EXPRESION:b       {:RESULT = new Declaracion(a,b,bleft);:}
+                |LST_ID:a tIgual FUNCION_LLAMADA:b  {:RESULT = new Declaracion(a,b,bleft);:}
                 ;
 
 LST_ID::=       LST_ID:a tComa tId:b                {:RESULT = a; Identificador id = new Identificador(b,bleft); RESULT.add(id);:}

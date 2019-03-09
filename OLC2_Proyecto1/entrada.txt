@@ -1,10 +1,1 @@
-var y = 50;
-selecciona (y /50) { 
-caso 1: { 
-imprimir("caso1");
-} caso 'a': { 
-imprimir("caso2");
-} defecto: { 
-imprimir("default");
-} 
-}
+a = sumar(5,6);

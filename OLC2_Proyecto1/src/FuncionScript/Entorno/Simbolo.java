@@ -19,6 +19,8 @@ public class Simbolo {
         this.tipo = tipo;
     }
     
+    
+    
     public String getId(){
         return id;
     }
@@ -42,4 +44,7 @@ public class Simbolo {
     public void setId(String id){
         this.id = id;
     }
+    
+    
+    
 }
