@@ -7,6 +7,6 @@ funcion factorial(var x){
 }
 
 si(verdadero){
-	var a  = factorial(2);
+	var a  = factorial(10);
 	imprimir(a);
 }

@@ -52,10 +52,17 @@ public class FuncionLLamada implements Expresion{
             //EJECUTO LA INSTRUCCION DE LA FUNCION QUE MANDE A LLAMAR 
             Entorno nuevoEnt = new Entorno(ent);
             Instruccion ins = (Instruccion)s;
-            Object a = ins.ejecutar(nuevoEnt);
+            Object a = ins.ejecutar(nuevoEnt); //retorn aun return;
             if(a != null){
-                tipo = s.getTipo();
-                return a;
+                  RetornoSecundario rs = (RetornoSecundario)a;
+//                Return ret = (Return)a;
+//                Object b = ((Expresion)ret).getValor(nuevoEnt);
+//                tipo = ((Expresion)ret).getTipo(nuevoEnt);
+//                return b;
+//                this.tipo = ((Simbolo)ins).getTipo();
+//                return a;
+                this.tipo = rs.getTipo(ent);
+                return rs.getValor(ent);                  
             }
             
         } else

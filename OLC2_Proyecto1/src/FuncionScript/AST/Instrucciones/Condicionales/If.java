@@ -8,7 +8,9 @@ package FuncionScript.AST.Instrucciones.Condicionales;
 import FuncionScript.AST.Expresiones.Expresion;
 import FuncionScript.AST.Expresiones.Identificador;
 import FuncionScript.AST.Expresiones.Operacion.Unario;
+import FuncionScript.AST.Expresiones.RetornoSecundario;
 import FuncionScript.AST.Expresiones.Return;
+import FuncionScript.AST.Instrucciones.Break;
 import FuncionScript.AST.Instrucciones.Instruccion;
 import FuncionScript.AST.nodoAST;
 import FuncionScript.Entorno.Entorno;
@@ -54,10 +56,13 @@ public class If implements Instruccion {
 
     @Override
     public Object ejecutar(Entorno ent) {
+        //variables que funcionan para complementar el retorno o como varios usos
         Object a = null;
-        Tipo tipoA = null;
+        Tipo tipoA = new Tipo(Tipo.Primitivo.NULL);
+        //bandera flag que sirve para saber si la condicion del if es verdera o no 
         boolean flag = false;
         if (condicion instanceof Unario) {
+            //obtenemos el valor de la expresion la almacenamos en a;
             a = (condicion == null) ? null : condicion.getValor(ent);
             tipoA = condicion.getTipo(ent);
             if (tipoA.isBoolean()) {
@@ -69,7 +74,7 @@ public class If implements Instruccion {
                     }
                 }
             } else {
-                System.out.println("Error en el retorno de getValor Logica");
+                System.out.println("Error de Tipo booleano en Unario : clase IF");
             }
         } else if (condicion instanceof Identificador) {
             a = ((Identificador) condicion).getIdentificador();
@@ -88,49 +93,20 @@ public class If implements Instruccion {
                 flag = false;
             }
         } else {
+            //sino es ninguna de las anterires entonces obtenemos el valor de las 
+            //operaciones logicas, relacionales 
             flag = (boolean) condicion.getValor(ent);
         }
-        Entorno nuevoEnt = new Entorno(ent); //apuntamos al anterior
+        //SI flag == true ENTONCES EJECUTAMOS  LAS SENTENCIAS DEL IF
+        //creamos un nuevo entorno
+        
         if (flag) {
-            for (nodoAST nodo : sentencias1) {
-                if (nodo instanceof Instruccion) {
-                    Instruccion instruccion = (Instruccion) nodo;
-                    instruccion.ejecutar(nuevoEnt);
-                } else if (nodo instanceof Return) {
-                    Object ret = ((Expresion) nodo).getValor(ent);
-                    if (ret != null) {
-//                        Tipo t = ((Expresion)nodo).getTipo(ent);
-//                        setValor(a);
-//                        setTipo(t);
-                        return a;
-                    }
-                } else if (nodo instanceof Expresion) {
-                    Expresion exp = (Expresion) nodo;
-                    a = exp.getValor(ent);
-                    return a;
-                } 
-            }
+            return interpretarSetnencias(sentencias1,ent);
         } else if (elseIf != null) {
-            elseIf.ejecutar(ent);
+            //APARTADO PARA ELSE IF 
+            return elseIf.ejecutar(ent);
         } else if (hay_else) {
-            for (nodoAST nodo : sentencias2) {
-                if (nodo instanceof Instruccion) {
-                    Instruccion instruccion = (Instruccion) nodo;
-                    instruccion.ejecutar(nuevoEnt);
-                }   else if (nodo instanceof Return) {
-                    Object ret = ((Expresion) nodo).getValor(ent);
-                    if (ret != null) {
-//                        Tipo t = ((Expresion)nodo).getTipo(ent);
-//                        setValor(a);
-//                        setTipo(t);
-                        return a;
-                    }
-                } else if (nodo instanceof Expresion) {
-                    Expresion exp = (Expresion) nodo;
-                    a = exp.getValor(ent);
-                    return a;
-                }
-            }
+            return interpretarSetnencias(sentencias2,ent);
         }
         return null;
     }
@@ -138,6 +114,50 @@ public class If implements Instruccion {
     @Override
     public int getLine() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    private Object interpretarSetnencias(LinkedList<nodoAST> sentencias,Entorno ent){
+        Object a = null;
+        Tipo tipoA = new Tipo(Tipo.Primitivo.NULL);
+        Entorno nuevoEnt = new Entorno(ent); //apuntamos al anterior
+        //si existe valor  de retorno esta variable hara el trabajo de retornarla como objeto
+        Return valRetorno  = null;
+        for (nodoAST nodo : sentencias) {
+            if (nodo instanceof Instruccion) {
+                Instruccion instruccion = (Instruccion) nodo;
+                if(instruccion instanceof Break){
+                    return null;
+                }else {
+                    //solo ejecutamos la instruccion
+//                    instruccion.ejecutar(nuevoEnt);
+                    a = instruccion.ejecutar(nuevoEnt);
+                    if(a != null){ //a si es distinta de null es porque contiene un return
+                        RetornoSecundario rs = (RetornoSecundario)a;
+                        return rs;
+//                        valRetorno = (Return)a; //castiamos a tipo Return
+//                        return valRetorno; //::::::::::::::::::::::::::::::::::::::
+                    }
+                }
+            } else if (nodo instanceof Return) {
+//                valRetorno = (Return)nodo;//((Expresion) nodo).getValor(ent);
+//                return valRetorno;
+                Expresion e = (Expresion)nodo;
+                a = e.getValor(nuevoEnt);
+                
+                if (a != null) {
+                    tipoA = e.getTipo(nuevoEnt);
+                    RetornoSecundario rs = new RetornoSecundario(a, tipoA, linea);
+                    return rs; //:::::::::::::::::::::::::::::::::::::::::
+                }
+                    
+//                }
+            } else if (nodo instanceof Expresion) {
+                Expresion exp = (Expresion) nodo;
+                exp.getValor(nuevoEnt);
+            } 
+        }
+        return null;
     }
 
 }
