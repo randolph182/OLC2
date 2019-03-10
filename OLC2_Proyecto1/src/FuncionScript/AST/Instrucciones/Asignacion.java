@@ -36,6 +36,7 @@ public class Asignacion implements Instruccion{
                 Simbolo s = ent.get(id);
                 s.setValor(valExp);
                 s.setTipo(tipo);
+            //SINO BUSCAMOS EN EL GLOBAL;
             } else{
                 System.out.println("El identificador no existe");
             }

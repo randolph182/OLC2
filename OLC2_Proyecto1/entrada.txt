@@ -1,1 +1,12 @@
-a = sumar(5,6);
+funcion factorial(var x){
+	si(x == 0){
+		retornar 1;
+	} sino {
+		retornar x * factorial( x - 1);
+	}
+}
+
+si(verdadero){
+	var a  = factorial(2);
+	imprimir(a);
+}

@@ -167,7 +167,7 @@ public class Editor extends javax.swing.JFrame {
         
             parserFS = new analizadores.FS.sintacticoFS(new analizadores.FS.lexicoFS(new FileInputStream(path)));
             parserFS.parse();
-//            parserFS.ast.ejecutar();
+            parserFS.ast.ejecutar();
 //            ManejadorErroresFS e = ManejadorErroresFS.getInstance();
 //            for(ErrorFS fs:e.getTablaErrores()){   
 //                System.out.println("tipo: " +fs.getTipo()+ " descripcion "+ fs.getDescripcion());

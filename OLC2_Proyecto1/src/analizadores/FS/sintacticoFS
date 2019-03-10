@@ -91,7 +91,6 @@ non terminal Simbolo PARAMETRO;
 
 non terminal FuncionLLamada FUNCION_LLAMADA;
 non terminal LinkedList<Expresion> PARAMETROS_CALL;
-non terminal Expresion PAR_EXP;
 
 precedence right tIgual;
 
@@ -140,18 +139,21 @@ INSTRUCCION::=  DECLARACION:a                      {:RESULT = a;:}
                 ;
 
 
-FUNCION_LLAMADA::=  tId:id tParOpen PARAMETROS_CALL tParClose;
+FUNCION_LLAMADA::=  tId:id tParOpen PARAMETROS_CALL:pars tParClose {:RESULT = new FuncionLLamada(pars,id,idleft);:}
+                    ;
 
-PARAMETROS_CALL::=  PARAMETROS_CALL tComa EXPRESION
-                    | EXPRESION
+PARAMETROS_CALL::=  PARAMETROS_CALL:a tComa EXPRESION:b {: RESULT = a; RESULT.add(b);:}
+                    | EXPRESION:a                     {:RESULT = new LinkedList<>(); RESULT.add(a); :}
                     ;
 
 
-RETURN::=       tReturn     {:RESULT = new Return();:};
+RETURN::=       tReturn:a EXPRESION:b tPtoComa  {: RESULT = new Return(b,aleft);:}
+                | tReturn:a  tPtoComa   {:RESULT = new Return(aleft);:}
+                ;
 
 
 FUNCION::=      tFuncion tId:id tParOpen PARAMETROS:par tParClose tLlvOpen INSTRUCCIONES:ins tLlvClose
-                {:RESULT = new Funcion(id,par,ins,idleft);:}
+                {:RESULT = new Funcion(id,par,ins,idleft); System.out.println("llega funcion");:}
                 ;
 
 PARAMETROS::=   PARAMETROS:pars tComa PARAMETRO:par {: RESULT = pars; RESULT.add(par);:}
@@ -197,7 +199,6 @@ TIPO_AO::=      tSumaAsig               {:RESULT = Asignacion_Operacion.TipoAO.S
                 ;               
 
 ASIGNACION::=  tId:a tIgual EXPRESION:b tPtoComa    {:RESULT = new Asignacion(a,b,aleft);:}
-                | tId:a tIgual FUNCION_LLAMADA:b tPtoComa {:RESULT = new Asignacion(a,b,aleft);:}
                 ;
 
 AUMENTO::=      tId:a tAumen tPtoComa              {: RESULT = new Aumento(a,aleft);:}
@@ -220,7 +221,6 @@ ASIG_VAL::=     | tId:a                             {: Identificador id = new Id
                                                     :}
 
                 | LST_ID:a tIgual EXPRESION:b       {:RESULT = new Declaracion(a,b,bleft);:}
-                |LST_ID:a tIgual FUNCION_LLAMADA:b  {:RESULT = new Declaracion(a,b,bleft);:}
                 ;
 
 LST_ID::=       LST_ID:a tComa tId:b                {:RESULT = a; Identificador id = new Identificador(b,bleft); RESULT.add(id);:}
@@ -262,4 +262,6 @@ EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,
                                                     :}
                 |tTrue:a                            {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.BOOLEAN),aleft);:}
                 |tFalse:a                           {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.BOOLEAN),aleft);:}
+                |FUNCION_LLAMADA:a                    {:RESULT = a;:}
+               // |RETURN:a                           {: RESULT = a; :}
                 ;

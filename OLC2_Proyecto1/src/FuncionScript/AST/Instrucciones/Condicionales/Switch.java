@@ -34,6 +34,7 @@ public class Switch implements Instruccion{
         Object control = expresion.getValor(ent);
         //VALIDAR QUE TODOS LOS CASOS SEAN DEL MISMO TIPO
         for (int i = 0; i < casos.size()-1; i++) { //no tomamos en cuenta el default
+            casos.get(i).expresion.getValor(ent);
             if(expresion.getTipo(ent).getTipoPrimitivo() != casos.get(i).expresion.getTipo(ent).getTipoPrimitivo()){
                 System.out.println("Error hay un caso que no es del tipo control");
                 casos.remove(i); //quito ese caso  aca me recupero semanticamente

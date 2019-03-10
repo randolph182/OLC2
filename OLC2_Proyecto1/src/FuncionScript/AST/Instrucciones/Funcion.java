@@ -6,35 +6,34 @@
 
 package FuncionScript.AST.Instrucciones;
 
+import FuncionScript.AST.Expresiones.Expresion;
 import FuncionScript.AST.Expresiones.Return;
 import FuncionScript.AST.nodoAST;
 import FuncionScript.Entorno.Entorno;
 import FuncionScript.Entorno.Simbolo;
+import FuncionScript.Entorno.Tipo;
 import java.util.LinkedList;
 
 /**
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class Funcion  implements Instruccion{
+public class Funcion  extends Simbolo implements Instruccion{
     
-    LinkedList<Simbolo> parametros;
-    LinkedList<nodoAST> instrucciones;
-    String id;
-    int linea;
-
+//    LinkedList<Simbolo> parametros;
+//    LinkedList<nodoAST> instrucciones;
+//    String id;
+//    int linea;
+//
     public Funcion(String id,LinkedList<Simbolo> parametros, LinkedList<nodoAST> instrucciones, int linea) {
-        this.id = id;
-        this.parametros = parametros;
-        this.instrucciones = instrucciones;
-        this.linea = linea;
+        super(id,parametros,instrucciones,linea);
     }
 
     
     @Override
     public Object ejecutar(Entorno ent) {
         // ingreso los parametros de la funcion a la tabla de simbolos actual
-        for (Simbolo parametro : parametros) {
+        for (Simbolo parametro : getParametros()) {
             if(ent.get(parametro.getId()) != null){
                 System.out.println("Error ya existe el parametro en la tabla de simbolos algo salio mal");
             } else{
@@ -42,17 +41,26 @@ public class Funcion  implements Instruccion{
             }
         }
         
-        for (nodoAST nodo: instrucciones) {
+        for (nodoAST nodo: getInstrucciones()) {
             if(nodo instanceof Instruccion){
                 Instruccion instruccion = (Instruccion) nodo;
                 if(instruccion instanceof Funcion){
                     //NO HACE NADA 
                 } else if(instruccion instanceof Break){
                     return null;
-                } else {
-                    instruccion.ejecutar(ent);
+                }else {
+                    Object a = instruccion.ejecutar(ent);
+                    if(a != null)
+                        return a;
                 }
             } else if(nodo instanceof Return){
+                Object a = ((Expresion)nodo).getValor(ent);
+                if(a != null){
+                    Tipo t = ((Expresion)nodo).getTipo(ent);
+                    setValor(a);
+                    setTipo(t);
+                    return a;
+                }
                 System.out.println("Aun no definido pero ya mero ");
             }
         }

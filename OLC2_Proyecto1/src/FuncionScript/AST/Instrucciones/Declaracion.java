@@ -44,7 +44,7 @@ public class Declaracion implements Instruccion {
         if (lstId != null) {
             for (int i = 0; i < lstId.size(); i++) { //recorro la lista de ID's que se ingresaron en la declaracion
                 //SI EL IDENTIFICADOR SI EXISTE
-                if (ent.get(lstId.get(i).getIdentificador()) != null) { 
+                if (ent.getActual(lstId.get(i).getIdentificador()) != null) { 
                     System.out.println("Error el identificador "+lstId.get(i).getIdentificador()+" ya existe"); //ERROR
                     System.out.println("linea: " + linea);
                     break;

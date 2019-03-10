@@ -15,19 +15,42 @@ import FuncionScript.Entorno.Tipo;
  */
 public class Return implements Expresion{
 
+
+    Expresion valRet;
+    int linea;
+    boolean retornaValor = false;
+    Tipo tipo;
+    
+    public Return(Expresion valRet, int linea) {
+        this.valRet = valRet;
+        this.linea = linea;
+        this.retornaValor = true;
+    }
+    
+    public Return(int linea){
+        this.valRet = null;
+        this.linea = linea;
+        this.retornaValor = false;
+    }
+    
     @Override
     public Object getValor(Entorno ent) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(retornaValor){ //si vino una expresin para retornar
+            Object a = valRet.getValor(ent);
+            tipo = valRet.getTipo(ent);
+            return a;
+        }
+         return null;  
     }
 
     @Override
     public Tipo getTipo(Entorno ent) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return tipo;
     }
 
     @Override
     public int getLine() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return linea;
     }
     
 

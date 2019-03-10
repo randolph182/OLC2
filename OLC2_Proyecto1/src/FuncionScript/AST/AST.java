@@ -16,15 +16,16 @@ public class AST {
     }
     
     public void ejecutar(){
-        Entorno global = new Entorno(null);
+        Entorno ts = new Entorno(null);
         for(nodoAST nodo: nodos){
             if(nodo instanceof Instruccion){
                 Instruccion instruccion = (Instruccion)nodo;
                 
                 if(instruccion instanceof Funcion){
-                      
-                }
-                instruccion.ejecutar(global);
+                      Funcion funcion = (Funcion)instruccion;
+                      ts.putGlobal(funcion.getId(), funcion);
+                } else
+                    instruccion.ejecutar(ts);
             }
         }
     }

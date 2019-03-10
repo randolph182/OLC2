@@ -36,7 +36,9 @@ public class Aritmetica extends Operacion implements Expresion {
         }else if(t1.isNumeric() || t2.isNumeric()){        //number || number
             if(t1.isBoolean() || t2.isBoolean()){
                 return new Tipo(Tipo.Primitivo.NUMBER);
-            } else {
+            } else if(t1.isString() || t2.isString()){
+                return new Tipo(Tipo.Primitivo.STRING);
+            }else {
                 System.out.println("> Error no se puede hacer otra combinacion con numeric que no sea booleano");
                 return new Tipo(Tipo.Primitivo.NULL);
             }
