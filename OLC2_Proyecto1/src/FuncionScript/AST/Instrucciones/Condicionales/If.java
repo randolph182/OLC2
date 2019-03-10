@@ -99,7 +99,6 @@ public class If implements Instruccion {
         }
         //SI flag == true ENTONCES EJECUTAMOS  LAS SENTENCIAS DEL IF
         //creamos un nuevo entorno
-        
         if (flag) {
             return interpretarSetnencias(sentencias1,ent);
         } else if (elseIf != null) {
@@ -129,29 +128,22 @@ public class If implements Instruccion {
                 if(instruccion instanceof Break){
                     return null;
                 }else {
-                    //solo ejecutamos la instruccion
-//                    instruccion.ejecutar(nuevoEnt);
                     a = instruccion.ejecutar(nuevoEnt);
-                    if(a != null){ //a si es distinta de null es porque contiene un return
+                    //si a != nulo es porque una de sus instrucciones retorno un valor
+                    if(a != null){
                         RetornoSecundario rs = (RetornoSecundario)a;
                         return rs;
-//                        valRetorno = (Return)a; //castiamos a tipo Return
-//                        return valRetorno; //::::::::::::::::::::::::::::::::::::::
                     }
                 }
             } else if (nodo instanceof Return) {
-//                valRetorno = (Return)nodo;//((Expresion) nodo).getValor(ent);
-//                return valRetorno;
                 Expresion e = (Expresion)nodo;
                 a = e.getValor(nuevoEnt);
-                
+                //si a != nulo es porque fijo trae valores
                 if (a != null) {
                     tipoA = e.getTipo(nuevoEnt);
                     RetornoSecundario rs = new RetornoSecundario(a, tipoA, linea);
                     return rs; //:::::::::::::::::::::::::::::::::::::::::
                 }
-                    
-//                }
             } else if (nodo instanceof Expresion) {
                 Expresion exp = (Expresion) nodo;
                 exp.getValor(nuevoEnt);

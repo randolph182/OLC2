@@ -52,19 +52,13 @@ public class FuncionLLamada implements Expresion{
             //EJECUTO LA INSTRUCCION DE LA FUNCION QUE MANDE A LLAMAR 
             Entorno nuevoEnt = new Entorno(ent);
             Instruccion ins = (Instruccion)s;
-            Object a = ins.ejecutar(nuevoEnt); //retorn aun return;
+            Object a = ins.ejecutar(nuevoEnt);
+            //si a es distinto a nulo es porque fijo trae valores 
             if(a != null){
-                  RetornoSecundario rs = (RetornoSecundario)a;
-//                Return ret = (Return)a;
-//                Object b = ((Expresion)ret).getValor(nuevoEnt);
-//                tipo = ((Expresion)ret).getTipo(nuevoEnt);
-//                return b;
-//                this.tipo = ((Simbolo)ins).getTipo();
-//                return a;
+                RetornoSecundario rs = (RetornoSecundario)a;
                 this.tipo = rs.getTipo(ent);
-                return rs.getValor(ent);                  
+                return rs.getValor(ent);              
             }
-            
         } else
             System.out.println("No existe la funcion en la tabla global ");
         return null;

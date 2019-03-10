@@ -21,12 +21,6 @@ import java.util.LinkedList;
  */
 public class Funcion  extends Simbolo implements Instruccion{
     
-//    LinkedList<Simbolo> parametros;
-//    LinkedList<nodoAST> instrucciones;
-//    String id;
-//    int linea;
-    Tipo tipoRet = new Tipo(Tipo.Primitivo.NULL);
-//
     public Funcion(String id,LinkedList<Simbolo> parametros, LinkedList<nodoAST> instrucciones, int linea) {
         super(id,parametros,instrucciones,linea);
     }
@@ -36,11 +30,10 @@ public class Funcion  extends Simbolo implements Instruccion{
     public Object ejecutar(Entorno ent) {
         // ingreso los parametros de la funcion a la tabla de simbolos actual
         for (Simbolo parametro : getParametros()) {
-//            if(ent.get(parametro.getId()) != null){
-//                System.out.println("Error ya existe el parametro en la tabla de simbolos algo salio mal");
-//            } else{
+            //sino existe simplemente se agregan porque si hay repetidos probablemente sea una llamada recursiva
+            if(ent.get(parametro.getId()) == null){
                 ent.put(parametro.getId(), parametro);
-//            }
+            }
         }
         
         for (nodoAST nodo: getInstrucciones()) {
@@ -51,26 +44,21 @@ public class Funcion  extends Simbolo implements Instruccion{
                 } else if(instruccion instanceof Break){
                     return null;
                 }else {
-//                    instruccion.ejecutar(ent);
                     Object a = instruccion.ejecutar(ent);
+                    //si a es distinto de nulo probablemente hubo un retorno de valor
                     if(a != null){
                         RetornoSecundario rs = (RetornoSecundario)a;
                         return rs;
                     }
                 }
             } else if(nodo instanceof Return){
-//                Return valRet = (Return)nodo; //mas adelante se va a ejecutar
-//                Return valRet  = null;
-//                valRet = (Return)nodo;
                 Object a = ((Expresion)nodo).getValor(ent);
+                //si distinto a nullo es porque fijo trae balores
                 if(a != null){
                     Tipo t = ((Expresion)nodo).getTipo(ent);
                     RetornoSecundario rs = new RetornoSecundario(a, t, getLinea());
-//                    setValor(a);
-//                    setTipo(t);
                     return rs;
                 }
-                return null;
             } else if(nodo instanceof Expresion){
                 ((Expresion)nodo).getValor(ent);
             }
