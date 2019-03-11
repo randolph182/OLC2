@@ -60,15 +60,15 @@ terminal String tSumaAsig,tRestaAsig,tMultipliAsig,tDiviAsig;
 terminal String tSi,tSino,tInterrogacion,tDosPuntos;
 terminal String tLlvOpen,tLlvClose,tCaso,tDefecto,tSelecciona,tBreak;
 terminal String tAnd,tOr,tNot;
-terminal String tReturn,tFuncion;
+terminal String tReturn,tFuncion,tCorchOpen,tCorchClose;
 
 non terminal S;
-non terminal Declaracion DECLARACION;
+non terminal Instruccion DECLARACION;
 non terminal LinkedList<Identificador> LST_ID;
 non terminal Expresion EXPRESION;
 non terminal nodoAST INSTRUCCION;
 non terminal LinkedList<nodoAST> INSTRUCCIONES;
-non terminal Declaracion ASIG_VAL;
+non terminal Instruccion ASIG_VAL;
 non terminal Imprimir IMPRIMIR;
 non terminal Aumento AUMENTO;
 non terminal Decremento DECREMENTO;
@@ -91,6 +91,10 @@ non terminal Simbolo PARAMETRO;
 
 non terminal FuncionLLamada FUNCION_LLAMADA;
 non terminal LinkedList<Expresion> PARAMETROS_CALL;
+
+non terminal Object TIPO_DEC_ASIG;
+
+non terminal ArregloLlamada ARREGLO_LLAMADA;
 
 precedence right tIgual;
 
@@ -134,10 +138,13 @@ INSTRUCCION::=  DECLARACION:a                      {:RESULT = a;:}
                 |RETURN:a                           {: RESULT = a;:}
                 |FUNCION:a                          {: RESULT = a;:}
                 |FUNCION_LLAMADA:a tPtoComa         {: RESULT = a;:}
+                |ARREGLO_LLAMADA:a tPtoComa               {: RESULT = a;:}
                 | error tPtoComa
                 |error tLlvClose
                 ;
 
+ARREGLO_LLAMADA::= tId:id tCorchOpen EXPRESION:exp tCorchClose {:RESULT = new ArregloLlamada(id,exp,idleft);:}
+                    ;
 
 FUNCION_LLAMADA::=  tId:id tParOpen PARAMETROS_CALL:pars tParClose {:RESULT = new FuncionLLamada(pars,id,idleft);:}
                     ;
@@ -153,7 +160,7 @@ RETURN::=       tReturn:a EXPRESION:b tPtoComa  {: RESULT = new Return(b,aleft);
 
 
 FUNCION::=      tFuncion tId:id tParOpen PARAMETROS:par tParClose tLlvOpen INSTRUCCIONES:ins tLlvClose
-                {:RESULT = new Funcion(id,par,ins,idleft); System.out.println("llega funcion");:}
+                {:RESULT = new Funcion(id,par,ins,idleft);:}
                 ;
 
 PARAMETROS::=   PARAMETROS:pars tComa PARAMETRO:par {: RESULT = pars; RESULT.add(par);:}
@@ -219,9 +226,20 @@ ASIG_VAL::=     | tId:a                             {: Identificador id = new Id
                                                         RESULT = new Declaracion(lId,aleft);
                                                         
                                                     :}
-
-                | LST_ID:a tIgual EXPRESION:b       {:RESULT = new Declaracion(a,b,bleft);:}
+                // |tId:a   tIgual tCorchOpen PARAMETROS_CALL:b tCorchClose    {:RESULT = new Arreglo(a,b,aleft);:} //arreglos                                                                   
+                | LST_ID:a tIgual TIPO_DEC_ASIG:b   {:
+                                                        if(b instanceof Expresion){
+                                                            RESULT = new Declaracion(a,(Expresion)b,bleft);
+                                                        }else{
+                                                            RESULT = new Arreglo(a,(LinkedList<Expresion>)b,aleft);
+                                                        }
+                                                    :}
                 ;
+
+TIPO_DEC_ASIG::= EXPRESION:a                                {:RESULT = a;:}
+                | tCorchOpen PARAMETROS_CALL:a tCorchClose  {:RESULT = a;:}
+                ;
+
 
 LST_ID::=       LST_ID:a tComa tId:b                {:RESULT = a; Identificador id = new Identificador(b,bleft); RESULT.add(id);:}
                 |tId:a                              {:  RESULT = new LinkedList<>();
@@ -262,6 +280,6 @@ EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,
                                                     :}
                 |tTrue:a                            {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.BOOLEAN),aleft);:}
                 |tFalse:a                           {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.BOOLEAN),aleft);:}
+                |ARREGLO_LLAMADA:a                     {: RESULT = a; :}
                 |FUNCION_LLAMADA:a                    {:RESULT = a;:}
-               // |RETURN:a                           {: RESULT = a; :}
                 ;

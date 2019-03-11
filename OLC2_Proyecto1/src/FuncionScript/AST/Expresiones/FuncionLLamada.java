@@ -30,10 +30,10 @@ public class FuncionLLamada implements Expresion{
         //obteniendo funcion 
         if(ent.getGlobal(id) != null){
             Simbolo s = ent.getGlobal(id);
-            LinkedList<Simbolo> pars = s.getParametros();
+            LinkedList<Simbolo> pars = s.getElementos();
             
             //verficando que el numero de parametros sea igual 
-            if(parametros.size() == s.getParametros().size()){
+            if(parametros.size() == s.getElementos().size()){
                 Object e;
                 Tipo tipoE;
                 int i = 0;

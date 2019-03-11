@@ -22,6 +22,7 @@ public class sym {
   public static final int tDiviAsig = 34;
   public static final int tDiv = 8;
   public static final int tMultipliAsig = 33;
+  public static final int tCorchClose = 51;
   public static final int tMenorQue = 25;
   public static final int tTrue = 3;
   public static final int unarioNeg = 20;
@@ -39,6 +40,7 @@ public class sym {
   public static final int tMayorIgual = 26;
   public static final int error = 1;
   public static final int tRestaAsig = 32;
+  public static final int tCorchOpen = 50;
   public static final int tDosPuntos = 38;
   public static final int tOr = 46;
   public static final int tDecremen = 19;
@@ -108,7 +110,9 @@ public class sym {
   "tOr",
   "tNot",
   "tReturn",
-  "tFuncion"
+  "tFuncion",
+  "tCorchOpen",
+  "tCorchClose"
   };
 }
 

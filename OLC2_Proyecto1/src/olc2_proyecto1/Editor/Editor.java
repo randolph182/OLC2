@@ -48,6 +48,7 @@ public class Editor extends javax.swing.JFrame {
 
         jtxtAreaTrabajo.setColumns(20);
         jtxtAreaTrabajo.setRows(5);
+        jtxtAreaTrabajo.setTabSize(1);
         jScrollPane1.setViewportView(jtxtAreaTrabajo);
 
         btnCompilar.setText("Compilar");
@@ -77,12 +78,12 @@ public class Editor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnCompilar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         pack();

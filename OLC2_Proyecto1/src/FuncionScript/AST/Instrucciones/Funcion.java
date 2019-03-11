@@ -29,7 +29,7 @@ public class Funcion  extends Simbolo implements Instruccion{
     @Override
     public Object ejecutar(Entorno ent) {
         // ingreso los parametros de la funcion a la tabla de simbolos actual
-        for (Simbolo parametro : getParametros()) {
+        for (Simbolo parametro : getElementos()) {
             //sino existe simplemente se agregan porque si hay repetidos probablemente sea una llamada recursiva
             if(ent.get(parametro.getId()) == null){
                 ent.put(parametro.getId(), parametro);

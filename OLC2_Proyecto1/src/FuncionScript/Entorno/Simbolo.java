@@ -5,6 +5,7 @@
  */
 package FuncionScript.Entorno;
 
+import FuncionScript.AST.Expresiones.Identificador;
 import FuncionScript.AST.nodoAST;
 import java.util.LinkedList;
 
@@ -19,9 +20,17 @@ public class Simbolo {
 
 
     
-    private LinkedList<Simbolo> parametros;
+    private LinkedList<Simbolo> elementos;
     private LinkedList<nodoAST> instrucciones;
+    private LinkedList<Identificador> ids;
     private int  linea;
+    
+    private ROL rol;
+    
+    public Simbolo(LinkedList<Identificador> ids, int linea){
+        this.ids = ids;
+        this.linea = linea;
+    }
     
     public Simbolo(String id,Tipo tipo){
         this.id = id;
@@ -30,18 +39,42 @@ public class Simbolo {
     
     public Simbolo(String id,LinkedList<Simbolo> parametros, LinkedList<nodoAST> instrucciones, int linea) {
         this.id = id;
-        this.parametros = parametros;
+        this.elementos = parametros;
         this.instrucciones = instrucciones;
         this.linea = linea;
     }
     
+    public Simbolo(String id,LinkedList<Simbolo> elementos, int linea) {
+        this.id = id;
+        this.elementos = elementos;
+        this.linea = linea;
+    }
     
-    public LinkedList<Simbolo> getParametros() {
-    return parametros;
+    
+    
+    public ROL getRol() {
+        return rol;
     }
 
-    public void setParametros(LinkedList<Simbolo> parametros) {
-        this.parametros = parametros;
+    public void setRol(ROL rol) {
+        this.rol = rol;
+    }
+    
+    public LinkedList<Identificador> getLstIds() {
+        return ids;
+    }
+
+    public void setLstIds(LinkedList<Identificador> ids) {
+        this.ids = ids;
+    }
+    
+    
+    public LinkedList<Simbolo> getElementos() {
+    return elementos;
+    }
+
+    public void setElementos(LinkedList<Simbolo> parametros) {
+        this.elementos = parametros;
     }
 
     public LinkedList<nodoAST> getInstrucciones() {
@@ -88,6 +121,8 @@ public class Simbolo {
     public enum ROL{
         FUNCION,
         VARIABLE,
+        ARREGLO_HOMOGENEO,
+        ARREGLO_HETEROGENEO
         
     }
     

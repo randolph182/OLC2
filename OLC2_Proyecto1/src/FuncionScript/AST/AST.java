@@ -1,5 +1,6 @@
 package FuncionScript.AST;
 
+import FuncionScript.AST.Expresiones.Expresion;
 import FuncionScript.AST.Instrucciones.Funcion;
 import FuncionScript.AST.Instrucciones.Instruccion;
 import FuncionScript.Entorno.Entorno;
@@ -26,6 +27,9 @@ public class AST {
                       ts.putGlobal(funcion.getId(), funcion);
                 } else
                     instruccion.ejecutar(ts);
+            } else if(nodo instanceof Expresion){
+                Expresion exp = (Expresion)nodo;
+                exp.getValor(ts);
             }
         }
     }

@@ -14,7 +14,7 @@ import java.beans.Expression;
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class RetornoSecundario  {
+public class RetornoSecundario implements Expresion{
 
     Object valor = null;
     Tipo tipoValor = new Tipo(Tipo.Primitivo.NULL);
@@ -25,15 +25,15 @@ public class RetornoSecundario  {
         this.tipoValor = tipo;
         this.linea = linea;
     }
-
+    @Override
     public Object getValor(Entorno ent) {
         return valor;
     }
-
+    @Override
     public Tipo getTipo(Entorno ent) {
         return tipoValor;
     }
-
+    @Override
     public int getLine() {
         return linea;
     }
