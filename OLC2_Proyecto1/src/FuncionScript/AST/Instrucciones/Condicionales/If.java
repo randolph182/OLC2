@@ -119,7 +119,7 @@ public class If implements Instruccion {
     private Object interpretarSetnencias(LinkedList<nodoAST> sentencias,Entorno ent){
         Object a = null;
         Tipo tipoA = new Tipo(Tipo.Primitivo.NULL);
-        Entorno nuevoEnt = new Entorno(ent); //apuntamos al anterior
+        
         //si existe valor  de retorno esta variable hara el trabajo de retornarla como objeto
         Return valRetorno  = null;
         for (nodoAST nodo : sentencias) {
@@ -128,6 +128,7 @@ public class If implements Instruccion {
                 if(instruccion instanceof Break){
                     return null;
                 }else {
+                    Entorno nuevoEnt = new Entorno(ent); //apuntamos al anterior
                     a = instruccion.ejecutar(nuevoEnt);
                     //si a != nulo es porque una de sus instrucciones retorno un valor
                     if(a != null){
@@ -137,6 +138,7 @@ public class If implements Instruccion {
                 }
             } else if (nodo instanceof Return) {
                 Expresion e = (Expresion)nodo;
+                Entorno nuevoEnt = new Entorno(ent); //apuntamos al anterior
                 a = e.getValor(nuevoEnt);
                 //si a != nulo es porque fijo trae valores
                 if (a != null) {
@@ -146,7 +148,12 @@ public class If implements Instruccion {
                 }
             } else if (nodo instanceof Expresion) {
                 Expresion exp = (Expresion) nodo;
-                exp.getValor(nuevoEnt);
+                Entorno nuevoEnt = new Entorno(ent); //apuntamos al anterior
+                Object b = exp.getValor(nuevoEnt);
+                if(b != null){
+                    RetornoSecundario rs = (RetornoSecundario)b;
+                    return rs;
+                }
             } 
         }
         return null;

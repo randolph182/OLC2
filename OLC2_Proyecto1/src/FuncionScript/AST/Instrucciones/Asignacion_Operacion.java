@@ -38,25 +38,25 @@ public class Asignacion_Operacion implements  Instruccion{
                 Simbolo s = ent.get(id); //obtenemos el simbolo 
                 Tipo tipoId = s.getTipo();
                 if(tipoId.isNumeric()){ //si la variable es de tiop numerico
-                    double valId = new Double((String)s.getValor());
+                    double valId = new Double((s.getValor().toString()));
                     switch(tipoAO){
                         case SUMA:
-                          valId += new Double((String)result);
+                          valId += new Double(result.toString());
                           s.setValor(valId);
                         break;
 
                         case RESTA:
-                          valId -= new Double((String)result);
+                          valId -= new Double(result.toString());
                           s.setValor(valId);
                         break;
 
                         case MULTIPLICACION:
-                          valId *= new Double((String)result);
+                          valId *= new Double(result.toString());
                           s.setValor(valId);
                         break;
 
                         case DIVISION:
-                          valId /= new Double((String)result);
+                          valId /= new Double(result.toString());
                           s.setValor(valId);
                         break;
                     }

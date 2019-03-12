@@ -73,7 +73,9 @@ public class Aritmetica extends Operacion implements Expresion {
                a = ((Identificador)exp1).getIdentificador();
             } else{
                  a = (exp1 == null) ? null : exp1.getValor(ent);
-                 tipoA= exp1.getTipo(ent);
+                 if(a == null)
+                     return null;
+                 tipoA = exp1.getTipo(ent);
             }
             //:::::::::::::::::::::::::::::::::::::::AUMENTO::::::::::::::::::
             if(tipoOperador == Operador.AUMENTO){

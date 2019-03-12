@@ -28,7 +28,8 @@ public class Identificador implements Expresion{
        if(ent.get(getIdentificador()) != null){
            Simbolo s = ent.get(getIdentificador());
            this.tipo = s.getTipo();
-           return s.getValor();
+           valor = s.getValor();
+           return valor;
        } else {
            System.out.println("> Erro el identificador " + getIdentificador() + "no existe.");
        }
@@ -57,13 +58,6 @@ public class Identificador implements Expresion{
      */
     public void setIdentificador(String identificador) {
         this.identificador = identificador;
-    }
-
-    /**
-     * @return the valor
-     */
-    public Object getValor() {
-        return valor;
     }
 
     /**

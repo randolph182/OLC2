@@ -30,7 +30,7 @@ public class FuncionLLamada implements Expresion{
         //obteniendo funcion 
         if(ent.getGlobal(id) != null){
             Simbolo s = ent.getGlobal(id);
-            LinkedList<Simbolo> pars = s.getElementos();
+//            LinkedList<Simbolo> pars = s.getElementos();
             
             //verficando que el numero de parametros sea igual 
             if(parametros.size() == s.getElementos().size()){
@@ -41,8 +41,10 @@ public class FuncionLLamada implements Expresion{
                 for(Expresion exp: parametros){
                    e = exp.getValor(ent);
                    tipoE = exp.getTipo(ent);
-                   pars.get(i).setValor(e);
-                   pars.get(i).setTipo(tipoE);
+                   s.getElementos().get(i).setValor(e);
+                   s.getElementos().get(i).setTipo(tipoE);
+//                   pars.get(i).setValor(e);
+//                   pars.get(i).setTipo(tipoE);
                    i++;
                 }
             } else{
@@ -51,13 +53,13 @@ public class FuncionLLamada implements Expresion{
             }
             //EJECUTO LA INSTRUCCION DE LA FUNCION QUE MANDE A LLAMAR 
             Entorno nuevoEnt = new Entorno(ent);
-            Instruccion ins = (Instruccion)s;
-            Object a = ins.ejecutar(nuevoEnt);
+//            Instruccion ins = (Instruccion)s;
+            Object a = ((Instruccion)s).ejecutar(nuevoEnt);
             //si a es distinto a nulo es porque fijo trae valores 
             if(a != null){
                 RetornoSecundario rs = (RetornoSecundario)a;
-                this.tipo = rs.getTipo(ent);
-                return rs.getValor(ent);              
+                this.tipo = rs.getTipo(nuevoEnt);
+                return rs.getValor(nuevoEnt);              
             }
         } else
             System.out.println("No existe la funcion en la tabla global ");

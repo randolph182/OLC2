@@ -31,8 +31,11 @@ public class Funcion  extends Simbolo implements Instruccion{
         // ingreso los parametros de la funcion a la tabla de simbolos actual
         for (Simbolo parametro : getElementos()) {
             //sino existe simplemente se agregan porque si hay repetidos probablemente sea una llamada recursiva
-            if(ent.get(parametro.getId()) == null){
-                ent.put(parametro.getId(), parametro);
+            if(ent.getActual(parametro.getId()) == null){
+                Simbolo sn = new Simbolo(parametro.getId(), parametro.getTipo());
+                sn.setValor(parametro.getValor());
+//                ent.put(parametro.getId(), parametro);
+                ent.put(sn.getId(), sn);
             }
         }
         
@@ -40,10 +43,11 @@ public class Funcion  extends Simbolo implements Instruccion{
             if(nodo instanceof Instruccion){
                 Instruccion instruccion = (Instruccion) nodo;
                 if(instruccion instanceof Funcion){
-                    //NO HACE NADA 
+                   // System.out.println("Estoy en funcion Funcion"); 
                 } else if(instruccion instanceof Break){
                     return null;
                 }else {
+//                    Entorno nE = new Entorno(ent);
                     Object a = instruccion.ejecutar(ent);
                     //si a es distinto de nulo probablemente hubo un retorno de valor
                     if(a != null){
@@ -52,6 +56,7 @@ public class Funcion  extends Simbolo implements Instruccion{
                     }
                 }
             } else if(nodo instanceof Return){
+//                Entorno nE = new Entorno(ent);
                 Object a = ((Expresion)nodo).getValor(ent);
                 //si distinto a nullo es porque fijo trae balores
                 if(a != null){
@@ -60,7 +65,12 @@ public class Funcion  extends Simbolo implements Instruccion{
                     return rs;
                 }
             } else if(nodo instanceof Expresion){
-                ((Expresion)nodo).getValor(ent);
+                Object a = ((Expresion)nodo).getValor(ent);
+                if(a != null){
+                    Tipo t = ((Expresion)nodo).getTipo(ent);
+                    RetornoSecundario rs = new RetornoSecundario(a, t, getLinea());
+                    return rs;
+                }
             }
         }
         return null;

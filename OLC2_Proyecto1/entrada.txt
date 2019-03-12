@@ -1,9 +1,16 @@
-funcion fibonaci(var n){
-    retornar (n==1 || n==2) ? 1 : fibonaci(n-1) + fibonaci(n-1) ;
-} 
-
-funcion VerFibonacci(var num){
-    Imprimir("El Fibonacci de " + num + " es " + fibonaci(num));
+funcion ackerman(var m, var n){
+	var acker = 0;
+	si(m == 0){
+		acker += n + 1;
+	} sino{
+		si(n == 0){
+			acker += ackerman(m-1,1);
+		} sino si(m > 0 && n > 0) {
+			acker += ackerman(m-1,ackerman(m,n-1));
+		}
+	}
+	imprimir(acker);
+	retornar acker;
 }
 
-VerFibonacci(4);
+ackerman(3,11);
