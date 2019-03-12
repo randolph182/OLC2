@@ -34,7 +34,6 @@ public class Funcion  extends Simbolo implements Instruccion{
             if(ent.getActual(parametro.getId()) == null){
                 Simbolo sn = new Simbolo(parametro.getId(), parametro.getTipo());
                 sn.setValor(parametro.getValor());
-//                ent.put(parametro.getId(), parametro);
                 ent.put(sn.getId(), sn);
             }
         }
@@ -43,11 +42,9 @@ public class Funcion  extends Simbolo implements Instruccion{
             if(nodo instanceof Instruccion){
                 Instruccion instruccion = (Instruccion) nodo;
                 if(instruccion instanceof Funcion){
-                   // System.out.println("Estoy en funcion Funcion"); 
                 } else if(instruccion instanceof Break){
                     return null;
                 }else {
-//                    Entorno nE = new Entorno(ent);
                     Object a = instruccion.ejecutar(ent);
                     //si a es distinto de nulo probablemente hubo un retorno de valor
                     if(a != null){
@@ -56,7 +53,6 @@ public class Funcion  extends Simbolo implements Instruccion{
                     }
                 }
             } else if(nodo instanceof Return){
-//                Entorno nE = new Entorno(ent);
                 Object a = ((Expresion)nodo).getValor(ent);
                 //si distinto a nullo es porque fijo trae balores
                 if(a != null){

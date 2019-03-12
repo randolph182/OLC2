@@ -10,7 +10,9 @@ import FuncionScript.AST.Expresiones.Identificador;
 import FuncionScript.Entorno.Entorno;
 import FuncionScript.Entorno.Simbolo;
 import FuncionScript.Entorno.Tipo;
+import FuncionScript.ErroresFS.ManejadorErroresFS;
 import java.util.LinkedList;
+import olc2_proyecto1.Editor.Editor;
 
 /**
  *
@@ -47,6 +49,8 @@ public class Declaracion implements Instruccion {
                 if (ent.getActual(lstId.get(i).getIdentificador()) != null) { 
                     System.out.println("Error el identificador "+lstId.get(i).getIdentificador()+" ya existe"); //ERROR
                     System.out.println("linea: " + linea);
+                    Editor.insertarTextoConsola("Error el identificador "+lstId.get(i).getIdentificador()+" ya existe  en linea " + linea);
+                    ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error el identificador "+lstId.get(i).getIdentificador()+" ya existe");
                     break;
                 } else {
                     //DEBO PREGUNTAR SI ES EL ULTIMO
@@ -60,6 +64,8 @@ public class Declaracion implements Instruccion {
                                 nuevoSimbolo.setValor(resultado);
                             } else {
                                 System.out.println("Error obteniendo el valor de expresion en clase Declaracion");
+                                Editor.insertarTextoConsola("Error en obtener el valor de una declaracion vino nulo en " + linea);
+                                ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error en obtener el valor de  una declaracion obtuvo nulo ");
                             }
                             break;
                         }

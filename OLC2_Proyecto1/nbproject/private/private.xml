@@ -4,25 +4,26 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/Entorno/Tipo.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Declaracion.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Operacion/Logica.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/olc2_proyecto1/Editor/Editor.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Operacion/Aritmetica.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Funcion.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/Entorno/Simbolo.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/FuncionLLamada.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/FS/sintacticoFS.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Arreglo.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/ArregloLlamada.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/AST.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Imprimir.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Condicionales/If.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/RetornoSecundario.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/Entorno/Entorno.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Operacion/Unario.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Asignacion_Operacion.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Decremento.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Condicionales/Caso.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Expresion.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Identificador.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/ErroresFS/ManejadorErroresFS.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/RetornoSecundario.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Operacion/Unario.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Ternario.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Condicionales/Switch.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/nodoAST.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Return.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/Entorno/Simbolo.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/ErroresFS/ErrorFS.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/olc2_proyecto1/Editor/Editor.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Condicionales/If.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/herramientas/ContadorBreak.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Identificador.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Funcion.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/Entorno/Entorno.java</file>
         </group>
     </open-files>
 </project-private>
