@@ -90,7 +90,7 @@ COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 <COMENT_MULTI_LINE> "*/"	{yybegin(YYINITIAL);}						
 <YYINITIAL> .	{
            			//System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
-           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter " + yytext());
+           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 			
 

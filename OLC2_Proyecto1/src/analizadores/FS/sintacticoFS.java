@@ -513,7 +513,7 @@ public class sintacticoFS extends java_cup.runtime.lr_parser {
     public void syntax_error(Symbol s){
         System.out.println("Error sintactico en la Línea " + s.left +" Columna "+(s.right+1)+ ". Identificador "
         +s.value + " no reconocido." );
-         ManejadorErroresFS.getInstance().setErrorSintactico(s.left,s.right+1, "problemas con el caracter " + s.value);
+         ManejadorErroresFS.getInstance().setErrorSintactico(s.left,s.right+1, "problemas con el caracter = " + s.value);
     }
          /**Metodo al que se llama en el momento en que ya no es posible una recuperación de
     errores.*/

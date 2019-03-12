@@ -1,16 +1,28 @@
-funcion ackerman(var m, var n){
-	var acker = 0;
-	si(m == 0){
-		acker += n + 1;
-	} sino{
-		si(n == 0){
-			acker += ackerman(m-1,1);
-		} sino si(m > 0 && n > 0) {
-			acker += ackerman(m-1,ackerman(m,n-1));
+var b =  4 != 0 ? verdadero : falso; 
+var a =  b == verdadero? 5 : 0;
+si(a > 0){
+	selecciona(a){
+		caso 1: {
+			imprimir('uno');
 		}
+		caso 5:{
+			imprimir('cinco');
+			detener;
+		}
+		caso 6:{
+			imprimir('esta bien');
+			detener;
+		}
+		caso 7:{
+			imprimir('siete');
+		}
+		caso 'e':{
+			imprimir ('Error');
+		}
+		defecto:{
+			imprimir('defecto');
+		}
+			
 	}
-	imprimir(acker);
-	retornar acker;
+	imprimir('exito');
 }
-
-ackerman(3,11);

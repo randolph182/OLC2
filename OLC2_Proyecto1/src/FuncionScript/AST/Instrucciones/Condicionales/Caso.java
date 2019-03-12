@@ -14,7 +14,7 @@ import java.util.LinkedList;
 public class Caso {
     Expresion expresion;
     LinkedList<nodoAST> instrucciones;
-    int linea;
+    public int linea;
     
     public Caso(Expresion exp,LinkedList<nodoAST> ins,int linea){
         this.expresion = exp;

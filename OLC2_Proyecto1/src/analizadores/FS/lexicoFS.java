@@ -529,7 +529,7 @@ public class lexicoFS       implements java_cup.runtime.Scanner {
 					case 22:
 						{
            			//System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
-           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter " + yytext());
+           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -23:
 						break;
@@ -676,7 +676,7 @@ public class lexicoFS       implements java_cup.runtime.Scanner {
 					case 59:
 						{
            			//System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
-           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter " + yytext());
+           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -59:
 						break;
@@ -691,7 +691,7 @@ public class lexicoFS       implements java_cup.runtime.Scanner {
 					case 63:
 						{
            			//System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
-           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter " + yytext());
+           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -62:
 						break;
@@ -702,7 +702,7 @@ public class lexicoFS       implements java_cup.runtime.Scanner {
 					case 66:
 						{
            			//System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
-           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter " + yytext());
+           			ManejadorErroresFS.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -64:
 						break;

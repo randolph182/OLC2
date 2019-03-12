@@ -10,7 +10,11 @@ import FuncionScript.ErroresFS.ManejadorErroresFS;
 //import com.sun.xml.internal.txw2.TXW;
 import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
@@ -43,6 +47,10 @@ public class Editor extends javax.swing.JFrame {
         btnCompilar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtxtConsola = new javax.swing.JTextArea();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMnuItmFS = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +70,23 @@ public class Editor extends javax.swing.JFrame {
         jtxtConsola.setRows(5);
         jScrollPane2.setViewportView(jtxtConsola);
 
+        jMenu2.setText("File");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Errores");
+
+        jMnuItmFS.setText("Errores FS");
+        jMnuItmFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuItmFSActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMnuItmFS);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,16 +97,16 @@ public class Editor extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
                     .addComponent(btnCompilar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCompilar)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -118,6 +143,18 @@ public class Editor extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnCompilarActionPerformed
+
+    private void jMnuItmFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuItmFSActionPerformed
+        if(!ManejadorErroresFS.getInstance().generarReporte()){
+            JOptionPane.showMessageDialog(null, "no hay datos en la que mostrar o no hubo un problema generando el reporte");
+        }else{
+            try { 
+                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler  errFS.html");
+            } catch (IOException ex) {
+                Logger.getLogger(Editor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jMnuItmFSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +193,10 @@ public class Editor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCompilar;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMnuItmFS;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jtxtAreaTrabajo;
@@ -165,10 +206,11 @@ public class Editor extends javax.swing.JFrame {
     public static void analizar(String path){
         analizadores.FS.sintacticoFS parserFS;
         try {
-        
+            consola.setText("");
             parserFS = new analizadores.FS.sintacticoFS(new analizadores.FS.lexicoFS(new FileInputStream(path)));
             parserFS.parse();
             parserFS.ast.ejecutar();
+            
 //            ManejadorErroresFS e = ManejadorErroresFS.getInstance();
 //            for(ErrorFS fs:e.getTablaErrores()){   
 //                System.out.println("tipo: " +fs.getTipo()+ " descripcion "+ fs.getDescripcion());
@@ -185,6 +227,8 @@ public class Editor extends javax.swing.JFrame {
     
     public static void insertarTextoConsola(String informacion){
        
+        
+        
        if(consola.getText().equals("")){
            consola.append("> "+informacion);
        } else{

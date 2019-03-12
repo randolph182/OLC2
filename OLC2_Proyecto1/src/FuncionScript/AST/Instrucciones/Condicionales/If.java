@@ -16,7 +16,10 @@ import FuncionScript.AST.nodoAST;
 import FuncionScript.Entorno.Entorno;
 import FuncionScript.Entorno.Simbolo;
 import FuncionScript.Entorno.Tipo;
+import FuncionScript.ErroresFS.ManejadorErroresFS;
+import herramientas.ContadorBreak;
 import java.util.LinkedList;
+import olc2_proyecto1.Editor.Editor;
 
 /**
  *
@@ -59,12 +62,13 @@ public class If implements Instruccion {
         //variables que funcionan para complementar el retorno o como varios usos
         Object a = null;
         Tipo tipoA = new Tipo(Tipo.Primitivo.NULL);
+        Entorno nuevoEnt = new Entorno(ent);
         //bandera flag que sirve para saber si la condicion del if es verdera o no 
         boolean flag = false;
         if (condicion instanceof Unario) {
             //obtenemos el valor de la expresion la almacenamos en a;
-            a = (condicion == null) ? null : condicion.getValor(ent);
-            tipoA = condicion.getTipo(ent);
+            a = (condicion == null) ? null : condicion.getValor(nuevoEnt);
+            tipoA = condicion.getTipo(nuevoEnt);
             if (tipoA.isBoolean()) {
                 if (a instanceof String) {
                     if (a.toString().equals("verdadero")) {
@@ -72,14 +76,18 @@ public class If implements Instruccion {
                     } else {
                         flag = false;
                     }
+                } else{
+                    Editor.insertarTextoConsola("Problemas con la la condicional en If. Linea: " + linea);
+                    ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Problemas con la la condicional en If");
                 }
             } else {
-                System.out.println("Error de Tipo booleano en Unario : clase IF");
+                Editor.insertarTextoConsola("La condicional no es booleano en If. Linea: " + linea);
+                ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "La condicional no es booleano en If");
             }
         } else if (condicion instanceof Identificador) {
             a = ((Identificador) condicion).getIdentificador();
-            if (ent.get((String) a) != null) {
-                Simbolo s = ent.get((String) a);
+            if (nuevoEnt.get((String) a) != null) {
+                Simbolo s = nuevoEnt.get((String) a);
                 tipoA = s.getTipo();
                 if (tipoA.isBoolean()) {
                     if (s.getValor().toString().equals("verdadero")) {
@@ -87,25 +95,30 @@ public class If implements Instruccion {
                     } else {
                         flag = false;
                     }
+                } else {
+                    Editor.insertarTextoConsola("La condicional no es booleano en If. Linea: " + linea);
+                    ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "La condicional no es booleano en If");
+                    flag = false;
                 }
-            } else {
-                System.out.println("Error no se encontro identificador en IF");
-                flag = false;
-            }
+            } else{
+                    Editor.insertarTextoConsola("El identificador como condicional en  If no es encontro. Linea: " + linea);
+                    ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "El identificador como condicional en  If no es encontro");
+                    flag = false;
+            } 
         } else {
             //sino es ninguna de las anterires entonces obtenemos el valor de las 
             //operaciones logicas, relacionales 
-            flag = (boolean) condicion.getValor(ent);
+            flag = (boolean) condicion.getValor(nuevoEnt);
         }
         //SI flag == true ENTONCES EJECUTAMOS  LAS SENTENCIAS DEL IF
         //creamos un nuevo entorno
         if (flag) {
-            return interpretarSetnencias(sentencias1,ent);
+            return interpretarSetnencias(sentencias1,nuevoEnt);
         } else if (elseIf != null) {
             //APARTADO PARA ELSE IF 
-            return elseIf.ejecutar(ent);
+            return elseIf.ejecutar(nuevoEnt);
         } else if (hay_else) {
-            return interpretarSetnencias(sentencias2,ent);
+            return interpretarSetnencias(sentencias2,nuevoEnt);
         }
         return null;
     }
@@ -118,43 +131,51 @@ public class If implements Instruccion {
     
     private Object interpretarSetnencias(LinkedList<nodoAST> sentencias,Entorno ent){
         Object a = null;
-        Tipo tipoA = new Tipo(Tipo.Primitivo.NULL);
         
         //si existe valor  de retorno esta variable hara el trabajo de retornarla como objeto
         Return valRetorno  = null;
+        int valTmpBrake = ContadorBreak.getInstance().getContador();
         for (nodoAST nodo : sentencias) {
             if (nodo instanceof Instruccion) {
                 Instruccion instruccion = (Instruccion) nodo;
+                //::::::::::::::::::::::::: INSTRUCCION TIPO BREAK ;;;;;;;;;;;;;;;;;;;;;
                 if(instruccion instanceof Break){
+                    if(ContadorBreak.getInstance().getContador() == 0){
+                        Editor.insertarTextoConsola("Error en If vino un Break en un mal ambito. Linea: " + linea);
+                        ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error en If vino un Break en un mal ambito");
+                    } else
+                        ContadorBreak.getInstance().decrementarContador();
                     return null;
                 }else {
-                    Entorno nuevoEnt = new Entorno(ent); //apuntamos al anterior
-                    a = instruccion.ejecutar(nuevoEnt);
-                    //si a != nulo es porque una de sus instrucciones retorno un valor
+                    //::::::::::::::::::::::::: INSTRUCCION NORMAL :::::::::::::::::::
+                    a = instruccion.ejecutar(ent);
                     if(a != null){
                         RetornoSecundario rs = (RetornoSecundario)a;
                         return rs;
-                    }
+                    } 
                 }
+            //::::::::::::::::::::::::: EXPRESION RETURN :::::::::::::::::::
             } else if (nodo instanceof Return) {
+                
                 Expresion e = (Expresion)nodo;
-                Entorno nuevoEnt = new Entorno(ent); //apuntamos al anterior
-                a = e.getValor(nuevoEnt);
-                //si a != nulo es porque fijo trae valores
+                a = e.getValor(ent);
                 if (a != null) {
-                    tipoA = e.getTipo(nuevoEnt);
-                    RetornoSecundario rs = new RetornoSecundario(a, tipoA, linea);
+                    Tipo  tipo = e.getTipo(ent);
+                    RetornoSecundario rs = new RetornoSecundario(a, tipo, linea);
                     return rs; //:::::::::::::::::::::::::::::::::::::::::
                 }
             } else if (nodo instanceof Expresion) {
                 Expresion exp = (Expresion) nodo;
-                Entorno nuevoEnt = new Entorno(ent); //apuntamos al anterior
-                Object b = exp.getValor(nuevoEnt);
+                Object b = exp.getValor(ent);
                 if(b != null){
                     RetornoSecundario rs = (RetornoSecundario)b;
                     return rs;
                 }
-            } 
+            }
+            //::::::::::::::::: COMPROBACION DEL BREAKE ANIDADO
+            if(ContadorBreak.getInstance().getContador() < valTmpBrake ){
+                        return null; // es porque en una instruccion se activo un breake se necesita salir
+            }
         }
         return null;
     }
