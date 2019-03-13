@@ -25,7 +25,7 @@ import java_cup.runtime.Symbol;
 numerico = [0-9]+("."[0-9]+)?
 id = [A-Za-z]+["_"0-9A-Za-z]*
 cadena = [\"\'][^\"\'\n]+[\"\']
-texto = [^\"\'"<"\n]+
+texto = [^\"\'"<"\n"}"]+
 ignora = [ \t\r\f\n]+
 COMENT_LINE =("##".*\r\n)|("##".*\n)|("##".*\r)
 
@@ -44,6 +44,14 @@ COMENT_LINE =("##".*\r\n)|("##".*\n)|("##".*\r)
 <YYINITIAL> "verdadero"      		{ return new Symbol(sym.res_verdadero,yyline,yychar, yytext());}
 <YYINITIAL> "falso"      		{ return new Symbol(sym.res_falso,yyline,yychar, yytext());}
 
+<YYINITIAL> "maximo"      		{ return new Symbol(sym.res_maximo,yyline,yychar, yytext());}
+<YYINITIAL> "minimo"      		{ return new Symbol(sym.res_minimo,yyline,yychar, yytext());}
+<YYINITIAL> "accion"      		{ return new Symbol(sym.res_accion,yyline,yychar, yytext());}
+<YYINITIAL> "{"      		{ return new Symbol(sym.res_llvOpen,yyline,yychar, yytext());}
+<YYINITIAL> "}"      		{ return new Symbol(sym.res_llvClose,yyline,yychar, yytext());}
+<YYINITIAL> "AccionInicial"      		{ return new Symbol(sym.res_accionInicial,yyline,yychar, yytext());}
+<YYINITIAL> "AccionFinal"      		{ return new Symbol(sym.res_accionFinal,yyline,yychar, yytext());}
+
 <YYINITIAL> "fuente"      		{ return new Symbol(sym.res_fuente,yyline,yychar, yytext());}
 <YYINITIAL> "tam"      		{ return new Symbol(sym.res_tam,yyline,yychar, yytext());}
 <YYINITIAL> "negrita"      		{ return new Symbol(sym.res_negrita,yyline,yychar, yytext());}
@@ -60,6 +68,7 @@ COMENT_LINE =("##".*\r\n)|("##".*\n)|("##".*\r)
 <YYINITIAL> {numerico}        { return new Symbol(sym.tNumerico,yyline,yychar, yytext());}
 <YYINITIAL> {cadena}		{ return new Symbol(sym.tCad,yyline,yychar, (yytext()).substring(1,yytext().length()-1));}
 <YYINITIAL> {id}            { return new Symbol(sym.tId,yyline,yychar, yytext());}
+<YYINITIAL> {texto}		   { return new Symbol(sym.tTexto,yyline,yychar, yytext());}
 <YYINITIAL> \n              {yychar=1;}
 <YYINITIAL> {ignora}		{} 
 <YYINITIAL> {COMENT_LINE}	{yychar=1;}

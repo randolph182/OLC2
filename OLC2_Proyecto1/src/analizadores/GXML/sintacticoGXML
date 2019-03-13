@@ -30,6 +30,7 @@ terminal String res_enviar,res_ventana,res_slash,res_Igual,res_MenorQue,res_Mayo
 terminal String tTexto,res_tipo,res_color;
 terminal String res_x,res_y,res_alto,res_ancho,res_borde,res_verdadero,res_falso;
 terminal String res_fuente,res_tam,res_negrita,res_cursiva;
+terminal String res_maximo,res_minimo,res_accion,res_llvOpen,res_llvClose,res_accionInicial,res_accionFinal;
 
 non terminal S;
 non terminal ETQ_TEXTO;
@@ -57,10 +58,13 @@ non terminal ELEMENTO_NEGRITA;
 non terminal ELEMENTO_CURSIVA;
 non terminal ELEMENTO_COLOR;
 non terminal ETQ_CONTROL;
-
 non terminal ELEMENTOS_CONTROL;
 non terminal ELEMENTO_CONTROL;
-
+non terminal ELEMENTO_MAXIMO;
+non terminal ELEMENTO_MINIMO;
+non terminal ELEMENTO_ACCION;
+non terminal LST_ETQS_CONTENEDOR;
+non terminal ETQS_CONTENEDOR;
 
 
 /* ******************************************* GRAMATICA **************************************** */
@@ -70,8 +74,16 @@ S::=	 ETQ_VENTANA
         ;
 
 
-ETQ_CONTENEDOR::=    res_MenorQue res_contenedor ELEMENTOS_CONTENEDOR res_MayorQue  ETQ_TEXTO res_MenorQue res_slash res_contenedor res_MayorQue
+ETQ_CONTENEDOR::=    res_MenorQue res_contenedor ELEMENTOS_CONTENEDOR res_MayorQue  LST_ETQS_CONTENEDOR res_MenorQue res_slash res_contenedor res_MayorQue
                     ;
+
+LST_ETQS_CONTENEDOR::=   LST_ETQS_CONTENEDOR  ETQS_CONTENEDOR
+                        | ETQS_CONTENEDOR
+                        ;
+
+ETQS_CONTENEDOR::=      ETQ_TEXTO
+                        | ETQ_CONTROL
+                        ;                                          
 
 ETQ_TEXTO::=    res_MenorQue res_texto ELEMENTOS_TEXTO res_MayorQue tTexto:tex res_MenorQue res_slash res_texto res_MayorQue {: System.out.println(tex);:} ;
 
@@ -103,7 +115,34 @@ ELEMENTO_CURSIVA::= res_cursiva res_Igual BOOLEANO
 ETQ_CONTROL::=  res_MenorQue res_control  res_MayorQue  res_MenorQue res_slash res_control res_MayorQue   
                 ;
 
+ELEMENTOS_CONTROL::= ELEMENTOS_CONTROL ELEMENTO_CONTROL
+                    |ELEMENTO_CONTROL
+                    ;
 
+ELEMENTO_CONTROL::= ELEMENTO_TIPO
+                    | ELEMENTO_ID
+                    | ELEMENTO_X
+                    | ELEMENTO_Y
+                    | ELEMENTO_ALTO
+                    | ELEMENTO_ANCHO
+                    | ELEMENTO_FUENTE
+                    | ELEMENTO_TAM
+                    | ELEMENTO_COLOR
+                    | ELEMENTO_NEGRITA
+                    | ELEMENTO_CURSIVA
+                    | ELEMENTO_MAXIMO
+                    | ELEMENTO_MINIMO
+                    | ELEMENTO_ACCION
+                    ;
+
+ELEMENTO_MAXIMO::=  res_maximo res_Igual tNumerico
+                    ;
+
+ELEMENTO_MINIMO::=  res_minimo res_Igual tNumerico
+                    ;
+
+ELEMENTO_ACCION::=  res_accion res_Igual res_llvOpen tTexto res_llvClose
+                    ;                    
 
 ETQ_VENTANA::=  res_MenorQue res_ventana ELEMENTOS_VENTANA res_MayorQue ETQ_CONTENEDOR res_MenorQue res_slash res_ventana res_MayorQue
                 ;
@@ -116,7 +155,15 @@ ELEMENTOS_VENTANA::=    ELEMENTOS_VENTANA ELEMENTO_VENTANA
 ELEMENTO_VENTANA::=     ELEMENTO_ID
                         |ELEMENTO_TIPO
                         |ELEMENTO_COLOR
+                        |ELEMENTO_ACCION_INICIAL
+                        |ELEMENTO_ACCION_FINAL
                         ;
+
+ELEMENTO_ACCION_INICIAL::=  res_accionInicial res_Igual res_llvOpen tTexto res_llvClose
+                            ;
+
+ELEMENTO_ACCION_FINAL::= res_accionFinal res_Igual res_llvOpen  tTexto res_llvClose
+                         ;
 
 ELEMENTO_ID::=          res_id res_Igual tCad
                         ;
@@ -156,7 +203,4 @@ ELEMENTO_BORDE::=       res_borde res_Igual BOOLEANO
 
 BOOLEANO::=             res_verdadero
                         |res_falso
-                        ;
-
-
-
+                        ;              
