@@ -1,0 +1,4 @@
+<ventana id = "primera" tipo = "principal">
+<contenedor id ="contenedor1" alto = 100 ancho = 230>
+</contenedor>
+</ventana>

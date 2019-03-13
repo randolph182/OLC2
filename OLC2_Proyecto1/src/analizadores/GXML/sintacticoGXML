@@ -1,0 +1,127 @@
+// jar en la pagina -> http://www2.cs.tum.edu/projects/cup/
+package analizadores.GXML;
+import java_cup.runtime.*;
+import java.util.LinkedList;
+
+// ************** importaciones de las clases que se utilizaran en el analisis *********
+
+parser code
+{:
+    /**Metodo al que se llama automáticamente ante algún error sintactico.*/
+    public void syntax_error(Symbol s){
+        System.out.println("Error sintactico en la Línea " + s.left +" Columna "+(s.right+1)+ ". Identificador "
+        +s.value + " no reconocido." );
+    }
+         /**Metodo al que se llama en el momento en que ya no es posible una recuperación de
+    errores.*/
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{
+        System.out.println("Error sintactico en la Línea " + (s.right+1)+ " Columna "+s.left+". Identificador " +
+        s.value + " no reconocido.");   
+	}
+    
+
+:}
+
+/* =========================== DECLARACION DE TERMINALES Y NO TERMINALES =========================*/
+
+terminal String tEntero,tCad,tDec;
+terminal String res_contenedor,res_texto,res_control,res_id,res_defecto,res_listaDatos,res_dato;
+terminal String res_enviar,res_ventana,res_slash,res_Igual,res_MenorQue,res_MayorQue,tId;
+terminal String tTexto,res_tipo,res_color,res_accion_inicial,res_accion_final;
+terminal String res_x,res_y,res_alto,res_ancho,res_borde,res_verdadero,res_falso,tNumerico;
+
+non terminal S;
+non terminal ETQ_TEXTO;
+non terminal ETQ_VENTANA;
+non terminal ELEMENTOS_VENTANA;
+non terminal ELEMENTO_VENTANA;
+non terminal ELEMENTO_ID;
+non terminal ELEMENTO_TIPO;
+non terminal ELEMENTO_COLOR;
+non terminal ELEMENTO_ACCION_INICIAL;
+non terminal ELEMENTO_ACCION_FINAL;
+non terminal ETQ_CONTENEDOR;
+non terminal ELEMENTOS_CONTENEDOR;
+non terminal ELEMENTO_CONTENEDOR;
+non terminal ELEMENTO_X;
+non terminal ELEMENTO_Y;
+non terminal ELEMENTO_ALTO;
+non terminal ELEMENTO_ANCHO;
+non terminal ELEMENTO_BORDE;
+non terminal BOOLEANO;
+
+
+
+/* ******************************************* GRAMATICA **************************************** */
+start with S;
+
+S::=	ETQ_TEXTO 
+        |ETQ_VENTANA
+        ;
+
+
+ETQ_CONTENEDOR::=    res_MenorQue res_contenedor ELEMENTOS_CONTENEDOR res_MayorQue  res_MenorQue res_slash res_contenedor res_MayorQue
+                    ;
+
+ETQ_TEXTO::=    res_MenorQue res_texto res_MayorQue tTexto:tex res_MenorQue res_slash res_texto res_MayorQue {: System.out.println(tex);:} ;
+
+ETQ_VENTANA::=  res_MenorQue res_ventana ELEMENTOS_VENTANA res_MayorQue ETQ_CONTENEDOR res_MenorQue res_slash res_ventana res_MayorQue
+                ;
+
+ELEMENTOS_VENTANA::=    ELEMENTOS_VENTANA ELEMENTO_VENTANA
+                        |ELEMENTO_VENTANA
+                        ;
+
+
+ELEMENTO_VENTANA::=     ELEMENTO_ID
+                        |ELEMENTO_TIPO
+                        |ELEMENTO_COLOR
+                        |ELEMENTO_ACCION_INICIAL
+                        |ELEMENTO_ACCION_FINAL
+                        ;
+
+ELEMENTO_ID::=          res_id res_Igual tCad
+                        ;
+
+ELEMENTO_TIPO::=        res_tipo res_Igual tCad
+                        ; 
+
+ELEMENTO_COLOR::=       res_color res_Igual tCad
+                        ;   
+
+ELEMENTO_ACCION_INICIAL::=  res_accioninicial
+                            ;
+
+ELEMENTO_ACCION_FINAL::=    res_accionfinal
+                            ;
+
+ELEMENTOS_CONTENEDOR::=  ELEMENTOS_CONTENEDOR ELEMENTO_CONTENEDOR
+                         |ELEMENTO_CONTENEDOR
+                         ;
+
+ELEMENTO_CONTENEDOR::=  ELEMENTO_ID
+                        |ELEMENTO_X
+                        |ELEMENTO_Y
+                        |ELEMENTO_ALTO
+                        |ELEMENTO_ANCHO
+                        |ELEMENTO_COLOR
+                        |ELEMENTO_BORDE
+                        ;
+
+ELEMENTO_X::=           res_x res_Igual  tNumerico
+                        ;              
+
+ELEMENTO_Y::=           res_y res_Igual tNumerico
+                        ;
+
+ELEMENTO_ALTO::=        res_alto res_Igual tNumerico
+                        ;
+ELEMENTO_ANCHO::=       res_ancho res_Igual tNumerico
+                        ;
+
+ELEMENTO_BORDE::=       res_borde res_Igual BOOLEANO
+                        ;
+
+BOOLEANO::=             res_verdadero
+                        |res_falso
+                        ;                        

@@ -47,6 +47,7 @@ public class Editor extends javax.swing.JFrame {
         btnCompilar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtxtConsola = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -69,6 +70,13 @@ public class Editor extends javax.swing.JFrame {
         jtxtConsola.setColumns(20);
         jtxtConsola.setRows(5);
         jScrollPane2.setViewportView(jtxtConsola);
+
+        jButton1.setText("CompilaGXML");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu2.setText("File");
         jMenuBar1.add(jMenu2);
@@ -95,7 +103,10 @@ public class Editor extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
-                    .addComponent(btnCompilar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCompilar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane1))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
@@ -105,7 +116,9 @@ public class Editor extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCompilar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCompilar)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
@@ -156,6 +169,35 @@ public class Editor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMnuItmFSActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        
+        try {
+            fichero =  new FileWriter("entrada2.txt");
+            pw = new PrintWriter(fichero);
+            //la alternativa mas rapida es  pw.println(txtAreaTrabajo.getText());
+            char[] informacion = jtxtAreaTrabajo.getText().toCharArray();
+            for (int i = 0; i < jtxtAreaTrabajo.getText().length(); i++) {
+                if(informacion[i] == '\n')
+                    pw.println("");
+                else
+                    pw.print(informacion[i]);
+            }
+        } catch (Exception e) {
+            System.out.println("Error en la escritura del archivo en Editor" + e);
+        } finally{
+            try {
+                //si utiliza el finally par asegurarse de haber cerrado el archivo
+                if(null != fichero)
+                    fichero.close();
+                    analizar2("entrada2.txt"); //ANALIZAMOS EL ARCHIVO DE ENTRADA
+            } catch (Exception e) {
+                System.out.println("Error al cerrar el archivo en la Clase Editor" + e);
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -193,6 +235,7 @@ public class Editor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCompilar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
@@ -210,6 +253,27 @@ public class Editor extends javax.swing.JFrame {
             parserFS = new analizadores.FS.sintacticoFS(new analizadores.FS.lexicoFS(new FileInputStream(path)));
             parserFS.parse();
             parserFS.ast.ejecutar();
+            
+//            ManejadorErroresFS e = ManejadorErroresFS.getInstance();
+//            for(ErrorFS fs:e.getTablaErrores()){   
+//                System.out.println("tipo: " +fs.getTipo()+ " descripcion "+ fs.getDescripcion());
+//            }
+        } catch (Exception e) {
+            ManejadorErroresFS.getInstance();
+            System.out.println("Error Fatal al trata de analizar el archivo");
+            System.out.println("Causa " + e.getCause());
+        }
+        
+        
+    }
+    
+        public static void analizar2(String path){
+        analizadores.GXML.sintacticoGXML parserGXML;
+        try {
+            consola.setText("");
+            parserGXML = new analizadores.GXML.sintacticoGXML(new analizadores.GXML.lexicoGXML(new FileInputStream(path)));
+            parserGXML.parse();
+//            parserFS.ast.ejecutar();
             
 //            ManejadorErroresFS e = ManejadorErroresFS.getInstance();
 //            for(ErrorFS fs:e.getTablaErrores()){   
