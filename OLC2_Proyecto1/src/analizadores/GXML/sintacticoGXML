@@ -24,11 +24,12 @@ parser code
 
 /* =========================== DECLARACION DE TERMINALES Y NO TERMINALES =========================*/
 
-terminal String tEntero,tCad,tDec;
+terminal String tNumerico,tCad;
 terminal String res_contenedor,res_texto,res_control,res_id,res_defecto,res_listaDatos,res_dato;
 terminal String res_enviar,res_ventana,res_slash,res_Igual,res_MenorQue,res_MayorQue,tId;
-terminal String tTexto,res_tipo,res_color,res_accion_inicial,res_accion_final;
-terminal String res_x,res_y,res_alto,res_ancho,res_borde,res_verdadero,res_falso,tNumerico;
+terminal String tTexto,res_tipo,res_color;
+terminal String res_x,res_y,res_alto,res_ancho,res_borde,res_verdadero,res_falso;
+terminal String res_fuente,res_tam,res_negrita,res_cursiva;
 
 non terminal S;
 non terminal ETQ_TEXTO;
@@ -37,7 +38,6 @@ non terminal ELEMENTOS_VENTANA;
 non terminal ELEMENTO_VENTANA;
 non terminal ELEMENTO_ID;
 non terminal ELEMENTO_TIPO;
-non terminal ELEMENTO_COLOR;
 non terminal ELEMENTO_ACCION_INICIAL;
 non terminal ELEMENTO_ACCION_FINAL;
 non terminal ETQ_CONTENEDOR;
@@ -49,21 +49,61 @@ non terminal ELEMENTO_ALTO;
 non terminal ELEMENTO_ANCHO;
 non terminal ELEMENTO_BORDE;
 non terminal BOOLEANO;
+non terminal ELEMENTOS_TEXTO;
+non terminal ELEMENTO_TEXTO;
+non terminal ELEMENTO_FUENTE;
+non terminal ELEMENTO_TAM;
+non terminal ELEMENTO_NEGRITA;
+non terminal ELEMENTO_CURSIVA;
+non terminal ELEMENTO_COLOR;
+non terminal ETQ_CONTROL;
+
+non terminal ELEMENTOS_CONTROL;
+non terminal ELEMENTO_CONTROL;
 
 
 
 /* ******************************************* GRAMATICA **************************************** */
 start with S;
 
-S::=	ETQ_TEXTO 
-        |ETQ_VENTANA
+S::=	 ETQ_VENTANA
         ;
 
 
-ETQ_CONTENEDOR::=    res_MenorQue res_contenedor ELEMENTOS_CONTENEDOR res_MayorQue  res_MenorQue res_slash res_contenedor res_MayorQue
+ETQ_CONTENEDOR::=    res_MenorQue res_contenedor ELEMENTOS_CONTENEDOR res_MayorQue  ETQ_TEXTO res_MenorQue res_slash res_contenedor res_MayorQue
                     ;
 
-ETQ_TEXTO::=    res_MenorQue res_texto res_MayorQue tTexto:tex res_MenorQue res_slash res_texto res_MayorQue {: System.out.println(tex);:} ;
+ETQ_TEXTO::=    res_MenorQue res_texto ELEMENTOS_TEXTO res_MayorQue tTexto:tex res_MenorQue res_slash res_texto res_MayorQue {: System.out.println(tex);:} ;
+
+ELEMENTOS_TEXTO::=  ELEMENTOS_TEXTO ELEMENTO_TEXTO
+                    |ELEMENTO_TEXTO
+                    ;
+
+ELEMENTO_TEXTO::=   ELEMENTO_ID
+                    | ELEMENTO_X
+                    | ELEMENTO_Y
+                    | ELEMENTO_FUENTE
+                    | ELEMENTO_TAM
+                    | ELEMENTO_NEGRITA
+                    | ELEMENTO_CURSIVA
+                    | ELEMENTO_COLOR
+                    ;
+
+ELEMENTO_FUENTE::=  res_fuente res_Igual tCad
+                    ;
+ELEMENTO_TAM::=     res_tam res_Igual tNumerico
+                    ;
+
+ELEMENTO_NEGRITA::= res_negrita res_Igual BOOLEANO
+                    ;
+
+ELEMENTO_CURSIVA::= res_cursiva res_Igual BOOLEANO
+                    ;                  
+
+ETQ_CONTROL::=  res_MenorQue res_control  res_MayorQue  res_MenorQue res_slash res_control res_MayorQue   
+                ;
+
+
 
 ETQ_VENTANA::=  res_MenorQue res_ventana ELEMENTOS_VENTANA res_MayorQue ETQ_CONTENEDOR res_MenorQue res_slash res_ventana res_MayorQue
                 ;
@@ -76,8 +116,6 @@ ELEMENTOS_VENTANA::=    ELEMENTOS_VENTANA ELEMENTO_VENTANA
 ELEMENTO_VENTANA::=     ELEMENTO_ID
                         |ELEMENTO_TIPO
                         |ELEMENTO_COLOR
-                        |ELEMENTO_ACCION_INICIAL
-                        |ELEMENTO_ACCION_FINAL
                         ;
 
 ELEMENTO_ID::=          res_id res_Igual tCad
@@ -88,12 +126,6 @@ ELEMENTO_TIPO::=        res_tipo res_Igual tCad
 
 ELEMENTO_COLOR::=       res_color res_Igual tCad
                         ;   
-
-ELEMENTO_ACCION_INICIAL::=  res_accioninicial
-                            ;
-
-ELEMENTO_ACCION_FINAL::=    res_accionfinal
-                            ;
 
 ELEMENTOS_CONTENEDOR::=  ELEMENTOS_CONTENEDOR ELEMENTO_CONTENEDOR
                          |ELEMENTO_CONTENEDOR
@@ -124,4 +156,7 @@ ELEMENTO_BORDE::=       res_borde res_Igual BOOLEANO
 
 BOOLEANO::=             res_verdadero
                         |res_falso
-                        ;                        
+                        ;
+
+
+

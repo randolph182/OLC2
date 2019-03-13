@@ -32,17 +32,20 @@ public class sintacticoGXML extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\042\000\002\002\004\000\002\002\003\000\002\002" +
-    "\003\000\002\014\012\000\002\003\012\000\002\004\013" +
+    "\000\053\000\002\002\004\000\002\002\003\000\002\013" +
+    "\013\000\002\003\013\000\002\024\004\000\002\024\003" +
+    "\000\002\025\003\000\002\025\003\000\002\025\003\000" +
+    "\002\025\003\000\002\025\003\000\002\025\003\000\002" +
+    "\025\003\000\002\025\003\000\002\026\005\000\002\027" +
+    "\005\000\002\030\005\000\002\031\005\000\002\004\013" +
     "\000\002\005\004\000\002\005\003\000\002\006\003\000" +
-    "\002\006\003\000\002\006\003\000\002\006\003\000\002" +
-    "\006\003\000\002\007\005\000\002\010\005\000\002\011" +
-    "\005\000\002\012\003\000\002\013\003\000\002\015\004" +
-    "\000\002\015\003\000\002\016\003\000\002\016\003\000" +
-    "\002\016\003\000\002\016\003\000\002\016\003\000\002" +
-    "\016\003\000\002\016\003\000\002\017\005\000\002\020" +
-    "\005\000\002\021\005\000\002\022\005\000\002\023\005" +
-    "\000\002\024\003\000\002\024\003" });
+    "\002\006\003\000\002\006\003\000\002\007\005\000\002" +
+    "\010\005\000\002\032\005\000\002\014\004\000\002\014" +
+    "\003\000\002\015\003\000\002\015\003\000\002\015\003" +
+    "\000\002\015\003\000\002\015\003\000\002\015\003\000" +
+    "\002\015\003\000\002\016\005\000\002\017\005\000\002" +
+    "\020\005\000\002\021\005\000\002\022\005\000\002\023" +
+    "\003\000\002\023\003" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -50,72 +53,99 @@ public class sintacticoGXML extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\111\000\004\022\006\001\002\000\004\002\000\001" +
-    "\002\000\004\002\113\001\002\000\006\010\011\017\010" +
-    "\001\002\000\004\002\uffff\001\002\000\014\012\031\026" +
-    "\020\027\030\030\026\031\021\001\002\000\004\023\012" +
-    "\001\002\000\004\025\013\001\002\000\004\022\014\001" +
-    "\002\000\004\020\015\001\002\000\004\010\016\001\002" +
-    "\000\004\023\017\001\002\000\004\002\ufffd\001\002\000" +
-    "\004\021\111\001\002\000\016\012\ufff0\023\ufff0\026\ufff0" +
-    "\027\ufff0\030\ufff0\031\ufff0\001\002\000\016\012\ufffa\023" +
-    "\ufffa\026\ufffa\027\ufffa\030\ufffa\031\ufffa\001\002\000\016" +
-    "\012\ufff6\023\ufff6\026\ufff6\027\ufff6\030\ufff6\031\ufff6\001" +
-    "\002\000\016\012\ufff7\023\ufff7\026\ufff7\027\ufff7\030\ufff7" +
-    "\031\ufff7\001\002\000\016\012\ufff8\023\ufff8\026\ufff8\027" +
-    "\ufff8\030\ufff8\031\ufff8\001\002\000\016\012\ufff1\023\ufff1" +
-    "\026\ufff1\027\ufff1\030\ufff1\031\ufff1\001\002\000\016\012" +
-    "\ufff5\023\ufff5\026\ufff5\027\ufff5\030\ufff5\031\ufff5\001\002" +
-    "\000\004\021\107\001\002\000\004\021\105\001\002\000" +
-    "\016\012\031\023\035\026\020\027\030\030\026\031\021" +
-    "\001\002\000\016\012\ufff9\023\ufff9\026\ufff9\027\ufff9\030" +
-    "\ufff9\031\ufff9\001\002\000\016\012\ufffb\023\ufffb\026\ufffb" +
-    "\027\ufffb\030\ufffb\031\ufffb\001\002\000\004\022\037\001" +
-    "\002\000\004\022\101\001\002\000\004\007\040\001\002" +
-    "\000\020\012\031\027\030\032\051\033\047\034\043\035" +
-    "\056\036\053\001\002\000\022\012\031\023\074\027\030" +
-    "\032\051\033\047\034\043\035\056\036\053\001\002\000" +
-    "\022\012\uffe7\023\uffe7\027\uffe7\032\uffe7\033\uffe7\034\uffe7" +
-    "\035\uffe7\036\uffe7\001\002\000\004\021\071\001\002\000" +
-    "\022\012\uffeb\023\uffeb\027\uffeb\032\uffeb\033\uffeb\034\uffeb" +
-    "\035\uffeb\036\uffeb\001\002\000\022\012\uffec\023\uffec\027" +
-    "\uffec\032\uffec\033\uffec\034\uffec\035\uffec\036\uffec\001\002" +
-    "\000\022\012\uffe8\023\uffe8\027\uffe8\032\uffe8\033\uffe8\034" +
-    "\uffe8\035\uffe8\036\uffe8\001\002\000\004\021\067\001\002" +
-    "\000\022\012\uffe9\023\uffe9\027\uffe9\032\uffe9\033\uffe9\034" +
-    "\uffe9\035\uffe9\036\uffe9\001\002\000\004\021\065\001\002" +
-    "\000\022\012\uffea\023\uffea\027\uffea\032\uffea\033\uffea\034" +
-    "\uffea\035\uffea\036\uffea\001\002\000\004\021\061\001\002" +
-    "\000\022\012\uffee\023\uffee\027\uffee\032\uffee\033\uffee\034" +
-    "\uffee\035\uffee\036\uffee\001\002\000\022\012\uffed\023\uffed" +
-    "\027\uffed\032\uffed\033\uffed\034\uffed\035\uffed\036\uffed\001" +
-    "\002\000\004\021\057\001\002\000\004\041\060\001\002" +
-    "\000\022\012\uffe3\023\uffe3\027\uffe3\032\uffe3\033\uffe3\034" +
-    "\uffe3\035\uffe3\036\uffe3\001\002\000\006\037\063\040\062" +
-    "\001\002\000\022\012\uffe0\023\uffe0\027\uffe0\032\uffe0\033" +
-    "\uffe0\034\uffe0\035\uffe0\036\uffe0\001\002\000\022\012\uffe1" +
-    "\023\uffe1\027\uffe1\032\uffe1\033\uffe1\034\uffe1\035\uffe1\036" +
-    "\uffe1\001\002\000\022\012\uffe2\023\uffe2\027\uffe2\032\uffe2" +
-    "\033\uffe2\034\uffe2\035\uffe2\036\uffe2\001\002\000\004\041" +
-    "\066\001\002\000\022\012\uffe6\023\uffe6\027\uffe6\032\uffe6" +
-    "\033\uffe6\034\uffe6\035\uffe6\036\uffe6\001\002\000\004\041" +
-    "\070\001\002\000\022\012\uffe5\023\uffe5\027\uffe5\032\uffe5" +
-    "\033\uffe5\034\uffe5\035\uffe5\036\uffe5\001\002\000\004\041" +
-    "\072\001\002\000\022\012\uffe4\023\uffe4\027\uffe4\032\uffe4" +
-    "\033\uffe4\034\uffe4\035\uffe4\036\uffe4\001\002\000\022\012" +
-    "\uffef\023\uffef\027\uffef\032\uffef\033\uffef\034\uffef\035\uffef" +
-    "\036\uffef\001\002\000\004\022\075\001\002\000\004\020" +
-    "\076\001\002\000\004\007\077\001\002\000\004\023\100" +
-    "\001\002\000\004\022\ufffe\001\002\000\004\020\102\001" +
-    "\002\000\004\017\103\001\002\000\004\023\104\001\002" +
-    "\000\004\002\ufffc\001\002\000\004\005\106\001\002\000" +
-    "\030\012\ufff4\023\ufff4\026\ufff4\027\ufff4\030\ufff4\031\ufff4" +
-    "\032\ufff4\033\ufff4\034\ufff4\035\ufff4\036\ufff4\001\002\000" +
-    "\004\005\110\001\002\000\030\012\ufff2\023\ufff2\026\ufff2" +
-    "\027\ufff2\030\ufff2\031\ufff2\032\ufff2\033\ufff2\034\ufff2\035" +
-    "\ufff2\036\ufff2\001\002\000\004\005\112\001\002\000\016" +
-    "\012\ufff3\023\ufff3\026\ufff3\027\ufff3\030\ufff3\031\ufff3\001" +
-    "\002\000\004\002\001\001\002" });
+    "\000\135\000\004\021\005\001\002\000\004\002\137\001" +
+    "\002\000\004\016\007\001\002\000\004\002\000\001\002" +
+    "\000\010\011\016\025\017\026\014\001\002\000\012\011" +
+    "\uffea\022\uffea\025\uffea\026\uffea\001\002\000\012\011\uffec" +
+    "\022\uffec\025\uffec\026\uffec\001\002\000\012\011\016\022" +
+    "\026\025\017\026\014\001\002\000\012\011\uffeb\022\uffeb" +
+    "\025\uffeb\026\uffeb\001\002\000\004\020\024\001\002\000" +
+    "\012\011\uffed\022\uffed\025\uffed\026\uffed\001\002\000\004" +
+    "\020\022\001\002\000\004\020\020\001\002\000\004\005" +
+    "\021\001\002\000\012\011\uffe8\022\uffe8\025\uffe8\026\uffe8" +
+    "\001\002\000\004\005\023\001\002\000\034\011\uffe9\022" +
+    "\uffe9\025\uffe9\026\uffe9\027\uffe9\030\uffe9\031\uffe9\032\uffe9" +
+    "\033\uffe9\036\uffe9\037\uffe9\040\uffe9\041\uffe9\001\002\000" +
+    "\004\005\025\001\002\000\034\011\uffe7\022\uffe7\025\uffe7" +
+    "\026\uffe7\027\uffe7\030\uffe7\031\uffe7\032\uffe7\033\uffe7\036" +
+    "\uffe7\037\uffe7\040\uffe7\041\uffe7\001\002\000\004\021\031" +
+    "\001\002\000\012\011\uffee\022\uffee\025\uffee\026\uffee\001" +
+    "\002\000\004\021\133\001\002\000\004\006\032\001\002" +
+    "\000\020\011\016\026\014\027\043\030\041\031\035\032" +
+    "\050\033\045\001\002\000\022\011\016\022\066\026\014" +
+    "\027\043\030\041\031\035\032\050\033\045\001\002\000" +
+    "\022\011\uffde\022\uffde\026\uffde\027\uffde\030\uffde\031\uffde" +
+    "\032\uffde\033\uffde\001\002\000\004\020\063\001\002\000" +
+    "\022\011\uffe2\022\uffe2\026\uffe2\027\uffe2\030\uffe2\031\uffe2" +
+    "\032\uffe2\033\uffe2\001\002\000\022\011\uffe3\022\uffe3\026" +
+    "\uffe3\027\uffe3\030\uffe3\031\uffe3\032\uffe3\033\uffe3\001\002" +
+    "\000\022\011\uffdf\022\uffdf\026\uffdf\027\uffdf\030\uffdf\031" +
+    "\uffdf\032\uffdf\033\uffdf\001\002\000\004\020\061\001\002" +
+    "\000\022\011\uffe0\022\uffe0\026\uffe0\027\uffe0\030\uffe0\031" +
+    "\uffe0\032\uffe0\033\uffe0\001\002\000\004\020\057\001\002" +
+    "\000\022\011\uffe1\022\uffe1\026\uffe1\027\uffe1\030\uffe1\031" +
+    "\uffe1\032\uffe1\033\uffe1\001\002\000\004\020\053\001\002" +
+    "\000\022\011\uffe5\022\uffe5\026\uffe5\027\uffe5\030\uffe5\031" +
+    "\uffe5\032\uffe5\033\uffe5\001\002\000\022\011\uffe4\022\uffe4" +
+    "\026\uffe4\027\uffe4\030\uffe4\031\uffe4\032\uffe4\033\uffe4\001" +
+    "\002\000\004\020\051\001\002\000\004\004\052\001\002" +
+    "\000\022\011\uffda\022\uffda\026\uffda\027\uffda\030\uffda\031" +
+    "\uffda\032\uffda\033\uffda\001\002\000\006\034\055\035\054" +
+    "\001\002\000\032\011\uffd7\022\uffd7\026\uffd7\027\uffd7\030" +
+    "\uffd7\031\uffd7\032\uffd7\033\uffd7\036\uffd7\037\uffd7\040\uffd7" +
+    "\041\uffd7\001\002\000\032\011\uffd8\022\uffd8\026\uffd8\027" +
+    "\uffd8\030\uffd8\031\uffd8\032\uffd8\033\uffd8\036\uffd8\037\uffd8" +
+    "\040\uffd8\041\uffd8\001\002\000\022\011\uffd9\022\uffd9\026" +
+    "\uffd9\027\uffd9\030\uffd9\031\uffd9\032\uffd9\033\uffd9\001\002" +
+    "\000\004\004\060\001\002\000\032\011\uffdd\022\uffdd\026" +
+    "\uffdd\027\uffdd\030\uffdd\031\uffdd\032\uffdd\033\uffdd\036\uffdd" +
+    "\037\uffdd\040\uffdd\041\uffdd\001\002\000\004\004\062\001" +
+    "\002\000\032\011\uffdc\022\uffdc\026\uffdc\027\uffdc\030\uffdc" +
+    "\031\uffdc\032\uffdc\033\uffdc\036\uffdc\037\uffdc\040\uffdc\041" +
+    "\uffdc\001\002\000\004\004\064\001\002\000\022\011\uffdb" +
+    "\022\uffdb\026\uffdb\027\uffdb\030\uffdb\031\uffdb\032\uffdb\033" +
+    "\uffdb\001\002\000\022\011\uffe6\022\uffe6\026\uffe6\027\uffe6" +
+    "\030\uffe6\031\uffe6\032\uffe6\033\uffe6\001\002\000\004\021" +
+    "\070\001\002\000\004\021\127\001\002\000\004\007\071" +
+    "\001\002\000\022\011\016\026\014\027\043\030\041\036" +
+    "\106\037\100\040\105\041\072\001\002\000\004\020\125" +
+    "\001\002\000\024\011\ufffc\022\ufffc\026\ufffc\027\ufffc\030" +
+    "\ufffc\036\ufffc\037\ufffc\040\ufffc\041\ufffc\001\002\000\024" +
+    "\011\016\022\117\026\014\027\043\030\041\036\106\037" +
+    "\100\040\105\041\072\001\002\000\024\011\ufff9\022\ufff9" +
+    "\026\ufff9\027\ufff9\030\ufff9\036\ufff9\037\ufff9\040\ufff9\041" +
+    "\ufff9\001\002\000\024\011\ufffb\022\ufffb\026\ufffb\027\ufffb" +
+    "\030\ufffb\036\ufffb\037\ufffb\040\ufffb\041\ufffb\001\002\000" +
+    "\024\011\ufffa\022\ufffa\026\ufffa\027\ufffa\030\ufffa\036\ufffa" +
+    "\037\ufffa\040\ufffa\041\ufffa\001\002\000\004\020\114\001" +
+    "\002\000\024\011\ufff5\022\ufff5\026\ufff5\027\ufff5\030\ufff5" +
+    "\036\ufff5\037\ufff5\040\ufff5\041\ufff5\001\002\000\024\011" +
+    "\ufff6\022\ufff6\026\ufff6\027\ufff6\030\ufff6\036\ufff6\037\ufff6" +
+    "\040\ufff6\041\ufff6\001\002\000\024\011\ufff7\022\ufff7\026" +
+    "\ufff7\027\ufff7\030\ufff7\036\ufff7\037\ufff7\040\ufff7\041\ufff7" +
+    "\001\002\000\024\011\ufff4\022\ufff4\026\ufff4\027\ufff4\030" +
+    "\ufff4\036\ufff4\037\ufff4\040\ufff4\041\ufff4\001\002\000\004" +
+    "\020\112\001\002\000\004\020\110\001\002\000\024\011" +
+    "\ufff8\022\ufff8\026\ufff8\027\ufff8\030\ufff8\036\ufff8\037\ufff8" +
+    "\040\ufff8\041\ufff8\001\002\000\004\005\111\001\002\000" +
+    "\024\011\ufff3\022\ufff3\026\ufff3\027\ufff3\030\ufff3\036\ufff3" +
+    "\037\ufff3\040\ufff3\041\ufff3\001\002\000\006\034\055\035" +
+    "\054\001\002\000\024\011\ufff1\022\ufff1\026\ufff1\027\ufff1" +
+    "\030\ufff1\036\ufff1\037\ufff1\040\ufff1\041\ufff1\001\002\000" +
+    "\004\004\115\001\002\000\024\011\ufff2\022\ufff2\026\ufff2" +
+    "\027\ufff2\030\ufff2\036\ufff2\037\ufff2\040\ufff2\041\ufff2\001" +
+    "\002\000\024\011\ufffd\022\ufffd\026\ufffd\027\ufffd\030\ufffd" +
+    "\036\ufffd\037\ufffd\040\ufffd\041\ufffd\001\002\000\004\024" +
+    "\120\001\002\000\004\021\121\001\002\000\004\017\122" +
+    "\001\002\000\004\007\123\001\002\000\004\022\124\001" +
+    "\002\000\004\021\ufffe\001\002\000\006\034\055\035\054" +
+    "\001\002\000\024\011\ufff0\022\ufff0\026\ufff0\027\ufff0\030" +
+    "\ufff0\036\ufff0\037\ufff0\040\ufff0\041\ufff0\001\002\000\004" +
+    "\017\130\001\002\000\004\006\131\001\002\000\004\022" +
+    "\132\001\002\000\004\021\uffff\001\002\000\004\017\134" +
+    "\001\002\000\004\016\135\001\002\000\004\022\136\001" +
+    "\002\000\004\002\uffef\001\002\000\004\002\001\001\002" +
+    "" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -123,35 +153,43 @@ public class sintacticoGXML extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\111\000\010\002\004\003\003\004\006\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\020\005\031\006\021\007\032\010\024\011" +
-    "\023\012\022\013\026\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\016\006" +
-    "\033\007\032\010\024\011\023\012\022\013\026\001\001" +
-    "\000\002\001\001\000\002\001\001\000\004\014\035\001" +
-    "\001\000\002\001\001\000\002\001\001\000\024\007\054" +
-    "\011\045\015\040\016\053\017\044\020\043\021\051\022" +
-    "\047\023\041\001\001\000\022\007\054\011\045\016\072" +
-    "\017\044\020\043\021\051\022\047\023\041\001\001\000" +
+    "\000\135\000\006\002\003\004\005\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\014\005\011" +
+    "\006\014\007\010\010\012\032\007\001\001\000\002\001" +
+    "\001\000\002\001\001\000\012\006\026\007\010\010\012" +
+    "\032\007\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\004\024\063\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\001\000\002\001\001\000\002\001\001\000\004\013\027" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\024\007\046\014\032\015\045\016\036\017\035" +
+    "\020\043\021\041\022\033\032\037\001\001\000\022\007" +
+    "\046\015\064\016\036\017\035\020\043\021\041\022\033" +
+    "\032\037\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\023\055\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\004\003\066\001\001\000" +
+    "\002\001\001\000\002\001\001\000\026\007\075\016\076" +
+    "\017\074\024\073\025\072\026\106\027\102\030\101\031" +
+    "\100\032\103\001\001\000\002\001\001\000\002\001\001" +
+    "\000\024\007\075\016\076\017\074\025\115\026\106\027" +
+    "\102\030\101\031\100\032\103\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\023\112" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "" });
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\004\023\125\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -244,7 +282,7 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 1: // S ::= ETQ_TEXTO 
+          case 1: // S ::= ETQ_VENTANA 
             {
               Object RESULT =null;
 
@@ -253,37 +291,154 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 2: // S ::= ETQ_VENTANA 
+          case 2: // ETQ_CONTENEDOR ::= res_MenorQue res_contenedor ELEMENTOS_CONTENEDOR res_MayorQue ETQ_TEXTO res_MenorQue res_slash res_contenedor res_MayorQue 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("S",0, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ETQ_CONTENEDOR",9, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-8)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // ETQ_CONTENEDOR ::= res_MenorQue res_contenedor ELEMENTOS_CONTENEDOR res_MayorQue res_MenorQue res_slash res_contenedor res_MayorQue 
-            {
-              Object RESULT =null;
-
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ETQ_CONTENEDOR",10, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-7)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
-            }
-          return CUP$sintacticoGXML$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // ETQ_TEXTO ::= res_MenorQue res_texto res_MayorQue tTexto res_MenorQue res_slash res_texto res_MayorQue 
+          case 3: // ETQ_TEXTO ::= res_MenorQue res_texto ELEMENTOS_TEXTO res_MayorQue tTexto res_MenorQue res_slash res_texto res_MayorQue 
             {
               Object RESULT =null;
 		int texleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).left;
 		int texright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).right;
 		String tex = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).value;
 		 System.out.println(tex);
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ETQ_TEXTO",1, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-7)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ETQ_TEXTO",1, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-8)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 5: // ETQ_VENTANA ::= res_MenorQue res_ventana ELEMENTOS_VENTANA res_MayorQue ETQ_CONTENEDOR res_MenorQue res_slash res_ventana res_MayorQue 
+          case 4: // ELEMENTOS_TEXTO ::= ELEMENTOS_TEXTO ELEMENTO_TEXTO 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_TEXTO",18, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 5: // ELEMENTOS_TEXTO ::= ELEMENTO_TEXTO 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_TEXTO",18, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 6: // ELEMENTO_TEXTO ::= ELEMENTO_ID 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",19, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 7: // ELEMENTO_TEXTO ::= ELEMENTO_X 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",19, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 8: // ELEMENTO_TEXTO ::= ELEMENTO_Y 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",19, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 9: // ELEMENTO_TEXTO ::= ELEMENTO_FUENTE 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",19, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 10: // ELEMENTO_TEXTO ::= ELEMENTO_TAM 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",19, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 11: // ELEMENTO_TEXTO ::= ELEMENTO_NEGRITA 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",19, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 12: // ELEMENTO_TEXTO ::= ELEMENTO_CURSIVA 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",19, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 13: // ELEMENTO_TEXTO ::= ELEMENTO_COLOR 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",19, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 14: // ELEMENTO_FUENTE ::= res_fuente res_Igual tCad 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_FUENTE",20, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 15: // ELEMENTO_TAM ::= res_tam res_Igual tNumerico 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TAM",21, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 16: // ELEMENTO_NEGRITA ::= res_negrita res_Igual BOOLEANO 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_NEGRITA",22, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 17: // ELEMENTO_CURSIVA ::= res_cursiva res_Igual BOOLEANO 
+            {
+              Object RESULT =null;
+
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CURSIVA",23, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 18: // ETQ_VENTANA ::= res_MenorQue res_ventana ELEMENTOS_VENTANA res_MayorQue ETQ_CONTENEDOR res_MenorQue res_slash res_ventana res_MayorQue 
             {
               Object RESULT =null;
 
@@ -292,7 +447,7 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 6: // ELEMENTOS_VENTANA ::= ELEMENTOS_VENTANA ELEMENTO_VENTANA 
+          case 19: // ELEMENTOS_VENTANA ::= ELEMENTOS_VENTANA ELEMENTO_VENTANA 
             {
               Object RESULT =null;
 
@@ -301,7 +456,7 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // ELEMENTOS_VENTANA ::= ELEMENTO_VENTANA 
+          case 20: // ELEMENTOS_VENTANA ::= ELEMENTO_VENTANA 
             {
               Object RESULT =null;
 
@@ -310,7 +465,7 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // ELEMENTO_VENTANA ::= ELEMENTO_ID 
+          case 21: // ELEMENTO_VENTANA ::= ELEMENTO_ID 
             {
               Object RESULT =null;
 
@@ -319,7 +474,7 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 9: // ELEMENTO_VENTANA ::= ELEMENTO_TIPO 
+          case 22: // ELEMENTO_VENTANA ::= ELEMENTO_TIPO 
             {
               Object RESULT =null;
 
@@ -328,7 +483,7 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 10: // ELEMENTO_VENTANA ::= ELEMENTO_COLOR 
+          case 23: // ELEMENTO_VENTANA ::= ELEMENTO_COLOR 
             {
               Object RESULT =null;
 
@@ -337,25 +492,7 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // ELEMENTO_VENTANA ::= ELEMENTO_ACCION_INICIAL 
-            {
-              Object RESULT =null;
-
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_VENTANA",4, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
-            }
-          return CUP$sintacticoGXML$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // ELEMENTO_VENTANA ::= ELEMENTO_ACCION_FINAL 
-            {
-              Object RESULT =null;
-
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_VENTANA",4, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
-            }
-          return CUP$sintacticoGXML$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 13: // ELEMENTO_ID ::= res_id res_Igual tCad 
+          case 24: // ELEMENTO_ID ::= res_id res_Igual tCad 
             {
               Object RESULT =null;
 
@@ -364,7 +501,7 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 14: // ELEMENTO_TIPO ::= res_tipo res_Igual tCad 
+          case 25: // ELEMENTO_TIPO ::= res_tipo res_Igual tCad 
             {
               Object RESULT =null;
 
@@ -373,173 +510,155 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 15: // ELEMENTO_COLOR ::= res_color res_Igual tCad 
+          case 26: // ELEMENTO_COLOR ::= res_color res_Igual tCad 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_COLOR",7, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_COLOR",24, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // ELEMENTO_ACCION_INICIAL ::= res_accioninicial 
+          case 27: // ELEMENTOS_CONTENEDOR ::= ELEMENTOS_CONTENEDOR ELEMENTO_CONTENEDOR 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_ACCION_INICIAL",8, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_CONTENEDOR",10, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // ELEMENTO_ACCION_FINAL ::= res_accionfinal 
+          case 28: // ELEMENTOS_CONTENEDOR ::= ELEMENTO_CONTENEDOR 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_ACCION_FINAL",9, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_CONTENEDOR",10, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 18: // ELEMENTOS_CONTENEDOR ::= ELEMENTOS_CONTENEDOR ELEMENTO_CONTENEDOR 
+          case 29: // ELEMENTO_CONTENEDOR ::= ELEMENTO_ID 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_CONTENEDOR",11, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",11, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 19: // ELEMENTOS_CONTENEDOR ::= ELEMENTO_CONTENEDOR 
+          case 30: // ELEMENTO_CONTENEDOR ::= ELEMENTO_X 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_CONTENEDOR",11, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",11, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 20: // ELEMENTO_CONTENEDOR ::= ELEMENTO_ID 
+          case 31: // ELEMENTO_CONTENEDOR ::= ELEMENTO_Y 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",12, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",11, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 21: // ELEMENTO_CONTENEDOR ::= ELEMENTO_X 
+          case 32: // ELEMENTO_CONTENEDOR ::= ELEMENTO_ALTO 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",12, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",11, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 22: // ELEMENTO_CONTENEDOR ::= ELEMENTO_Y 
+          case 33: // ELEMENTO_CONTENEDOR ::= ELEMENTO_ANCHO 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",12, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",11, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 23: // ELEMENTO_CONTENEDOR ::= ELEMENTO_ALTO 
+          case 34: // ELEMENTO_CONTENEDOR ::= ELEMENTO_COLOR 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",12, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",11, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 24: // ELEMENTO_CONTENEDOR ::= ELEMENTO_ANCHO 
+          case 35: // ELEMENTO_CONTENEDOR ::= ELEMENTO_BORDE 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",12, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",11, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 25: // ELEMENTO_CONTENEDOR ::= ELEMENTO_COLOR 
+          case 36: // ELEMENTO_X ::= res_x res_Igual tNumerico 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",12, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_X",12, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 26: // ELEMENTO_CONTENEDOR ::= ELEMENTO_BORDE 
+          case 37: // ELEMENTO_Y ::= res_y res_Igual tNumerico 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTENEDOR",12, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_Y",13, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 27: // ELEMENTO_X ::= res_x res_Igual tNumerico 
+          case 38: // ELEMENTO_ALTO ::= res_alto res_Igual tNumerico 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_X",13, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_ALTO",14, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 28: // ELEMENTO_Y ::= res_y res_Igual tNumerico 
+          case 39: // ELEMENTO_ANCHO ::= res_ancho res_Igual tNumerico 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_Y",14, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_ANCHO",15, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 29: // ELEMENTO_ALTO ::= res_alto res_Igual tNumerico 
+          case 40: // ELEMENTO_BORDE ::= res_borde res_Igual BOOLEANO 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_ALTO",15, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_BORDE",16, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 30: // ELEMENTO_ANCHO ::= res_ancho res_Igual tNumerico 
+          case 41: // BOOLEANO ::= res_verdadero 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_ANCHO",16, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("BOOLEANO",17, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 31: // ELEMENTO_BORDE ::= res_borde res_Igual BOOLEANO 
+          case 42: // BOOLEANO ::= res_falso 
             {
               Object RESULT =null;
 
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_BORDE",17, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
-            }
-          return CUP$sintacticoGXML$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 32: // BOOLEANO ::= res_verdadero 
-            {
-              Object RESULT =null;
-
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("BOOLEANO",18, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
-            }
-          return CUP$sintacticoGXML$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 33: // BOOLEANO ::= res_falso 
-            {
-              Object RESULT =null;
-
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("BOOLEANO",18, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("BOOLEANO",17, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
 
