@@ -220,7 +220,7 @@ IMPRIMIR::=     tImprimir tParOpen EXPRESION:a tParClose tPtoComa {:RESULT = new
 DECLARACION::=   tVar  ASIG_VAL:a tPtoComa          {:RESULT = a;:}
                 ;
 
-ASIG_VAL::=     | tId:a                             {: Identificador id = new Identificador(a,aleft);
+ASIG_VAL::=     tId:a                             {: Identificador id = new Identificador(a,aleft);
                                                         LinkedList<Identificador> lId = new LinkedList<>();
                                                         lId.add(id);
                                                         RESULT = new Declaracion(lId,aleft);

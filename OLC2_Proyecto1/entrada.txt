@@ -1,9 +1,7 @@
-funcion factorial(var n) {
-    retornar n == 0 ? 1 : n * factorial(n - 1);
+funcion sumar(var a, var b){
+	var a = 10;
+	imprimir(a);
 }
 
-funcion VerFactorial(var num){
-    Imprimir("El factorial de " + num + " es " + factorial(num));
-}
 
-VerFactorial(100);
+sumar(5,5);

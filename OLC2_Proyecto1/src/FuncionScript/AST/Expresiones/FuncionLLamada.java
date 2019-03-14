@@ -30,9 +30,9 @@ public class FuncionLLamada implements Expresion{
     @Override
     public Object getValor(Entorno ent) {
         //obteniendo funcion 
-        Entorno nuevoEnt = new Entorno(ent);
-        if(nuevoEnt.getGlobal(id) != null){
-            Simbolo s = nuevoEnt.getGlobal(id);
+        
+        if(ent.getGlobal(id) != null){
+            Simbolo s = ent.getGlobal(id);
             //verficando que el numero de parametros sea igual 
             if(parametros.size() == s.getElementos().size()){
                 Object e;
@@ -40,8 +40,8 @@ public class FuncionLLamada implements Expresion{
                 int i = 0;
                 //INSERTO VALORES A LOS PARAMETROS EN EL ORDEN QUE FUERON DECLARADOS
                 for(Expresion exp: parametros){
-                   e = exp.getValor(nuevoEnt);
-                   tipoE = exp.getTipo(nuevoEnt);
+                   e = exp.getValor(ent);
+                   tipoE = exp.getTipo(ent);
                    s.getElementos().get(i).setValor(e);
                    s.getElementos().get(i).setTipo(tipoE);
                    i++;
@@ -53,7 +53,7 @@ public class FuncionLLamada implements Expresion{
                 return null;
             }
             //EJECUTO LA INSTRUCCION DE LA FUNCION QUE MANDE A LLAMAR 
-            
+            Entorno nuevoEnt = new Entorno(ent);
             Object a = ((Instruccion)s).ejecutar(nuevoEnt);
             //si a es distinto a nulo es porque fijo trae valores 
             if(a != null){
