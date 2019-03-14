@@ -30,6 +30,10 @@ ignora = [ \t\r\f\n]+
 COMENT_LINE =("##".*\r\n)|("##".*\n)|("##".*\r)
 
 %%
+<YYINITIAL> "enviar"      		{ return new Symbol(sym.res_enviar,yyline,yychar, yytext());}
+<YYINITIAL> "boton"      		{ return new Symbol(sym.res_boton,yyline,yychar, yytext());}
+<YYINITIAL> "path"      		{ return new Symbol(sym.res_path,yyline,yychar, yytext());}
+<YYINITIAL> "nombre"      		{ return new Symbol(sym.res_nombre,yyline,yychar, yytext());}
 <YYINITIAL> "contenedor"      		{ return new Symbol(sym.res_contenedor,yyline,yychar, yytext());}
 <YYINITIAL> "texto"      		{ return new Symbol(sym.res_texto,yyline,yychar, yytext());}
 <YYINITIAL> "control"      		{ return new Symbol(sym.res_control,yyline,yychar, yytext());}
@@ -43,7 +47,7 @@ COMENT_LINE =("##".*\r\n)|("##".*\n)|("##".*\r)
 <YYINITIAL> "borde"      		{ return new Symbol(sym.res_borde,yyline,yychar, yytext());}
 <YYINITIAL> "verdadero"      		{ return new Symbol(sym.res_verdadero,yyline,yychar, yytext());}
 <YYINITIAL> "falso"      		{ return new Symbol(sym.res_falso,yyline,yychar, yytext());}
-
+<YYINITIAL> "referencia"      		{ return new Symbol(sym.res_referencia,yyline,yychar, yytext());}
 <YYINITIAL> "maximo"      		{ return new Symbol(sym.res_maximo,yyline,yychar, yytext());}
 <YYINITIAL> "minimo"      		{ return new Symbol(sym.res_minimo,yyline,yychar, yytext());}
 <YYINITIAL> "accion"      		{ return new Symbol(sym.res_accion,yyline,yychar, yytext());}
@@ -51,12 +55,11 @@ COMENT_LINE =("##".*\r\n)|("##".*\n)|("##".*\r)
 <YYINITIAL> "}"      		{ return new Symbol(sym.res_llvClose,yyline,yychar, yytext());}
 <YYINITIAL> "AccionInicial"      		{ return new Symbol(sym.res_accionInicial,yyline,yychar, yytext());}
 <YYINITIAL> "AccionFinal"      		{ return new Symbol(sym.res_accionFinal,yyline,yychar, yytext());}
-
 <YYINITIAL> "fuente"      		{ return new Symbol(sym.res_fuente,yyline,yychar, yytext());}
 <YYINITIAL> "tam"      		{ return new Symbol(sym.res_tam,yyline,yychar, yytext());}
 <YYINITIAL> "negrita"      		{ return new Symbol(sym.res_negrita,yyline,yychar, yytext());}
 <YYINITIAL> "cursiva"      		{ return new Symbol(sym.res_cursiva,yyline,yychar, yytext());}
-
+<YYINITIAL> "multimedia"      		{ return new Symbol(sym.res_multimedia,yyline,yychar, yytext());}
 <YYINITIAL> "defecto"      		{ return new Symbol(sym.res_defecto,yyline,yychar, yytext());}
 <YYINITIAL> "listaDatos"      		{ return new Symbol(sym.res_listaDatos,yyline,yychar, yytext());}
 <YYINITIAL> "dato"      		{ return new Symbol(sym.res_dato,yyline,yychar, yytext());}

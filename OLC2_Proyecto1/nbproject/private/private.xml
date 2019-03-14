@@ -3,12 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/Entorno/Simbolo.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/GXML/sym.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/olc2_proyecto1/Editor/Editor.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/FuncionLLamada.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/GXML/lexicoGXML.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/GXML/lexicoGXML</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/GXML/compilarGXML.bat</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Funcion.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/RetornoSecundario.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/Entorno/Entorno.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/GXML/sintacticoGXML.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Return.java</file>
         </group>
     </open-files>
 </project-private>

@@ -37,8 +37,4 @@ public class RetornoSecundario implements Expresion{
     public int getLine() {
         return linea;
     }
-
-    
-   
-    
 }

@@ -18,15 +18,18 @@ public class sym {
   public static final int res_llvOpen = 35;
   public static final int res_listaDatos = 9;
   public static final int res_tipo = 19;
+  public static final int res_path = 41;
   public static final int res_dato = 10;
   public static final int res_color = 20;
   public static final int res_fuente = 28;
   public static final int res_enviar = 11;
   public static final int res_MayorQue = 16;
   public static final int tTexto = 18;
+  public static final int res_nombre = 42;
   public static final int res_falso = 27;
   public static final int EOF = 0;
   public static final int error = 1;
+  public static final int res_multimedia = 40;
   public static final int res_texto = 5;
   public static final int tNumerico = 2;
   public static final int res_contenedor = 4;
@@ -37,6 +40,7 @@ public class sym {
   public static final int tId = 17;
   public static final int res_control = 6;
   public static final int res_tam = 29;
+  public static final int res_boton = 43;
   public static final int res_accionInicial = 37;
   public static final int res_minimo = 33;
   public static final int res_MenorQue = 15;
@@ -45,6 +49,7 @@ public class sym {
   public static final int res_slash = 13;
   public static final int res_alto = 23;
   public static final int res_ancho = 24;
+  public static final int res_referencia = 39;
   public static final int res_ventana = 12;
   public static final int res_accionFinal = 38;
   public static final String[] terminalNames = new String[] {
@@ -86,7 +91,12 @@ public class sym {
   "res_llvOpen",
   "res_llvClose",
   "res_accionInicial",
-  "res_accionFinal"
+  "res_accionFinal",
+  "res_referencia",
+  "res_multimedia",
+  "res_path",
+  "res_nombre",
+  "res_boton"
   };
 }
 

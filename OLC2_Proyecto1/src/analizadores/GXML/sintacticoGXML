@@ -31,6 +31,7 @@ terminal String tTexto,res_tipo,res_color;
 terminal String res_x,res_y,res_alto,res_ancho,res_borde,res_verdadero,res_falso;
 terminal String res_fuente,res_tam,res_negrita,res_cursiva;
 terminal String res_maximo,res_minimo,res_accion,res_llvOpen,res_llvClose,res_accionInicial,res_accionFinal;
+terminal String res_referencia,res_multimedia,res_path,res_nombre,res_boton;
 
 non terminal S;
 non terminal ETQ_TEXTO;
@@ -65,7 +66,22 @@ non terminal ELEMENTO_MINIMO;
 non terminal ELEMENTO_ACCION;
 non terminal LST_ETQS_CONTENEDOR;
 non terminal ETQS_CONTENEDOR;
-
+non terminal ETQ_DATO;
+non terminal ETQ_LISTA_DATOS;
+non terminal LST_ETQS_DATO;
+non terminal ETQ_DEFECTO;
+non terminal ETQ_MULTIMEDIA;
+non terminal ELEMENTOS_MULTIMEDIA;
+non terminal ELEMENTO_MULTIMEDIA;
+non terminal ELEMENTO_PATH;
+non terminal ELEMENTO_NOMBRE;
+non terminal ELEMENTO_AUTO_REPRODUCCION;
+non terminal ETQ_BOTON;
+non terminal CONTENIDO_BOTON;
+non terminal ELEMENTOS_BOTON;
+non terminal ELEMENTO_BOTON;
+non terminal ELEMENTO_REFERENCIA;
+non terminal ETQ_ENVIAR;
 
 /* ******************************************* GRAMATICA **************************************** */
 start with S;
@@ -83,6 +99,9 @@ LST_ETQS_CONTENEDOR::=   LST_ETQS_CONTENEDOR  ETQS_CONTENEDOR
 
 ETQS_CONTENEDOR::=      ETQ_TEXTO
                         | ETQ_CONTROL
+                        |ETQ_MULTIMEDIA
+                        |ETQ_BOTON
+                        |ETQ_ENVIAR
                         ;                                          
 
 ETQ_TEXTO::=    res_MenorQue res_texto ELEMENTOS_TEXTO res_MayorQue tTexto:tex res_MenorQue res_slash res_texto res_MayorQue {: System.out.println(tex);:} ;
@@ -112,7 +131,7 @@ ELEMENTO_NEGRITA::= res_negrita res_Igual BOOLEANO
 ELEMENTO_CURSIVA::= res_cursiva res_Igual BOOLEANO
                     ;                  
 
-ETQ_CONTROL::=  res_MenorQue res_control  res_MayorQue  res_MenorQue res_slash res_control res_MayorQue   
+ETQ_CONTROL::=  res_MenorQue res_control  res_MayorQue  res_MenorQue ETQ_LISTA_DATOS  ETQ_DEFECTO res_slash res_control res_MayorQue   
                 ;
 
 ELEMENTOS_CONTROL::= ELEMENTOS_CONTROL ELEMENTO_CONTROL
@@ -204,3 +223,72 @@ ELEMENTO_BORDE::=       res_borde res_Igual BOOLEANO
 BOOLEANO::=             res_verdadero
                         |res_falso
                         ;              
+
+
+
+LST_ETQS_DATO::=  LST_ETQS_DATO ETQ_DATO
+                  |ETQ_DATO
+                  ;
+
+ETQ_DATO::=     res_MenorQue res_dato res_MayorQue tTexto res_MenorQue res_slash res_dato res_MayorQue    
+                ;
+
+ETQ_LISTA_DATOS::= res_MenorQue res_listaDatos res_MayorQue LST_ETQS_DATO res_MenorQue res_slash res_listaDatos res_MayorQue
+                    ;
+
+
+ETQ_DEFECTO::=  res_MenorQue res_defecto res_MayorQue tTexto res_MenorQue res_slash res_defecto res_MayorQue
+                ;   
+ETQ_MULTIMEDIA::= res_MenorQue res_multimedia  ELEMENTOS_MULTIMEDIA res_MayorQue    res_MenorQue res_slash res_multimedia res_MayorQue  
+                    ; 
+
+ELEMENTOS_MULTIMEDIA::= ELEMENTOS_MULTIMEDIA ELEMENTO_MULTIMEDIA
+                        |ELEMENTO_MULTIMEDIA
+                        ;
+
+ELEMENTO_MULTIMEDIA::=  ELEMENTO_TIPO
+                        |ELEMENTO_PATH
+                        |ELEMENTO_NOMBRE
+                        |ELEMENTO_X
+                        |ELEMENTO_Y
+                        |ELEMENTO_ALTO
+                        |ELEMENTO_ANCHO
+                        |ELEMENTO_AUTO_REPRODUCCION
+                        ;
+
+
+ELEMENTO_PATH::=    res_path res_Igual tCad
+                    ;
+
+ELEMENTO_NOMBRE::=  res_nombre res_Igual tCad
+                    ;   
+
+ELEMENTO_AUTO_REPRODUCCION::=   BOOLEANO
+                                ;
+
+ETQ_BOTON::=    res_MenorQue res_boton ELEMENTOS_BOTON res_MayorQue CONTENIDO_BOTON res_MenorQue res_slash res_boton res_MayorQue
+                ;                            
+
+CONTENIDO_BOTON::= ETQ_TEXTO
+                    | tTexto
+                    ;                
+
+ELEMENTOS_BOTON::=  ELEMENTOS_BOTON  ELEMENTO_BOTON
+                    | ELEMENTO_BOTON
+                    ;             
+
+ELEMENTO_BOTON::= ELEMENTO_NOMBRE
+                    |ELEMENTO_X
+                    |ELEMENTO_Y
+                    |ELEMENTO_ALTO
+                    |ELEMENTO_ANCHO
+                    |ELEMENTO_REFERENCIA
+                    |ELEMENTO_ACCION
+                    ;
+
+
+ELEMENTO_REFERENCIA::= res_referencia res_Igual tCad
+                        ;                    
+
+ETQ_ENVIAR::=       res_MenorQue res_enviar ELEMENTOS_BOTON res_MayorQue  CONTENIDO_BOTON res_MenorQue res_slash res_enviar res_MayorQue
+                    ;                  
