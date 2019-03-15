@@ -50,10 +50,23 @@ public class Asignacion implements Instruccion{
             //BUSCAMOS QUE SI EXISTA EL IDENTIFICADOR
             if(ent.get(id) != null){ 
                 Simbolo s = ent.get(id);
-                //SI ES A UN ARREGLO A QUIEN QUEREMOS ASIGNARLE VALOR
-                if(s.getRol() == Simbolo.ROL.ARREGLO_HOMOGENEO){
-                    
-                }
+                
+//                //SI ES A UN ARREGLO A QUIEN QUEREMOS ASIGNARLE VALOR
+//                if(s.getRol() == Simbolo.ROL.ARREGLO_HOMOGENEO){
+//                //SI EL ARREGLO CONTIENE ELEMNTOS
+//                    if(s.getElementos().size() ==0){
+//                        Tipo nt = new Tipo(Tipo.Primitivo.NULL);
+//                        nt.setTipoPrimitivo(tipo.getTipoPrimitivo());
+//                        Simbolo nSim = new Simbolo("0", nt);
+//                        nSim.setValor(valExp);
+//                    }else if(tipo == s.getElementos().get(0).getTipo()){ //si el nuevo valor es del mismo tipo a asignar
+//                        
+//                    }else{
+//                        
+//                    }
+//                } else if(s.getRol() == Simbolo.ROL.ARREGLO_HETEROGENEO){
+//                    
+//                }
                 
                 s.setValor(valExp);
                 s.setTipo(tipo);

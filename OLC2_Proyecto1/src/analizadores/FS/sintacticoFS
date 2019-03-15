@@ -98,6 +98,7 @@ non terminal Object TIPO_DEC_ASIG;
 non terminal LinkedList<Expresion> TIPO_PARAM_ARREGLO;
 
 non terminal ArregloLlamada ARREGLO_LLAMADA;
+non terminal AsignacionArreglo ASIGNACION_ARREGLO;
 
 precedence right tIgual;
 
@@ -142,6 +143,7 @@ INSTRUCCION::=  DECLARACION:a                      {:RESULT = a;:}
                 |FUNCION:a                          {: RESULT = a;:}
                 |FUNCION_LLAMADA:a tPtoComa         {: RESULT = a;:}
                 |ARREGLO_LLAMADA:a tPtoComa               {: RESULT = a;:}
+                |ASIGNACION_ARREGLO:a               {: RESULT = a;:}
                 | error tPtoComa
                 |error tLlvClose
                 ;
@@ -224,6 +226,9 @@ TIPO_AO::=      tSumaAsig               {:RESULT = Asignacion_Operacion.TipoAO.S
 
 ASIGNACION::=  tId:a tIgual EXPRESION:b tPtoComa    {:RESULT = new Asignacion(a,b,aleft);:}
                 ;
+
+ASIGNACION_ARREGLO::= tId:a tCorchOpen EXPRESION:b tCorchClose tIgual EXPRESION:c tPtoComa {:RESULT = new AsignacionArreglo(a,b,c,aleft);:}
+                        ;                
 
 AUMENTO::=      tId:a tAumen tPtoComa              {: RESULT = new Aumento(a,aleft);:}
                 ;
