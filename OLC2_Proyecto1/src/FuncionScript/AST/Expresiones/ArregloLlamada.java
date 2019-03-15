@@ -231,9 +231,9 @@ public class ArregloLlamada implements Expresion {
                 break;
             }
         } else {
-            System.out.println("El arreglo no puede hacer la funcion descendente porque no es homogenea en linea " + linea);
-            Editor.insertarTextoConsola("El arreglo no puede hacer la funcion descendente porque no es homogenea en linea " + linea);
-            ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "El arreglo no puede hacer la funcion descendente porque no es homogenea");
+            System.out.println("El arreglo no puede hacer la funcion ascendente porque no es homogenea en linea " + linea);
+            Editor.insertarTextoConsola("El arreglo no puede hacer la funcion ascendente porque no es homogenea en linea " + linea);
+            ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "El arreglo no puede hacer la funcion ascendente porque no es homogenea");
         }
 
     }
@@ -292,9 +292,9 @@ public class ArregloLlamada implements Expresion {
                 return tmp2;
             }
         } else {
-            System.out.println("El arreglo no puede hacer la funcion descendente porque no es homogenea en linea " + linea);
-            Editor.insertarTextoConsola("El arreglo no puede hacer la funcion descendente porque no es homogenea en linea " + linea);
-            ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "El arreglo no puede hacer la funcion descendente porque no es homogenea");
+            System.out.println("El arreglo no puede hacer la funcion maximo porque no es homogenea en linea " + linea);
+            Editor.insertarTextoConsola("El arreglo no puede hacer la funcion maximo porque no es homogenea en linea " + linea);
+            ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "El arreglo no puede hacer la funcion maximo porque no es homogenea");
         }
         return null;
     }
@@ -338,9 +338,9 @@ public class ArregloLlamada implements Expresion {
                 return tmp2;
             }
         } else {
-            System.out.println("El arreglo no puede hacer la funcion descendente porque no es homogenea en linea " + linea);
-            Editor.insertarTextoConsola("El arreglo no puede hacer la funcion descendente porque no es homogenea en linea " + linea);
-            ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "El arreglo no puede hacer la funcion descendente porque no es homogenea");
+            System.out.println("El arreglo no puede hacer la funcion minimo porque no es homogenea en linea " + linea);
+            Editor.insertarTextoConsola("El arreglo no puede hacer la funcion minimo porque no es homogenea en linea " + linea);
+            ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "El arreglo no puede hacer la funcion minimo porque no es homogenea");
         }
         return null;
     }
