@@ -146,7 +146,8 @@ public class Aritmetica extends Operacion implements Expresion {
             } else if(tipoOperador == Operador.NEGACION){
                 
                 if(tipoA.isNumeric()){
-                    return new Double((String)a) * -1;
+                    tipoResult = tipoA;
+                    return new Double(a.toString()) * -1;
                 } else {
                     System.out.println(">Error solo se puede negar operadores de tipo Numerico");
                 }

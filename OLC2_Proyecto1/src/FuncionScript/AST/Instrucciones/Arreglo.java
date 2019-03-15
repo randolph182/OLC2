@@ -68,7 +68,8 @@ public class Arreglo extends Simbolo implements Instruccion{
             boolean flag_homogeneo = true; //tipos del mismo tipo
             setRol(ROL.ARREGLO_HOMOGENEO);
             Tipo tipoAnterior = new Tipo(Tipo.Primitivo.NULL);
-
+            
+            //sino hay expresiones como elementos del arreglo entonces se dice que es una arreglo nulo homogeneo
             for(Expresion exp: expresiones){
                 Simbolo nSim  = new Simbolo(Integer.toString(i), new Tipo(Tipo.Primitivo.NULL));
                 a = exp.getValor(ent);

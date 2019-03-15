@@ -30,6 +30,11 @@ ignora = [ \t\r\f\n]+
 COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 
 %%
+<YYINITIAL> "minimo"      		{ return new Symbol(sym.res_minimo,yyline,yychar, yytext());}
+<YYINITIAL> "maximo"      		{ return new Symbol(sym.res_maximo,yyline,yychar, yytext());}
+<YYINITIAL> "invertir"      		{ return new Symbol(sym.res_Invertir,yyline,yychar, yytext());}
+<YYINITIAL> "ascendente"      		{ return new Symbol(sym.res_Ascendente,yyline,yychar, yytext());}
+<YYINITIAL> "descendente"      		{ return new Symbol(sym.res_Descendente,yyline,yychar, yytext());}
 <YYINITIAL> "["      		{ return new Symbol(sym.tCorchOpen,yyline,yychar, yytext());}
 <YYINITIAL> "]"      		{ return new Symbol(sym.tCorchClose,yyline,yychar, yytext());}
 <YYINITIAL> "funcion"      		{ return new Symbol(sym.tFuncion,yyline,yychar, yytext());}
@@ -42,6 +47,7 @@ COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 <YYINITIAL> "defecto"    	{ return new Symbol(sym.tDefecto,yyline,yychar, yytext());}
 <YYINITIAL> "?"      		{ return new Symbol(sym.tInterrogacion,yyline,yychar, yytext());}
 <YYINITIAL> ":"      		{ return new Symbol(sym.tDosPuntos,yyline,yychar, yytext());}
+<YYINITIAL> "."      		{ return new Symbol(sym.tPunto,yyline,yychar, yytext());}
 <YYINITIAL> "imprimir"      { return new Symbol(sym.tImprimir,yyline,yychar, yytext());}
 <YYINITIAL> "var"           { return new Symbol(sym.tVar,yyline,yychar, yytext());}
 <YYINITIAL> "="             { return new Symbol(sym.tIgual,yyline,yychar, yytext());}

@@ -8,9 +8,13 @@ package analizadores.FS;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
+  public static final int res_maximo = 56;
+  public static final int res_Invertir = 55;
   public static final int tImprimir = 2;
+  public static final int res_Descendente = 53;
   public static final int tLlvOpen = 39;
   public static final int tMenos = 7;
+  public static final int res_Ascendente = 54;
   public static final int tLlvClose = 40;
   public static final int tSino = 36;
   public static final int tBreak = 44;
@@ -20,6 +24,7 @@ public class sym {
   public static final int tIgualDoble = 28;
   public static final int tCad = 15;
   public static final int tDiviAsig = 34;
+  public static final int tPunto = 52;
   public static final int tDiv = 8;
   public static final int tMultipliAsig = 33;
   public static final int tCorchClose = 51;
@@ -47,6 +52,7 @@ public class sym {
   public static final int tFuncion = 49;
   public static final int tReturn = 48;
   public static final int tId = 17;
+  public static final int res_minimo = 57;
   public static final int tDec = 16;
   public static final int tVar = 21;
   public static final int tPtoComa = 5;
@@ -112,7 +118,13 @@ public class sym {
   "tReturn",
   "tFuncion",
   "tCorchOpen",
-  "tCorchClose"
+  "tCorchClose",
+  "tPunto",
+  "res_Descendente",
+  "res_Ascendente",
+  "res_Invertir",
+  "res_maximo",
+  "res_minimo"
   };
 }
 

@@ -88,7 +88,7 @@ non terminal ELEMENTO_REFERENCIA;
 non terminal ETQ_ENVIAR;
 non terminal ELEMENTO_PATH;
 non terminal ELEMENTO_AUTO_REPRODUCCION;
-
+non terminal TIPO_CUERPO_CONTROL;
 
 /* ******************************************* GRAMATICA **************************************** */
 start with S;
@@ -180,7 +180,7 @@ ELEMENTO_TEXTO::=   ELEMENTO_NOMBRE
                     | ELEMENTO_COLOR
                     ;
 
-ETQ_CONTROL::=  res_MenorQue res_control  ELEMENTOS_CONTROL res_MayorQue  LST_CUERPO_CONTROL res_slash res_control res_MayorQue   
+ETQ_CONTROL::=  res_MenorQue res_control  ELEMENTOS_CONTROL res_MayorQue TIPO_CUERPO_CONTROL   res_slash res_control res_MayorQue   
                 ;
 
 ELEMENTOS_CONTROL::= ELEMENTOS_CONTROL ELEMENTO_CONTROL
@@ -203,14 +203,16 @@ ELEMENTO_CONTROL::= ELEMENTO_TIPO
                     | ELEMENTO_ACCION
                     ;
 
+TIPO_CUERPO_CONTROL::= LST_CUERPO_CONTROL res_MenorQue
+                        | res_MenorQue
+                        ;
 
 LST_CUERPO_CONTROL::= LST_CUERPO_CONTROL CUERPO_CONTROL 
                         |CUERPO_CONTROL
                         ;
 
-CUERPO_CONTROL::=       ETQ_LISTA_DATOS res_MenorQue
-                       | ETQ_DEFECTO res_MenorQue
-                       | res_MenorQue    
+CUERPO_CONTROL::=       ETQ_LISTA_DATOS 
+                       | ETQ_DEFECTO  
                        ;               
 
 ETQ_LISTA_DATOS::= res_MenorQue res_listaDatos res_MayorQue LST_ETQS_DATO res_MenorQue res_slash res_listaDatos res_MayorQue

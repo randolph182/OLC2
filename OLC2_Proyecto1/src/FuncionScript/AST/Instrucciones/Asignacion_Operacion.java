@@ -9,10 +9,12 @@ import FuncionScript.AST.Expresiones.Expresion;
 import FuncionScript.Entorno.Entorno;
 import FuncionScript.Entorno.Simbolo;
 import FuncionScript.Entorno.Tipo;
+import FuncionScript.ErroresFS.ManejadorErroresFS;
+import olc2_proyecto1.Editor.Editor;
 
 /**
- *
- * @author rm
+ * CLASE QUE DEPENDIENDO DE LA VARIABLE SE LE INCREMENTA O DECREMENTA UN DETERMINADO VALOR 
+ * POR EL TIPO DE OPERACION YA SEA SUMA RESTA DIVICION O MULTIPLICACION EJ:  A += 5;
  */
 public class Asignacion_Operacion implements  Instruccion{
 
@@ -63,7 +65,10 @@ public class Asignacion_Operacion implements  Instruccion{
                 } else
                     System.out.println("Error no se puede  asginar y operar un valor que no sea numerico");
             } else{
-                System.out.println("El identificador no existe");
+               System.out.println("El identificador no existe en el aumento de la variable con id: "+ id + " en linea " + linea);
+                   Editor.insertarTextoConsola("El identificador no existe en el aumento de la variable con id: "+ id + " en linea " + linea);
+                   ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "El identificador no existe en el aumento de la variable con id: "+ id);
+                   return null; 
             }
             
         } else

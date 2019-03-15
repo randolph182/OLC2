@@ -33,25 +33,31 @@ public class FuncionLLamada implements Expresion{
         
         if(ent.getGlobal(id) != null){
             Simbolo s = ent.getGlobal(id);
-            //verficando que el numero de parametros sea igual 
-            if(parametros.size() == s.getElementos().size()){
-                Object e;
-                Tipo tipoE;
-                int i = 0;
-                //INSERTO VALORES A LOS PARAMETROS EN EL ORDEN QUE FUERON DECLARADOS
-                for(Expresion exp: parametros){
-                   e = exp.getValor(ent);
-                   tipoE = exp.getTipo(ent);
-                   s.getElementos().get(i).setValor(e);
-                   s.getElementos().get(i).setTipo(tipoE);
-                   i++;
+            
+            if(parametros.size() != 0){ // Se trata de una funcion porque si tiene parametros
+                //verficando que el numero de parametros sea igual 
+                if(parametros.size() == s.getElementos().size()){
+                    Object e;
+                    Tipo tipoE;
+                    int i = 0;
+                    //INSERTO VALORES A LOS PARAMETROS EN EL ORDEN QUE FUERON DECLARADOS
+                    for(Expresion exp: parametros){
+                       e = exp.getValor(ent);
+                       if(e!= null){
+                        tipoE = exp.getTipo(ent);
+                        s.getElementos().get(i).setValor(e);
+                        s.getElementos().get(i).setTipo(tipoE);
+                        i++;
+                       }
+                    }
+                } else{
+                    System.out.println("Error el numero de parametros no son iguales a los que fueron declarados en linea" + linea);
+                    Editor.insertarTextoConsola("Error el numero de parametros no son iguales a los que fueron declarados en linea" + linea);
+                    ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error el numero de parametros no son iguales a los que fueron declarados");
+                    return null;
                 }
-            } else{
-                System.out.println("Error el numero de parametros no son iguales a los que fueron declarados en linea" + linea);
-                Editor.insertarTextoConsola("Error el numero de parametros no son iguales a los que fueron declarados en linea" + linea);
-                ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error el numero de parametros no son iguales a los que fueron declarados");
-                return null;
             }
+            
             //EJECUTO LA INSTRUCCION DE LA FUNCION QUE MANDE A LLAMAR 
             Entorno nuevoEnt = new Entorno(ent);
             Object a = ((Instruccion)s).ejecutar(nuevoEnt);

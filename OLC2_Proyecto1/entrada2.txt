@@ -288,7 +288,6 @@
 		<Boton Nombre = "btnImpar" X = 300 Y = 650 Alto = 50 Ancho = 100 Accion = {VerImpar(27)}>
 			Ver Respuesta
 		</Boton>
-		</Boton>
 	</Contenedor>
 	<Contenedor id = "ContEnviarLogicas" x = 10 Y = 1010 Alto = 100 Ancho = 200>
 		<Enviar Nombre = "btnEnviar" X = 75 Y = 30 Alto = 70 Ancho = 40 Referencia = "VentanaReportes">

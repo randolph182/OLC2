@@ -17,7 +17,7 @@ import java.util.LinkedList;
 
 /**
  * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author randolphmuy
  */
 public class Funcion  extends Simbolo implements Instruccion{
     
