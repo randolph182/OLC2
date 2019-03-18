@@ -27,8 +27,8 @@ public class Simbolo {
     
     private ROL rol;
 
-
     private ROLGXML rolGxml;
+    
     public Simbolo(){
     }
     
@@ -152,7 +152,12 @@ public class Simbolo {
         TIPO,
         COLOR,
         ACCION_INICIAL,
-        ACCION_FINAL
+        ACCION_FINAL,
+        X,
+        Y,
+        ALTO,
+        ANCHO,
+        BORDE
         
     }
     

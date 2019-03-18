@@ -71,8 +71,14 @@ public class ArregloLlamada implements Expresion {
                                 ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "La posicion que desa acceder del arreglo es erronea");
                                 return null;
                             }
-                            tipo = valores.get(pos).getTipo();
-                            return valores.get(pos).getValor();
+                            if(valores.get(pos).getValor() != null){
+                                tipo = valores.get(pos).getTipo();
+                                return valores.get(pos).getValor();
+                            }else{
+                                System.out.println("Usted accedio a una variable de tipo GXML e  linea" + linea);
+                                Editor.insertarTextoConsola("Usted accedio a una variable de tipo GXML  en linea" + linea);
+                                return valores.get(pos); //retornamos el simbolo puede tener cuarquier rol ej ventana
+                            }
                         }
 
                     } else {

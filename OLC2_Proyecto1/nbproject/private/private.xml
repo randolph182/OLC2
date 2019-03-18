@@ -3,17 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/GenericXML/nodoAST.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/GenericXML/ErroresGXML/ManejadorErroresGXML.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Declaracion.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/FS/sintacticoFS.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/InterfazUsuario/CrearTexto.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/GenericXML/Instruccion.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/GXML/compilarGXML.bat</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/Entorno/Simbolo.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/InterfazUsuario/CrearContenedor.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/ErroresFS/ErrorFS.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/GXML/lexicoGXML.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/Entorno/Entorno.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/Entorno/Tipo.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Asignacion_Operacion.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/GenericXML/Ventana.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/GenericXML/AST.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/GenericXML/Contenedor.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/ErroresFS/ManejadorErroresFS.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/nodoAST.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/GenericXML/ErroresGXML/ErrorGXML.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/olc2_proyecto1/Editor/Editor.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Declaracion.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/InterfazUsuario/CrearVentana.java</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/FS/compilarFS.bat</file>
-            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/analizadores/FS/sintacticoFS.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Expresiones/Identificador.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/AST.java</file>
             <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/FuncionScript/AST/Instrucciones/Asignacion.java</file>
+            <file>file:/C:/Users/rm/Documents/GitHub/OLC2/OLC2_Proyecto1/src/olc2_proyecto1/Editor/TextLineNumber.java</file>
         </group>
     </open-files>
 </project-private>

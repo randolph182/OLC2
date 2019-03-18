@@ -145,6 +145,7 @@ public class Editor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompilarActionPerformed
+        ManejadorErroresFS.getInstance().formateraInstancia();
         FileWriter fichero = null;
         PrintWriter pw = null;
         
@@ -187,6 +188,7 @@ public class Editor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMnuItmFSActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ManejadorErroresGXML.getInstance().formateraInstancia();
         FileWriter fichero = null;
         PrintWriter pw = null;
         
@@ -306,12 +308,12 @@ public class Editor extends javax.swing.JFrame {
             
             File archivo = new File("traduccion01.fs");
             FileWriter fichero = null;
-            if(archivo.delete())
+            if(archivo.delete()){
                 fichero   = new FileWriter("traduccion01.fs",true);
                 parserGXML.ast.traducir(fichero);
                 if(fichero != null)
                     fichero.close();
-            else
+            }else
                 System.out.println("No se puede crear el archivo para la traduccion");
             
         } catch (Exception e) {

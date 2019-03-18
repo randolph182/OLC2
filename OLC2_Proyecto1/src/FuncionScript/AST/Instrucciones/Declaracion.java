@@ -9,6 +9,8 @@ import FuncionScript.AST.Expresiones.Expresion;
 import FuncionScript.AST.Expresiones.Identificador;
 import FuncionScript.AST.Expresiones.InterfazUsuario.CrearContenedor;
 import FuncionScript.AST.Expresiones.InterfazUsuario.CrearVentana;
+import FuncionScript.AST.Expresiones.InterfazUsuario.LeerGxml;
+import FuncionScript.AST.Expresiones.InterfazUsuario.ObtenerPorEtiqueta;
 import FuncionScript.Entorno.Entorno;
 import FuncionScript.Entorno.Simbolo;
 import FuncionScript.Entorno.Tipo;
@@ -77,7 +79,44 @@ public class Declaracion implements Instruccion {
                                     ent.put(lstId.get(i).getIdentificador(), simContenedor);
                                     break;
                                 }
-                            } else {
+                            } else if(exp instanceof LeerGxml){
+                               Object elementos =  exp.getValor(ent);
+                                if(elementos!=null){
+                                    //AGREGAMOS AL NUEVO ARREGLO A LA TABLA DE SIMBOLOS Y NOS ASEGURAMOS DE PONERLE ROL HETEROGENEO
+                                    LinkedList<Simbolo> valArray = (LinkedList<Simbolo>)elementos;
+                                    Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), new Tipo(Tipo.Primitivo.NULL));
+                                    nuevoSimbolo.setRol(Simbolo.ROL.ARREGLO_HETEROGENEO);
+                                    nuevoSimbolo.setElementos(valArray);
+                                    //agregando al entorno
+                                    ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
+                                    break;
+                                }else{
+                                    System.out.println("leerGxml no retorno elementos enlinea: "+linea);
+                                    Editor.insertarTextoConsola("leerGxml no retorno elementos enlinea: "+linea);
+                                    Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), tipo); //aca tipo ya es null
+                                    break;
+                                }
+                                
+                            } else if(exp instanceof ObtenerPorEtiqueta){
+                              Object listado =  exp.getValor(ent);
+                              if(listado != null){
+                                  LinkedList<Simbolo> valArray = (LinkedList<Simbolo>)listado;
+                                    Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), new Tipo(Tipo.Primitivo.NULL));
+                                    nuevoSimbolo.setRol(Simbolo.ROL.ARREGLO_HETEROGENEO);
+                                    nuevoSimbolo.setElementos(valArray);
+                                    //agregando al entorno
+                                    ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
+                                    break;
+                                    
+                              }else{
+                                  System.out.println("Error no se encontraron valores por etiqueta en linea "+linea);
+                                  Editor.insertarTextoConsola("Error no se encontraron valores por etiqueta en linea "+linea);
+                                  ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error no se encontraron valores por etiqueta en linea ");
+                                  break;
+                              }
+                                  
+                            }else {
+                                
                                 Object resultado = exp.getValor(ent);
                                 if (resultado != null) {
                                     tipo = exp.getTipo(ent);

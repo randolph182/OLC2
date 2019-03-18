@@ -6,6 +6,7 @@
 package GenericXML;
 
 import FuncionScript.Entorno.Entorno;
+import FuncionScript.Entorno.Simbolo;
 import java.util.LinkedList;
 import GenericXML.nodoAST;
 import java.io.FileWriter;
@@ -24,22 +25,22 @@ public class AST {
 
     public void traducir(FileWriter fichero) {
         Entorno ts = new Entorno(null);
-        //creacion de archivo 
-        
+        ts.resetInstanciaGlobal();
         for (nodoAST nodo : nodos) {
             if (nodo instanceof Instruccion) {
                 Instruccion instruccion = (Instruccion) nodo;
-
-                instruccion.Traducir(fichero, ts) ;
-//                if(instruccion instanceof Ventana){
-                        //                      Funcion funcion = (Funcion)instruccion;
-                        //                      ts.putGlobal(funcion.getId(), funcion);
-                        //                } else
-                        //                    instruccion.ejecutar(ts);
-                        //            } else if(nodo instanceof Expresion){
-                        //                Expresion exp = (Expresion)nodo;
-                        //                exp.getValor(ts);
-                        //            }
+                instruccion.ejecutar(fichero,null, ts,0) ;
+            }
+        }
+    }
+    
+    public void getArray(LinkedList<Simbolo> listadoSimbolos){
+        Entorno ts = new Entorno(null);
+        ts.resetInstanciaGlobal();
+        for (nodoAST nodo : nodos) {
+            if (nodo instanceof Instruccion) {
+                Instruccion instruccion = (Instruccion) nodo;
+                instruccion.ejecutar(null,listadoSimbolos,ts,1);
             }
         }
     }

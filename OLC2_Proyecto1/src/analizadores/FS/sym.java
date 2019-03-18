@@ -11,6 +11,7 @@ public class sym {
   public static final int res_maximo = 56;
   public static final int res_Invertir = 55;
   public static final int tImprimir = 2;
+  public static final int res_leerGxml = 61;
   public static final int res_Descendente = 53;
   public static final int tLlvOpen = 39;
   public static final int tMenos = 7;
@@ -45,6 +46,7 @@ public class sym {
   public static final int res_crear_contenedor = 59;
   public static final int EOF = 0;
   public static final int tMayorIgual = 26;
+  public static final int res_obtenerPorEtiqueta = 62;
   public static final int error = 1;
   public static final int tRestaAsig = 32;
   public static final int tCorchOpen = 50;
@@ -130,7 +132,9 @@ public class sym {
   "res_minimo",
   "res_crear_ventana",
   "res_crear_contenedor",
-  "res_crear_texto"
+  "res_crear_texto",
+  "res_leerGxml",
+  "res_obtenerPorEtiqueta"
   };
 }
 

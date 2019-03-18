@@ -66,6 +66,7 @@ terminal String tAnd,tOr,tNot;
 terminal String tReturn,tFuncion,tCorchOpen,tCorchClose,tPunto,res_Descendente,res_Ascendente;
 terminal String res_Invertir,res_maximo,res_minimo;
 terminal String res_crear_ventana,res_crear_contenedor,res_crear_texto;
+terminal String res_leerGxml,res_obtenerPorEtiqueta;
 
 non terminal S;
 non terminal Instruccion DECLARACION;
@@ -100,6 +101,8 @@ non terminal AsignacionArreglo ASIGNACION_ARREGLO;
 non terminal CrearVentana CREAR_VENTANA;
 non terminal CrearContenedor CREAR_CONTENEDOR;
 non terminal CrearTexto CREAR_TEXTO;
+non terminal LeerGxml LEER_GXML;
+non terminal ObtenerPorEtiqueta OBTENER_POR_ETIQUETA;
 
 precedence right tIgual;
 
@@ -310,8 +313,17 @@ EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,
                 |FUNCION_LLAMADA:a                    {:RESULT = a;:}
                 |CREAR_VENTANA:a                    {:RESULT = a;:}
                 |CREAR_CONTENEDOR:a                 {:RESULT = a;:}
+                |LEER_GXML:a                 {:RESULT = a;:}
+                |OBTENER_POR_ETIQUETA:a {:RESULT = a;:}
                 ;
 
+
+LEER_GXML::=    res_leerGxml tParOpen tCad:a tParClose {:RESULT = new LeerGxml(a,aleft);:}
+                ;
+
+OBTENER_POR_ETIQUETA::=   tId:a  tPunto  res_obtenerPorEtiqueta  tParOpen  tCad:b   tParClose
+                            {:RESULT = new ObtenerPorEtiqueta(a,b,aleft);:}
+                        ;           
 
 
 CREAR_VENTANA::=    res_crear_ventana tParOpen TIPO_PARAMETROS:a tParClose 

@@ -10,6 +10,20 @@ package FuncionScript.Entorno;
  * @author rm
  */
 public class Tipo {
+
+    /**
+     * @return the tipoGxml
+     */
+    public TipoGXML getTipoGxml() {
+        return tipoGxml;
+    }
+
+    /**
+     * @param tipoGxml the tipoGxml to set
+     */
+    public void setTipoGxml(TipoGXML tipoGxml) {
+        this.tipoGxml = tipoGxml;
+    }
     public enum Primitivo{
         STRING,
         OBJECT,
@@ -21,16 +35,28 @@ public class Tipo {
     public enum TipoGXML{
         VENTANA,
         CONTENEDOR,
-        TEXTO
+        TEXTO,
+        CONTROL,
+        BOTON,
+        MULTIMEDIA,
+        LISTA_DATOS,
+        ENVIAR
         
     }
     
     private Primitivo tipo;
+    private TipoGXML tipoGxml;
+    
+    
+    
     
     public Tipo(Primitivo tp){
         this.tipo = tp;
     }
     
+    public Tipo(TipoGXML tp){
+        this.tipoGxml = tp;
+    }
     public Primitivo getTipoPrimitivo(){
         return tipo;
     }

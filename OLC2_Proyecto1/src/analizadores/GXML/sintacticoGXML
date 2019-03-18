@@ -47,20 +47,20 @@ non terminal Simbolo ELEMENTO_TIPO;
 non terminal Simbolo ELEMENTO_COLOR;
 non terminal Simbolo ELEMENTO_ACCION_INICIAL;
 non terminal Simbolo ELEMENTO_ACCION_FINAL;
-non terminal ETQ_CONTENEDOR;
-non terminal ELEMENTOS_CONTENEDOR;
-non terminal ELEMENTO_CONTENEDOR;
-non terminal ELEMENTO_X;
-non terminal ELEMENTO_Y;
-non terminal ELEMENTO_ALTO;
-non terminal ELEMENTO_ANCHO;
-non terminal ELEMENTO_BORDE;
-non terminal BOOLEANO;
+non terminal Contenedor ETQ_CONTENEDOR;
+non terminal LinkedList<Simbolo> ELEMENTOS_CONTENEDOR;
+non terminal Simbolo ELEMENTO_CONTENEDOR;
+non terminal Simbolo ELEMENTO_X;
+non terminal Simbolo ELEMENTO_Y;
+non terminal Simbolo ELEMENTO_ALTO;
+non terminal Simbolo ELEMENTO_ANCHO;
+non terminal Simbolo ELEMENTO_BORDE;
+non terminal String BOOLEANO;
 non terminal LinkedList<nodoAST> LST_CUERPO_VENTANA;
-non terminal CUERPO_VENTANA;
+non terminal nodoAST CUERPO_VENTANA;
 
-non terminal LST_CUERPO_CONTENEDOR;
-non terminal CUERPO_CONTENEDOR;
+non terminal LinkedList<nodoAST> LST_CUERPO_CONTENEDOR;
+non terminal nodoAST CUERPO_CONTENEDOR;
 non terminal ETQ_TEXTO;
 non terminal ELEMENTOS_TEXTO;
 non terminal ELEMENTO_TEXTO;
@@ -131,35 +131,36 @@ ELEMENTO_VENTANA::=     ELEMENTO_ID:a             {:RESULT = a;:}
                         |ELEMENTO_ACCION_FINAL:a   {:RESULT = a;:}
                         ;             
 
-LST_CUERPO_VENTANA::=    LST_CUERPO_VENTANA CUERPO_VENTANA {:RESULT = null;:}
-                        | CUERPO_VENTANA {: RESULT = null;:}
+LST_CUERPO_VENTANA::=    LST_CUERPO_VENTANA:a CUERPO_VENTANA:b {:RESULT = a; RESULT.add(b);:}
+                        | CUERPO_VENTANA:a {: RESULT = new LinkedList<>(); RESULT.add(a);;:}
                         ;
 
 
-CUERPO_VENTANA::=       ETQ_CONTENEDOR
+CUERPO_VENTANA::=       ETQ_CONTENEDOR:a {:RESULT = a;:}
                         | error res_MayorQue
                         ;                             
 
 
-ETQ_CONTENEDOR::=    res_MenorQue res_contenedor ELEMENTOS_CONTENEDOR res_MayorQue LST_CUERPO_CONTENEDOR   res_MenorQue res_slash res_contenedor res_MayorQue
+ETQ_CONTENEDOR::=    res_MenorQue res_contenedor ELEMENTOS_CONTENEDOR:a res_MayorQue LST_CUERPO_CONTENEDOR:b   res_MenorQue res_slash res_contenedor res_MayorQue
+                     {:RESULT = new Contenedor(a,b,aleft);:}
                     ;
 
-ELEMENTOS_CONTENEDOR::=  ELEMENTOS_CONTENEDOR ELEMENTO_CONTENEDOR
-                         |ELEMENTO_CONTENEDOR
+ELEMENTOS_CONTENEDOR::=  ELEMENTOS_CONTENEDOR:a ELEMENTO_CONTENEDOR:b  {:RESULT = a; RESULT.add(b);:}
+                         |ELEMENTO_CONTENEDOR:a {:RESULT = new LinkedList<>(); RESULT.add(a);:}
                          ;
 
-ELEMENTO_CONTENEDOR::=  ELEMENTO_ID
-                        |ELEMENTO_X
-                        |ELEMENTO_Y
-                        |ELEMENTO_ALTO
-                        |ELEMENTO_ANCHO
-                        |ELEMENTO_COLOR
-                        |ELEMENTO_BORDE
+ELEMENTO_CONTENEDOR::=  ELEMENTO_ID:a{:RESULT=a;:}
+                        |ELEMENTO_X:a{:RESULT=a;:}
+                        |ELEMENTO_Y:a{:RESULT=a;:}
+                        |ELEMENTO_ALTO:a{:RESULT=a;:}
+                        |ELEMENTO_ANCHO:a{:RESULT=a;:}
+                        |ELEMENTO_COLOR:a{:RESULT=a;:}
+                        |ELEMENTO_BORDE:a{:RESULT=a;:}
                         ;
 
 
-LST_CUERPO_CONTENEDOR::= LST_CUERPO_CONTENEDOR CUERPO_CONTENEDOR
-                        |CUERPO_CONTENEDOR
+LST_CUERPO_CONTENEDOR::= LST_CUERPO_CONTENEDOR CUERPO_CONTENEDOR:a {:RESULT = null;:}
+                        |CUERPO_CONTENEDOR:a {:RESULT = null;:}
                         ;
 
 CUERPO_CONTENEDOR::=    ETQ_TEXTO
@@ -335,21 +336,21 @@ ELEMENTO_ACCION_FINAL::= res_accionFinal res_Igual res_llvOpen  tTexto:a res_llv
                             {: RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.ACCION_FINAL);:}
                          ;
 
-ELEMENTO_X::=           res_x res_Igual  tNumerico
+ELEMENTO_X::=           res_x res_Igual  tNumerico:a {: RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.NUMBER),Simbolo.ROLGXML.X);:}
                         ;              
 
-ELEMENTO_Y::=           res_y res_Igual tNumerico
+ELEMENTO_Y::=           res_y res_Igual tNumerico:a {: RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.NUMBER),Simbolo.ROLGXML.Y);:}         
                         ;
 
-ELEMENTO_ALTO::=        res_alto res_Igual tNumerico
+ELEMENTO_ALTO::=        res_alto res_Igual tNumerico:a {: RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.NUMBER),Simbolo.ROLGXML.ALTO);:}
                         ;
-ELEMENTO_ANCHO::=       res_ancho res_Igual tNumerico
-                        ;
-
-ELEMENTO_BORDE::=       res_borde res_Igual BOOLEANO
+ELEMENTO_ANCHO::=       res_ancho res_Igual tNumerico:a {: RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.NUMBER),Simbolo.ROLGXML.ANCHO);:}
                         ;
 
+ELEMENTO_BORDE::=       res_borde res_Igual BOOLEANO:a {: RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.BOOLEAN),Simbolo.ROLGXML.BORDE);:}
+                        ;
 
-BOOLEANO::=             res_verdadero
-                        |res_falso
+
+BOOLEANO::=             res_verdadero:a {:RESULT = a;:}
+                        |res_falso:a {:RESULT = a;:}
                         ;                          
