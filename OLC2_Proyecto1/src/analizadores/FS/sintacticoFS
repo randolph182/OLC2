@@ -8,9 +8,12 @@ import FuncionScript.AST.Expresiones.*;
 import FuncionScript.AST.Expresiones.Operacion.*;
 import FuncionScript.Entorno.*;
 import FuncionScript.AST.Instrucciones.*;
+//import FuncionScript.AST.Instrucciones.InterfazUsuario.*;
 import FuncionScript.AST.*;
 import FuncionScript.ErroresFS.ManejadorErroresFS;
 import FuncionScript.AST.Instrucciones.Condicionales.*;
+
+import FuncionScript.AST.Expresiones.InterfazUsuario.*;
 //acciones que se programan en el parser
 
 parser code
@@ -62,6 +65,7 @@ terminal String tLlvOpen,tLlvClose,tCaso,tDefecto,tSelecciona,tBreak;
 terminal String tAnd,tOr,tNot;
 terminal String tReturn,tFuncion,tCorchOpen,tCorchClose,tPunto,res_Descendente,res_Ascendente;
 terminal String res_Invertir,res_maximo,res_minimo;
+terminal String res_crear_ventana,res_crear_contenedor,res_crear_texto;
 
 non terminal S;
 non terminal Instruccion DECLARACION;
@@ -76,29 +80,26 @@ non terminal Decremento DECREMENTO;
 non terminal Asignacion ASIGNACION;
 non terminal Asignacion_Operacion ASIG_OP;
 non terminal Asignacion_Operacion.TipoAO TIPO_AO;
-
 non terminal  If IF;
-
 non terminal Switch SWITCH;
 non terminal LinkedList<Caso> LST_CASOS;
 non terminal Caso CASO;
-
 non terminal Break BREAK;
-
 non terminal Return RETURN;
 non terminal Funcion FUNCION;
 non terminal LinkedList<Simbolo> PARAMETROS;
 non terminal LinkedList<Simbolo> TIPO_PARAMETROS_FUNCION;
 non terminal Simbolo PARAMETRO;
-
 non terminal FuncionLLamada FUNCION_LLAMADA;
 non terminal LinkedList<Expresion> PARAMETROS_CALL;
 non terminal LinkedList<Expresion> TIPO_PARAMETROS;
 non terminal Object TIPO_DEC_ASIG;
 non terminal LinkedList<Expresion> TIPO_PARAM_ARREGLO;
-
 non terminal ArregloLlamada ARREGLO_LLAMADA;
 non terminal AsignacionArreglo ASIGNACION_ARREGLO;
+non terminal CrearVentana CREAR_VENTANA;
+non terminal CrearContenedor CREAR_CONTENEDOR;
+non terminal CrearTexto CREAR_TEXTO;
 
 precedence right tIgual;
 
@@ -307,4 +308,20 @@ EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,
                 |tFalse:a                           {:RESULT = new Unario(a,new Tipo(Tipo.Primitivo.BOOLEAN),aleft);:}
                 |ARREGLO_LLAMADA:a                     {: RESULT = a; :}
                 |FUNCION_LLAMADA:a                    {:RESULT = a;:}
+                |CREAR_VENTANA:a                    {:RESULT = a;:}
+                |CREAR_CONTENEDOR:a                 {:RESULT = a;:}
                 ;
+
+
+
+CREAR_VENTANA::=    res_crear_ventana tParOpen TIPO_PARAMETROS:a tParClose 
+                    {: RESULT = new CrearVentana(a,aleft);:}
+                    ;     
+
+CREAR_CONTENEDOR::=  tId:a tPunto res_crear_contenedor tParOpen TIPO_PARAMETROS:b tParClose 
+                        {: RESULT = new CrearContenedor(b,a,aleft);:}
+                    ;
+
+CREAR_TEXTO::= tId:a tPunto res_crear_texto tParOpen TIPO_PARAMETROS:b tParClose
+                        {:RESULT = new CrearTexto(b,a,aleft);:}
+                    ;                     

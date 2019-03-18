@@ -1,0 +1,1 @@
+var VentanaAritmetica = crearVentana("#2E2EFE",500,500,"VentanaAritmetica");

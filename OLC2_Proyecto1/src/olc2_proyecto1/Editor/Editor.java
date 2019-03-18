@@ -7,6 +7,8 @@ package olc2_proyecto1.Editor;
 
 import FuncionScript.ErroresFS.ErrorFS;
 import FuncionScript.ErroresFS.ManejadorErroresFS;
+import GenericXML.ErroresGXML.ManejadorErroresGXML;
+import java.io.File;
 //import com.sun.xml.internal.txw2.TXW;
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -15,7 +17,9 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import olc2_proyecto1.Editor.TextLineNumber;
 
 /**
  *
@@ -31,6 +35,10 @@ public class Editor extends javax.swing.JFrame {
     public Editor() {
         initComponents();
         consola = jtxtConsola;
+//        JScrollPane scrollPane = new JScrollPane(jtxtAreaTrabajo);
+        TextLineNumber tln = new TextLineNumber(jtxtAreaTrabajo);
+//        scrollPane.setRowHeaderView(tln);
+        jScrollPane1.setRowHeaderView(tln);
     }
     
     /**
@@ -52,12 +60,13 @@ public class Editor extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMnuItmFS = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jtxtAreaTrabajo.setColumns(20);
         jtxtAreaTrabajo.setRows(5);
-        jtxtAreaTrabajo.setTabSize(1);
+        jtxtAreaTrabajo.setTabSize(2);
         jScrollPane1.setViewportView(jtxtAreaTrabajo);
 
         btnCompilar.setText("Compilar");
@@ -91,6 +100,14 @@ public class Editor extends javax.swing.JFrame {
         });
         jMenu3.add(jMnuItmFS);
 
+        jMenuItem1.setText("Errores GXML");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -102,19 +119,19 @@ public class Editor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCompilar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(jButton1))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCompilar)
@@ -198,6 +215,18 @@ public class Editor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        if(!ManejadorErroresGXML.getInstance().generarReporte()){
+            JOptionPane.showMessageDialog(null, "no hay datos en la que mostrar o no hubo un problema generando el reporte gxml");
+        }else{
+            try { 
+                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler  errGXML.html");
+            } catch (IOException ex) {
+                Logger.getLogger(Editor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -239,6 +268,7 @@ public class Editor extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMnuItmFS;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -273,12 +303,17 @@ public class Editor extends javax.swing.JFrame {
             consola.setText("");
             parserGXML = new analizadores.GXML.sintacticoGXML(new analizadores.GXML.lexicoGXML(new FileInputStream(path)));
             parserGXML.parse();
-//            parserFS.ast.ejecutar();
             
-//            ManejadorErroresFS e = ManejadorErroresFS.getInstance();
-//            for(ErrorFS fs:e.getTablaErrores()){   
-//                System.out.println("tipo: " +fs.getTipo()+ " descripcion "+ fs.getDescripcion());
-//            }
+            File archivo = new File("traduccion01.fs");
+            FileWriter fichero = null;
+            if(archivo.delete())
+                fichero   = new FileWriter("traduccion01.fs",true);
+                parserGXML.ast.traducir(fichero);
+                if(fichero != null)
+                    fichero.close();
+            else
+                System.out.println("No se puede crear el archivo para la traduccion");
+            
         } catch (Exception e) {
             ManejadorErroresFS.getInstance();
             System.out.println("Error Fatal al trata de analizar el archivo");

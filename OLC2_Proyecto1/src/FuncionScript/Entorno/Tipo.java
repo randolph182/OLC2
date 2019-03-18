@@ -18,6 +18,13 @@ public class Tipo {
         NULL
     }
     
+    public enum TipoGXML{
+        VENTANA,
+        CONTENEDOR,
+        TEXTO
+        
+    }
+    
     private Primitivo tipo;
     
     public Tipo(Primitivo tp){

@@ -4,13 +4,18 @@ import java_cup.runtime.*;
 import java.util.LinkedList;
 
 // ************** importaciones de las clases que se utilizaran en el analisis *********
-
+import FuncionScript.Entorno.*;
+import GenericXML.*;
+import GenericXML.ErroresGXML.*;
 parser code
 {:
+
+    public AST ast;
     /**Metodo al que se llama automáticamente ante algún error sintactico.*/
     public void syntax_error(Symbol s){
         System.out.println("Error sintactico en la Línea " + s.left +" Columna "+(s.right+1)+ ". Identificador "
         +s.value + " no reconocido." );
+        ManejadorErroresGXML.getInstance().setErrorSintactico(s.left,s.right+1, "problemas con el caracter = " + s.value);
     }
          /**Metodo al que se llama en el momento en que ya no es posible una recuperación de
     errores.*/
@@ -31,17 +36,17 @@ terminal String res_control,res_maximo,res_minimo,res_accion;
 terminal String res_listaDatos,res_dato,res_defecto,res_multimedia,res_boton,res_referencia,res_enviar,res_path,res_auto_reproduccion;
 
 non terminal S;
-non terminal LISTADO_ETIQUETAS;
-non terminal ETIQUETAS;
+non terminal LinkedList<nodoAST> LISTADO_ETIQUETAS;
+non terminal nodoAST ETIQUETAS;
 non terminal ETQ_IMPORTAR;
-non terminal ETQ_VENTANA;
-non terminal ELEMENTO_VENTANA;
-non terminal ELEMENTOS_VENTANA;
-non terminal ELEMENTO_ID;
-non terminal ELEMENTO_TIPO;
-non terminal ELEMENTO_COLOR;
-non terminal ELEMENTO_ACCION_INICIAL;
-non terminal ELEMENTO_ACCION_FINAL;
+non terminal Ventana ETQ_VENTANA;
+non terminal Simbolo ELEMENTO_VENTANA;
+non terminal LinkedList<Simbolo> ELEMENTOS_VENTANA;
+non terminal Simbolo ELEMENTO_ID;
+non terminal Simbolo ELEMENTO_TIPO;
+non terminal Simbolo ELEMENTO_COLOR;
+non terminal Simbolo ELEMENTO_ACCION_INICIAL;
+non terminal Simbolo ELEMENTO_ACCION_FINAL;
 non terminal ETQ_CONTENEDOR;
 non terminal ELEMENTOS_CONTENEDOR;
 non terminal ELEMENTO_CONTENEDOR;
@@ -51,7 +56,7 @@ non terminal ELEMENTO_ALTO;
 non terminal ELEMENTO_ANCHO;
 non terminal ELEMENTO_BORDE;
 non terminal BOOLEANO;
-non terminal LST_CUERPO_VENTANA;
+non terminal LinkedList<nodoAST> LST_CUERPO_VENTANA;
 non terminal CUERPO_VENTANA;
 
 non terminal LST_CUERPO_CONTENEDOR;
@@ -93,15 +98,15 @@ non terminal TIPO_CUERPO_CONTROL;
 /* ******************************************* GRAMATICA **************************************** */
 start with S;
 
-S::=     LISTADO_ETIQUETAS
+S::=     LISTADO_ETIQUETAS:a {:parser.ast = new AST(a);:}
          ;         
 
-LISTADO_ETIQUETAS::= LISTADO_ETIQUETAS ETIQUETAS
-                    | ETIQUETAS
+LISTADO_ETIQUETAS::= LISTADO_ETIQUETAS:a ETIQUETAS:b {:RESULT = a; RESULT.add(b);:}
+                    | ETIQUETAS:a {:RESULT = new LinkedList<>(); RESULT.add(a);:}
                     ;
 
-ETIQUETAS::=       ETQ_IMPORTAR
-                    | ETQ_VENTANA
+ETIQUETAS::=       ETQ_IMPORTAR:a {:RESULT = null;:}
+                    | ETQ_VENTANA:a {:RESULT = a;:}
                     | error res_MayorQue
                     ;
 
@@ -111,22 +116,23 @@ ETQ_IMPORTAR::= res_MenorQue res_importar res_MayorQue tTexto:t res_MenorQue res
 
 
 
-ETQ_VENTANA::=  res_MenorQue res_ventana ELEMENTOS_VENTANA res_MayorQue LST_CUERPO_VENTANA res_MenorQue res_slash res_ventana res_MayorQue
+ETQ_VENTANA::=  res_MenorQue res_ventana ELEMENTOS_VENTANA:a res_MayorQue LST_CUERPO_VENTANA:b res_MenorQue res_slash res_ventana res_MayorQue
+                {:RESULT = new Ventana(a,b,aleft); :}
                 ;
 
-ELEMENTOS_VENTANA::=    ELEMENTOS_VENTANA ELEMENTO_VENTANA
-                        |ELEMENTO_VENTANA
+ELEMENTOS_VENTANA::=    ELEMENTOS_VENTANA:a ELEMENTO_VENTANA:b {:RESULT = a; RESULT.add(b);:}
+                        |ELEMENTO_VENTANA:a {:RESULT = new LinkedList<>(); RESULT.add(a);:}
                         ;
 
-ELEMENTO_VENTANA::=     ELEMENTO_ID
-                        |ELEMENTO_TIPO
-                        |ELEMENTO_COLOR
-                        |ELEMENTO_ACCION_INICIAL
-                        |ELEMENTO_ACCION_FINAL
+ELEMENTO_VENTANA::=     ELEMENTO_ID:a             {:RESULT = a;:}
+                        |ELEMENTO_TIPO:a            {:RESULT = a;:}
+                        |ELEMENTO_COLOR:a           {:RESULT = a;:}
+                        |ELEMENTO_ACCION_INICIAL:a {:RESULT = a;:}
+                        |ELEMENTO_ACCION_FINAL:a   {:RESULT = a;:}
                         ;             
 
-LST_CUERPO_VENTANA::=    LST_CUERPO_VENTANA CUERPO_VENTANA
-                        | CUERPO_VENTANA
+LST_CUERPO_VENTANA::=    LST_CUERPO_VENTANA CUERPO_VENTANA {:RESULT = null;:}
+                        | CUERPO_VENTANA {: RESULT = null;:}
                         ;
 
 
@@ -312,19 +318,21 @@ ELEMENTO_NEGRITA::= res_negrita res_Igual BOOLEANO
 ELEMENTO_CURSIVA::= res_cursiva res_Igual BOOLEANO
                     ;  
 
-ELEMENTO_ID::=          res_id res_Igual tCad  
+ELEMENTO_ID::=          res_id res_Igual tCad:a  {: RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.ID);:}
                         ;
 
-ELEMENTO_TIPO::=        res_tipo res_Igual tCad
+ELEMENTO_TIPO::=        res_tipo res_Igual tCad:a {: RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.TIPO);:}
                         ;
 
-ELEMENTO_COLOR::=       res_color res_Igual tCad
+ELEMENTO_COLOR::=       res_color res_Igual tCad:a  {: RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.COLOR);:}
                         ;
 
-ELEMENTO_ACCION_INICIAL::=  res_accionInicial res_Igual res_llvOpen tTexto res_llvClose
+ELEMENTO_ACCION_INICIAL::=  res_accionInicial res_Igual res_llvOpen tTexto:a res_llvClose
+                            {: RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.ACCION_INICIAL);:}
                             ;
 
-ELEMENTO_ACCION_FINAL::= res_accionFinal res_Igual res_llvOpen  tTexto res_llvClose
+ELEMENTO_ACCION_FINAL::= res_accionFinal res_Igual res_llvOpen  tTexto:a res_llvClose
+                            {: RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.ACCION_FINAL);:}
                          ;
 
 ELEMENTO_X::=           res_x res_Igual  tNumerico

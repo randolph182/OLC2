@@ -38,9 +38,11 @@ public class sym {
   public static final int tMenorIgual = 27;
   public static final int tAumen = 18;
   public static final int tSi = 35;
+  public static final int res_crear_ventana = 58;
   public static final int tDefecto = 42;
   public static final int tFalse = 4;
   public static final int tParOpen = 12;
+  public static final int res_crear_contenedor = 59;
   public static final int EOF = 0;
   public static final int tMayorIgual = 26;
   public static final int error = 1;
@@ -58,6 +60,7 @@ public class sym {
   public static final int tPtoComa = 5;
   public static final int tCaso = 41;
   public static final int tIgual = 11;
+  public static final int res_crear_texto = 60;
   public static final int umenos = 23;
   public static final int tMas = 6;
   public static final int tElev = 10;
@@ -124,7 +127,10 @@ public class sym {
   "res_Ascendente",
   "res_Invertir",
   "res_maximo",
-  "res_minimo"
+  "res_minimo",
+  "res_crear_ventana",
+  "res_crear_contenedor",
+  "res_crear_texto"
   };
 }
 

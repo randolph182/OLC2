@@ -1,3 +1,5 @@
-var a = [];
-
-a[0] = "hola";
+<ventana id = "primera" tipo = "principal" accionInicial={sumar(5,5)} >
+	<contenedor id ="contenedor1" alto = 100 ancho = 230>
+		<texto id = "hola mundo"> Texto que se Imprimira </texto>
+	</contenedor>
+</ventana>

@@ -26,6 +26,25 @@ public class Simbolo {
     private int  linea;
     
     private ROL rol;
+
+
+    private ROLGXML rolGxml;
+    public Simbolo(){
+    }
+    
+    public Simbolo(String id,Object valor,Tipo tipo){
+        this.id = id;
+        this.valor = valor;
+        this.tipo = tipo;
+    }
+    
+    public Simbolo(String id,Object valor,Tipo tipo,ROLGXML rol){
+        this.id = id;
+        this.valor = valor;
+        this.tipo = tipo;
+        this.rolGxml = rol;
+    }
+    
     
     public Simbolo(LinkedList<Identificador> ids, int linea){
         this.ids = ids;
@@ -118,11 +137,31 @@ public class Simbolo {
         this.id = id;
     }
     
+        public ROLGXML getRolGxml() {
+        return rolGxml;
+    }
+
+    public void setRolGxml(ROLGXML rolGxml) {
+        this.rolGxml = rolGxml;
+    }
+    
+    
+    
+    public enum ROLGXML{
+        ID,
+        TIPO,
+        COLOR,
+        ACCION_INICIAL,
+        ACCION_FINAL
+        
+    }
+    
     public enum ROL{
         FUNCION,
         VARIABLE,
         ARREGLO_HOMOGENEO,
-        ARREGLO_HETEROGENEO
+        ARREGLO_HETEROGENEO,
+        VENTANA
         
     }
     

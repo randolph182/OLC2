@@ -2,6 +2,7 @@
 /*------------------- 1era Area: Codigo de usuario ------------------------*/
 package analizadores.GXML;
 import java_cup.runtime.Symbol;
+import GenericXML.ErroresGXML.*;
 /*----------------- 2da Area: Opciones y declaraciones --------------------*/
 %%
 %{
@@ -75,7 +76,9 @@ COMENT_LINE =("##".*\r\n)|("##".*\n)|("##".*\r)
 <YYINITIAL> {numerico}        { return new Symbol(sym.tNumerico,yyline,yychar, yytext());}
 <YYINITIAL> .	{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
-				}
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
+				}		
+
 
 <COMENT_MULTI_LINE> [^*]*"$#" { System.out.println ("Comentario: <" +yytext().substring(0,yytext().length()-2)+">");yybegin(YYINITIAL); }	
 

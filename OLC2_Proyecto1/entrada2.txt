@@ -62,14 +62,13 @@
 		<Boton Nombre = "btnFibonacci" X = 300 Y = 550 Alto = 50 Ancho = 100 Accion = {VerFibonacci(19)}>
 			Ver Respuesta
 		</Boton>
-	<Contenedor>
+	</Contenedor>
 	<Contenedor id = "ContEnviarAritmetica" x = 10 Y = 1010 Alto = 100 Ancho = 200>
 		<Enviar Nombre = "btnEnviar" X = 75 Y = 30 Alto = 70 Ancho = 40 Referencia = "VentanaHistoria">
 			Contestar
 		</Enviar>
 	</Contenedor>
 </Ventana>
-
 
 ##########################################################################################
 ################################## Ventana Historia ######################################

@@ -2,6 +2,7 @@
 /*------------------- 1era Area: Codigo de usuario ------------------------*/
 package analizadores.GXML;
 import java_cup.runtime.Symbol;
+import GenericXML.ErroresGXML.*;
 /*----------------- 2da Area: Opciones y declaraciones --------------------*/
 
 
@@ -552,6 +553,7 @@ public class lexicoGXML       implements java_cup.runtime.Scanner {
 					case 2:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -3:
 						break;
@@ -766,6 +768,7 @@ public class lexicoGXML       implements java_cup.runtime.Scanner {
 					case 56:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -56:
 						break;
@@ -796,6 +799,7 @@ public class lexicoGXML       implements java_cup.runtime.Scanner {
 					case 64:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -63:
 						break;
@@ -806,78 +810,91 @@ public class lexicoGXML       implements java_cup.runtime.Scanner {
 					case 67:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -65:
 						break;
 					case 69:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -66:
 						break;
 					case 71:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -67:
 						break;
 					case 73:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -68:
 						break;
 					case 75:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -69:
 						break;
 					case 77:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -70:
 						break;
 					case 79:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -71:
 						break;
 					case 81:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -72:
 						break;
 					case 83:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -73:
 						break;
 					case 85:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -74:
 						break;
 					case 87:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -75:
 						break;
 					case 89:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -76:
 						break;
 					case 91:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -77:
 						break;
@@ -888,6 +905,7 @@ public class lexicoGXML       implements java_cup.runtime.Scanner {
 					case 181:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -79:
 						break;
