@@ -14,6 +14,7 @@ import FuncionScript.ErroresFS.ManejadorErroresFS;
 import FuncionScript.AST.Instrucciones.Condicionales.*;
 
 import FuncionScript.AST.Expresiones.InterfazUsuario.*;
+import FuncionScript.AST.Instrucciones.InterfazUsuario.*;
 //acciones que se programan en el parser
 
 parser code
@@ -66,7 +67,7 @@ terminal String tAnd,tOr,tNot;
 terminal String tReturn,tFuncion,tCorchOpen,tCorchClose,tPunto,res_Descendente,res_Ascendente;
 terminal String res_Invertir,res_maximo,res_minimo;
 terminal String res_crear_ventana,res_crear_contenedor,res_crear_texto;
-terminal String res_leerGxml,res_obtenerPorEtiqueta;
+terminal String res_leerGxml,res_obtenerPorEtiqueta,res_crear_caja_texto;
 
 non terminal S;
 non terminal Instruccion DECLARACION;
@@ -103,6 +104,7 @@ non terminal CrearContenedor CREAR_CONTENEDOR;
 non terminal CrearTexto CREAR_TEXTO;
 non terminal LeerGxml LEER_GXML;
 non terminal ObtenerPorEtiqueta OBTENER_POR_ETIQUETA;
+non terminal ObjetoLlamada LLAMADA_OBJETO;
 
 precedence right tIgual;
 
@@ -148,6 +150,7 @@ INSTRUCCION::=  DECLARACION:a                      {:RESULT = a;:}
                 |FUNCION_LLAMADA:a tPtoComa         {: RESULT = a;:}
                 |ARREGLO_LLAMADA:a tPtoComa               {: RESULT = a;:}
                 |ASIGNACION_ARREGLO:a               {: RESULT = a;:}
+                |CREAR_TEXTO:a {: RESULT = a;:}
                 | error tPtoComa
                 |error tLlvClose
                 ;
@@ -315,8 +318,15 @@ EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,
                 |CREAR_CONTENEDOR:a                 {:RESULT = a;:}
                 |LEER_GXML:a                 {:RESULT = a;:}
                 |OBTENER_POR_ETIQUETA:a {:RESULT = a;:}
+                |LLAMADA_OBJETO:a {:RESULT = a;:}
                 ;
 
+CREAR_TEXTO::= tId:a tPunto res_crear_texto tParOpen TIPO_PARAMETROS:b tParClose tPtoComa
+                {:RESULT = new CrearTexto(b,a,aleft);:}
+                ;
+
+LLAMADA_OBJETO::=  tId:a tPunto tId:b {:RESULT = new ObjetoLlamada(a,b,aleft);:}
+                ;
 
 LEER_GXML::=    res_leerGxml tParOpen tCad:a tParClose {:RESULT = new LeerGxml(a,aleft);:}
                 ;
@@ -333,7 +343,3 @@ CREAR_VENTANA::=    res_crear_ventana tParOpen TIPO_PARAMETROS:a tParClose
 CREAR_CONTENEDOR::=  tId:a tPunto res_crear_contenedor tParOpen TIPO_PARAMETROS:b tParClose 
                         {: RESULT = new CrearContenedor(b,a,aleft);:}
                     ;
-
-CREAR_TEXTO::= tId:a tPunto res_crear_texto tParOpen TIPO_PARAMETROS:b tParClose
-                        {:RESULT = new CrearTexto(b,a,aleft);:}
-                    ;                     

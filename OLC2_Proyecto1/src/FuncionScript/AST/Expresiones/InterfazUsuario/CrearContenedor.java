@@ -10,6 +10,7 @@ import FuncionScript.AST.Expresiones.Expresion;
 import FuncionScript.Entorno.Entorno;
 import FuncionScript.Entorno.Tipo;
 import FuncionScript.ErroresFS.ManejadorErroresFS;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Rectangle;
@@ -40,17 +41,18 @@ public class CrearContenedor implements Expresion{
        if(parametros.size() != 0 && parametros.size() == 6){
            //OBTENIENDO EL ID DEL FRAME DE LA VENTANA
            if(ent.get(idVentana) != null){
-                Double alto  = new Double(0);
-                Double ancho = new Double(0);
-                Color colorContenedor = new Color(linea);
+                Double alto  = new Double(10);
+                Double ancho = new Double(10);
+                Color colorContenedor = Color.decode("#999999");
                 boolean borde = false;
-                Double posX =  new Double(0);
-                Double posY = new Double(0);
+                Double posX =  new Double(10);
+                Double posY = new Double(10);
                 
                 for (int i = 0; i < parametros.size(); i++) {
                    Object valor = parametros.get(i).getValor(ent);
                    Tipo tipoValor = parametros.get(i).getTipo(ent);
                    if(valor != null){
+                       
                        switch(i){
                            case 0:
                                alto = new Double(valor.toString());
@@ -84,19 +86,20 @@ public class CrearContenedor implements Expresion{
                         System.out.println("Error uno de los parametros de contenedor vino nulo algo salio mal en linea " + linea);
                         Editor.insertarTextoConsola("Error uno de los parametros de contenedor vino nulo algo salio mal en linea " + linea);
                         ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error uno de los parametros de contenedor vino nulo algo salio mal  " ); 
-                        return null;
+                        //return null;
                    }
                }
                //le agregamos la configuracion a la ventana ya creada antes
                JFrame ventana = (JFrame)(ent.get(idVentana)).getValor();
                JPanel panel = new JPanel();
                ventana.getContentPane().add(panel);
+               panel.setLayout(new BorderLayout());
                panel.setBounds(new Rectangle(posX.intValue(), posY.intValue(), ancho.intValue(), alto.intValue()));
                if(borde)
                    panel.setBorder(null);
                panel.setBackground(colorContenedor);
                //guardamos la informacion para retornar en este caso solo retornamos el id de la ventana
-               ventana.setVisible(true);
+               //ventana.setVisible(true);
                return idVentana;
            } else{
                System.out.println("Error la ventana con id: "+ idVentana + " no existe para crear contenedor en linea " + linea);

@@ -91,6 +91,7 @@ public class Ventana implements Instruccion {
                                 tipo = elemento.getValor().toString();
                                 if(tipoEjecucion == 1){
                                     Simbolo s = new Simbolo();
+                                    s.setId("tipo");
                                     s.setTipo(new Tipo(Tipo.Primitivo.STRING));
                                     s.setValor(tipo);
                                     s.setRolGxml(Simbolo.ROLGXML.TIPO);
@@ -101,6 +102,7 @@ public class Ventana implements Instruccion {
                                 color = elemento.getValor().toString();
                                 if(tipoEjecucion == 1){
                                     Simbolo s = new Simbolo();
+                                    s.setId("color");
                                     s.setTipo(new Tipo(Tipo.Primitivo.STRING));
                                     s.setValor(color);
                                     s.setRolGxml(Simbolo.ROLGXML.COLOR);
@@ -111,6 +113,7 @@ public class Ventana implements Instruccion {
                                 accionInicial = elemento.getValor().toString();
                                 if(tipoEjecucion == 1){
                                     Simbolo s = new Simbolo();
+                                    s.setId("accionInicial");
                                     s.setTipo(new Tipo(Tipo.Primitivo.STRING));
                                     s.setValor(accionInicial);
                                     s.setRolGxml(Simbolo.ROLGXML.ACCION_INICIAL);
@@ -122,6 +125,7 @@ public class Ventana implements Instruccion {
                                 accionFinal = elemento.getValor().toString();
                                 if(tipoEjecucion == 1){
                                     Simbolo s = new Simbolo();
+                                    s.setId("accionFinal");
                                     s.setTipo(new Tipo(Tipo.Primitivo.STRING));
                                     s.setValor(accionInicial);
                                     s.setRolGxml(Simbolo.ROLGXML.ACCION_INICIAL);

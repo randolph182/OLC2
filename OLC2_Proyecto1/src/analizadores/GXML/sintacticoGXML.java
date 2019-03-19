@@ -66,7 +66,7 @@ public class sintacticoGXML extends java_cup.runtime.lr_parser {
     "\063\003\000\002\064\004\000\002\064\003\000\002\065" +
     "\003\000\002\065\003\000\002\065\003\000\002\065\003" +
     "\000\002\065\003\000\002\065\003\000\002\065\003\000" +
-    "\002\066\005\000\002\067\013\000\002\070\005\000\002" +
+    "\002\067\013\000\002\066\005\000\002\070\005\000\002" +
     "\071\005\000\002\043\005\000\002\044\005\000\002\045" +
     "\007\000\002\042\005\000\002\036\005\000\002\037\005" +
     "\000\002\040\005\000\002\041\005\000\002\011\005\000" +
@@ -166,20 +166,20 @@ public class sintacticoGXML extends java_cup.runtime.lr_parser {
     "\030\073\035\141\055\342\056\340\001\002\000\036\016" +
     "\023\017\033\025\066\026\063\027\060\030\073\035\141" +
     "\036\207\037\201\040\206\041\173\043\256\044\244\045" +
-    "\136\001\002\000\020\025\066\026\063\027\060\030\073" +
-    "\035\141\045\136\053\137\001\002\000\022\017\033\025" +
+    "\137\001\002\000\020\025\066\026\063\027\060\030\073" +
+    "\035\141\045\137\053\136\001\002\000\022\017\033\025" +
     "\066\026\063\035\141\036\207\037\201\040\206\041\173" +
     "\001\002\000\020\025\066\026\063\027\060\030\073\035" +
-    "\141\045\136\053\137\001\002\000\004\024\133\001\002" +
+    "\141\045\137\053\136\001\002\000\004\024\133\001\002" +
     "\000\004\010\134\001\002\000\006\003\uffed\007\uffed\001" +
     "\002\000\022\010\uff9f\025\uff9f\026\uff9f\027\uff9f\030\uff9f" +
-    "\035\uff9f\045\uff9f\053\uff9f\001\002\000\004\015\167\001" +
+    "\035\uff9f\045\uff9f\053\uff9f\001\002\000\004\015\171\001" +
     "\002\000\004\015\165\001\002\000\022\010\uffa2\025\uffa2" +
     "\026\uffa2\027\uffa2\030\uffa2\035\uffa2\045\uffa2\053\uffa2\001" +
     "\002\000\004\015\163\001\002\000\022\010\uffa3\025\uffa3" +
     "\026\uffa3\027\uffa3\030\uffa3\035\uffa3\045\uffa3\053\uffa3\001" +
     "\002\000\022\010\152\025\066\026\063\027\060\030\073" +
-    "\035\141\045\136\053\137\001\002\000\022\010\uffa5\025" +
+    "\035\141\045\137\053\136\001\002\000\022\010\uffa5\025" +
     "\uffa5\026\uffa5\027\uffa5\030\uffa5\035\uffa5\045\uffa5\053\uffa5" +
     "\001\002\000\022\010\uff9e\025\uff9e\026\uff9e\027\uff9e\030" +
     "\uff9e\035\uff9e\045\uff9e\053\uff9e\001\002\000\022\010\uffa0" +
@@ -197,12 +197,12 @@ public class sintacticoGXML extends java_cup.runtime.lr_parser {
     "\uff96\016\uff96\017\uff96\025\uff96\026\uff96\027\uff96\030\uff96" +
     "\035\uff96\036\uff96\037\uff96\040\uff96\041\uff96\043\uff96\044" +
     "\uff96\045\uff96\053\uff96\055\uff96\056\uff96\001\002\000\004" +
-    "\004\166\001\002\000\022\010\uff9d\025\uff9d\026\uff9d\027" +
-    "\uff9d\030\uff9d\035\uff9d\045\uff9d\053\uff9d\001\002\000\004" +
-    "\022\170\001\002\000\004\005\171\001\002\000\004\023" +
-    "\172\001\002\000\042\010\uff97\016\uff97\017\uff97\025\uff97" +
+    "\022\166\001\002\000\004\005\167\001\002\000\004\023" +
+    "\170\001\002\000\042\010\uff97\016\uff97\017\uff97\025\uff97" +
     "\026\uff97\027\uff97\030\uff97\035\uff97\036\uff97\037\uff97\040" +
     "\uff97\041\uff97\043\uff97\044\uff97\045\uff97\053\uff97\001\002" +
+    "\000\004\004\172\001\002\000\022\010\uff9c\025\uff9c\026" +
+    "\uff9c\027\uff9c\030\uff9c\035\uff9c\045\uff9c\053\uff9c\001\002" +
     "\000\004\015\226\001\002\000\024\010\uffd9\017\uffd9\025" +
     "\uffd9\026\uffd9\035\uffd9\036\uffd9\037\uffd9\040\uffd9\041\uffd9" +
     "\001\002\000\024\010\220\017\033\025\066\026\063\035" +
@@ -240,10 +240,10 @@ public class sintacticoGXML extends java_cup.runtime.lr_parser {
     "\025\uff92\026\uff92\027\uff92\030\uff92\035\uff92\036\uff92\037" +
     "\uff92\040\uff92\041\uff92\043\uff92\044\uff92\045\uff92\001\002" +
     "\000\022\010\231\025\066\026\063\027\060\030\073\035" +
-    "\141\045\136\053\137\001\002\000\006\005\154\007\155" +
+    "\141\045\137\053\136\001\002\000\006\005\154\007\155" +
     "\001\002\000\004\007\233\001\002\000\004\012\234\001" +
     "\002\000\004\054\235\001\002\000\004\010\236\001\002" +
-    "\000\006\003\uff9c\007\uff9c\001\002\000\040\010\uffcc\016" +
+    "\000\006\003\uff9d\007\uff9d\001\002\000\040\010\uffcc\016" +
     "\uffcc\017\uffcc\025\uffcc\026\uffcc\027\uffcc\030\uffcc\035\uffcc" +
     "\036\uffcc\037\uffcc\040\uffcc\041\uffcc\043\uffcc\044\uffcc\045" +
     "\uffcc\001\002\000\040\010\uffc0\016\uffc0\017\uffc0\025\uffc0" +
@@ -277,7 +277,7 @@ public class sintacticoGXML extends java_cup.runtime.lr_parser {
     "\uffce\035\uffce\036\uffce\037\uffce\040\uffce\041\uffce\043\uffce" +
     "\044\uffce\045\uffce\001\002\000\040\010\263\016\023\017" +
     "\033\025\066\026\063\027\060\030\073\035\141\036\207" +
-    "\037\201\040\206\041\173\043\256\044\244\045\136\001" +
+    "\037\201\040\206\041\173\043\256\044\244\045\137\001" +
     "\002\000\040\010\uffc7\016\uffc7\017\uffc7\025\uffc7\026\uffc7" +
     "\027\uffc7\030\uffc7\035\uffc7\036\uffc7\037\uffc7\040\uffc7\041" +
     "\uffc7\043\uffc7\044\uffc7\045\uffc7\001\002\000\004\015\261" +
@@ -928,10 +928,13 @@ class CUP$sintacticoGXML$actions {
           case 30: // LST_CUERPO_CONTENEDOR ::= LST_CUERPO_CONTENEDOR CUERPO_CONTENEDOR 
             {
               LinkedList<nodoAST> RESULT =null;
-		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
-		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
-		nodoAST a = (nodoAST)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
-		RESULT = null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).right;
+		LinkedList<nodoAST> a = (LinkedList<nodoAST>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		nodoAST b = (nodoAST)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT = a;RESULT.add(b);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("LST_CUERPO_CONTENEDOR",23, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -943,7 +946,7 @@ class CUP$sintacticoGXML$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
 		nodoAST a = (nodoAST)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
-		RESULT = null;
+		RESULT = new LinkedList<>(); RESULT.add(a);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("LST_CUERPO_CONTENEDOR",23, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -952,7 +955,10 @@ class CUP$sintacticoGXML$actions {
           case 32: // CUERPO_CONTENEDOR ::= ETQ_TEXTO 
             {
               nodoAST RESULT =null;
-
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Texto a = (Texto)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("CUERPO_CONTENEDOR",24, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -961,7 +967,10 @@ class CUP$sintacticoGXML$actions {
           case 33: // CUERPO_CONTENEDOR ::= ETQ_CONTROL 
             {
               nodoAST RESULT =null;
-
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Controlador a = (Controlador)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("CUERPO_CONTENEDOR",24, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1005,11 +1014,14 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 38: // ETQ_TEXTO ::= res_MenorQue res_texto ELEMENTOS_TEXTO res_MayorQue tTexto res_MenorQue res_slash res_texto res_MayorQue 
             {
-              Object RESULT =null;
+              Texto RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-6)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-6)).right;
+		LinkedList<Simbolo> a = (LinkedList<Simbolo>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-6)).value;
 		int texleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).left;
 		int texright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).right;
 		String tex = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).value;
-		 System.out.println(tex);
+		 RESULT = new Texto(a,tex,aleft);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ETQ_TEXTO",25, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-8)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1017,8 +1029,14 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 39: // ELEMENTOS_TEXTO ::= ELEMENTOS_TEXTO ELEMENTO_TEXTO 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).right;
+		LinkedList<Simbolo> a = (LinkedList<Simbolo>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo b = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT = a; RESULT.add(b);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_TEXTO",26, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1026,8 +1044,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 40: // ELEMENTOS_TEXTO ::= ELEMENTO_TEXTO 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new LinkedList<>(); RESULT.add(a);;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_TEXTO",26, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1035,8 +1056,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 41: // ELEMENTO_TEXTO ::= ELEMENTO_NOMBRE 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",27, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1044,8 +1068,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 42: // ELEMENTO_TEXTO ::= ELEMENTO_X 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",27, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1053,8 +1080,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 43: // ELEMENTO_TEXTO ::= ELEMENTO_Y 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",27, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1062,8 +1092,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 44: // ELEMENTO_TEXTO ::= ELEMENTO_FUENTE 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",27, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1071,8 +1104,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 45: // ELEMENTO_TEXTO ::= ELEMENTO_TAM 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",27, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1080,8 +1116,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 46: // ELEMENTO_TEXTO ::= ELEMENTO_NEGRITA 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",27, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1089,8 +1128,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 47: // ELEMENTO_TEXTO ::= ELEMENTO_CURSIVA 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",27, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1098,8 +1140,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 48: // ELEMENTO_TEXTO ::= ELEMENTO_COLOR 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TEXTO",27, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1107,8 +1152,14 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 49: // ETQ_CONTROL ::= res_MenorQue res_control ELEMENTOS_CONTROL res_MayorQue TIPO_CUERPO_CONTROL res_slash res_control res_MayorQue 
             {
-              Object RESULT =null;
-
+              Controlador RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-5)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-5)).right;
+		LinkedList<Simbolo> a = (LinkedList<Simbolo>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-5)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-3)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-3)).right;
+		LinkedList<Simbolo> b = (LinkedList<Simbolo>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-3)).value;
+		RESULT = new Controlador(a,b,aleft);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ETQ_CONTROL",36, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-7)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1116,8 +1167,14 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 50: // ELEMENTOS_CONTROL ::= ELEMENTOS_CONTROL ELEMENTO_CONTROL 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).right;
+		LinkedList<Simbolo> a = (LinkedList<Simbolo>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo b = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT = a; RESULT.add(b);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_CONTROL",37, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1125,8 +1182,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 51: // ELEMENTOS_CONTROL ::= ELEMENTO_CONTROL 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT = new LinkedList<>(); RESULT.add(a);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_CONTROL",37, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1134,8 +1194,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 52: // ELEMENTO_CONTROL ::= ELEMENTO_TIPO 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1143,8 +1206,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 53: // ELEMENTO_CONTROL ::= ELEMENTO_NOMBRE 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1152,8 +1218,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 54: // ELEMENTO_CONTROL ::= ELEMENTO_X 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1161,8 +1230,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 55: // ELEMENTO_CONTROL ::= ELEMENTO_Y 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1170,8 +1242,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 56: // ELEMENTO_CONTROL ::= ELEMENTO_ALTO 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1179,8 +1254,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 57: // ELEMENTO_CONTROL ::= ELEMENTO_ANCHO 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1188,8 +1266,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 58: // ELEMENTO_CONTROL ::= ELEMENTO_FUENTE 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1197,8 +1278,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 59: // ELEMENTO_CONTROL ::= ELEMENTO_TAM 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1206,8 +1290,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 60: // ELEMENTO_CONTROL ::= ELEMENTO_COLOR 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1215,8 +1302,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 61: // ELEMENTO_CONTROL ::= ELEMENTO_NEGRITA 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1224,8 +1314,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 62: // ELEMENTO_CONTROL ::= ELEMENTO_CURSIVA 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1233,8 +1326,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 63: // ELEMENTO_CONTROL ::= ELEMENTO_MAXIMO 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1242,8 +1338,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 64: // ELEMENTO_CONTROL ::= ELEMENTO_MINIMO 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1251,8 +1350,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 65: // ELEMENTO_CONTROL ::= ELEMENTO_ACCION 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CONTROL",38, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1260,8 +1362,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 66: // TIPO_CUERPO_CONTROL ::= LST_CUERPO_CONTROL res_MenorQue 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).right;
+		LinkedList<Simbolo> a = (LinkedList<Simbolo>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).value;
+		RESULT  = a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("TIPO_CUERPO_CONTROL",56, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1269,8 +1374,8 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 67: // TIPO_CUERPO_CONTROL ::= res_MenorQue 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		RESULT  = new LinkedList<>();
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("TIPO_CUERPO_CONTROL",56, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1278,8 +1383,19 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 68: // LST_CUERPO_CONTROL ::= LST_CUERPO_CONTROL CUERPO_CONTROL 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).right;
+		LinkedList<Simbolo> a = (LinkedList<Simbolo>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		LinkedList<Simbolo> b = (LinkedList<Simbolo>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		
+                            RESULT = a; 
+                            for(Simbolo s: b){
+                                RESULT.add(s);
+                            }
+                            
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("LST_CUERPO_CONTROL",39, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1287,8 +1403,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 69: // LST_CUERPO_CONTROL ::= CUERPO_CONTROL 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		LinkedList<Simbolo> a = (LinkedList<Simbolo>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT = a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("LST_CUERPO_CONTROL",39, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1296,8 +1415,8 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 70: // CUERPO_CONTROL ::= ETQ_LISTA_DATOS 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		RESULT = null;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("CUERPO_CONTROL",40, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1305,8 +1424,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 71: // CUERPO_CONTROL ::= ETQ_DEFECTO 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT = new LinkedList<>();RESULT.add(a);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("CUERPO_CONTROL",40, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1350,8 +1472,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 76: // ETQ_DEFECTO ::= res_MenorQue res_defecto res_MayorQue tTexto res_MenorQue res_slash res_defecto res_MayorQue 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.DEFECTO);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ETQ_DEFECTO",44, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-7)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1564,16 +1689,7 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 100: // ELEMENTO_REFERENCIA ::= res_referencia res_Igual tCad 
-            {
-              Object RESULT =null;
-
-              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_REFERENCIA",52, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
-            }
-          return CUP$sintacticoGXML$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 101: // ETQ_ENVIAR ::= res_MenorQue res_enviar ELEMENTOS_BOTON res_MayorQue CONTENIDO_BOTON res_MenorQue res_slash res_enviar res_MayorQue 
+          case 100: // ETQ_ENVIAR ::= res_MenorQue res_enviar ELEMENTOS_BOTON res_MayorQue CONTENIDO_BOTON res_MenorQue res_slash res_enviar res_MayorQue 
             {
               Object RESULT =null;
 
@@ -1582,10 +1698,25 @@ class CUP$sintacticoGXML$actions {
           return CUP$sintacticoGXML$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
+          case 101: // ELEMENTO_REFERENCIA ::= res_referencia res_Igual tCad 
+            {
+              Object RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.REFERENCIA);
+              CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_REFERENCIA",52, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
+            }
+          return CUP$sintacticoGXML$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
           case 102: // ELEMENTO_PATH ::= res_path res_Igual tCad 
             {
               Object RESULT =null;
-
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.PATH);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_PATH",54, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1594,7 +1725,10 @@ class CUP$sintacticoGXML$actions {
           case 103: // ELEMENTO_AUTO_REPRODUCCION ::= res_auto_reproduccion res_Igual BOOLEANO 
             {
               Object RESULT =null;
-
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.BOOLEAN),Simbolo.ROLGXML.AUTO_REPRODUCCION);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_AUTO_REPRODUCCION",55, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1602,8 +1736,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 104: // ELEMENTO_MAXIMO ::= res_maximo res_Igual tNumerico 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.NUMBER),Simbolo.ROLGXML.MAXIMO);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_MAXIMO",33, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1611,8 +1748,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 105: // ELEMENTO_MINIMO ::= res_minimo res_Igual tNumerico 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.NUMBER),Simbolo.ROLGXML.MINIMO);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_MINIMO",34, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1620,8 +1760,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 106: // ELEMENTO_ACCION ::= res_accion res_Igual res_llvOpen tTexto res_llvClose 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.ACCION);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_ACCION",35, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1629,8 +1772,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 107: // ELEMENTO_NOMBRE ::= res_nombre res_Igual tCad 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.NOMBRE);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_NOMBRE",32, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1638,8 +1784,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 108: // ELEMENTO_FUENTE ::= res_fuente res_Igual tCad 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.FUENTE);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_FUENTE",28, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1647,8 +1796,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 109: // ELEMENTO_TAM ::= res_tam res_Igual tNumerico 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.NUMBER),Simbolo.ROLGXML.TAMANIO);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_TAM",29, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1656,8 +1808,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 110: // ELEMENTO_NEGRITA ::= res_negrita res_Igual BOOLEANO 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.BOOLEAN),Simbolo.ROLGXML.NEGRILLA);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_NEGRITA",30, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1665,8 +1820,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 111: // ELEMENTO_CURSIVA ::= res_cursiva res_Igual BOOLEANO 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.BOOLEAN),Simbolo.ROLGXML.CURSIVA);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_CURSIVA",31, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-2)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;

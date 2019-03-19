@@ -119,10 +119,19 @@ public class Declaracion implements Instruccion {
                                 
                                 Object resultado = exp.getValor(ent);
                                 if (resultado != null) {
-                                    tipo = exp.getTipo(ent);
-                                    Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), tipo); //aca tipo ya es null
-                                    ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
-                                    nuevoSimbolo.setValor(resultado);
+                                    
+                                    if(resultado instanceof Simbolo){ //si retorna es porque hay un objecto
+                                        tipo = new Tipo(Tipo.Primitivo.OBJECT);
+                                        Simbolo result = (Simbolo)resultado;
+                                        result.setTipo(tipo);
+                                        ent.put(lstId.get(i).getIdentificador(),result);
+                                        
+                                    }else{
+                                        tipo = exp.getTipo(ent);
+                                        Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), tipo); //aca tipo ya es null
+                                        ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
+                                        nuevoSimbolo.setValor(resultado);
+                                    }
                                 } else {
                                     System.out.println("Error obteniendo el valor de expresion en clase Declaracion");
                                     Editor.insertarTextoConsola("Error en obtener el valor de una declaracion vino nulo en " + linea);

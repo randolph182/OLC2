@@ -1,3 +1,3 @@
-var a = leerGxml("VentanasEvaluacion.gxml");
-var ventanas = a.ObtenerPorEtiqueta("ventana");
-var ven1 = ventanas[0];
+var VentanaAritmetica = crearVentana("#2E2EFE",1000,1000,"VentanaAritmetica");
+var ContenedorAritmeticas = VentanaAritmetica.crearContenedor(1000,1000,"#C4CDC2",verdadero,10,10);
+ContenedorAritmeticas.crearTexto("Times New Roman",18,"#000000",10,20,verdadero,verdadero,"Bienvenido a la prueba de Aritmetica, responda las siguientes preguntas");

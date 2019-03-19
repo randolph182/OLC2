@@ -15,6 +15,14 @@ public class Entorno {
 
     public static  Hashtable tablaSimbolosGlobal;
     protected Entorno anterior;
+
+    public Entorno getAnterior() {
+        return anterior;
+    }
+
+    public void setAnterior(Entorno anterior) {
+        this.anterior = anterior;
+    }
     
     public Entorno(Entorno p){
         tablaSimbolos = new Hashtable();

@@ -44,19 +44,19 @@ public class ArregloLlamada implements Expresion {
 
     @Override
     public Object getValor(Entorno ent) {
-        if(ent.get(id).getElementos().size() == 0){
+        if (ent.get(id).getElementos().size() == 0) {
             System.out.println("El valor con  el que se pretende accesar al arreglo vino nulo o el arreglo no tiene elementos en linea" + linea);
             Editor.insertarTextoConsola("El valor con  el que se pretende accesar al arreglo vino nulo o el arreglo no tiene elementos en linea" + linea);
             ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "El valor con  el que se pretende accesar al arreglo vino nulo o el arreglo no tiene elementos");
             return null;
         }
-        
+
         //Calculando primero la Expresion
         switch (tipoLlamada) {
             case 0: //LLAMADA A UNA POSICION DEL ARREGLO
 
                 Object valElemen = exp.getValor(ent);
-                if (valElemen != null ) //si posicion a accesar no es nula
+                if (valElemen != null) //si posicion a accesar no es nula
                 {
                     if (exp.getTipo(ent).isNumeric()) { //si es numrica
                         //AHORA LLAMAMOS AL ARREGLO QUE ESTA EN LA TABLA DE SIMBOLOS
@@ -71,14 +71,37 @@ public class ArregloLlamada implements Expresion {
                                 ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "La posicion que desa acceder del arreglo es erronea");
                                 return null;
                             }
-                            if(valores.get(pos).getValor() != null){
-                                tipo = valores.get(pos).getTipo();
-                                return valores.get(pos).getValor();
-                            }else{
-                                System.out.println("Usted accedio a una variable de tipo GXML e  linea" + linea);
-                                Editor.insertarTextoConsola("Usted accedio a una variable de tipo GXML  en linea" + linea);
-                                return valores.get(pos); //retornamos el simbolo puede tener cuarquier rol ej ventana
+
+                            switch (valores.get(pos).getTipo().getTipoGxml()) {
+                                case VENTANA:
+                                    return valores.get(pos);
+                                case CONTENEDOR:
+                                    return valores.get(pos);
+                                case TEXTO:
+                                    return valores.get(pos);
+                                case CONTROL:
+                                    return valores.get(pos);
+                                case BOTON:
+                                    return valores.get(pos);
+                                case MULTIMEDIA:
+                                    return valores.get(pos);
+                                case LISTA_DATOS:
+                                    return valores.get(pos);
+                                case ENVIAR:
+                                    return valores.get(pos);
+                                default:
+                                    tipo = valores.get(pos).getTipo();
+                                    return valores.get(pos).getValor();
                             }
+                                
+                                
+//                            if (valores.get(pos).getValor() != null) {
+//                                
+//                            } else {
+//                                System.out.println("Usted accedio a una variable de tipo GXML e  linea" + linea);
+//                                Editor.insertarTextoConsola("Usted accedio a una variable de tipo GXML  en linea" + linea);
+//                                return valores.get(pos); //retornamos el simbolo puede tener cuarquier rol ej ventana
+//                            }
                         }
 
                     } else {
@@ -87,27 +110,27 @@ public class ArregloLlamada implements Expresion {
                         ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error las posiciones de los arreglos sole se accesan con numericos");
                         return null;
                     }
-                } 
-            break;
+                }
+                break;
 
             case 1: //LLAMADA A LA FUNCION DESCENDENTE DEL ARREGLO
-            mostrarValoresDescendente(ent.get(id).getElementos(), ent.get(id));
-            break;
+                mostrarValoresDescendente(ent.get(id).getElementos(), ent.get(id));
+                break;
 
             case 2: //LLAMADA A LA FUNCION  ASCENDENTE DEL ARREGLO
                 //verifico primero si el arreglo tiene elementos
-                mostrarValoresAscendente(ent.get(id).getElementos(),ent.get(id));
-            break;
-                
+                mostrarValoresAscendente(ent.get(id).getElementos(), ent.get(id));
+                break;
+
             case 3: //LLAMADA A LA FUNCION  INVERTIR DEL ARREGLO
                 mostrarValoresInvertidos(ent.get(id).getElementos());
-            break;
-             
+                break;
+
             case 4: //LLAMADA A LA FUNCION  Maximo DEL ARREGLO
-              return   mostrarValorMaximo(ent.get(id).getElementos(),ent.get(id));
-                
+                return mostrarValorMaximo(ent.get(id).getElementos(), ent.get(id));
+
             case 5: //LLAMADA A LA FUNCION  MINIMO DEL ARREGLO
-                return mostrarValorMinimo(ent.get(id).getElementos(),ent.get(id));
+                return mostrarValorMinimo(ent.get(id).getElementos(), ent.get(id));
 
         }
         return null;
@@ -122,25 +145,25 @@ public class ArregloLlamada implements Expresion {
     public int getLine() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 // ######################################################## METODO DESCENDENTE ###################################################
     public void mostrarValoresDescendente(LinkedList<Simbolo> elemntos, Simbolo arreglo) {
 
         if (arreglo.getRol() == Simbolo.ROL.ARREGLO_HOMOGENEO) { //si los componentes de los arregos son todos del mismo tipo
-            Tipo tipoOrden  = new Tipo(Tipo.Primitivo.NULL);
-            tipoOrden =  ((Simbolo)elemntos.get(0)).getTipo();
-            switch(tipoOrden.getTipoPrimitivo()){
+            Tipo tipoOrden = new Tipo(Tipo.Primitivo.NULL);
+            tipoOrden = ((Simbolo) elemntos.get(0)).getTipo();
+            switch (tipoOrden.getTipoPrimitivo()) {
                 case NUMBER:
                     LinkedList<Double> val = new LinkedList<>();
                     for (Simbolo s : elemntos) {
-                        val.add( new Double(s.getValor().toString()));
+                        val.add(new Double(s.getValor().toString()));
                     }
 
                     double tmp = 0;
                     //ordenamiento burbuja
                     for (int i = 1; i < val.size(); i++) {
                         for (int j = 0; j < val.size() - 1; j++) {
-                            if (val.get(j)> val.get(j + 1)) { // cadena 1 es mayor que la cadena 2
+                            if (val.get(j) > val.get(j + 1)) { // cadena 1 es mayor que la cadena 2
                                 tmp = val.get(j);
                                 val.set(j, val.get(j + 1));
                                 val.set(j + 1, tmp);
@@ -151,8 +174,8 @@ public class ArregloLlamada implements Expresion {
                     for (Double result : val) {
                         Editor.insertarTextoConsola(result.toString());
                     }
-                break;
-                    
+                    break;
+
                 case STRING:
                     LinkedList<String> val2 = new LinkedList<>();
                     for (Simbolo s : elemntos) {
@@ -165,7 +188,7 @@ public class ArregloLlamada implements Expresion {
                         for (int j = 0; j < val2.size() - 1; j++) {
                             if (val2.get(j).compareTo(val2.get(j + 1)) > 0) { // cadena 1 es mayor que la cadena 2
                                 tmp2 = val2.get(j);
-                                val2.set(j, val2.get(j+1));
+                                val2.set(j, val2.get(j + 1));
                                 val2.set(j + 1, tmp2);
                             }
                         }
@@ -173,10 +196,9 @@ public class ArregloLlamada implements Expresion {
                     for (String str : val2) {
                         Editor.insertarTextoConsola(str);
                     }
-                break;
+                    break;
             }
-            
-            
+
         } else {
             System.out.println("El arreglo no puede hacer la funcion descendente porque no es homogenea en linea " + linea);
             Editor.insertarTextoConsola("El arreglo no puede hacer la funcion descendente porque no es homogenea en linea " + linea);
@@ -185,23 +207,24 @@ public class ArregloLlamada implements Expresion {
 
     }
 // ######################################################## METODO ASCENDNETE ###################################################
+
     public void mostrarValoresAscendente(LinkedList<Simbolo> elemntos, Simbolo arreglo) {
 
         if (arreglo.getRol() == Simbolo.ROL.ARREGLO_HOMOGENEO) { //si los componentes de los arregos son todos del mismo tipo
-            Tipo tipoOrden  = new Tipo(Tipo.Primitivo.NULL);
-            tipoOrden =  ((Simbolo)elemntos.get(0)).getTipo();
-            switch(tipoOrden.getTipoPrimitivo()){
+            Tipo tipoOrden = new Tipo(Tipo.Primitivo.NULL);
+            tipoOrden = ((Simbolo) elemntos.get(0)).getTipo();
+            switch (tipoOrden.getTipoPrimitivo()) {
                 case NUMBER:
                     LinkedList<Double> val = new LinkedList<>();
                     for (Simbolo s : elemntos) {
-                        val.add( new Double(s.getValor().toString()));
+                        val.add(new Double(s.getValor().toString()));
                     }
 
                     double tmp = 0;
                     //ordenamiento burbuja
                     for (int i = 1; i < val.size(); i++) {
                         for (int j = 0; j < val.size() - 1; j++) {
-                            if (val.get(j)< val.get(j + 1)) { // cadena 1 es menor que la cadena 2
+                            if (val.get(j) < val.get(j + 1)) { // cadena 1 es menor que la cadena 2
                                 tmp = val.get(j);
                                 val.set(j, val.get(j + 1));
                                 val.set(j + 1, tmp);
@@ -212,8 +235,8 @@ public class ArregloLlamada implements Expresion {
                     for (Double result : val) {
                         Editor.insertarTextoConsola(result.toString());
                     }
-                break;
-                    
+                    break;
+
                 case STRING:
                     LinkedList<String> val2 = new LinkedList<>();
                     for (Simbolo s : elemntos) {
@@ -226,7 +249,7 @@ public class ArregloLlamada implements Expresion {
                         for (int j = 0; j < val2.size() - 1; j++) {
                             if (val2.get(j).compareTo(val2.get(j + 1)) < 0) { // cadena 1 es menor que la cadena 2
                                 tmp2 = val2.get(j);
-                                val2.set(j, val2.get(j+1));
+                                val2.set(j, val2.get(j + 1));
                                 val2.set(j + 1, tmp2);
                             }
                         }
@@ -234,7 +257,7 @@ public class ArregloLlamada implements Expresion {
                     for (String str : val2) {
                         Editor.insertarTextoConsola(str);
                     }
-                break;
+                    break;
             }
         } else {
             System.out.println("El arreglo no puede hacer la funcion ascendente porque no es homogenea en linea " + linea);
@@ -243,7 +266,7 @@ public class ArregloLlamada implements Expresion {
         }
 
     }
-    
+
     // ######################################################## METODO INVERTIR ###################################################
     public void mostrarValoresInvertidos(LinkedList<Simbolo> elemntos) {
         LinkedList<String> val2 = new LinkedList<>();
@@ -254,33 +277,34 @@ public class ArregloLlamada implements Expresion {
         String tmp2 = "";
         //ordenamiento burbuja
         for (int i = val2.size() - 1; i >= 0; i--) {
-             Editor.insertarTextoConsola(val2.get(i));
+            Editor.insertarTextoConsola(val2.get(i));
         }
     }
-    
+
     // ######################################################## METODO MAXIMO ###################################################
-    public Object mostrarValorMaximo(LinkedList<Simbolo> elemntos,Simbolo arreglo) {
+    public Object mostrarValorMaximo(LinkedList<Simbolo> elemntos, Simbolo arreglo) {
 
         if (arreglo.getRol() == Simbolo.ROL.ARREGLO_HOMOGENEO) { //si los componentes de los arregos son todos del mismo tipo
-            Tipo tipoOrden  = new Tipo(Tipo.Primitivo.NULL);
-            tipoOrden =  ((Simbolo)elemntos.get(0)).getTipo();
-            switch(tipoOrden.getTipoPrimitivo()){
+            Tipo tipoOrden = new Tipo(Tipo.Primitivo.NULL);
+            tipoOrden = ((Simbolo) elemntos.get(0)).getTipo();
+            switch (tipoOrden.getTipoPrimitivo()) {
                 case NUMBER:
                     LinkedList<Double> val = new LinkedList<>();
                     for (Simbolo s : elemntos) {
-                        val.add( new Double(s.getValor().toString()));
+                        val.add(new Double(s.getValor().toString()));
                     }
 
-                    Double maximo =  new Double(0);
+                    Double maximo = new Double(0);
                     //ordenamiento burbuja
                     for (int i = 0; i < val.size(); i++) {
-                        if(val.get(i) > maximo)
+                        if (val.get(i) > maximo) {
                             maximo = val.get(i);
+                        }
                     }
 //                   Editor.insertarTextoConsola(maximo.toString());
-            tipo =  new Tipo(Tipo.Primitivo.NUMBER);        
-            return maximo;
-                   
+                    tipo = new Tipo(Tipo.Primitivo.NUMBER);
+                    return maximo;
+
                 case STRING:
                     LinkedList<String> val2 = new LinkedList<>();
                     for (Simbolo s : elemntos) {
@@ -289,13 +313,13 @@ public class ArregloLlamada implements Expresion {
 
                     String tmp2 = "";
                     //ordenamiento burbuja
-                    for (int i = 0 ; i < val2.size(); i++) {
-                        if (val2.get(0).compareTo(tmp2) > 0) { 
+                    for (int i = 0; i < val2.size(); i++) {
+                        if (val2.get(0).compareTo(tmp2) > 0) {
                             tmp2 = val2.get(i);
                         }
                     }
-                    tipo =  new Tipo(Tipo.Primitivo.STRING);        
-                return tmp2;
+                    tipo = new Tipo(Tipo.Primitivo.STRING);
+                    return tmp2;
             }
         } else {
             System.out.println("El arreglo no puede hacer la funcion maximo porque no es homogenea en linea " + linea);
@@ -304,29 +328,30 @@ public class ArregloLlamada implements Expresion {
         }
         return null;
     }
-    
+
     // ######################################################## METODO MINIMO ###################################################
-    public Object mostrarValorMinimo(LinkedList<Simbolo> elemntos,Simbolo arreglo) {
+    public Object mostrarValorMinimo(LinkedList<Simbolo> elemntos, Simbolo arreglo) {
 
         if (arreglo.getRol() == Simbolo.ROL.ARREGLO_HOMOGENEO) { //si los componentes de los arregos son todos del mismo tipo
-            Tipo tipoOrden  = new Tipo(Tipo.Primitivo.NULL);
-            tipoOrden =  ((Simbolo)elemntos.get(0)).getTipo();
-            switch(tipoOrden.getTipoPrimitivo()){
+            Tipo tipoOrden = new Tipo(Tipo.Primitivo.NULL);
+            tipoOrden = ((Simbolo) elemntos.get(0)).getTipo();
+            switch (tipoOrden.getTipoPrimitivo()) {
                 case NUMBER:
                     LinkedList<Double> val = new LinkedList<>();
                     for (Simbolo s : elemntos) {
-                        val.add( new Double(s.getValor().toString()));
+                        val.add(new Double(s.getValor().toString()));
                     }
 
                     Double minimo = val.get(0);
                     //ordenamiento burbuja
                     for (int i = 0; i < val.size(); i++) {
-                        if(val.get(i) < minimo)
+                        if (val.get(i) < minimo) {
                             minimo = val.get(i);
+                        }
                     }
-                tipo =  new Tipo(Tipo.Primitivo.NUMBER);        
-                return minimo;
-                    
+                    tipo = new Tipo(Tipo.Primitivo.NUMBER);
+                    return minimo;
+
                 case STRING:
                     LinkedList<String> val2 = new LinkedList<>();
                     for (Simbolo s : elemntos) {
@@ -335,13 +360,13 @@ public class ArregloLlamada implements Expresion {
 
                     String tmp2 = "";
                     //ordenamiento burbuja
-                    for (int i = 0 ; i < val2.size(); i++) {
-                        if (val2.get(0).compareTo(tmp2) < 0) { 
+                    for (int i = 0; i < val2.size(); i++) {
+                        if (val2.get(0).compareTo(tmp2) < 0) {
                             tmp2 = val2.get(i);
                         }
                     }
-                    tipo =  new Tipo(Tipo.Primitivo.STRING);        
-                return tmp2;
+                    tipo = new Tipo(Tipo.Primitivo.STRING);
+                    return tmp2;
             }
         } else {
             System.out.println("El arreglo no puede hacer la funcion minimo porque no es homogenea en linea " + linea);

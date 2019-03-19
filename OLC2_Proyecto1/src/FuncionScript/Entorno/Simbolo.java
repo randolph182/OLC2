@@ -157,7 +157,21 @@ public class Simbolo {
         Y,
         ALTO,
         ANCHO,
-        BORDE
+        BORDE,
+        NOMBRE,
+        FUENTE,
+        TAMANIO,
+        NEGRILLA,
+        CURSIVA,
+        MINIMO,
+        MAXIMO,
+        PATH,
+        AUTO_REPRODUCCION,
+        REFERENCIA,
+        VALOR,
+        ACCION,
+        DEFECTO
+        
         
     }
     

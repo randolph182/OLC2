@@ -67,9 +67,9 @@ public class lexicoGXML       implements java_cup.runtime.Scanner {
 	private final int ACCIONES = 3;
 	private final int yy_state_dtrans[] = {
 		0,
-		171,
-		174,
-		176
+		170,
+		173,
+		175
 	};
 	private void yybegin (int state) {
 		yy_lexical_state = state;
@@ -287,33 +287,33 @@ public class lexicoGXML       implements java_cup.runtime.Scanner {
 		/* 62 */ YY_NO_ANCHOR,
 		/* 63 */ YY_NOT_ACCEPT,
 		/* 64 */ YY_NO_ANCHOR,
-		/* 65 */ YY_NO_ANCHOR,
-		/* 66 */ YY_NOT_ACCEPT,
-		/* 67 */ YY_NO_ANCHOR,
-		/* 68 */ YY_NOT_ACCEPT,
-		/* 69 */ YY_NO_ANCHOR,
-		/* 70 */ YY_NOT_ACCEPT,
-		/* 71 */ YY_NO_ANCHOR,
-		/* 72 */ YY_NOT_ACCEPT,
-		/* 73 */ YY_NO_ANCHOR,
-		/* 74 */ YY_NOT_ACCEPT,
-		/* 75 */ YY_NO_ANCHOR,
-		/* 76 */ YY_NOT_ACCEPT,
-		/* 77 */ YY_NO_ANCHOR,
-		/* 78 */ YY_NOT_ACCEPT,
-		/* 79 */ YY_NO_ANCHOR,
-		/* 80 */ YY_NOT_ACCEPT,
-		/* 81 */ YY_NO_ANCHOR,
-		/* 82 */ YY_NOT_ACCEPT,
-		/* 83 */ YY_NO_ANCHOR,
-		/* 84 */ YY_NOT_ACCEPT,
-		/* 85 */ YY_NO_ANCHOR,
-		/* 86 */ YY_NOT_ACCEPT,
-		/* 87 */ YY_NO_ANCHOR,
-		/* 88 */ YY_NOT_ACCEPT,
-		/* 89 */ YY_NO_ANCHOR,
-		/* 90 */ YY_NOT_ACCEPT,
-		/* 91 */ YY_NO_ANCHOR,
+		/* 65 */ YY_NOT_ACCEPT,
+		/* 66 */ YY_NO_ANCHOR,
+		/* 67 */ YY_NOT_ACCEPT,
+		/* 68 */ YY_NO_ANCHOR,
+		/* 69 */ YY_NOT_ACCEPT,
+		/* 70 */ YY_NO_ANCHOR,
+		/* 71 */ YY_NOT_ACCEPT,
+		/* 72 */ YY_NO_ANCHOR,
+		/* 73 */ YY_NOT_ACCEPT,
+		/* 74 */ YY_NO_ANCHOR,
+		/* 75 */ YY_NOT_ACCEPT,
+		/* 76 */ YY_NO_ANCHOR,
+		/* 77 */ YY_NOT_ACCEPT,
+		/* 78 */ YY_NO_ANCHOR,
+		/* 79 */ YY_NOT_ACCEPT,
+		/* 80 */ YY_NO_ANCHOR,
+		/* 81 */ YY_NOT_ACCEPT,
+		/* 82 */ YY_NO_ANCHOR,
+		/* 83 */ YY_NOT_ACCEPT,
+		/* 84 */ YY_NO_ANCHOR,
+		/* 85 */ YY_NOT_ACCEPT,
+		/* 86 */ YY_NO_ANCHOR,
+		/* 87 */ YY_NOT_ACCEPT,
+		/* 88 */ YY_NO_ANCHOR,
+		/* 89 */ YY_NOT_ACCEPT,
+		/* 90 */ YY_NO_ANCHOR,
+		/* 91 */ YY_NOT_ACCEPT,
 		/* 92 */ YY_NOT_ACCEPT,
 		/* 93 */ YY_NOT_ACCEPT,
 		/* 94 */ YY_NOT_ACCEPT,
@@ -398,12 +398,12 @@ public class lexicoGXML       implements java_cup.runtime.Scanner {
 		/* 173 */ YY_NOT_ACCEPT,
 		/* 174 */ YY_NOT_ACCEPT,
 		/* 175 */ YY_NOT_ACCEPT,
-		/* 176 */ YY_NOT_ACCEPT,
-		/* 177 */ YY_NO_ANCHOR,
+		/* 176 */ YY_NO_ANCHOR,
+		/* 177 */ YY_NOT_ACCEPT,
 		/* 178 */ YY_NOT_ACCEPT,
 		/* 179 */ YY_NOT_ACCEPT,
-		/* 180 */ YY_NOT_ACCEPT,
-		/* 181 */ YY_NO_ANCHOR,
+		/* 180 */ YY_NO_ANCHOR,
+		/* 181 */ YY_NOT_ACCEPT,
 		/* 182 */ YY_NOT_ACCEPT,
 		/* 183 */ YY_NOT_ACCEPT,
 		/* 184 */ YY_NOT_ACCEPT,
@@ -448,8 +448,7 @@ public class lexicoGXML       implements java_cup.runtime.Scanner {
 		/* 223 */ YY_NOT_ACCEPT,
 		/* 224 */ YY_NOT_ACCEPT,
 		/* 225 */ YY_NOT_ACCEPT,
-		/* 226 */ YY_NOT_ACCEPT,
-		/* 227 */ YY_NOT_ACCEPT
+		/* 226 */ YY_NOT_ACCEPT
 	};
 	private int yy_cmap[] = unpackFromString(1,65538,
 "38:9,34,32,38,34,31,38:18,34,38,33,1,2,38:2,33,38:2,30,38:2,29,36,13,35:10," +
@@ -457,50 +456,50 @@ public class lexicoGXML       implements java_cup.runtime.Scanner {
 "14,38,22,23,38:7,12,25,19,17,15,21,28,24,6,38:2,20,7,16,9,8,38,10,26,11,27," +
 "14,38,22,23,38,4,38,37,38:65410,0:2")[0];
 
-	private int yy_rmap[] = unpackFromString(1,228,
+	private int yy_rmap[] = unpackFromString(1,227,
 "0,1,2,1:7,3,4,1:2,5,1:14,6,1:17,7,8,1,9,10,11,12,1,13,1,14,1,15,16,1,17,18," +
 "19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43," +
-"44,45,46,47,48,49,50,14,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67," +
+"44,45,46,47,48,49,14,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67," +
 "68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92," +
 "93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,11" +
-"3,114,115,116,117,118,119,120,121,122,123,124,125,7,126,127,128,129,130,131" +
+"3,114,115,116,117,118,119,120,121,122,123,124,7,125,126,127,128,129,130,131" +
 ",132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,15" +
 "0,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,1" +
-"69,170,171,172,173,174,175,176,177,178,179,180")[0];
+"69,170,171,172,173,174,175,176,177,178,179")[0];
 
-	private int yy_nxt[][] = unpackFromString(181,39,
-"1,2,56,3,4,5,64,67,69,56,71,73,75,6,181,77,79,81,7,83,85,87,8,9,56,89,56:5," +
-"10:2,91,10,11,56:3,-1:40,55,12,-1:67,10:2,-1,10,-1:39,11,96,-1:34,58,-1:12," +
-"147,-1:14,148,-1:18,172,173,172:27,-1,172:8,-1,59,177:3,-1,177:26,-1,177:4," +
-"-1,177,-1,177:4,-1,177:25,50,60,177,50,177:2,-1,177,-1,177:4,-1,177:26,61,1" +
-"77:4,-1,177,-1,52:4,-1,52:26,-1,52:4,-1,52,-1,52:4,-1,52:25,53,62,52,53,52:" +
-"2,-1,52,-1,55:30,14,58,55:6,-1:35,57,-1:4,59:4,175,59:25,51,61,59:4,175,59," +
-"-1:31,60:2,-1,60,-1:35,62:2,-1,62,-1:12,97,-1:37,63,-1:9,13,-1:53,61,-1:22," +
-"98,-1:28,66,-1:5,68,-1:14,70,-1:33,226,-1:28,72,-1:46,224,-1:33,74,-1:34,99" +
-",-1:33,178,-1:5,76,-1:2,179,-1:44,186,-1:33,78,-1:2,183,182,-1:6,206,-1:18," +
-"15,-1:47,82,-1:41,102,-1:28,84,-1:5,86,-1:33,104,-1:5,189,-1:34,219,-1:2,22" +
-"5,-1:37,209,-1:33,88,-1:17,90,-1:18,105,-1:37,92,-1:60,184,-1:22,180,-1:14," +
-"93,-1:27,210,-1:3,208,-1:27,94,-1:39,185,-1:29,95:31,-1:2,95:5,-1:26,221,-1" +
-":27,108,-1:33,190,220,-1:28,95:31,-1,16,95:5,-1:9,109,-1:35,110,-1:56,17,-1" +
-":23,18,-1:40,112,-1:51,113,-1:23,19,-1:46,116,-1:46,211,-1:22,20,-1:55,120," +
-"-1:28,121,-1:32,195,-1:35,124,-1:37,126,-1:41,21,-1:38,22,-1:38,128,-1:58,1" +
-"29,-1:21,130,-1:45,222,-1:29,134,-1:4,198,-1:33,23,-1:37,24,-1:40,136,-1:42" +
-",25,-1:39,26,-1:31,27,-1:38,28,-1:36,196,-1:46,215,-1:39,29,-1:32,138,-1:45" +
-",200,-1:37,139,-1:32,30,-1:43,31,-1:32,142,-1:43,143,-1:39,32,-1:35,144,-1:" +
-"41,149,-1:35,33,-1:38,34,-1:35,35,-1:49,36,-1:30,37,-1:36,38,-1:45,202,-1:4" +
-"0,217,-1:35,223,-1:28,152,-1:40,203,-1:40,153,-1:39,204,-1:43,158,-1:31,39," +
-"-1:38,159,-1:41,40,-1:38,41,-1:45,161,-1:31,162,-1:36,42,-1:54,43,-1:18,164" +
-",-1:52,44,-1:35,165,-1:33,166,-1:53,167,-1:31,45,-1:37,205,-1:25,169,-1:41," +
-"170,-1:45,46,-1:22,1,172,173,172:27,-1,172:8,-1,47,173,172:27,-1,172:8,1,48" +
-",177:3,49,177:25,50,60,177,50,177:2,-1,177,-1,175:30,65,61,175:6,1,52:4,-1," +
-"52:25,53,62,52,53,52:2,54,52,-1,177:4,-1,177:26,-1,177:4,-1,177,-1:8,100,-1" +
-":52,101,-1:36,107,-1:33,80,-1:34,103,-1:46,188,-1:29,193,-1:54,212,-1:27,19" +
-"1,-1:32,115,-1:35,114,-1:43,194,-1:44,122,-1:31,127,-1:35,125,-1:37,214,-1:" +
-"44,131,-1:37,137,-1:42,145,-1:40,199,-1:37,216,-1:34,151,-1:41,150,-1:40,15" +
-"4,-1:27,155,-1:42,218,-1:37,160,-1:48,168,-1:30,187,-1:42,117,-1:32,119,-1:" +
-"35,213,-1:43,118,-1:37,133,-1:34,135,-1:44,132,-1:37,140,-1:43,146,-1:37,20" +
-"1,-1:29,156,-1:41,163,-1:40,106,-1:36,123,-1:40,227,-1:38,141,-1:33,157,-1:" +
-"43,111,-1:48,207,-1:23,192,-1:44,197,-1:26");
+	private int yy_nxt[][] = unpackFromString(180,39,
+"1,2,56,3,4,5,64,66,68,56,70,72,74,6,180,76,78,80,7,82,84,86,8,9,56,88,56:5," +
+"10:2,90,10,11,56:3,-1:40,55,12,-1:67,10:2,-1,10,-1:39,11,95,-1:34,58,-1:12," +
+"146,-1:14,147,-1:18,171,172,171:27,-1,171:8,-1,59,176:3,-1,176:25,-1:2,176:" +
+"4,-1,176,-1:31,50:2,-1,50,-1:36,61,-1:7,52:4,-1,52:25,-1:2,52:4,-1,52,-1:31" +
+",53:2,-1,53,-1:5,55:30,14,58,55:6,-1:35,57,-1:4,59:4,174,59:25,51,61,59:4,1" +
+"74,59,-1,176:4,-1,176:25,50:2,176,60,176:2,-1,176,-1,52:4,-1,52:25,53:2,52," +
+"62,52:2,-1,52,-1:8,96,-1:37,63,-1:9,13,-1:37,97,-1:28,65,-1:5,67,-1:14,69,-" +
+"1:33,225,-1:28,71,-1:46,223,-1:33,73,-1:34,98,-1:33,177,-1:5,75,-1:2,178,-1" +
+":44,185,-1:33,77,-1:2,182,181,-1:6,205,-1:18,15,-1:47,81,-1:41,101,-1:28,83" +
+",-1:5,85,-1:33,103,-1:5,188,-1:34,218,-1:2,224,-1:37,208,-1:33,87,-1:17,89," +
+"-1:18,104,-1:37,91,-1:60,183,-1:22,179,-1:14,92,-1:27,209,-1:3,207,-1:27,93" +
+",-1:39,184,-1:29,94:31,-1:2,94:5,-1:26,220,-1:27,107,-1:33,189,219,-1:28,94" +
+":31,-1,16,94:5,-1:9,108,-1:35,109,-1:56,17,-1:23,18,-1:40,111,-1:51,112,-1:" +
+"23,19,-1:46,115,-1:46,210,-1:22,20,-1:55,119,-1:28,120,-1:32,194,-1:35,123," +
+"-1:37,125,-1:41,21,-1:38,22,-1:38,127,-1:58,128,-1:21,129,-1:45,221,-1:29,1" +
+"33,-1:4,197,-1:33,23,-1:37,24,-1:40,135,-1:42,25,-1:39,26,-1:31,27,-1:38,28" +
+",-1:36,195,-1:46,214,-1:39,29,-1:32,137,-1:45,199,-1:37,138,-1:32,30,-1:43," +
+"31,-1:32,141,-1:43,142,-1:39,32,-1:35,143,-1:41,148,-1:35,33,-1:38,34,-1:35" +
+",35,-1:49,36,-1:30,37,-1:36,38,-1:45,201,-1:40,216,-1:35,222,-1:28,151,-1:4" +
+"0,202,-1:40,152,-1:39,203,-1:43,157,-1:31,39,-1:38,158,-1:41,40,-1:38,41,-1" +
+":45,160,-1:31,161,-1:36,42,-1:54,43,-1:18,163,-1:52,44,-1:35,164,-1:33,165," +
+"-1:53,166,-1:31,45,-1:37,204,-1:25,168,-1:41,169,-1:45,46,-1:22,1,171,172,1" +
+"71:27,-1,171:8,-1,47,172,171:27,-1,171:8,1,48,176:3,49,176:25,50:2,176,60,1" +
+"76:2,-1,176,-1,174:30,51,61,174:6,1,52:4,-1,52:25,53:2,52,62,52:2,54,52,-1," +
+"176:4,-1,176:25,-1:2,176:4,-1,176,-1:8,99,-1:52,100,-1:36,106,-1:33,79,-1:3" +
+"4,102,-1:46,187,-1:29,192,-1:54,211,-1:27,190,-1:32,114,-1:35,113,-1:43,193" +
+",-1:44,121,-1:31,126,-1:35,124,-1:37,213,-1:44,130,-1:37,136,-1:42,144,-1:4" +
+"0,198,-1:37,215,-1:34,150,-1:41,149,-1:40,153,-1:27,154,-1:42,217,-1:37,159" +
+",-1:48,167,-1:30,186,-1:42,116,-1:32,118,-1:35,212,-1:43,117,-1:37,132,-1:3" +
+"4,134,-1:44,131,-1:37,139,-1:43,145,-1:37,200,-1:29,155,-1:41,162,-1:40,105" +
+",-1:36,122,-1:40,226,-1:38,140,-1:33,156,-1:43,110,-1:48,206,-1:23,191,-1:4" +
+"4,196,-1:26");
 
 	public java_cup.runtime.Symbol next_token ()
 		throws java.io.IOException {
@@ -803,111 +802,107 @@ public class lexicoGXML       implements java_cup.runtime.Scanner {
 				}
 					case -63:
 						break;
-					case 65:
-						{yychar=1;}
+					case 66:
+						{
+           			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
+           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
+				}
 					case -64:
 						break;
-					case 67:
+					case 68:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -65:
 						break;
-					case 69:
+					case 70:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -66:
 						break;
-					case 71:
+					case 72:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -67:
 						break;
-					case 73:
+					case 74:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -68:
 						break;
-					case 75:
+					case 76:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -69:
 						break;
-					case 77:
+					case 78:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -70:
 						break;
-					case 79:
+					case 80:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -71:
 						break;
-					case 81:
+					case 82:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -72:
 						break;
-					case 83:
+					case 84:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -73:
 						break;
-					case 85:
+					case 86:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -74:
 						break;
-					case 87:
+					case 88:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -75:
 						break;
-					case 89:
+					case 90:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
 					case -76:
 						break;
-					case 91:
-						{
-           			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
-           			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
-				}
+					case 176:
+						{ return new Symbol(sym.tTexto,yyline,yychar, yytext());}
 					case -77:
 						break;
-					case 177:
-						{ return new Symbol(sym.tTexto,yyline,yychar, yytext());}
-					case -78:
-						break;
-					case 181:
+					case 180:
 						{
            			System.out.println("Error lexico en : "+yytext() + ", en la linea: "+yyline+", en la columna: "+yychar);
            			ManejadorErroresGXML.getInstance().setErrorLexico(yyline,yychar, "problemas con el caracter = " + yytext());
 				}
-					case -79:
+					case -78:
 						break;
 					default:
 						yy_error(YY_E_INTERNAL,false);

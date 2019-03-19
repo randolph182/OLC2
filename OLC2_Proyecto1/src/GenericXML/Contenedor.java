@@ -32,21 +32,22 @@ public class Contenedor implements Instruccion {
     }
 
     @Override
-        /**
-     * @param archivo  :  parametro que contrendra el apuntador a un archivo y por medio del cual se traduciran a codigo Funcion Script
-     * @param listadoSimbolos : Parametro por el cual se pasa como apuntador un linkedList de simbolor y el cual 
-     * se ira agregando cada simbolo del recorrido del arbol
-     * @param ent : entorno o tabla del simbolos del analisis 
-     * @param tipoEjecucion : variable que determina si es 
-     * 0: es de tipo Traduccion , si es 
-     * 1: es de tipo getArreglo
+    /**
+     * @param archivo : parametro que contrendra el apuntador a un archivo y por
+     * medio del cual se traduciran a codigo Funcion Script
+     * @param listadoSimbolos : Parametro por el cual se pasa como apuntador un
+     * linkedList de simbolor y el cual se ira agregando cada simbolo del
+     * recorrido del arbol
+     * @param ent : entorno o tabla del simbolos del analisis
+     * @param tipoEjecucion : variable que determina si es 0: es de tipo
+     * Traduccion , si es 1: es de tipo getArreglo
      */
-    public Object ejecutar(FileWriter archivo, LinkedList<Simbolo> listadoSimbolos, Entorno ent, int tipoEjecucion)  {
+    public Object ejecutar(FileWriter archivo, LinkedList<Simbolo> listadoSimbolos, Entorno ent, int tipoEjecucion) {
         if (elementos.size() != 0) {
             String idContenedor = "";
             for (Simbolo elemento : elementos) {
                 if (elemento.getRolGxml() == Simbolo.ROLGXML.ID) {
-                    if (ent.get(elemento.getValor().toString()) == null && ent.getGlobal(elemento.getValor().toString()) == null) {
+                    if (ent.get(elemento.getValor().toString()) == null ) {
                         idContenedor = elemento.getId();
                         break;
                     } else {
@@ -57,19 +58,21 @@ public class Contenedor implements Instruccion {
                     }
                 }
             }
+            //ENTORNO PAR LOS VALORES DEL CONTENEDOR
+          // Entorno entLocal = new Entorno(ent);
 
             if (!idContenedor.equals("")) {
                 //EMPEZAOS TRADUCCION
                 try {
                     BufferedWriter bf = null;
                     LinkedList<Simbolo> elementosContenedor = null;
-                    
-                    if(tipoEjecucion == 0){
+
+                    if (tipoEjecucion == 0) {
                         bf = new BufferedWriter(archivo);
-                    }else{
+                    } else {
                         elementosContenedor = new LinkedList<>();
                     }
-                    
+
                     String idVentana = "";
                     //OBTENEMO EL ID DE LA VENTANA ACTUAL
                     Enumeration<Simbolo> elements = ent.getTablaSimbolos().elements();
@@ -81,15 +84,14 @@ public class Contenedor implements Instruccion {
                     }
 
                     if (!idVentana.equals("")) {
-                        if(tipoEjecucion == 0){
+                        if (tipoEjecucion == 0) {
                             bf.write("var " + idContenedor + " = " + idVentana + ".crearContenedor(");
                         }
-                        
-                        
+
                         Simbolo contenedor = new Simbolo(idContenedor, new Tipo(Tipo.TipoGXML.CONTENEDOR));
                         contenedor.setValor(idVentana);
                         ent.put(idContenedor, contenedor);
-                        ent.putGlobal(idContenedor, contenedor);
+                       // entLocal.put(idContenedor, contenedor);
 
                         String x = "0";
                         String y = "0";
@@ -103,8 +105,9 @@ public class Contenedor implements Instruccion {
                             switch (elemento.getRolGxml()) {
                                 case X:
                                     x = elemento.getValor().toString();
-                                    if(tipoEjecucion ==1){
+                                    if (tipoEjecucion == 1) {
                                         Simbolo s = new Simbolo();
+                                        s.setId("x");
                                         s.setValor(x);
                                         s.setRolGxml(Simbolo.ROLGXML.X);
                                         s.setTipo(new Tipo(Tipo.Primitivo.NUMBER));
@@ -113,8 +116,9 @@ public class Contenedor implements Instruccion {
                                     break;
                                 case Y:
                                     y = elemento.getValor().toString();
-                                    if(tipoEjecucion ==1){
+                                    if (tipoEjecucion == 1) {
                                         Simbolo s = new Simbolo();
+                                        s.setId("y");
                                         s.setValor(y);
                                         s.setRolGxml(Simbolo.ROLGXML.Y);
                                         s.setTipo(new Tipo(Tipo.Primitivo.NUMBER));
@@ -123,19 +127,21 @@ public class Contenedor implements Instruccion {
                                     break;
                                 case ALTO:
                                     alto = elemento.getValor().toString();
-                                    if(tipoEjecucion ==1){
-                                       Simbolo s = new Simbolo();
+                                    if (tipoEjecucion == 1) {
+                                        Simbolo s = new Simbolo();
+                                        s.setId("alto");
                                         s.setValor(alto);
                                         s.setRolGxml(Simbolo.ROLGXML.ALTO);
-                                        s.setTipo(new Tipo(Tipo.Primitivo.NUMBER)); 
+                                        s.setTipo(new Tipo(Tipo.Primitivo.NUMBER));
                                         elementosContenedor.add(s);
                                     }
                                     break;
 
                                 case ANCHO:
                                     ancho = elemento.getValor().toString();
-                                    if(tipoEjecucion ==1){
+                                    if (tipoEjecucion == 1) {
                                         Simbolo s = new Simbolo();
+                                        s.setId("ancho");
                                         s.setValor(ancho);
                                         s.setRolGxml(Simbolo.ROLGXML.ANCHO);
                                         s.setTipo(new Tipo(Tipo.Primitivo.NUMBER));
@@ -144,29 +150,42 @@ public class Contenedor implements Instruccion {
                                     break;
                                 case BORDE:
                                     borde = elemento.getValor().toString();
-                                    if(tipoEjecucion ==1){
+                                    if (tipoEjecucion == 1) {
                                         Simbolo s = new Simbolo();
+                                        s.setId("borde");
                                         s.setValor(borde);
                                         s.setRolGxml(Simbolo.ROLGXML.BORDE);
                                         s.setTipo(new Tipo(Tipo.Primitivo.BOOLEAN));
                                         elementosContenedor.add(s);
                                     }
                                     break;
+
+                                case COLOR:
+                                    color = elemento.getValor().toString();
+                                    if (tipoEjecucion == 1) {
+                                        Simbolo s = new Simbolo();
+                                        s.setId("color");
+                                        s.setValor(borde);
+                                        s.setRolGxml(Simbolo.ROLGXML.COLOR);
+                                        s.setTipo(new Tipo(Tipo.Primitivo.STRING));
+                                        elementosContenedor.add(s);
+                                    }
+                                    break;
                             }
                         }
-                        
-                        if(!x.equals("0") && !y.equals("0")){
-                            if(tipoEjecucion == 0){
-                                bf.write( alto +","+ancho+",\""+color+"\","+borde+","+x+","+y+");\n");
+
+                        if (!x.equals("0") && !y.equals("0")) {
+                            if (tipoEjecucion == 0) {
+                                bf.write(alto + "," + ancho + ",\"" + color + "\"," + borde + "," + x + "," + y + ");\n");
                                 bf.flush();
-                            }else{
+                            } else {
                                 Simbolo s = new Simbolo(idContenedor, new Tipo(Tipo.TipoGXML.CONTENEDOR));
                                 s.setValor(idVentana); //SERVIRA COMO REFERENCIA PARA MAS ADELANTE
                                 s.setElementos(elementosContenedor);
                                 listadoSimbolos.add(s);
                             }
-                            
-                        } else{
+
+                        } else {
                             System.out.println("hacen falta X y Y del contenedor = " + idContenedor + " en linea:" + linea);
                             Editor.insertarTextoConsola("hacen falta X y Y del contenedor= " + idContenedor + " en linea:" + linea);
                             ManejadorErroresGXML.getInstance().setErrorSemanticos(linea, "hacen falta X y Y del contenedor = " + idContenedor);
@@ -178,7 +197,28 @@ public class Contenedor implements Instruccion {
                         ManejadorErroresGXML.getInstance().setErrorSemanticos(linea, "No se encontro la ventana actual del contenedor = " + idContenedor);
                         return null;
                     }
-
+                    
+                                                //SI LLEGA HASTA ACA ES POR QUE LOS ELEMENTOS Y TRADUCCION DEl CONTENEDOR SALIERON BIEN
+                 Entorno entLocal = new Entorno(ent);
+                 Simbolo contenedor = new Simbolo(idContenedor, new Tipo(Tipo.TipoGXML.CONTENEDOR));
+                 contenedor.setValor(idVentana);
+                 entLocal.put(idContenedor, contenedor);
+                 
+                for(nodoAST nodo: hijos){
+                    if(nodo instanceof Texto){
+                        Texto texto = (Texto)nodo;
+                        if(tipoEjecucion == 0)
+                            texto.ejecutar(archivo,null,entLocal,tipoEjecucion);
+                        else
+                            texto.ejecutar(null,listadoSimbolos,entLocal,tipoEjecucion);
+                    }else if(nodo instanceof Controlador){
+                        Controlador c = (Controlador)nodo;
+                        if(tipoEjecucion ==0){
+                            c.ejecutar(archivo,null,entLocal,tipoEjecucion);
+                        }else
+                            c.ejecutar(null,listadoSimbolos,entLocal,tipoEjecucion);
+                    }
+                }
                     
                     
                 } catch (Exception e) {
@@ -188,12 +228,17 @@ public class Contenedor implements Instruccion {
                     return null;
                 }
 
+
+                
             } else {
                 System.out.println("Error hubo problemas con id del contenedor en linea: " + linea);
                 Editor.insertarTextoConsola("Error hubo problemas con id del contenedor en linea: " + linea);
                 ManejadorErroresGXML.getInstance().setErrorSemanticos(linea, "Error hubo problemas con id del contenedor");
                 return null;
             }
+            
+
+            
         } else {
             System.out.println("Error la etiqueta contenedor debe tener porlomenos 3 elementos que son id y tipo en linea: " + linea);
             Editor.insertarTextoConsola("Error la etiqueta contenedor debe tener porlomenos 3 elementos que son id y tipo en linea: " + linea);

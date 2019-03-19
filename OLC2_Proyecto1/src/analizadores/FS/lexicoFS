@@ -30,6 +30,7 @@ ignora = [ \t\r\f\n]+
 COMENT_LINE =("//".*\r\n)|("//".*\n)|("//".*\r)
 
 %%
+<YYINITIAL> "CrearCajaTexto"      { return new Symbol(sym.res_crear_caja_texto,yyline,yychar, yytext());}
 <YYINITIAL> "ObtenerPorEtiqueta"      { return new Symbol(sym.res_obtenerPorEtiqueta,yyline,yychar, yytext());}
 <YYINITIAL> "LeerGxml"      { return new Symbol(sym.res_leerGxml,yyline,yychar, yytext());}
 <YYINITIAL> "crearTexto"      { return new Symbol(sym.res_crear_texto,yyline,yychar, yytext());}

@@ -40,7 +40,8 @@ public class Tipo {
         BOTON,
         MULTIMEDIA,
         LISTA_DATOS,
-        ENVIAR
+        ENVIAR,
+        CONTROL_TEXTO
         
     }
     
