@@ -91,9 +91,11 @@ public class CrearContenedor implements Expresion{
                }
                //le agregamos la configuracion a la ventana ya creada antes
                JFrame ventana = (JFrame)(ent.get(idVentana)).getValor();
+               //ventana.setSize(ancho.intValue(), alto.intValue());
                JPanel panel = new JPanel();
                ventana.getContentPane().add(panel);
-               panel.setLayout(new BorderLayout());
+               panel.setLayout(null);
+                //panel.setLayout(new BorderLayout());
                panel.setBounds(new Rectangle(posX.intValue(), posY.intValue(), ancho.intValue(), alto.intValue()));
                if(borde)
                    panel.setBorder(null);

@@ -80,6 +80,7 @@ public class Contenedor implements Instruccion {
                         Simbolo tmp = elements.nextElement();
                         if (tmp.getTipo().getTipoGxml() == Tipo.TipoGXML.VENTANA) { //SI HAY OTRA VENTANA QUE SEA PRINCIPAL
                             idVentana = tmp.getId().toString();
+                            break;
                         }
                     }
 

@@ -119,17 +119,23 @@ public class CrearTexto implements Instruccion {
                     }
                     if (panel != null) {
                         JLabel txt = new JLabel(texto); //agregamos el texto 
+                        panel.add(txt);
+                        int ancho = txt.getText().length();
+                        if(!(ancho >0))
+                            ancho = 100;
+                        txt.setBounds(posX.intValue(), posY.intValue(), ancho*10, tamanio.intValue());
+                        
                         if(negrilla){
                             txt.setFont(new Font(fuente, Font.BOLD, tamanio.intValue()));
-                        } else if(cursiva){
+                        }
+                        if(cursiva){
                             txt.setFont(new Font(fuente,  Font.ITALIC, tamanio.intValue()));
-                        }else{
+                        }
+                        
+                        if(!negrilla && !cursiva){
                             txt.setFont(new Font(fuente, 0, tamanio.intValue()));
                         }
                         txt.setBackground(color);
-                        txt.setLocation(posX.intValue(), posY.intValue());
-                        panel.add(txt);
-                        ventana.setVisible(true);
                         //no retorna nada por eso es que es una instruccion
                         return null;
 

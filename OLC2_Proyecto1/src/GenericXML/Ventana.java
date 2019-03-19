@@ -83,8 +83,8 @@ public class Ventana implements Instruccion {
                     String color = "";
                     String accionInicial = "";
                     String accionFinal = "";
-                    String alto = "1000";
-                    String ancho = "1000";
+                    String alto = "500";
+                    String ancho = "500";
                     for (Simbolo elemento : elementos) {
                         switch (elemento.getRolGxml()) {
                             case TIPO:

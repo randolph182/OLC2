@@ -82,22 +82,24 @@ public class Controlador implements Instruccion {
                     String cursiva = "falso";
                     String defecto = "";
                     String nombre = "";
-                    
+
                     //SACAMOS EL DEFECTO ANTES
-                    for (Simbolo s : hijos) {
-                        if (s.getRolGxml() == Simbolo.ROLGXML.DEFECTO) {
+                    if (hijos != null) {
+                        for (Simbolo s : hijos) {
+                            if (s.getRolGxml() == Simbolo.ROLGXML.DEFECTO) {
 
-                            defecto = s.getValor().toString();
-                            if (tipoEjecucion == 1) {
-                                Simbolo s2 = new Simbolo();
-                                s2.setId("defecto");
-                                s2.setValor(defecto);
-                                s2.setRolGxml(Simbolo.ROLGXML.DEFECTO);
-                                s2.setTipo(new Tipo(Tipo.Primitivo.STRING));
-                                elementosControl.add(s2);
+                                defecto = s.getValor().toString();
+                                if (tipoEjecucion == 1) {
+                                    Simbolo s2 = new Simbolo();
+                                    s2.setId("defecto");
+                                    s2.setValor(defecto);
+                                    s2.setRolGxml(Simbolo.ROLGXML.DEFECTO);
+                                    s2.setTipo(new Tipo(Tipo.Primitivo.STRING));
+                                    elementosControl.add(s2);
+                                }
+
+                                break;
                             }
-
-                            break;
                         }
                     }
 
@@ -250,7 +252,7 @@ public class Controlador implements Instruccion {
 
                                 if (!x.equals("0") && !y.equals("0")) {
                                     if (tipoEjecucion == 0) {
-                                        bf.write(alto +","+ ancho + "\"" + fuente + "\"," + tamanio + ",\"" + color + "\"," + x + "," + y + "," + negrilla + "," + cursiva + ",\"" + defecto + "\",\"" + nombreControl + "\");\n");
+                                        bf.write(alto + "," + ancho + ",\"" + fuente + "\"," + tamanio + ",\"" + color + "\"," + x + "," + y + "," + negrilla + "," + cursiva + ",\"" + defecto + "\",\"" + nombreControl + "\");\n");
                                         bf.flush();
                                     } else {
                                         Simbolo s = new Simbolo(nombreControl, new Tipo(Tipo.TipoGXML.CONTROL_TEXTO));
