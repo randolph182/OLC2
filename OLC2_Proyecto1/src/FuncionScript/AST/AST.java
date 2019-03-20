@@ -4,6 +4,7 @@ import FuncionScript.AST.Expresiones.Expresion;
 import FuncionScript.AST.Instrucciones.Funcion;
 import FuncionScript.AST.Instrucciones.Instruccion;
 import FuncionScript.Entorno.Entorno;
+import FuncionScript.Entorno.Simbolo;
 import java.util.LinkedList;
 
 /**
@@ -24,7 +25,9 @@ public class AST {
                 
                 if(instruccion instanceof Funcion){
                       Funcion funcion = (Funcion)instruccion;
+                      funcion.setRol(Simbolo.ROL.FUNCION);
                       ts.putGlobal(funcion.getId(), funcion);
+                      
                 } else
                     instruccion.ejecutar(ts);
             } else if(nodo instanceof Expresion){

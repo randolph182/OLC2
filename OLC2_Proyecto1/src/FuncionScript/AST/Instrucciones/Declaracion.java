@@ -5,13 +5,17 @@
  */
 package FuncionScript.AST.Instrucciones;
 
+import FuncionScript.AST.Expresiones.Buscar;
 import FuncionScript.AST.Expresiones.Expresion;
+import FuncionScript.AST.Expresiones.Filter;
 import FuncionScript.AST.Expresiones.Identificador;
 import FuncionScript.AST.Expresiones.InterfazUsuario.CrearBoton;
 import FuncionScript.AST.Expresiones.InterfazUsuario.CrearContenedor;
 import FuncionScript.AST.Expresiones.InterfazUsuario.CrearVentana;
 import FuncionScript.AST.Expresiones.InterfazUsuario.LeerGxml;
 import FuncionScript.AST.Expresiones.InterfazUsuario.ObtenerPorEtiqueta;
+import FuncionScript.AST.Expresiones.Map;
+import FuncionScript.AST.Expresiones.Reduce;
 import FuncionScript.Entorno.Entorno;
 import FuncionScript.Entorno.Simbolo;
 import FuncionScript.Entorno.Tipo;
@@ -64,25 +68,25 @@ public class Declaracion implements Instruccion {
 
                             if (exp instanceof CrearVentana) {
                                 Object jframe = exp.getValor(ent);
-                                if(jframe != null){
-                                   Simbolo simVentana = new Simbolo();
-                                   simVentana.setRol(Simbolo.ROL.VENTANA);
-                                   simVentana.setValor(jframe);
-                                   ent.put(lstId.get(i).getIdentificador(), simVentana);
-                                   break;
+                                if (jframe != null) {
+                                    Simbolo simVentana = new Simbolo();
+                                    simVentana.setRol(Simbolo.ROL.VENTANA);
+                                    simVentana.setValor(jframe);
+                                    ent.put(lstId.get(i).getIdentificador(), simVentana);
+                                    break;
                                 }
-                            } else if(exp instanceof CrearContenedor){
+                            } else if (exp instanceof CrearContenedor) {
                                 Object idVentana = exp.getValor(ent);
-                                if(idVentana != null){
+                                if (idVentana != null) {
                                     Simbolo simContenedor = new Simbolo();
 //                                    simContenedor.setRol(Simbolo.ROL.FUNCION);
                                     simContenedor.setValor(idVentana);
                                     ent.put(lstId.get(i).getIdentificador(), simContenedor);
                                     break;
                                 }
-                            } else if(exp instanceof CrearBoton){
+                            } else if (exp instanceof CrearBoton) {
                                 Object idVentana = exp.getValor(ent);
-                                if(idVentana != null){
+                                if (idVentana != null) {
                                     Simbolo simBoton = new Simbolo();
 //                                    simContenedor.setRol(Simbolo.ROL.FUNCION);
                                     simBoton.setValor(idVentana);
@@ -90,54 +94,90 @@ public class Declaracion implements Instruccion {
                                     ent.put(lstId.get(i).getIdentificador(), simBoton);
                                     break;
                                 }
-                            }else if(exp instanceof LeerGxml){
-                               Object elementos =  exp.getValor(ent);
-                                if(elementos!=null){
+                            } else if (exp instanceof LeerGxml) {
+                                Object elementos = exp.getValor(ent);
+                                if (elementos != null) {
                                     //AGREGAMOS AL NUEVO ARREGLO A LA TABLA DE SIMBOLOS Y NOS ASEGURAMOS DE PONERLE ROL HETEROGENEO
-                                    LinkedList<Simbolo> valArray = (LinkedList<Simbolo>)elementos;
+                                    LinkedList<Simbolo> valArray = (LinkedList<Simbolo>) elementos;
                                     Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), new Tipo(Tipo.Primitivo.NULL));
                                     nuevoSimbolo.setRol(Simbolo.ROL.ARREGLO_HETEROGENEO);
                                     nuevoSimbolo.setElementos(valArray);
                                     //agregando al entorno
                                     ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
                                     break;
-                                }else{
-                                    System.out.println("leerGxml no retorno elementos enlinea: "+linea);
-                                    Editor.insertarTextoConsola("leerGxml no retorno elementos enlinea: "+linea);
+                                } else {
+                                    System.out.println("leerGxml no retorno elementos enlinea: " + linea);
+                                    Editor.insertarTextoConsola("leerGxml no retorno elementos enlinea: " + linea);
                                     Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), tipo); //aca tipo ya es null
                                     break;
                                 }
-                                
-                            } else if(exp instanceof ObtenerPorEtiqueta){
-                              Object listado =  exp.getValor(ent);
-                              if(listado != null){
-                                  LinkedList<Simbolo> valArray = (LinkedList<Simbolo>)listado;
+
+                            } else if (exp instanceof ObtenerPorEtiqueta) {
+                                Object listado = exp.getValor(ent);
+                                if (listado != null) {
+                                    LinkedList<Simbolo> valArray = (LinkedList<Simbolo>) listado;
                                     Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), new Tipo(Tipo.Primitivo.NULL));
                                     nuevoSimbolo.setRol(Simbolo.ROL.ARREGLO_HETEROGENEO);
                                     nuevoSimbolo.setElementos(valArray);
                                     //agregando al entorno
                                     ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
                                     break;
-                                    
-                              }else{
-                                  System.out.println("Error no se encontraron valores por etiqueta en linea "+linea);
-                                  Editor.insertarTextoConsola("Error no se encontraron valores por etiqueta en linea "+linea);
-                                  ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error no se encontraron valores por etiqueta en linea ");
-                                  break;
-                              }
-                                  
-                            }else {
-                                
+
+                                } else {
+                                    System.out.println("Error no se encontraron valores por etiqueta en linea " + linea);
+                                    Editor.insertarTextoConsola("Error no se encontraron valores por etiqueta en linea " + linea);
+                                    ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error no se encontraron valores por etiqueta en linea ");
+                                    break;
+                                }
+
+                            } else if (exp instanceof Filter) {
+                                Object arreglo = exp.getValor(ent);
+                                Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), new Tipo(Tipo.Primitivo.NULL));
+
+                                if (arreglo != null) {
+                                    LinkedList<Simbolo> valArray = (LinkedList<Simbolo>) arreglo;
+                                    nuevoSimbolo.setRol(Simbolo.ROL.ARREGLO_HETEROGENEO);
+                                    nuevoSimbolo.setElementos(valArray);
+                                    ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
+                                    break;
+                                }
+                            } else if (exp instanceof Buscar) {
+                                Object arreglo = exp.getValor(ent);
+                                Simbolo valor = (Simbolo) arreglo;
+                                if (valor != null) {
+                                    ent.put(lstId.get(i).getIdentificador(), valor);
+                                    break;
+                                }
+                            } else if (exp instanceof Reduce) {
+                                Object arreglo = exp.getValor(ent);
+                                Simbolo valor = (Simbolo) arreglo;
+                                if (valor != null) {
+                                    ent.put(lstId.get(i).getIdentificador(), valor);
+                                    break;
+                                }
+                            }else if(exp instanceof Map){
+                                Object arreglo = exp.getValor(ent);
+                                Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), new Tipo(Tipo.Primitivo.NULL));
+
+                                if (arreglo != null) {
+                                    LinkedList<Simbolo> valArray = (LinkedList<Simbolo>) arreglo;
+                                    nuevoSimbolo.setRol(Simbolo.ROL.ARREGLO_HOMOGENEO);
+                                    nuevoSimbolo.setElementos(valArray);
+                                    ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
+                                    break;
+                                }
+                            } else {
+
                                 Object resultado = exp.getValor(ent);
                                 if (resultado != null) {
-                                    
-                                    if(resultado instanceof Simbolo){ //si retorna es porque hay un objecto
+
+                                    if (resultado instanceof Simbolo) { //si retorna es porque hay un objecto
                                         tipo = new Tipo(Tipo.Primitivo.OBJECT);
-                                        Simbolo result = (Simbolo)resultado;
+                                        Simbolo result = (Simbolo) resultado;
                                         result.setTipo(tipo);
-                                        ent.put(lstId.get(i).getIdentificador(),result);
-                                        
-                                    }else{
+                                        ent.put(lstId.get(i).getIdentificador(), result);
+
+                                    } else {
                                         tipo = exp.getTipo(ent);
                                         Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), tipo); //aca tipo ya es null
                                         ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);

@@ -69,6 +69,7 @@ terminal String res_Invertir,res_maximo,res_minimo;
 terminal String res_crear_ventana,res_crear_contenedor,res_crear_texto;
 terminal String res_leerGxml,res_obtenerPorEtiqueta,res_crear_caja_texto,res_crear_boton;
 terminal String res_alClick;
+terminal String res_filter,res_buscar,res_reduce,res_todos,res_alguno,res_map;
 
 non terminal S;
 non terminal Instruccion DECLARACION;
@@ -109,6 +110,12 @@ non terminal ObjetoLlamada LLAMADA_OBJETO;
 non terminal CrearCajaTexto CREAR_CAJA_TEXTO;
 non terminal CrearBoton CREAR_BOTON;
 non terminal AlClic AL_CLIC;
+non terminal Filter FILTER;
+non terminal Buscar BUSCAR;
+non terminal Reduce REDUCE;
+non terminal Todos TODOS;
+non terminal Alguno ALGUNO;
+non terminal Map MAP;
 
 non terminal  nodoAST POSIBLES_LLAMADAS;
 
@@ -331,6 +338,12 @@ EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,
                 |OBTENER_POR_ETIQUETA:a {:RESULT = a;:}
                 |LLAMADA_OBJETO:a {:RESULT = a;:}
                 |CREAR_BOTON:a {:RESULT = a;:}
+                |FILTER:a {:RESULT = a;:}
+                |BUSCAR:a{:RESULT = a;:}
+                |REDUCE:a{:RESULT = a;:}
+                |TODOS:a{:RESULT = a;:}
+                |ALGUNO:a{:RESULT = a;:}
+                |MAP:a{:RESULT = a;:}
                 ;
 
 
@@ -369,3 +382,27 @@ CREAR_CONTENEDOR::=  tId:a tPunto res_crear_contenedor tParOpen TIPO_PARAMETROS:
 AL_CLIC::= tId:a tPunto res_alClick tParOpen POSIBLES_LLAMADAS:b tParClose tPtoComa
             {:RESULT = new AlClic(a,b,aleft);:}
             ;
+
+FILTER::= tId:a tPunto res_filter tParOpen tId:b tParClose 
+            {:RESULT = new Filter(a,b,aleft);:}
+          ;
+
+BUSCAR::= tId:a tPunto res_buscar tParOpen tId:b tParClose
+            {:RESULT = new Buscar(a,b,aleft);:}
+            ;          
+
+REDUCE::=     tId:a tPunto res_reduce tParOpen tId:b tParClose
+            {:RESULT = new Reduce(a,b,aleft);:}
+            ;  
+
+TODOS::=     tId:a tPunto res_todos tParOpen tId:b tParClose
+            {:RESULT = new Todos(a,b,aleft);:}
+            ;                        
+
+ALGUNO::=     tId:a tPunto res_alguno tParOpen tId:b tParClose
+            {:RESULT = new Alguno(a,b,aleft);:}
+            ;         
+
+MAP::=     tId:a tPunto res_map tParOpen tId:b tParClose
+            {:RESULT = new Map(a,b,aleft);:}
+            ;                    

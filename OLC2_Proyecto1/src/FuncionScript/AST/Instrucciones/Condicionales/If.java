@@ -108,6 +108,7 @@ public class If implements Instruccion {
         } else {
             //sino es ninguna de las anterires entonces obtenemos el valor de las 
             //operaciones logicas, relacionales 
+            
             flag = (boolean) condicion.getValor(nuevoEnt);
         }
         //SI flag == true ENTONCES EJECUTAMOS  LAS SENTENCIAS DEL IF

@@ -1,6 +1,7 @@
-funcion sumar()
-{
-	retornar 5>3;
+var ar = [1, 2, 3]; 
+ 
+funcion sumar(var item){ 
+        retornar item + 2; 
 }
-
-imprimir(sumar());
+var ar1 = ar.map(sumar);
+imprimir(ar1[2]);
