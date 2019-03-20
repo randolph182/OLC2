@@ -5,6 +5,7 @@
  */
 package FuncionScript.AST.Expresiones;
 
+import FuncionScript.AST.Instrucciones.Funcion;
 import FuncionScript.AST.Instrucciones.Instruccion;
 import FuncionScript.Entorno.Entorno;
 import FuncionScript.Entorno.Simbolo;
@@ -20,19 +21,31 @@ import olc2_proyecto1.Editor.Editor;
 public class Buscar implements Expresion {
 
     String idArreglo;
-    String idFuncion;
+    Object idF;
     int linea;
     Tipo tipo;
 
-    public Buscar(String idArreglo, String idFuncion, int linea) {
+    public Buscar(String idArreglo, Object idFuncion, int linea) {
         this.idArreglo = idArreglo;
-        this.idFuncion = idFuncion;
+        this.idF = idFuncion;
         this.linea = linea;
     }
 
     @Override
     public Object getValor(Entorno ent) {
-        //COMPROBAMOS QUE LOS IDS EXISTAN EN LA TABLA DE SIMBOLOS
+        String idFuncion = "";
+        if (idF instanceof Funcion) { //ESTA FUNCION SERA TEMPORAL
+            Funcion f = (Funcion) idF;
+            f.setId(idArreglo + "tmp");
+            f.setRol(Simbolo.ROL.FUNCION);
+            ent.putGlobal(f.getId(), f);
+            idFuncion = idArreglo + "tmp";
+            //HASTA AQUI YA TENGO UNA FUNCION EN LA TABLA GLOBAL
+            //  FuncionLLamada fl = new FuncionLLamada(null, idArreglo, linea)
+        } else {
+            idFuncion = idF.toString();  //LA COMVIERTO A STRING
+        }
+//COMPROBAMOS QUE LOS IDS EXISTAN EN LA TABLA DE SIMBOLOS
         if (ent.get(idArreglo) != null) {
             if (ent.getGlobal(idFuncion) != null) {
                 //Obtenemos los simbolos de cada una 
@@ -58,9 +71,15 @@ public class Buscar implements Expresion {
                                     Simbolo s = new Simbolo();
                                     s.setValor(e);
                                     s.setTipo(t);
+                                    if (ent.getGlobal(idArreglo + "tmp") != null) {
+                                        ent.getInstanceGlobal().remove(idArreglo + "tmp");
+                                    }
                                     return s;
                                 }
                             }
+                        }
+                        if (ent.getGlobal(idArreglo + "tmp") != null) {
+                            ent.getInstanceGlobal().remove(idArreglo + "tmp");
                         }
 
                     } else {

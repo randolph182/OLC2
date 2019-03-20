@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package FuncionScript.AST.Expresiones;
 
+import FuncionScript.AST.Instrucciones.Funcion;
 import FuncionScript.AST.Instrucciones.Instruccion;
 import FuncionScript.Entorno.Entorno;
 import FuncionScript.Entorno.Simbolo;
@@ -14,25 +14,36 @@ import FuncionScript.ErroresFS.ManejadorErroresFS;
 import olc2_proyecto1.Editor.Editor;
 
 /**
- * 
+ *
  * @author randolph muy
  */
-public class Alguno  implements Expresion{
+public class Alguno implements Expresion {
 
     String idArreglo;
-    String idFuncion;
+    Object idF;
     int linea;
     Tipo tipo;
-    
-    public Alguno(String idArreglo, String idFuncion, int linea) {
+
+    public Alguno(String idArreglo, Object idFuncion, int linea) {
         this.idArreglo = idArreglo;
-        this.idFuncion = idFuncion;
+        this.idF = idFuncion;
         this.linea = linea;
     }
-    
-    
+
     @Override
     public Object getValor(Entorno ent) {
+        String idFuncion = "";
+        if (idF instanceof Funcion) { //ESTA FUNCION SERA TEMPORAL
+            Funcion f = (Funcion) idF;
+            f.setId(idArreglo + "tmp");
+            f.setRol(Simbolo.ROL.FUNCION);
+            ent.putGlobal(f.getId(), f);
+            idFuncion = idArreglo + "tmp";
+            //HASTA AQUI YA TENGO UNA FUNCION EN LA TABLA GLOBAL
+            //  FuncionLLamada fl = new FuncionLLamada(null, idArreglo, linea)
+        } else {
+            idFuncion = idF.toString();  //LA COMVIERTO A STRING
+        }
         //COMPROBAMOS QUE LOS IDS EXISTAN EN LA TABLA DE SIMBOLOS
         if (ent.get(idArreglo) != null) {
             if (ent.getGlobal(idFuncion) != null) {
@@ -61,6 +72,9 @@ public class Alguno  implements Expresion{
                                     return flag;
                                 }
                             }
+                        }
+                        if(ent.getGlobal(idArreglo+"tmp") != null){
+                            ent.getInstanceGlobal().remove(idArreglo + "tmp");
                         }
                         tipo = new Tipo(Tipo.Primitivo.BOOLEAN);
                         return flag;

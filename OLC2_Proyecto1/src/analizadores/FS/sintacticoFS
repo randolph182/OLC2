@@ -117,6 +117,11 @@ non terminal Todos TODOS;
 non terminal Alguno ALGUNO;
 non terminal Map MAP;
 non terminal Object TIPO_MAP;
+non terminal Object TIPO_FILTER;
+non terminal Object TIPO_BUSCAR;
+non terminal Object TIPO_REDUCE;
+non terminal Object TIPO_TODOS;
+non terminal Object TIPO_ALGUNO;
 
 non terminal  nodoAST POSIBLES_LLAMADAS;
 
@@ -173,6 +178,11 @@ POSIBLES_LLAMADAS::=DECLARACION:a                      {:RESULT = a;:}
                     |FUNCION_LLAMADA:a          {: RESULT = a;:}
                     |ARREGLO_LLAMADA:a                {: RESULT = a;:}
                     |MAP:a {: RESULT = a;:}
+                    |FILTER:a {: RESULT = a;:}
+                    |BUSCAR:a {: RESULT = a;:}
+                    |REDUCE:a {: RESULT = a;:}
+                    |TODOS:a {: RESULT = a;:}
+                    |ALGUNO:a {: RESULT = a;:}
                     ;
 
 ARREGLO_LLAMADA::= tId:id tCorchOpen EXPRESION:exp tCorchClose {:RESULT = new ArregloLlamada(id,exp,idleft);:}
@@ -385,25 +395,50 @@ AL_CLIC::= tId:a tPunto res_alClick tParOpen POSIBLES_LLAMADAS:b tParClose tPtoC
             {:RESULT = new AlClic(a,b,aleft);:}
             ;
 
-FILTER::= tId:a tPunto res_filter tParOpen tId:b tParClose 
+FILTER::= tId:a tPunto res_filter tParOpen TIPO_FILTER:b tParClose 
             {:RESULT = new Filter(a,b,aleft);:}
           ;
 
-BUSCAR::= tId:a tPunto res_buscar tParOpen tId:b tParClose
-            {:RESULT = new Buscar(a,b,aleft);:}
-            ;          
+TIPO_FILTER::= tParOpen TIPO_PARAMETROS_FUNCION:par tParClose tIgual tMayorQue tLlvOpen INSTRUCCIONES:ins tLlvClose
+            {:RESULT = new Funcion("tmpFilerF",par,ins,parleft);:}
+            |tId:a {:RESULT = a;:}
+            ;
 
-REDUCE::=     tId:a tPunto res_reduce tParOpen tId:b tParClose
+BUSCAR::= tId:a tPunto res_buscar tParOpen TIPO_BUSCAR:b tParClose
+            {:RESULT = new Buscar(a,b,aleft);:}
+            ;    
+
+TIPO_BUSCAR::= tParOpen TIPO_PARAMETROS_FUNCION:par tParClose tIgual tMayorQue tLlvOpen INSTRUCCIONES:ins tLlvClose
+            {:RESULT = new Funcion("tmpBuscarF",par,ins,parleft);:}
+            |tId:a {:RESULT = a;:}
+            ;                  
+
+REDUCE::=     tId:a tPunto res_reduce tParOpen TIPO_REDUCE:b tParClose
             {:RESULT = new Reduce(a,b,aleft);:}
             ;  
 
-TODOS::=     tId:a tPunto res_todos tParOpen tId:b tParClose
-            {:RESULT = new Todos(a,b,aleft);:}
-            ;                        
+TIPO_REDUCE::= tParOpen TIPO_PARAMETROS_FUNCION:par tParClose tIgual tMayorQue tLlvOpen INSTRUCCIONES:ins tLlvClose
+            {:RESULT = new Funcion("tmpReduceF",par,ins,parleft);:}
+            |tId:a {:RESULT = a;:}
+            ;            
 
-ALGUNO::=     tId:a tPunto res_alguno tParOpen tId:b tParClose
+TODOS::=     tId:a tPunto res_todos tParOpen TIPO_TODOS:b tParClose
+            {:RESULT = new Todos(a,b,aleft);:}
+            ;
+
+TIPO_TODOS::= tParOpen TIPO_PARAMETROS_FUNCION:par tParClose tIgual tMayorQue tLlvOpen INSTRUCCIONES:ins tLlvClose
+            {:RESULT = new Funcion("tmpTodosF",par,ins,parleft);:}
+            |tId:a {:RESULT = a;:}
+            ;                                   
+
+ALGUNO::=     tId:a tPunto res_alguno tParOpen TIPO_ALGUNO:b tParClose
             {:RESULT = new Alguno(a,b,aleft);:}
-            ;         
+            ;
+
+TIPO_ALGUNO::= tParOpen TIPO_PARAMETROS_FUNCION:par tParClose tIgual tMayorQue tLlvOpen INSTRUCCIONES:ins tLlvClose
+            {:RESULT = new Funcion("tmpAlgunoF",par,ins,parleft);:}
+            |tId:a {:RESULT = a;:}
+            ;                     
 
 MAP::=     tId:a tPunto res_map tParOpen TIPO_MAP:b tParClose
             {:
@@ -415,4 +450,4 @@ TIPO_MAP::= tParOpen TIPO_PARAMETROS_FUNCION:par tParClose tIgual tMayorQue tLlv
             {:RESULT = new Funcion("tmpMapF",par,ins,parleft);:}
             |tId:a {:RESULT = a;:}
             ;
-                    
+                

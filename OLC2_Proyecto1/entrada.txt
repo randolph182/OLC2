@@ -1,11 +1,9 @@
-var ar = [1, 2, 3]; 
+var ages = [32, 33, 16, 40]; 
  
-funcion sumar(var item){ 
-        retornar item + 2; 
-}
-var ar1 = ar.map(sumar);
-imprimir(ar1[0]);
-
-ar1.map((var a) => {
-    imprimir("valor " + a);
-});
+funcion checkAdult(VAR age) {   retornar age >= 18; } 
+ 
+var ar1= ages.filtrar(checkAdult); 
+ 
+ar1.todos((var item) => {     imprimir("mayores de edad:" + item); }); 
+ 
+/* valor: 32 valor: 33 valor: 40 */
