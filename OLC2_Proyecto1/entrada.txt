@@ -4,4 +4,8 @@ funcion sumar(var item){
         retornar item + 2; 
 }
 var ar1 = ar.map(sumar);
-imprimir(ar1[2]);
+imprimir(ar1[0]);
+
+ar1.map((var a) => {
+    imprimir("valor " + a);
+});

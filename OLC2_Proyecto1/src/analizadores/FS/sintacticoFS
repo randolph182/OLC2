@@ -116,6 +116,7 @@ non terminal Reduce REDUCE;
 non terminal Todos TODOS;
 non terminal Alguno ALGUNO;
 non terminal Map MAP;
+non terminal Object TIPO_MAP;
 
 non terminal  nodoAST POSIBLES_LLAMADAS;
 
@@ -171,6 +172,7 @@ POSIBLES_LLAMADAS::=DECLARACION:a                      {:RESULT = a;:}
                     | ASIG_OP:a                         {: RESULT = a;:}
                     |FUNCION_LLAMADA:a          {: RESULT = a;:}
                     |ARREGLO_LLAMADA:a                {: RESULT = a;:}
+                    |MAP:a {: RESULT = a;:}
                     ;
 
 ARREGLO_LLAMADA::= tId:id tCorchOpen EXPRESION:exp tCorchClose {:RESULT = new ArregloLlamada(id,exp,idleft);:}
@@ -403,6 +405,14 @@ ALGUNO::=     tId:a tPunto res_alguno tParOpen tId:b tParClose
             {:RESULT = new Alguno(a,b,aleft);:}
             ;         
 
-MAP::=     tId:a tPunto res_map tParOpen tId:b tParClose
-            {:RESULT = new Map(a,b,aleft);:}
-            ;                    
+MAP::=     tId:a tPunto res_map tParOpen TIPO_MAP:b tParClose
+            {:
+                RESULT = new Map(a,b,aleft);
+            :}
+            ;
+
+TIPO_MAP::= tParOpen TIPO_PARAMETROS_FUNCION:par tParClose tIgual tMayorQue tLlvOpen INSTRUCCIONES:ins tLlvClose
+            {:RESULT = new Funcion("tmpMapF",par,ins,parleft);:}
+            |tId:a {:RESULT = a;:}
+            ;
+                    
