@@ -72,29 +72,32 @@ public class ArregloLlamada implements Expresion {
                                 return null;
                             }
 
-                            switch (valores.get(pos).getTipo().getTipoGxml()) {
-                                case VENTANA:
-                                    return valores.get(pos);
-                                case CONTENEDOR:
-                                    return valores.get(pos);
-                                case TEXTO:
-                                    return valores.get(pos);
-                                case CONTROL:
-                                    return valores.get(pos);
-                                case BOTON:
-                                    return valores.get(pos);
-                                case MULTIMEDIA:
-                                    return valores.get(pos);
-                                case LISTA_DATOS:
-                                    return valores.get(pos);
-                                case ENVIAR:
-                                    return valores.get(pos);
-                                default:
-                                    tipo = valores.get(pos).getTipo();
-                                    return valores.get(pos).getValor();
+                            if (valores.get(pos).getTipo().esTipoPrimitivo()) {
+                                tipo = valores.get(pos).getTipo();
+                                return valores.get(pos).getValor();
+                            } else if (valores.get(pos).getTipo().esTipoGXML()) {
+                                switch (valores.get(pos).getTipo().getTipoGxml()) {
+                                    case VENTANA:
+                                        return valores.get(pos);
+                                    case CONTENEDOR:
+                                        return valores.get(pos);
+                                    case TEXTO:
+                                        return valores.get(pos);
+                                    case CONTROL:
+                                        return valores.get(pos);
+                                    case BOTON:
+                                        return valores.get(pos);
+                                    case MULTIMEDIA:
+                                        return valores.get(pos);
+                                    case LISTA_DATOS:
+                                        return valores.get(pos);
+                                    case ENVIAR:
+                                        return valores.get(pos);
+                                    default:
+
+                                }
                             }
-                                
-                                
+
 //                            if (valores.get(pos).getValor() != null) {
 //                                
 //                            } else {

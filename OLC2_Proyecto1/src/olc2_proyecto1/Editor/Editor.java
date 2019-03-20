@@ -76,7 +76,9 @@ public class Editor extends javax.swing.JFrame {
             }
         });
 
+        jtxtConsola.setBackground(new java.awt.Color(0, 0, 0));
         jtxtConsola.setColumns(20);
+        jtxtConsola.setForeground(new java.awt.Color(255, 255, 255));
         jtxtConsola.setRows(5);
         jScrollPane2.setViewportView(jtxtConsola);
 

@@ -144,8 +144,8 @@ public class CrearCajaTexto implements Instruccion{
                             tf.setFont(new Font(fuente, 0, tamanio.intValue()));
                         }
                         tf.setCaretColor(color);
-                        
-                        ventana.setVisible(true);
+                        tf.setName(nombre);
+//                        ventana.setVisible(true);
                         //no retorna nada por eso es que es una instruccion
                         return null;
 

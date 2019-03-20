@@ -85,11 +85,11 @@ non terminal Simbolo ETQ_DEFECTO;
 non terminal ETQ_MULTIMEDIA;
 non terminal ELEMENTOS_MULTIMEDIA;
 non terminal ELEMENTO_MULTIMEDIA;
-non terminal ETQ_BOTON;
-non terminal CONTENIDO_BOTON;
-non terminal ELEMENTOS_BOTON;
-non terminal ELEMENTO_BOTON;
-non terminal ELEMENTO_REFERENCIA;
+non terminal Boton ETQ_BOTON;
+non terminal Object CONTENIDO_BOTON;
+non terminal LinkedList<Simbolo> ELEMENTOS_BOTON;
+non terminal Simbolo ELEMENTO_BOTON;
+non terminal Simbolo ELEMENTO_REFERENCIA;
 non terminal ETQ_ENVIAR;
 non terminal ELEMENTO_PATH;
 non terminal ELEMENTO_AUTO_REPRODUCCION;
@@ -132,7 +132,7 @@ ELEMENTO_VENTANA::=     ELEMENTO_ID:a             {:RESULT = a;:}
                         ;             
 
 LST_CUERPO_VENTANA::=    LST_CUERPO_VENTANA:a CUERPO_VENTANA:b {:RESULT = a; RESULT.add(b);:}
-                        | CUERPO_VENTANA:a {: RESULT = new LinkedList<>(); RESULT.add(a);;:}
+                        | CUERPO_VENTANA:a {: RESULT = new LinkedList<>(); RESULT.add(a);:}
                         ;
 
 
@@ -166,7 +166,7 @@ LST_CUERPO_CONTENEDOR::= LST_CUERPO_CONTENEDOR:a CUERPO_CONTENEDOR:b {:RESULT = 
 CUERPO_CONTENEDOR::=    ETQ_TEXTO:a {:RESULT=a;:}
                         |ETQ_CONTROL:a {:RESULT=a;:}
                         |ETQ_MULTIMEDIA
-                        |ETQ_BOTON
+                        |ETQ_BOTON:a {:RESULT=a;:}
                         |ETQ_ENVIAR
                         | error res_MayorQue
                         ;                     
@@ -267,30 +267,33 @@ ELEMENTO_MULTIMEDIA::=  ELEMENTO_TIPO
 
 
 
-ETQ_BOTON::=    res_MenorQue res_boton ELEMENTOS_BOTON res_MayorQue CONTENIDO_BOTON res_MenorQue res_slash res_boton res_MayorQue
+ETQ_BOTON::=    res_MenorQue res_boton ELEMENTOS_BOTON:a res_MayorQue CONTENIDO_BOTON:b res_MenorQue res_slash res_boton res_MayorQue
+                {:RESULT = new Boton(a,b,aleft);:}
                 ;                            
 
-CONTENIDO_BOTON::=  ETQ_TEXTO
-                    | tTexto
+CONTENIDO_BOTON::=  ETQ_TEXTO:a {:RESULT = a;:}
+                    | tTexto:a  {:RESULT = a;:}
                     ;                
 
-ELEMENTOS_BOTON::=  ELEMENTOS_BOTON  ELEMENTO_BOTON
-                    | ELEMENTO_BOTON
+ELEMENTOS_BOTON::=  ELEMENTOS_BOTON:a  ELEMENTO_BOTON:b {:RESULT = a; RESULT.add(b);:}
+                    | ELEMENTO_BOTON:a {: RESULT = new LinkedList<>(); RESULT.add(a);:}
                     ;             
 
-ELEMENTO_BOTON::= ELEMENTO_NOMBRE
-                    |ELEMENTO_X
-                    |ELEMENTO_Y
-                    |ELEMENTO_ALTO
-                    |ELEMENTO_ANCHO
-                    |ELEMENTO_REFERENCIA
-                    |ELEMENTO_ACCION
+
+ELEMENTO_BOTON::= ELEMENTO_NOMBRE:a {:RESULT=a;:}
+                    |ELEMENTO_X:a {:RESULT=a;:}
+                    |ELEMENTO_Y:a {:RESULT=a;:}
+                    |ELEMENTO_ALTO:a {:RESULT=a;:}
+                    |ELEMENTO_ANCHO:a {:RESULT=a;:}
+                    |ELEMENTO_REFERENCIA:a {:RESULT=a;:}
+                    |ELEMENTO_ACCION:a {:RESULT=a;:}
                     ;
 
 
                 
 
 ETQ_ENVIAR::=       res_MenorQue res_enviar ELEMENTOS_BOTON res_MayorQue  CONTENIDO_BOTON res_MenorQue res_slash res_enviar res_MayorQue
+
                     ;                  
 
 

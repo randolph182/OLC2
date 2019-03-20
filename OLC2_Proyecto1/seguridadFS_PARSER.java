@@ -31,7 +31,7 @@ parser code
     public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception{
         System.out.println("Error sintactico en la Línea " + (s.right+1)+ " Columna "+s.left+". Identificador " +
         s.value + " no reconocido.");   
-    }
+	}
     
 
 :}
@@ -108,9 +108,9 @@ non terminal ObtenerPorEtiqueta OBTENER_POR_ETIQUETA;
 non terminal ObjetoLlamada LLAMADA_OBJETO;
 non terminal CrearCajaTexto CREAR_CAJA_TEXTO;
 non terminal CrearBoton CREAR_BOTON;
-non terminal AlClic AL_CLIC;
+non terminal AlClic POSIBLES_LLAMADAS;
 
-non terminal  nodoAST POSIBLES_LLAMADAS;
+non terminal  nodoAST LLAMADA_ALCLIC;
 
 precedence right tIgual;
 
@@ -136,18 +136,25 @@ precedence right  umenos;
 /* ******************************************* GRAMATICA **************************************** */
 start with S;
 
-S::=    INSTRUCCIONES:a  {: parser.ast = new AST(a);:};
+S::=	INSTRUCCIONES:a  {: parser.ast = new AST(a);:};
 
 INSTRUCCIONES::= INSTRUCCIONES:a INSTRUCCION:b    {:RESULT = a; RESULT.add(b);:}
                 |INSTRUCCION:a         {:RESULT = new LinkedList<>(); RESULT.add(a);:}
                 ;
 
-INSTRUCCION::=  POSIBLES_LLAMADAS:a tPtoComa {: RESULT = a;:}
+INSTRUCCION::=  DECLARACION:a                      {:RESULT = a;:}
+                | AUMENTO:a                         {:RESULT = a;:}
+                | DECREMENTO:a                      {:RESULT = a;:}
+                | IMPRIMIR:a                        {: RESULT = a;:}
+                | ASIGNACION:a                      {: RESULT = a;:}
+                | ASIG_OP:a                         {: RESULT = a;:}
                 | IF:a                              {: RESULT = a;:}
                 |SWITCH:a                           {: RESULT = a;:}
                 |BREAK:a                            {: RESULT = a;:}
                 |RETURN:a                           {: RESULT = a;:}
                 |FUNCION:a                          {: RESULT = a;:}
+                |FUNCION_LLAMADA:a tPtoComa         {: RESULT = a;:}
+                |ARREGLO_LLAMADA:a tPtoComa               {: RESULT = a;:}
                 |ASIGNACION_ARREGLO:a               {: RESULT = a;:}
                 |CREAR_TEXTO:a {: RESULT = a;:}
                 |CREAR_CAJA_TEXTO:a {: RESULT = a;:}
@@ -156,15 +163,8 @@ INSTRUCCION::=  POSIBLES_LLAMADAS:a tPtoComa {: RESULT = a;:}
                 |error tLlvClose
                 ;
 
-POSIBLES_LLAMADAS::=DECLARACION:a                      {:RESULT = a;:}
-                    | AUMENTO:a                         {:RESULT = a;:}
-                    | DECREMENTO:a                      {:RESULT = a;:}
-                    | IMPRIMIR:a                        {: RESULT = a;:}
-                    | ASIGNACION:a                      {: RESULT = a;:}
-                    | ASIG_OP:a                         {: RESULT = a;:}
-                    |FUNCION_LLAMADA:a          {: RESULT = a;:}
-                    |ARREGLO_LLAMADA:a                {: RESULT = a;:}
-                    ;
+POSIBLES_LLAMADAS::= DECLARACION
+                    |
 
 ARREGLO_LLAMADA::= tId:id tCorchOpen EXPRESION:exp tCorchClose {:RESULT = new ArregloLlamada(id,exp,idleft);:}
                     |tId:id tPunto res_Descendente tParOpen tParClose{: RESULT = new ArregloLlamada(id,1,idleft); :}
@@ -233,7 +233,7 @@ IF::=           tSi tParOpen EXPRESION:cond tParClose tLlvOpen INSTRUCCIONES:ins
                     {: RESULT = new If(cond,ins,tIf,condleft); :}
                 ; 
 
-ASIG_OP::=      tId:a TIPO_AO:b EXPRESION:c  {: RESULT = new Asignacion_Operacion(a,b,c,aleft);:}
+ASIG_OP::=      tId:a TIPO_AO:b EXPRESION:c tPtoComa {: RESULT = new Asignacion_Operacion(a,b,c,aleft);:}
                 ;
 
 TIPO_AO::=      tSumaAsig               {:RESULT = Asignacion_Operacion.TipoAO.SUMA;:}
@@ -242,22 +242,22 @@ TIPO_AO::=      tSumaAsig               {:RESULT = Asignacion_Operacion.TipoAO.S
                 |tDiviAsig              {:RESULT = Asignacion_Operacion.TipoAO.DIVISION;:}
                 ;               
 
-ASIGNACION::=  tId:a tIgual EXPRESION:b     {:RESULT = new Asignacion(a,b,aleft);:}
+ASIGNACION::=  tId:a tIgual EXPRESION:b tPtoComa    {:RESULT = new Asignacion(a,b,aleft);:}
                 ;
 
-ASIGNACION_ARREGLO::= tId:a tCorchOpen EXPRESION:b tCorchClose tIgual EXPRESION:c  {:RESULT = new AsignacionArreglo(a,b,c,aleft);:}
+ASIGNACION_ARREGLO::= tId:a tCorchOpen EXPRESION:b tCorchClose tIgual EXPRESION:c tPtoComa {:RESULT = new AsignacionArreglo(a,b,c,aleft);:}
                         ;                
 
-AUMENTO::=      tId:a tAumen               {: RESULT = new Aumento(a,aleft);:}
+AUMENTO::=      tId:a tAumen tPtoComa              {: RESULT = new Aumento(a,aleft);:}
                 ;
 
-DECREMENTO::=   tId:a tDecremen            {: RESULT = new Decremento(a,aleft);:}
+DECREMENTO::=   tId:a tDecremen tPtoComa           {: RESULT = new Decremento(a,aleft);:}
                 ;
 
-IMPRIMIR::=     tImprimir tParOpen EXPRESION:a tParClose  {:RESULT = new Imprimir(a,aleft);:}
+IMPRIMIR::=     tImprimir tParOpen EXPRESION:a tParClose tPtoComa {:RESULT = new Imprimir(a,aleft);:}
                 ;                
 
-DECLARACION::=   tVar  ASIG_VAL:a           {:RESULT = a;:}
+DECLARACION::=   tVar  ASIG_VAL:a tPtoComa          {:RESULT = a;:}
                 ;
 
 ASIG_VAL::=     tId:a                             {: Identificador id = new Identificador(a,aleft);
@@ -366,6 +366,7 @@ CREAR_CONTENEDOR::=  tId:a tPunto res_crear_contenedor tParOpen TIPO_PARAMETROS:
                         {: RESULT = new CrearContenedor(b,a,aleft);:}
                     ;
 
-AL_CLIC::= tId:a tPunto res_alClick tParOpen POSIBLES_LLAMADAS:b tParClose tPtoComa
+AL_CLIC::= tId:a tPunto res_alClick tParOpen INSTRUCCION:b tParClose tPtoComa
             {:RESULT = new AlClic(a,b,aleft);:}
             ;
+      

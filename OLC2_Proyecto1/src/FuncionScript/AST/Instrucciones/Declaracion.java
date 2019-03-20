@@ -7,6 +7,7 @@ package FuncionScript.AST.Instrucciones;
 
 import FuncionScript.AST.Expresiones.Expresion;
 import FuncionScript.AST.Expresiones.Identificador;
+import FuncionScript.AST.Expresiones.InterfazUsuario.CrearBoton;
 import FuncionScript.AST.Expresiones.InterfazUsuario.CrearContenedor;
 import FuncionScript.AST.Expresiones.InterfazUsuario.CrearVentana;
 import FuncionScript.AST.Expresiones.InterfazUsuario.LeerGxml;
@@ -79,7 +80,17 @@ public class Declaracion implements Instruccion {
                                     ent.put(lstId.get(i).getIdentificador(), simContenedor);
                                     break;
                                 }
-                            } else if(exp instanceof LeerGxml){
+                            } else if(exp instanceof CrearBoton){
+                                Object idVentana = exp.getValor(ent);
+                                if(idVentana != null){
+                                    Simbolo simBoton = new Simbolo();
+//                                    simContenedor.setRol(Simbolo.ROL.FUNCION);
+                                    simBoton.setValor(idVentana);
+                                    simBoton.setTipo(exp.getTipo(ent));
+                                    ent.put(lstId.get(i).getIdentificador(), simBoton);
+                                    break;
+                                }
+                            }else if(exp instanceof LeerGxml){
                                Object elementos =  exp.getValor(ent);
                                 if(elementos!=null){
                                     //AGREGAMOS AL NUEVO ARREGLO A LA TABLA DE SIMBOLOS Y NOS ASEGURAMOS DE PONERLE ROL HETEROGENEO

@@ -218,6 +218,13 @@ public class Contenedor implements Instruccion {
                             c.ejecutar(archivo,null,entLocal,tipoEjecucion);
                         }else
                             c.ejecutar(null,listadoSimbolos,entLocal,tipoEjecucion);
+                    }else if(nodo instanceof Boton){
+                        Boton b = (Boton)nodo;
+                        if(tipoEjecucion == 0){
+                            b.ejecutar(archivo, null, entLocal, tipoEjecucion);
+                        }else{
+                            b.ejecutar(archivo, null, entLocal, tipoEjecucion);
+                        }
                     }
                 }
                     

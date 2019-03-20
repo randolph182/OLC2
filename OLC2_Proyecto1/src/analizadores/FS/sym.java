@@ -52,6 +52,7 @@ public class sym {
   public static final int tRestaAsig = 32;
   public static final int tCorchOpen = 50;
   public static final int tDosPuntos = 38;
+  public static final int res_alClick = 65;
   public static final int tOr = 46;
   public static final int tDecremen = 19;
   public static final int tFuncion = 49;
@@ -71,6 +72,7 @@ public class sym {
   public static final int tMayorQue = 24;
   public static final int tSumaAsig = 31;
   public static final int tDistinto = 29;
+  public static final int res_crear_boton = 64;
   public static final int tSelecciona = 43;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -136,7 +138,9 @@ public class sym {
   "res_crear_texto",
   "res_leerGxml",
   "res_obtenerPorEtiqueta",
-  "res_crear_caja_texto"
+  "res_crear_caja_texto",
+  "res_crear_boton",
+  "res_alClick"
   };
 }
 

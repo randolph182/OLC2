@@ -772,7 +772,7 @@ class CUP$sintacticoGXML$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
 		nodoAST a = (nodoAST)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
-		 RESULT = new LinkedList<>(); RESULT.add(a);;
+		 RESULT = new LinkedList<>(); RESULT.add(a);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("LST_CUERPO_VENTANA",21, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -988,7 +988,10 @@ class CUP$sintacticoGXML$actions {
           case 35: // CUERPO_CONTENEDOR ::= ETQ_BOTON 
             {
               nodoAST RESULT =null;
-
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Boton a = (Boton)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("CUERPO_CONTENEDOR",24, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1583,8 +1586,14 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 88: // ETQ_BOTON ::= res_MenorQue res_boton ELEMENTOS_BOTON res_MayorQue CONTENIDO_BOTON res_MenorQue res_slash res_boton res_MayorQue 
             {
-              Object RESULT =null;
-
+              Boton RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-6)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-6)).right;
+		LinkedList<Simbolo> a = (LinkedList<Simbolo>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-6)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).right;
+		Object b = (Object)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-4)).value;
+		RESULT = new Boton(a,b,aleft);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ETQ_BOTON",48, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-8)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1593,7 +1602,10 @@ class CUP$sintacticoGXML$actions {
           case 89: // CONTENIDO_BOTON ::= ETQ_TEXTO 
             {
               Object RESULT =null;
-
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Texto a = (Texto)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT = a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("CONTENIDO_BOTON",49, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1602,7 +1614,10 @@ class CUP$sintacticoGXML$actions {
           case 90: // CONTENIDO_BOTON ::= tTexto 
             {
               Object RESULT =null;
-
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT = a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("CONTENIDO_BOTON",49, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1610,8 +1625,14 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 91: // ELEMENTOS_BOTON ::= ELEMENTOS_BOTON ELEMENTO_BOTON 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).right;
+		LinkedList<Simbolo> a = (LinkedList<Simbolo>)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)).value;
+		int bleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int bright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo b = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT = a; RESULT.add(b);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_BOTON",50, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.elementAt(CUP$sintacticoGXML$top-1)), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1619,8 +1640,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 92: // ELEMENTOS_BOTON ::= ELEMENTO_BOTON 
             {
-              Object RESULT =null;
-
+              LinkedList<Simbolo> RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		 RESULT = new LinkedList<>(); RESULT.add(a);
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTOS_BOTON",50, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1628,8 +1652,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 93: // ELEMENTO_BOTON ::= ELEMENTO_NOMBRE 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_BOTON",51, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1637,8 +1664,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 94: // ELEMENTO_BOTON ::= ELEMENTO_X 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_BOTON",51, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1646,8 +1676,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 95: // ELEMENTO_BOTON ::= ELEMENTO_Y 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_BOTON",51, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1655,8 +1688,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 96: // ELEMENTO_BOTON ::= ELEMENTO_ALTO 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_BOTON",51, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1664,8 +1700,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 97: // ELEMENTO_BOTON ::= ELEMENTO_ANCHO 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_BOTON",51, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1673,8 +1712,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 98: // ELEMENTO_BOTON ::= ELEMENTO_REFERENCIA 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_BOTON",51, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1682,8 +1724,11 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 99: // ELEMENTO_BOTON ::= ELEMENTO_ACCION 
             {
-              Object RESULT =null;
-
+              Simbolo RESULT =null;
+		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
+		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
+		Simbolo a = (Simbolo)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;
+		RESULT=a;
               CUP$sintacticoGXML$result = parser.getSymbolFactory().newSymbol("ELEMENTO_BOTON",51, ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()), RESULT);
             }
           return CUP$sintacticoGXML$result;
@@ -1700,7 +1745,7 @@ class CUP$sintacticoGXML$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 101: // ELEMENTO_REFERENCIA ::= res_referencia res_Igual tCad 
             {
-              Object RESULT =null;
+              Simbolo RESULT =null;
 		int aleft = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$sintacticoGXML$stack.peek()).right;
 		String a = (String)((java_cup.runtime.Symbol) CUP$sintacticoGXML$stack.peek()).value;

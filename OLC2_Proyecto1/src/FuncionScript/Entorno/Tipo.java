@@ -45,8 +45,8 @@ public class Tipo {
         
     }
     
-    private Primitivo tipo;
-    private TipoGXML tipoGxml;
+    private Primitivo tipo = null;
+    private TipoGXML tipoGxml = null;
     
     
     
@@ -95,5 +95,17 @@ public class Tipo {
             return true;
         }
         return false;
+    }
+    
+    public boolean esTipoPrimitivo(){
+        if(tipo != null)
+            return true;
+        else return false;
+    }
+    
+    public boolean esTipoGXML(){
+        if(tipoGxml != null)
+            return true;
+        else return false;
     }
 }
