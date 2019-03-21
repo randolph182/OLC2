@@ -79,6 +79,7 @@ public class Ventana implements Instruccion {
                         elementosVentana = new LinkedList<>();
                     }
                     
+                    String id = "";
                     String tipo = "";
                     String color = "";
                     String accionInicial = "";
@@ -87,6 +88,17 @@ public class Ventana implements Instruccion {
                     String ancho = "500";
                     for (Simbolo elemento : elementos) {
                         switch (elemento.getRolGxml()) {
+                            case ID:
+                                id = elemento.getValor().toString();
+                                if(tipoEjecucion == 1){
+                                    Simbolo s = new Simbolo();
+                                    s.setId("id");
+                                    s.setTipo(new Tipo(Tipo.Primitivo.STRING));
+                                    s.setValor(id);
+                                    s.setRolGxml(Simbolo.ROLGXML.ID);
+                                    elementosVentana.add(s);
+                                }
+                                break;
                             case TIPO:
                                 tipo = elemento.getValor().toString();
                                 if(tipoEjecucion == 1){

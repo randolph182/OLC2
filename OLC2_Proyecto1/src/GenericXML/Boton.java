@@ -105,11 +105,22 @@ public class Boton implements Instruccion {
                         String alto = "10";
                         String ancho = "10";
                         String accion = "";
+                        String nombre = "";
 
                         for (Simbolo elemento : elementos) { //ELEMENTOS QUE TRAE COMO PARAMETRO
 
                             switch (elemento.getRolGxml()) {
-
+                                case NOMBRE:
+                                    nombre = elemento.getValor().toString();
+                                    if (tipoEjecucion == 1) {
+                                        Simbolo s = new Simbolo();
+                                        s.setId("nombre");
+                                        s.setValor(nombre);
+                                        s.setRolGxml(Simbolo.ROLGXML.NOMBRE);
+                                        s.setTipo(new Tipo(Tipo.Primitivo.STRING));
+                                        elementosBoton.add(s);
+                                    }
+                                    break;
                                 case X:
                                     x = elemento.getValor().toString();
                                     if (tipoEjecucion == 1) {
@@ -283,9 +294,9 @@ public class Boton implements Instruccion {
                     }
 
                 } catch (Exception e) {
-                    System.out.println("algo salio mal en la escritura del archivo en una etiqueta texto en linea:" + linea);
-                    Editor.insertarTextoConsola("algo salio mal en la escritura del archivo en una etiqueta texto en linea:" + linea);
-                    ManejadorErroresGXML.getInstance().setErrorSemanticos(linea, "algo salio mal en la escritura del archivo en una etiqueta texto ");
+                    System.out.println("algo salio mal en la escritura del archivo en una etiqueta boton en linea:" + linea);
+                    Editor.insertarTextoConsola("algo salio mal en la escritura del archivo en una etiqueta boton en linea:" + linea);
+                    ManejadorErroresGXML.getInstance().setErrorSemanticos(linea, "algo salio mal en la escritura del archivo en una etiqueta boton ");
                     return null;
                 }
             } else {

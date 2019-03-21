@@ -93,7 +93,8 @@ public class Contenedor implements Instruccion {
                         contenedor.setValor(idVentana);
                         ent.put(idContenedor, contenedor);
                        // entLocal.put(idContenedor, contenedor);
-
+                        
+                        String  id = "";
                         String x = "0";
                         String y = "0";
                         String alto = "10";
@@ -104,6 +105,17 @@ public class Contenedor implements Instruccion {
                         for (Simbolo elemento : elementos) {
 
                             switch (elemento.getRolGxml()) {
+                                case ID:
+                                    id = elemento.getValor().toString();
+                                    if (tipoEjecucion == 1) {
+                                        Simbolo s = new Simbolo();
+                                        s.setId("id");
+                                        s.setValor(id);
+                                        s.setRolGxml(Simbolo.ROLGXML.ID);
+                                        s.setTipo(new Tipo(Tipo.Primitivo.STRING));
+                                        elementosContenedor.add(s);
+                                    }
+                                    break;
                                 case X:
                                     x = elemento.getValor().toString();
                                     if (tipoEjecucion == 1) {
@@ -223,7 +235,7 @@ public class Contenedor implements Instruccion {
                         if(tipoEjecucion == 0){
                             b.ejecutar(archivo, null, entLocal, tipoEjecucion);
                         }else{
-                            b.ejecutar(archivo, null, entLocal, tipoEjecucion);
+                            b.ejecutar(null, listadoSimbolos, entLocal, tipoEjecucion);
                         }
                     }
                 }

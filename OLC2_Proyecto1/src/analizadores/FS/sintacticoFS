@@ -70,6 +70,7 @@ terminal String res_crear_ventana,res_crear_contenedor,res_crear_texto;
 terminal String res_leerGxml,res_obtenerPorEtiqueta,res_crear_caja_texto,res_crear_boton;
 terminal String res_alClick;
 terminal String res_filter,res_buscar,res_reduce,res_todos,res_alguno,res_map;
+terminal String res_obtenerPorId,res_obtenerPorNombre,res_alCargar,res_Importar;
 
 non terminal S;
 non terminal Instruccion DECLARACION;
@@ -122,8 +123,11 @@ non terminal Object TIPO_BUSCAR;
 non terminal Object TIPO_REDUCE;
 non terminal Object TIPO_TODOS;
 non terminal Object TIPO_ALGUNO;
-
+non terminal ObtenerPorId OBTENER_POR_ID;
+non terminal ObtenerPorNombre OBTENER_POR_NOMBRE;
+non terminal AlCargar AL_CARGAR;
 non terminal  nodoAST POSIBLES_LLAMADAS;
+non terminal Importar IMPORTAR;
 
 precedence right tIgual;
 
@@ -165,6 +169,7 @@ INSTRUCCION::=  POSIBLES_LLAMADAS:a tPtoComa {: RESULT = a;:}
                 |CREAR_TEXTO:a {: RESULT = a;:}
                 |CREAR_CAJA_TEXTO:a {: RESULT = a;:}
                 |AL_CLIC:a {: RESULT = a;:}
+                |IMPORTAR:a {: RESULT = a;:}
                 | error tPtoComa
                 |error tLlvClose
                 ;
@@ -183,6 +188,7 @@ POSIBLES_LLAMADAS::=DECLARACION:a                      {:RESULT = a;:}
                     |REDUCE:a {: RESULT = a;:}
                     |TODOS:a {: RESULT = a;:}
                     |ALGUNO:a {: RESULT = a;:}
+                    |AL_CARGAR:a {: RESULT = a;:}
                     ;
 
 ARREGLO_LLAMADA::= tId:id tCorchOpen EXPRESION:exp tCorchClose {:RESULT = new ArregloLlamada(id,exp,idleft);:}
@@ -348,6 +354,8 @@ EXPRESION::=     tMenos EXPRESION:a                 {:RESULT = new Aritmetica(a,
                 |CREAR_CONTENEDOR:a                 {:RESULT = a;:}
                 |LEER_GXML:a                 {:RESULT = a;:}
                 |OBTENER_POR_ETIQUETA:a {:RESULT = a;:}
+                |OBTENER_POR_ID:a {:RESULT = a;:}
+                |OBTENER_POR_NOMBRE:a {:RESULT = a;:}
                 |LLAMADA_OBJETO:a {:RESULT = a;:}
                 |CREAR_BOTON:a {:RESULT = a;:}
                 |FILTER:a {:RESULT = a;:}
@@ -381,6 +389,11 @@ LEER_GXML::=    res_leerGxml tParOpen tCad:a tParClose {:RESULT = new LeerGxml(a
 OBTENER_POR_ETIQUETA::=   tId:a  tPunto  res_obtenerPorEtiqueta  tParOpen  tCad:b   tParClose
                             {:RESULT = new ObtenerPorEtiqueta(a,b,aleft);:}
                         ;           
+
+
+OBTENER_POR_ID::=   tId:a  tPunto  res_obtenerPorId tParOpen  tCad:b   tParClose
+                            {:RESULT = new ObtenerPorId(a,b,aleft);:}
+                        ; 
 
 
 CREAR_VENTANA::=    res_crear_ventana tParOpen TIPO_PARAMETROS:a tParClose 
@@ -451,3 +464,19 @@ TIPO_MAP::= tParOpen TIPO_PARAMETROS_FUNCION:par tParClose tIgual tMayorQue tLlv
             |tId:a {:RESULT = a;:}
             ;
                 
+
+OBTENER_POR_NOMBRE::= tId:a  tPunto  res_obtenerPorNombre  tParOpen  tCad:b  tComa tCad:c tParClose
+                            {:RESULT = new ObtenerPorNombre(a,b,c,aleft);:}
+                        ;                   
+
+AL_CARGAR::=    tId:a tPunto   res_alCargar tParOpen tParClose
+                {:RESULT = new AlCargar(a,aleft);:}
+                ;                      
+
+
+IMPORTAR::=  res_Importar tParOpen tCad:a tParClose tPtoComa
+                {:RESULT = new Importar(a,aleft);:}
+            ;              
+
+
+            

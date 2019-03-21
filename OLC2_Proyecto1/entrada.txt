@@ -1,9 +1,20 @@
-var ages = [32, 33, 16, 40]; 
- 
-funcion checkAdult(VAR age) {   retornar age >= 18; } 
- 
-var ar1= ages.filtrar(checkAdult); 
- 
-ar1.todos((var item) => {     imprimir("mayores de edad:" + item); }); 
- 
-/* valor: 32 valor: 33 valor: 40 */
+Importar("FuncionesAritmeticas.fs");
+Importar("FuncionesHistoricas.fs");
+Importar("FuncionesIngles.fs");
+Importar("FuncionesLogicas.fs");
+Importar("Reportes.fs");
+Importar("traduccion01.fs");
+
+funcion Bienvenido(){
+	Imprimir("Bienvenido a la evaluacion usac, porfavor responda todas las respuestas hasta finalizar, en cada pregunta se les mostrara las respuestas correctas");
+}
+
+funcion BienvenidoReporte(){
+	Imprimir("Bienvenido al area de reportes, porfavor haga clic en el boton para sacar el reporte deseado");
+}
+
+funcion EnviarSinFuncionalidad(){
+	Imprimir("Este boton no guarda nada en su gdato, ya que no hay controles");
+}
+
+VentanaLogica.alCargar();

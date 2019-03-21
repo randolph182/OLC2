@@ -14,6 +14,8 @@ import FuncionScript.AST.Expresiones.InterfazUsuario.CrearContenedor;
 import FuncionScript.AST.Expresiones.InterfazUsuario.CrearVentana;
 import FuncionScript.AST.Expresiones.InterfazUsuario.LeerGxml;
 import FuncionScript.AST.Expresiones.InterfazUsuario.ObtenerPorEtiqueta;
+import FuncionScript.AST.Expresiones.InterfazUsuario.ObtenerPorId;
+import FuncionScript.AST.Expresiones.InterfazUsuario.ObtenerPorNombre;
 import FuncionScript.AST.Expresiones.Map;
 import FuncionScript.AST.Expresiones.Reduce;
 import FuncionScript.Entorno.Entorno;
@@ -130,6 +132,41 @@ public class Declaracion implements Instruccion {
                                     break;
                                 }
 
+                            } else if (exp instanceof ObtenerPorId) {
+                                Object listado = exp.getValor(ent);
+                                if (listado != null) {
+                                    LinkedList<Simbolo> valArray = (LinkedList<Simbolo>) listado;
+                                    Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), new Tipo(Tipo.Primitivo.NULL));
+                                    nuevoSimbolo.setRol(Simbolo.ROL.ARREGLO_HETEROGENEO);
+                                    nuevoSimbolo.setElementos(valArray);
+                                    //agregando al entorno
+                                    ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
+                                    break;
+
+                                } else {
+                                    System.out.println("Error no se encontraron valores por etiqueta en linea " + linea);
+                                    Editor.insertarTextoConsola("Error no se encontraron valores por etiqueta en linea " + linea);
+                                    ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error no se encontraron valores por etiqueta en linea ");
+                                    break;
+                                }
+
+                            } else if (exp instanceof ObtenerPorNombre) {
+                                 Object listado = exp.getValor(ent);
+                                if (listado != null) {
+                                    LinkedList<Simbolo> valArray = (LinkedList<Simbolo>) listado;
+                                    Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), new Tipo(Tipo.Primitivo.NULL));
+                                    nuevoSimbolo.setRol(Simbolo.ROL.ARREGLO_HETEROGENEO);
+                                    nuevoSimbolo.setElementos(valArray);
+                                    //agregando al entorno
+                                    ent.put(lstId.get(i).getIdentificador(), nuevoSimbolo);
+                                    break;
+                                } else {
+                                    System.out.println("Error no se encontraron valores por etiqueta en linea " + linea);
+                                    Editor.insertarTextoConsola("Error no se encontraron valores por etiqueta en linea " + linea);
+                                    ManejadorErroresFS.getInstance().setErrorSemanticos(linea, "Error no se encontraron valores por etiqueta en linea ");
+                                    break;
+                                }
+
                             } else if (exp instanceof Filter) {
                                 Object arreglo = exp.getValor(ent);
                                 Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), new Tipo(Tipo.Primitivo.NULL));
@@ -155,7 +192,7 @@ public class Declaracion implements Instruccion {
                                     ent.put(lstId.get(i).getIdentificador(), valor);
                                     break;
                                 }
-                            }else if(exp instanceof Map){
+                            } else if (exp instanceof Map) {
                                 Object arreglo = exp.getValor(ent);
                                 Simbolo nuevoSimbolo = new Simbolo(lstId.get(i).getIdentificador(), new Tipo(Tipo.Primitivo.NULL));
 

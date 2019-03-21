@@ -71,6 +71,7 @@ public class Controlador implements Instruccion {
                     } else {
                         elementosControl = new LinkedList<>();
                     }
+
                     String alto = "10";
                     String ancho = "10";
                     String fuente = "Agency FB";
@@ -228,27 +229,28 @@ public class Controlador implements Instruccion {
                                 break;
                         }
                     }
+
+                    String idContenedor = "";
+                    //OBTENEMO EL ID DEL CONTENEDOR ACTUAL
+                    Enumeration<Simbolo> elements = ent.getTablaSimbolos().elements();
+                    while (elements.hasMoreElements()) {
+                        Simbolo tmp = elements.nextElement();
+                        if (tmp.getTipo().getTipoGxml() == Tipo.TipoGXML.CONTENEDOR) { //SI HAY OTRA VENTANA QUE SEA PRINCIPAL
+                            idContenedor = tmp.getId().toString();
+                            break;
+                        }
+                    }
+                    //registro en tabla de simbolos
+                    Simbolo cajaTexto = new Simbolo(nombreControl, new Tipo(Tipo.TipoGXML.CONTROL_TEXTO));
+                    cajaTexto.setValor(idContenedor);
+                    ent.put(nombreControl, cajaTexto);
                     if (tipoControl.equalsIgnoreCase("texto")) {  //CAJA DE TEXTO 
+
                         try {
-
-                            String idContenedor = "";
-                            //OBTENEMO EL ID DEL CONTENEDOR ACTUAL
-                            Enumeration<Simbolo> elements = ent.getTablaSimbolos().elements();
-                            while (elements.hasMoreElements()) {
-                                Simbolo tmp = elements.nextElement();
-                                if (tmp.getTipo().getTipoGxml() == Tipo.TipoGXML.CONTENEDOR) { //SI HAY OTRA VENTANA QUE SEA PRINCIPAL
-                                    idContenedor = tmp.getId().toString();
-                                    break;
-                                }
-                            }
-
                             if (!idContenedor.equals("")) {
                                 if (tipoEjecucion == 0) {
                                     bf.write(idContenedor + ".CrearCajaTexto(");
                                 }
-                                Simbolo cajaTexto = new Simbolo(nombreControl, new Tipo(Tipo.TipoGXML.CONTROL_TEXTO));
-                                cajaTexto.setValor(idContenedor);
-                                ent.put(nombreControl, cajaTexto);
 
                                 if (!x.equals("0") && !y.equals("0")) {
                                     if (tipoEjecucion == 0) {
@@ -278,6 +280,49 @@ public class Controlador implements Instruccion {
                             System.out.println("Error Ocurrio algo creando caja de texto en linea: " + linea);
                             Editor.insertarTextoConsola("Error Ocurrio algo creando caja de texto en linea: " + linea);
                             ManejadorErroresGXML.getInstance().setErrorSemanticos(linea, "Error Ocurrio algo creando caja de texto en linea: " + linea);
+                            return null;
+                        }
+                    } else if (tipoControl.equalsIgnoreCase("desplegable")) {
+                        try {
+                            if (tipoEjecucion == 1) {
+                                Simbolo s = new Simbolo();
+                                s.setId("desplegable" + idContenedor);
+                                s.setValor("tiene lista de datos");
+                                s.setElementos(hijos);
+                                s.setRolGxml(Simbolo.ROLGXML.DATO);
+                                s.setTipo(new Tipo(Tipo.Primitivo.STRING));
+                                elementosControl.add(s);
+                            } else { //es tipo 0
+                                for(Simbolo s:hijos){
+                                    bf.write("var desplegable"+idContenedor + " = ["+ s.getValor());
+                                }
+                                bf.write("];\n");
+                                
+                                bf.write(idContenedor + ".CrearDesplegable (");
+                            }
+                            
+                            if (!x.equals("0") && !y.equals("0")) {
+                                if (tipoEjecucion == 0) {
+                                    bf.write(alto + "," + ancho + ",desplegable"+idContenedor+"," + x + "," + y +  ",\"" + defecto + "\",\"" + nombreControl + "\");\n");
+                                    bf.flush();
+                                } else {
+                                    Simbolo s = new Simbolo(nombreControl, new Tipo(Tipo.TipoGXML.CONTROL_TEXTO));
+                                    s.setValor(idContenedor); //SERVIRA COMO REFERENCIA PARA MAS ADELANTE
+                                    s.setElementos(elementosControl);
+                                    listadoSimbolos.add(s);
+                                }
+
+                            } else {
+                                System.out.println("hacen falta X y Y del control = " + nombreControl + " en linea:" + linea);
+                                Editor.insertarTextoConsola("hacen falta X y Y del control= " + nombreControl + " en linea:" + linea);
+                                ManejadorErroresGXML.getInstance().setErrorSemanticos(linea, "hacen falta X y Y del control = " + nombreControl);
+                                return null;
+                            }
+
+                        } catch (Exception e) {
+                            System.out.println("Error Ocurrio algo creando desplegable en linea: " + linea);
+                            Editor.insertarTextoConsola("Error Ocurrio algo creando desplegable en linea: " + linea);
+                            ManejadorErroresGXML.getInstance().setErrorSemanticos(linea, "Error Ocurrio algo creando desplegable en linea: " + linea);
                             return null;
                         }
                     }

@@ -38,7 +38,7 @@ terminal String res_listaDatos,res_dato,res_defecto,res_multimedia,res_boton,res
 non terminal S;
 non terminal LinkedList<nodoAST> LISTADO_ETIQUETAS;
 non terminal nodoAST ETIQUETAS;
-non terminal ETQ_IMPORTAR;
+non terminal Importar ETQ_IMPORTAR;
 non terminal Ventana ETQ_VENTANA;
 non terminal Simbolo ELEMENTO_VENTANA;
 non terminal LinkedList<Simbolo> ELEMENTOS_VENTANA;
@@ -78,9 +78,9 @@ non terminal Simbolo ELEMENTO_CONTROL;
 
 non terminal LinkedList<Simbolo> LST_CUERPO_CONTROL;
 non terminal LinkedList<Simbolo> CUERPO_CONTROL;
-non terminal ETQ_LISTA_DATOS;
-non terminal LST_ETQS_DATO;
-non terminal ETQ_DATO;
+non terminal LinkedList<Simbolo> ETQ_LISTA_DATOS;
+non terminal LinkedList<Simbolo> LST_ETQS_DATO;
+non terminal Simbolo ETQ_DATO;
 non terminal Simbolo ETQ_DEFECTO;
 non terminal ETQ_MULTIMEDIA;
 non terminal ELEMENTOS_MULTIMEDIA;
@@ -94,7 +94,7 @@ non terminal ETQ_ENVIAR;
 non terminal ELEMENTO_PATH;
 non terminal ELEMENTO_AUTO_REPRODUCCION;
 non terminal LinkedList<Simbolo> TIPO_CUERPO_CONTROL;
-
+non terminal LinkedList<Simbolo> CUERPO_LD;
 /* ******************************************* GRAMATICA **************************************** */
 start with S;
 
@@ -105,12 +105,15 @@ LISTADO_ETIQUETAS::= LISTADO_ETIQUETAS:a ETIQUETAS:b {:RESULT = a; RESULT.add(b)
                     | ETIQUETAS:a {:RESULT = new LinkedList<>(); RESULT.add(a);:}
                     ;
 
-ETIQUETAS::=       ETQ_IMPORTAR:a {:RESULT = null;:}
+ETIQUETAS::=       ETQ_IMPORTAR:a {:RESULT = a;:}
                     | ETQ_VENTANA:a {:RESULT = a;:}
                     | error res_MayorQue
                     ;
 
-ETQ_IMPORTAR::= res_MenorQue res_importar res_MayorQue tTexto:t res_MenorQue res_slash res_importar res_MayorQue {:System.out.println(t);:}
+ETQ_IMPORTAR::= res_MenorQue res_importar res_MayorQue tTexto:t res_MenorQue res_slash res_importar res_MayorQue
+
+             {:RESULT = new Importar(t,tleft);:}
+
                 ;
 
 
@@ -226,19 +229,24 @@ LST_CUERPO_CONTROL::= LST_CUERPO_CONTROL:a CUERPO_CONTROL:b
                         |CUERPO_CONTROL:a {:RESULT = a;:}
                         ;
 
-CUERPO_CONTROL::=       ETQ_LISTA_DATOS {:RESULT = null;:} 
+CUERPO_CONTROL::=       ETQ_LISTA_DATOS:a {:RESULT = a;:} 
                        | ETQ_DEFECTO:a {:RESULT = new LinkedList<>();RESULT.add(a);:}
                        ;               
 
-ETQ_LISTA_DATOS::= res_MenorQue res_listaDatos res_MayorQue LST_ETQS_DATO res_MenorQue res_slash res_listaDatos res_MayorQue
+ETQ_LISTA_DATOS::= res_MenorQue res_listaDatos res_MayorQue CUERPO_LD:a  res_slash res_listaDatos res_MayorQue
+                    {:RESULT = a;:}
                     ;
 
+CUERPO_LD::= LST_ETQS_DATO:a res_MenorQue {:RESULT = a;:}
+            |res_MenorQue/*nada*/ {:RESULT = new LinkedList<>();:}
+            ;
 
-LST_ETQS_DATO::=  LST_ETQS_DATO ETQ_DATO
-                  |ETQ_DATO
+LST_ETQS_DATO::=  LST_ETQS_DATO:a ETQ_DATO:b {:RESULT = a; RESULT.add(b);:}
+                  |ETQ_DATO:a{:RESULT = new LinkedList<>();RESULT.add(a);:}
                   ;
 
-ETQ_DATO::=     res_MenorQue res_dato res_MayorQue tTexto res_MenorQue res_slash res_dato res_MayorQue    
+ETQ_DATO::=     res_MenorQue res_dato res_MayorQue tTexto:a res_MenorQue res_slash res_dato res_MayorQue    
+                {:RESULT = new  Simbolo(a,a,new Tipo(Tipo.Primitivo.STRING),Simbolo.ROLGXML.DATO);:}
                 ;
 
 
@@ -366,4 +374,4 @@ ELEMENTO_BORDE::=       res_borde res_Igual BOOLEANO:a {: RESULT = new  Simbolo(
 
 BOOLEANO::=             res_verdadero:a {:RESULT = a;:}
                         |res_falso:a {:RESULT = a;:}
-                        ;                          
+                        ;                                            

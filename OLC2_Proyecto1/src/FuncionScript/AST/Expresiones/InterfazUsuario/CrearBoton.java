@@ -130,7 +130,7 @@ public class CrearBoton implements Expresion {
 //                                System.out.println("Imprimir del bootn hola mundo cuchas");
 //                            }
 //                        });
-                        ventana.setVisible(true);
+                        //ventana.setVisible(true);
                         //no retorna nada por eso es que es una instruccion
                         return ventana;
 

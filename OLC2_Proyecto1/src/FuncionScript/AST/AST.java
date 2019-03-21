@@ -36,4 +36,23 @@ public class AST {
             }
         }
     }
+    
+    public void ejecutar2(Entorno ts){
+        for(nodoAST nodo: nodos){
+            if(nodo instanceof Instruccion){
+                Instruccion instruccion = (Instruccion)nodo;
+                
+                if(instruccion instanceof Funcion){
+                      Funcion funcion = (Funcion)instruccion;
+                      funcion.setRol(Simbolo.ROL.FUNCION);
+                      ts.putGlobal(funcion.getId(), funcion);
+                      
+                } else
+                    instruccion.ejecutar(ts);
+            } else if(nodo instanceof Expresion){
+                Expresion exp = (Expresion)nodo;
+                exp.getValor(ts);
+            }
+        }
+    }
 }

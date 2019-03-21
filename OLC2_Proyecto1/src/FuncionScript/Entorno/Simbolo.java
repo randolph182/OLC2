@@ -170,7 +170,8 @@ public class Simbolo {
         REFERENCIA,
         VALOR,
         ACCION,
-        DEFECTO
+        DEFECTO,
+        DATO
         
         
     }

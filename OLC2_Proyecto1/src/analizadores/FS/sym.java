@@ -8,6 +8,7 @@ package analizadores.FS;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
+  public static final int res_alCargar = 74;
   public static final int res_crear_ventana = 58;
   public static final int tSelecciona = 43;
   public static final int tIgual = 11;
@@ -37,6 +38,7 @@ public class sym {
   public static final int tNulo = 30;
   public static final int tMenorQue = 25;
   public static final int tMayorIgual = 26;
+  public static final int res_obtenerPorId = 72;
   public static final int res_alClick = 65;
   public static final int tSumaAsig = 31;
   public static final int res_reduce = 68;
@@ -58,6 +60,7 @@ public class sym {
   public static final int res_crear_texto = 60;
   public static final int res_maximo = 56;
   public static final int tCad = 15;
+  public static final int res_Importar = 75;
   public static final int res_filter = 66;
   public static final int tDefecto = 42;
   public static final int tRestaAsig = 32;
@@ -69,6 +72,7 @@ public class sym {
   public static final int error = 1;
   public static final int res_obtenerPorEtiqueta = 62;
   public static final int tFalse = 4;
+  public static final int res_obtenerPorNombre = 73;
   public static final int tMayorQue = 24;
   public static final int res_minimo = 57;
   public static final int tFuncion = 49;
@@ -152,7 +156,11 @@ public class sym {
   "res_reduce",
   "res_todos",
   "res_alguno",
-  "res_map"
+  "res_map",
+  "res_obtenerPorId",
+  "res_obtenerPorNombre",
+  "res_alCargar",
+  "res_Importar"
   };
 }
 
